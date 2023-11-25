@@ -21,11 +21,11 @@ function Header() {
                             <Row>
                                 <Col xs={2}>
                                     <>
-                                        <Button onClick={handleShow}>
+                                        <Button onClick={handleShow} className='btn1'>
                                             <i className="bi bi-list text-white" style={{ fontSize: '19px', fontWeight: '600' }}></i>
                                         </Button>
 
-                                        <Offcanvas show={show} onHide={handleClose} className='offcanvasBg'>
+                                        <Offcanvas show={show} onHide={handleClose}>
                                             <Offcanvas.Header closeButton>
                                                 <Offcanvas.Title></Offcanvas.Title>
                                             </Offcanvas.Header>
@@ -39,11 +39,11 @@ function Header() {
                             </Row>
                         </Col>
                         <Col xs={5} sm={3} lg={2} className='text-end'>
-                            <Button variant="primary ">
+                            <Button variant="primary " className='btn1'>
                                 <i className="bi bi-bell-fill " style={{ fontSize: '20px' }}></i><sup><Badge bg="danger">9</Badge></sup>
                                 <span className="visually-hidden">unread messages</span>
                             </Button>
-                            <Button variant="text1"><i className="bi bi-box-arrow-right" style={{ color: 'white', fontSize: '18px' }}></i></Button>
+                            <Button variant="text1" className='btn1'><i className="bi bi-box-arrow-right" style={{ fontSize: '22px' }}></i></Button>
                         </Col>
                     </Row>
                 </Card.Body>
