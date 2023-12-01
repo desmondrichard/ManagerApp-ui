@@ -7,14 +7,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Menubar from './offcanvas-body/Menubar';
 import Badge from 'react-bootstrap/Badge';
+import Dashboard from './Dashboard';
+import {NavLink} from 'react-router-dom';
 
 function Header() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div>
-            <Card className='bg'>
+        <div style={{height:'100%'}}>
+            <Card className='bg cardBody'>       
                 <Card.Body>
                     <Row>
                         <Col xs={7} sm={9} lg={10} >
@@ -43,11 +45,13 @@ function Header() {
                                 <i className="bi bi-bell-fill " style={{ fontSize: '20px' }}></i><sup><Badge bg="danger">9</Badge></sup>
                                 <span className="visually-hidden">unread messages</span>
                             </Button>
-                            <Button variant="text1" className='btn1'><i className="bi bi-box-arrow-right" style={{ fontSize: '22px' }}></i></Button>
+                            <NavLink to='/'><Button variant="text1" className='btn1'><i className="bi bi-box-arrow-right" style={{ fontSize: '22px' }}></i></Button></NavLink>
                         </Col>
                     </Row>
                 </Card.Body>
+                
             </Card>
+           
         </div>
     )
 }

@@ -1,0 +1,36 @@
+/*eye-icon placement inside pwd field:*/
+.pwd {
+    position: relative;
+    display: block;
+   }
+  
+   .input {
+    padding-right: 40px;
+   }
+   
+   .pwd-toggle {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+   }
+
+   /*Input Group: */
+.input-group-text{
+    padding:0px;
+    border:0px;
+    padding-left:15px;
+}
+
+.paddingStyle{
+ margin-left:20px;
+ border-top-left-radius: 0px;
+ border-bottom-left-radius: 0px;
+}
+
+.number {
+    position: relative;
+    display: block;
+   }
+
