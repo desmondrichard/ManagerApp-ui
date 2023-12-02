@@ -10,6 +10,7 @@ import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
+import RegistrationForm from './Registration-Form/RegistrationForm';
 
 
 function PlayerRegistration(props) {
@@ -36,12 +37,11 @@ function PlayerRegistration(props) {
             keyboard={false}
             className='modal-xl'
           >
-            <Modal.Header closeButton>
-              <Modal.Title>PLAYERS FORM</Modal.Title>
+            <Modal.Header closeButton style={{backgroundColor:'black'}}>
+              <Modal.Title className='text-white'><h5>PLAYERS FORM</h5></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              I will not close if you click outside me. Don not even try to press
-              escape key.
+              <RegistrationForm />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
@@ -70,7 +70,7 @@ function PlayerRegistration(props) {
         <thead>
           <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
             <th >
-              <Form.Check aria-label="option 1" label="Select to Download" />
+              <Form.Check aria-label="option 1" label="Select to Download All" />
             </th>
             <th >Player Image</th>
             <th>Player Name</th>
@@ -94,7 +94,7 @@ function PlayerRegistration(props) {
             <th>7</th>
             <th>8</th>
             <th>9</th>
-            <th>10</th>
+            <th className='p-1 d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></th>
           </tr>
 
         </tbody>

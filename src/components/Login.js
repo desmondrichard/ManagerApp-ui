@@ -22,9 +22,7 @@ function Login() {
 
     function handleLogin() {
         // e.preventDefault();
-        alert("You have logged in successfully");
-    
-        
+        alert("You have logged in successfully");    
 
     }
     return (
@@ -35,9 +33,9 @@ function Login() {
                         <Col lg={7}>
                             <Image style={{ height: '100%' }} src={require('../assets/mountain1.jpeg')} fluid className='borderRadius'></Image>
                         </Col>
-                        <Col lg={5}>
-                            <Container className='pt-4'>
-                                <Form>
+                        <Col lg={5} >
+                            <Container className='pt-4 '>
+                                <Form >
                                     <legend className='text-center' style={{ fontWeight: 'bold' }}>Login</legend>
                                     <hr style={{ border: '2px solid #198754' }} />
                                     <Form.Group className="mb-4" controlId="Username1" >

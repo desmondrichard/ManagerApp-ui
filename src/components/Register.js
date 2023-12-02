@@ -28,22 +28,22 @@ function Register() {
         alert('signup success');
     }
     return (
-        <div >
-            <Card className='mx-3'>
+        <div className='pt-1 '>
+            <Card className='mx-3 cardBg'>
                 <Row>
                     <Col lg={7}>
                         <Image0 src={require('../assets/mountain2.jpg')} fluid className='borderRadius' style={{ height: '100%' }}></Image0>
                     </Col>
                     <Col lg={5}>
-                        <Container className='pt-3'>
+                        <Container className='pt-1'>
                             <Form>
                                 <legend className='text-center ' style={{ fontWeight: 'bold' }}>Register</legend>
                                 <hr style={{ border: '2px solid #198754' }} />
-                                <Form.Group className="mb-3" controlId="Name">
+                                <Form.Group className="mb-1" controlId="Name">
                                     <Form.Label>Full Name</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="text" placeholder="Enter Your Full Name" onChange={(e) => setName(e.target.value)} />
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formGroupEmail">
+                                <Form.Group className="mb-1" controlId="formGroupEmail">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
                                 </Form.Group>
@@ -52,7 +52,7 @@ function Register() {
                                     <Form.Control size="sm" className='shadow-none' type="date" placeholder="Enter Date of Birth" onChange={(e) => setDob(e.target.value)} />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="Phone">
+                                <Form.Group className="mb-1" controlId="Phone">
                                     <Form.Label>Phone Number</Form.Label>
                                     <InputGroup className='number'>
                                         <InputGroup.Text id="inputGroup-sizing-sm">+91
@@ -61,7 +61,7 @@ function Register() {
                                     </InputGroup>
 
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="Password">
+                                <Form.Group className="mb-1" controlId="Password">
                                     <Form.Label>Password </Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
@@ -69,18 +69,18 @@ function Register() {
                                             placeholder="Password" onChange={(e) => setPwd(e.target.value)} />
                                         <div className='p-2 pwd-toggle' onClick={() => setVisible(!visible)}>
                                             {visible ? <Image1 className='img1' style={{ height: '18px' }} src={require('../assets/eye-close.png')}></Image1> :
-                                                <Image2 className='img1' style={{ height: '18px' }} src={require('../assets/eye-open.png')}></Image2>}
+                                                <Image2 className='img1' style={{ height: '14px' }} src={require('../assets/eye-open.png')}></Image2>}
                                         </div>
                                     </div>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="ConfirmPassword">
+                                <Form.Group className="mb-1" controlId="ConfirmPassword">
                                     <Form.Label>Confirm Password</Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
                                             visible1 ? "password" : "text"} placeholder="Confirm Password" />
                                         <div className='p-2 pwd-toggle' onClick={() => setVisible1(!visible1)}>
                                             {visible1 ? <Image1 className='img1' style={{ height: '18px' }} src={require('../assets/eye-close.png')}></Image1>
-                                                : <Image2 className='img1' style={{ height: '18px' }} src={require('../assets/eye-open.png')}></Image2>
+                                                : <Image2 className='img1' style={{ height: '14px' }} src={require('../assets/eye-open.png')}></Image2>
                                             }
                                         </div>
                                     </div>
