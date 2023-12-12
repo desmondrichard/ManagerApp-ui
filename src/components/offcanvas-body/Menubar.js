@@ -28,4 +28,4 @@ function Menubar() {
     )
 }
 
-export default Menubar
+export default Menubar;

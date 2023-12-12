@@ -10,7 +10,7 @@ import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-import RegistrationForm from './Registration-Form/RegistrationForm';
+import RegistrationForm from './Player-Registration-Form/RegistrationForm';
 
 
 function PlayerRegistration(props) {
@@ -37,12 +37,13 @@ function PlayerRegistration(props) {
             keyboard={false}
             className='modal-xl'
           >
-            <Modal.Header closeButton style={{backgroundColor:'black'}}>
+            <Modal.Header closeButton style={{ backgroundColor: 'black' }}>
               <Modal.Title className='text-white'><h5>PLAYERS FORM</h5></Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <RegistrationForm />
             </Modal.Body>
+            {/* Footer: */}
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Close
