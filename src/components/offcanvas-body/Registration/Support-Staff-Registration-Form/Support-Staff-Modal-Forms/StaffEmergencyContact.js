@@ -1,16 +1,15 @@
 import React from 'react';
-import './EmergencyContact.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-function EmergencyContact() {
-    return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="8">
+function StaffEmergencyContact() {
+  return (
+    <div>
+          <Accordion>
+                <Accordion.Item eventKey="7">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>EMERGENCY CONTACT INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
@@ -58,8 +57,8 @@ function EmergencyContact() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default EmergencyContact
+export default StaffEmergencyContact

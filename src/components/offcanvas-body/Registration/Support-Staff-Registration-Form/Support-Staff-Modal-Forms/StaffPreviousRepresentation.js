@@ -1,17 +1,16 @@
 import React from 'react';
-import './EmergencyContact.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-function EmergencyContact() {
-    return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="8">
-                    <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>EMERGENCY CONTACT INFORMATION</span></Accordion.Header>
+function StaffPreviousRepresentation() {
+  return (
+    <div>
+ <Accordion>
+                <Accordion.Item eventKey="6">
+                    <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>REPRESENTATION INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
                             <Form style={{ paddingRight: '60px' }}>
@@ -19,31 +18,31 @@ function EmergencyContact() {
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="emgcontactperson"
+                                                id="city"
                                                 type="text"
-                                                placeholder="emgcontactperson"
+                                                placeholder="city"
                                             />
-                                            <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact*</label>
+                                            <label htmlFor="city" className='text-muted'>State/City/District</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={5} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="emgContactRel"
+                                                id="club"
                                                 type="text"
-                                                placeholder="emgContactRel"
+                                                placeholder="club"
                                             />
-                                            <label htmlFor="emgContactRel" className='text-muted fontSize'>Emg.Contact Other*</label>
+                                            <label htmlFor="club" className='text-muted'>Club/Franchise</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col '>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="mob"
+                                                id="division"
                                                 type="text"
-                                                placeholder="mob"
+                                                placeholder="division"
                                             />
-                                            <label htmlFor="mob" className='text-muted fontSize'>Mobile NO*</label>
+                                            <label htmlFor="division" className='text-muted'>Past Team Name</label>
                                         </Form.Floating>
                                     </Col>
                                 </Row>
@@ -58,8 +57,8 @@ function EmergencyContact() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default EmergencyContact
+export default StaffPreviousRepresentation

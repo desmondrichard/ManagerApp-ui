@@ -1,4 +1,3 @@
-import './BankAccountDetails.css';
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
@@ -6,11 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-function BankAccountDetails() {
-    return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="4">
+function StaffBankAccountDetails() {
+  return (
+    <div>
+              <Accordion>
+                <Accordion.Item eventKey="3">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>BANK ACCOUNT DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
@@ -59,24 +58,23 @@ function BankAccountDetails() {
                                     <Col xs={12} lg={3} className='col'>
                                         <label className='text-muted' htmlFor="battingpads">Account Type*</label>
                                         {['radio'].map((type) => (
-
-                                            <div key={`inline-${type}`} >
-                                                <span style={{ whiteSpace: 'nowrap' }}>
-                                                    <Form.Check
-                                                        inline
-                                                        label="Savings"
-                                                        name="AccType"
-                                                        type={type}
-                                                        id={`inline-${type}-savings`}
-                                                    />
-                                                    <Form.Check
-                                                        inline
-                                                        label="Current"
-                                                        name="AccType"
-                                                        type={type}
-                                                        id={`inline-${type}-current`}
-                                                    />
-                                                </span>
+                                            <div key={`inline-${type}`}  style={{whiteSpace:'nowrap'}}>
+                                                <Form.Check style={{
+                                                  
+                                                }}
+                                                    inline
+                                                    label="Savings"
+                                                    name="type"
+                                                    type={type}
+                                                    id={`inline-${type}-savings`}
+                                                />
+                                                <Form.Check
+                                                    inline
+                                                    label="Current"
+                                                    name="type"
+                                                    type={type}
+                                                    id={`inline-${type}-current`}
+                                                />
                                             </div>
                                         ))}
                                     </Col>
@@ -98,7 +96,7 @@ function BankAccountDetails() {
                                                 placeholder="swiftbic"
                                             />
                                             {/*  */}
-                                            <label htmlFor="swiftbic" className='text-muted '>Swift/Bic No Type*</label>
+                                            <label htmlFor="swiftbic" className='text-muted '>Swift/Bic No Type</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
@@ -108,7 +106,7 @@ function BankAccountDetails() {
                                                 type="text"
                                                 placeholder="micr"
                                             />
-                                            <label htmlFor="micr" className='text-muted'>MICR Code*</label>
+                                            <label htmlFor="micr" className='text-muted'>MICR Code</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
@@ -163,9 +161,9 @@ function BankAccountDetails() {
                                         </Form.Floating>
                                     </Col>
                                     <Col lg={12} className='my-4 col'>
-                                        <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                        <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
+                                        <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
+                                        <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
+                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
                                     </Col>
                                 </Row>
 
@@ -174,8 +172,8 @@ function BankAccountDetails() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-        </div >
-    )
+    </div>
+  )
 }
 
-export default BankAccountDetails
+export default StaffBankAccountDetails

@@ -1,18 +1,16 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import './KittingDetailsForm.css';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import './Iddetails.css';
-function Iddetails() {
-    return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="3">
+
+function StaffIDCardDetails() {
+  return (
+    <div>
+         <Accordion>
+                <Accordion.Item eventKey="2">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>ID CARD DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
@@ -73,7 +71,7 @@ function Iddetails() {
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
                                                 <Form.Check style={{
-                                                  
+                                                 
                                                 }}
                                                     inline
                                                     label="Yes"
@@ -91,8 +89,27 @@ function Iddetails() {
                                             </div>
                                         ))}
                                     </Col>
-                                    
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <Form.Floating className="mb-2">
+                                            <Form.Control
+                                                id="visano"
+                                                type="text"
+                                                placeholder="visano"
+                                            />
+                                            <label htmlFor="visano" className='text-muted' style={{fontSize:'13px'}}>VISA NO</label>
+                                        </Form.Floating>
+                                    </Col>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <Form.Floating className="mb-2">
+                                            <Form.Control
+                                                id="visavalidity"
+                                                type="date"
+                                                placeholder="visavalidity"
+                                            />
+                                            <label htmlFor="visavalidity" className='text-muted' style={{fontSize:'13px'}}>VISA VALIDITY</label>
+                                        </Form.Floating>
+                                    </Col>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="address"
@@ -102,66 +119,7 @@ function Iddetails() {
                                             <label htmlFor="address" className='text-muted'>ADDRESS*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address1"
-                                                type="text"
-                                                placeholder="address1"
-                                            />
-                                            <label htmlFor="address1" className='text-muted'>ADDRESS LINE 1*</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address2"
-                                                type="text"
-                                                placeholder="address2"
-                                            />
-                                            <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address3"
-                                                type="text"
-                                                placeholder="address3"
-                                            />
-                                            <label htmlFor="address3" className='text-muted'>ADDRESS LINE 3</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <FloatingLabel className='mb-2'
-                                            controlId="country"
-                                            label="COUNTRY*"
-                                        >
-                                            <Form.Select aria-label="country">
-                                                <option value="none">Select Country</option>
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <FloatingLabel className='mb-2'
-                                            controlId="state"
-                                            label="STATE*"
-                                        >
-                                            <Form.Select aria-label="state">
-                                                <option value="none">Select State</option>
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <FloatingLabel className='mb-2'
-                                            controlId="city"
-                                            label="CITY*"
-                                        >
-                                            <Form.Select aria-label="city">
-                                                <option value="none">Select State</option>
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                    </Col>
+                                   
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
                                         <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
@@ -174,8 +132,8 @@ function Iddetails() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Iddetails
+export default StaffIDCardDetails

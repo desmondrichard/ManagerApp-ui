@@ -1,16 +1,15 @@
 import React from 'react';
-import './SocialMediaInfo.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-function SocialMediaInfo() {
+function StaffSocialMediaInfo() {
   return (
     <div>
-         <Accordion>
-                <Accordion.Item eventKey="9">
+  <Accordion>
+                <Accordion.Item eventKey="8">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>SOCIAL MEDIA INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
@@ -92,4 +91,4 @@ function SocialMediaInfo() {
   )
 }
 
-export default SocialMediaInfo
+export default StaffSocialMediaInfo

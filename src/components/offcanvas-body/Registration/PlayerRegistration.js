@@ -10,7 +10,18 @@ import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-import RegistrationForm from './Player-Registration-Form/RegistrationForm';
+import SupportStaffRegistration from './Support-Staff-Registration-Form/SupportStaffRegistration';
+import PersonalInformation from './Player-Registration-Form/PersonalInformation';
+import ProficiencyForm from './Player-Registration-Form/ProficiencyForm';
+import KittingDetailsForm from './Player-Registration-Form/KittingDetailsForm';
+import Iddetails from './Player-Registration-Form/Iddetails';
+import BankAccountDetails from './Player-Registration-Form/BankAccountDetails';
+import FoodInformation from './Player-Registration-Form/FoodInformation';
+import Travelinformation from './Player-Registration-Form/Travelinformation';
+import RepresentationInfo from './Player-Registration-Form/RepresentationInfo';
+import EmergencyContact from './Player-Registration-Form/EmergencyContact';
+import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
+
 
 
 function PlayerRegistration(props) {
@@ -41,7 +52,27 @@ function PlayerRegistration(props) {
               <Modal.Title className='text-white'><h5>PLAYERS FORM</h5></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <RegistrationForm />
+              {/* <RegistrationForm /> */}
+              {/* Accordion:1 */}
+              <PersonalInformation />
+              {/* Accordion:2 */}
+              <ProficiencyForm />
+              {/* Accordion:3 */}
+              <KittingDetailsForm />
+              {/* Accordion:4 */}
+              <Iddetails />
+              {/* Accordion:5 */}
+              <BankAccountDetails />
+              {/* Accordion:6 */}
+              <FoodInformation />
+              {/*Accordion:7 */}
+              <Travelinformation />
+              {/* Accordion:8 */}
+              <RepresentationInfo />
+              {/* Accordion:9 */}
+              <EmergencyContact />
+              {/* Accordion:10 */}
+              <SocialMediaInfo />
             </Modal.Body>
             {/* Footer: */}
             <Modal.Footer>
@@ -100,6 +131,9 @@ function PlayerRegistration(props) {
 
         </tbody>
       </Table>
+      {/* Sample support staff Registraion Form: */}
+      <hr />
+      <SupportStaffRegistration />
     </div>
   )
 }

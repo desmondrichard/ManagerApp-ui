@@ -5,7 +5,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import Card from '@mui/material/Card';
 function Calendar() {
     return (
-        <div>
+        <div >
             <Card variant="outlined">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar showDaysOutsideCurrentMonth fixedWeekNumber={6} />

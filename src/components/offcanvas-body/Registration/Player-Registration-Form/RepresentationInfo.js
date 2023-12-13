@@ -10,7 +10,7 @@ function RepresentationInfo() {
     return (
         <div>
             <Accordion>
-                <Accordion.Item eventKey="2">
+                <Accordion.Item eventKey="7">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>REPRESENTATION INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >

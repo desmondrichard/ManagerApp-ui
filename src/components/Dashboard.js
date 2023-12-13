@@ -103,7 +103,7 @@ function Dashboard() {
                         </Card>
                     </Col>
 
-                    <Col lg={4}>
+                    <Col lg={4} className='mt-4'>
                         <Card className='boxShadow'>
                             <Calendar />
                         </Card>

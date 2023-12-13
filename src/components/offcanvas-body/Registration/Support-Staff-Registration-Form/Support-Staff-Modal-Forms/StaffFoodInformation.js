@@ -1,5 +1,4 @@
 import React from 'react';
-import './FoodInformation.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,27 +6,26 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-function FoodInformation() {
-    return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="5">
+function StaffFoodInformation() {
+  return (
+    <div>
+         <Accordion>
+                <Accordion.Item eventKey="4">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>FOOD INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
                             <Form style={{ paddingRight: '60px' }}>
                                 <Row>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <label className='text-muted me-2' htmlFor="foodtype">Food Type</label>
-                                        <span style={{whiteSpace:'nowrap'}}>
+                                    <Col xs={12} lg={4} className='col me-2'>
+                                        <label className='text-muted' htmlFor="foodtype">Food Type</label>
                                         {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} >
+                                            <div key={`inline-${type}`} style={{whiteSpace:'nowrap'}}>
                                                 <Form.Check style={{
-                                               padding:'20px'
+                                                     padding: '20px'
                                                 }}
                                                     inline
                                                     label="Veg"
-                                                    name="foodCateg"
+                                                    name="foodtype"
                                                     type={type}
                                                     id={`inline-${type}-veg`}
                                                 />
@@ -35,16 +33,38 @@ function FoodInformation() {
                                                 style={{marginRight:'5px'}}
                                                     inline
                                                     label="Non-Veg"
-                                                    name="foodCateg"
+                                                    name="foodtype"
                                                     type={type}
                                                     id={`inline-${type}-nonveg`}
                                                 />
                                             </div>
                                         ))}
-                                        </span>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <label className='text-muted' htmlFor="foodtype">Eggiterian</label>
+                                        <label className='text-muted me-2' htmlFor="foodtype">Eggiterian</label>
+                                        {['radio'].map((type) => (
+                                            <div key={`inline-${type}`} style={{whiteSpace:'nowrap'}}>
+                                                <Form.Check style={{
+                                                    padding: '20px'
+                                                }}
+                                                    inline
+                                                    label="Yes"
+                                                    name="eggit"
+                                                    type={type}
+                                                    id={`inline-${type}-yes`}
+                                                />
+                                                <Form.Check style={{ marginLeft: '10px' }}
+                                                    inline
+                                                    label="No"
+                                                    name="eggit"
+                                                    type={type}
+                                                    id={`inline-${type}-no`}
+                                                />
+                                            </div>
+                                        ))}
+                                    </Col>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <label className='text-muted me-2' htmlFor="foodtype">Sea Food</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
                                                 <Form.Check style={{
@@ -52,14 +72,14 @@ function FoodInformation() {
                                                 }}
                                                     inline
                                                     label="Yes"
-                                                    name="eggit"
+                                                    name="seafood"
                                                     type={type}
                                                     id={`inline-${type}-yes`}
                                                 />
                                                 <Form.Check
                                                     inline
                                                     label="No"
-                                                    name="eggit"
+                                                    name="seafood"
                                                     type={type}
                                                     id={`inline-${type}-no`}
                                                 />
@@ -67,7 +87,7 @@ function FoodInformation() {
                                         ))}
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <label className='text-muted' htmlFor="foodtype">Sea Food</label>
+                                        <label className='text-muted me-2' htmlFor="foodtype">Red Meat</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
                                                 <Form.Check style={{
@@ -75,37 +95,14 @@ function FoodInformation() {
                                                 }}
                                                     inline
                                                     label="Yes"
-                                                    name="seaFood"
+                                                    name="redmeat"
                                                     type={type}
                                                     id={`inline-${type}-yes`}
                                                 />
                                                 <Form.Check 
                                                     inline
                                                     label="No"
-                                                    name="seaFood"
-                                                    type={type}
-                                                    id={`inline-${type}-no`}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Col>
-                                    <Col xs={12} lg={4} className='col me-2'>
-                                        <label className='text-muted' htmlFor="foodtype">Red Meat</label>
-                                        {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} >
-                                                <Form.Check style={{
-                                                    padding: '20px'
-                                                }}
-                                                    inline
-                                                    label="Yes"
-                                                    name="redmeet"
-                                                    type={type}
-                                                    id={`inline-${type}-yes`}
-                                                />
-                                                <Form.Check 
-                                                    inline
-                                                    label="No"
-                                                    name="redmeet"
+                                                    name="redmeat"
                                                     type={type}
                                                     id={`inline-${type}-no`}
                                                 />
@@ -125,7 +122,7 @@ function FoodInformation() {
                                                     type={type}
                                                     id={`inline-${type}-yes`}
                                                 />
-                                                <Form.Check 
+                                                <Form.Check
                                                     inline
                                                     label="No"
                                                     name="allergy"
@@ -157,8 +154,8 @@ function FoodInformation() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default FoodInformation
+export default StaffFoodInformation
