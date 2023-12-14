@@ -67,3 +67,9 @@
 .content:hover>*{
     transform: translateY(0px);
 }
+
+@media only screen and (max-width: 4256px) {
+.accessorriesFont{
+    font-size: 15px;
+}
+}

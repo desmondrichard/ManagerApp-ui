@@ -156,6 +156,7 @@ function RegistrationForm() {
                                     <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="bloodGroup"
+                    
                                             label="BloodGroup*"
                                             ref={bloodGrp1}
                                             onChange={(e) => setBloodGrp(e.target.value)}

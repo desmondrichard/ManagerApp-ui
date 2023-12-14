@@ -111,7 +111,7 @@ function Dashboard() {
                 </Row>
 
                 <Card className='my-2 px-3 py-3 boxShadow'>
-                    <Row>
+                    <Row className='ms-3'>
                         <Col lg={4}>
                             <Card border="dark" style={{ height: '200px' }} className='mb-2'>
                                 <Card.Header className='bg-dark'><h4 className='text-center text-white'>DONE</h4></Card.Header>
@@ -127,7 +127,7 @@ function Dashboard() {
                             <Card border='dark' style={{ height: '200px' }} className='mb-2'>
                                 <Card.Header className='bg-dark'><h4 className='text-center text-white'>IN PROGRESS</h4></Card.Header>
                                 <Card.Body>
-                                    <Card.Title style={{ whiteSpace: 'nowrap' }}><mark>ACCESSORIES DISTRIBUTION</mark></Card.Title>
+                                    <Card.Title style={{ whiteSpace: 'nowrap' }}><mark><span className='accessorriesFont'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
                                     <Card.Text>
                                         5 Players not Issued Accessories
                                     </Card.Text>

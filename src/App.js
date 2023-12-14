@@ -12,6 +12,8 @@ import Accreditationcard from './components/Accreditationcard';
 import History from './components/History';
 import PlayerRegistration from './components/offcanvas-body/Registration/PlayerRegistration';
 import App1 from './components/App1';
+import AccreditionForm from './components/AccreditionForm';
+import ThingsTodoForm from './components/ThingsTodoForm';
 
 function App() {
   return (
@@ -27,8 +29,13 @@ function App() {
           <Route path='/playersauctionlist' exact element={<PlayersAuctionList />} />
           <Route path='/fixtures' exact element={<Fixtures />} />
           <Route path='/thingstodo' exact element={<ThingsTodo />} />
+
           <Route path='/accreditationcards' exact element={<Accreditationcard />} />
+          <Route path='/accreditionform' exact element={<AccreditionForm />} />
+          <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
+
           <Route path='/history' exact element={<History />} />
+
         </Routes>
       </BrowserRouter>
     </div>

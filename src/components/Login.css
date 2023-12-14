@@ -6,6 +6,7 @@
 .borderRadius {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+
 }
 
 /*eye-icon placement inside pwd field:*/
@@ -37,3 +38,13 @@
     --bs-card-bg:none;
     
 }
+
+.row>* {
+    padding-right:0px !important;
+}
+
+/* @media screen and (max-width: 600px) {
+    body {
+     
+    }
+  } */

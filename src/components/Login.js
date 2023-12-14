@@ -28,17 +28,17 @@ function Login() {
     return (
         <div style={{ paddingTop: '3%'}} className='div1' >
             <Container>
-                <Card className='mx-3 '>
+                <Card className='mx-3'>
                     <Row>
                         <Col lg={7}>
-                            <Image style={{ height: '100%' }} src={require('../assets/mountain1.jpeg')} fluid className='borderRadius'></Image>
+                            <Image style={{ height: '100%' }} src={require('../assets/mountain1.jpeg')} fluid className='borderRadius image-fluid'></Image>
                         </Col>
                         <Col lg={5} >
                             <Container className='pt-4 '>
                                 <Form >
                                     <legend className='text-center' style={{ fontWeight: 'bold' }}>Login</legend>
                                     <hr style={{ border: '2px solid #198754' }} />
-                                    <Form.Group className="mb-4" controlId="Username1" >
+                                    <Form.Group className="mb-2" controlId="Username1" >
                                         <Form.Label>Username</Form.Label>
                                         <Form.Control className='shadow-none' type="text" placeholder="Enter username" onChange={(e) => setEmail(e.target.value)}/>
                                     </Form.Group>
@@ -64,10 +64,9 @@ function Login() {
                                     <p>Not Registered ? <span className='text-danger signUp'><Link to='/signup'>Sign Up</Link>  </span></p>
                                 </div>
                                 <div className='text-center'>
-                                    <Image3 src={require('../assets/login-pow-logo.png')}></Image3>
+                                    <Image3 src={require('../assets/login-pow-logo.png')} ></Image3>
                                 </div>
                             </Container>
-
                         </Col>
                     </Row>
                 </Card>

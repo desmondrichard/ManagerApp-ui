@@ -162,7 +162,7 @@ function KittingDetailsForm() {
                                     <Col xs={12} lg={6} className='col'>
                                         <label className='text-muted' htmlFor="battingpads">BOWLER TYPE</label>
                                         {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} >
+                                            <div key={`inline-${type}`} style={{whiteSpace:'nowrap'}}>
                                                 <Form.Check style={{
                                                     padding: '20px'
                                                 }}
