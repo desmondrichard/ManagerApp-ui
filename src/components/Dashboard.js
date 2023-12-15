@@ -22,7 +22,7 @@ function Dashboard() {
                         <Card className='bg-light ps-2 pb-4 boxShadow'>
                             <Row>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImagePlayer className='img' style={{ height: '100px', width: '140px' }} src={require('../assets/playernew1.png')}></ImagePlayer>
                                             <div className='content'>
@@ -35,7 +35,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageManager className='img' style={{ height: '100px', width: '100px' }} src={require('../assets/managericon.jpg')}></ImageManager>
                                             <div className='content'>
@@ -48,7 +48,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSponsorNew className='img' style={{ height: '100px', width: '120px' }} src={require('../assets/sponsornewicon.png')}></ImageSponsorNew>
                                             <div className='content'>
@@ -61,7 +61,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSupportStaff className='img' style={{ height: '100px', width: '150px' }} src={require('../assets/supportstaffsicon.png')}></ImageSupportStaff>
                                             <div className='content'>
@@ -74,7 +74,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSponsor className='img' style={{ height: '105px', width: '200px' }} src={require('../assets/sponsoricon.png')}></ImageSponsor>
                                             <div className='content'>
@@ -87,7 +87,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageOrganizor className='img' style={{ height: '105px', width: '120px' }} src={require('../assets/organizoricon.jpg')}></ImageOrganizor>
                                             <div className='content'>

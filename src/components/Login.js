@@ -22,28 +22,29 @@ function Login() {
 
     function handleLogin() {
         // e.preventDefault();
-        alert("You have logged in successfully");    
+        alert("You have logged in successfully");
 
     }
     return (
-        <div style={{ paddingTop: '3%'}} className='div1' >
+        <div style={{ paddingTop: '3%' }} className='div1' >
             <Container>
-                <Card className='mx-3'>
-                    <Row>
-                        <Col lg={7}>
+                <Card className='verticalAlign'>
+                    {/*  */}
+                    <Row className='row1'>
+                        <Col md={7} className='d-none d-md-block'>
                             <Image style={{ height: '100%' }} src={require('../assets/mountain1.jpeg')} fluid className='borderRadius image-fluid'></Image>
                         </Col>
-                        <Col lg={5} >
+                        <Col md={5}>
                             <Container className='pt-4 '>
                                 <Form >
-                                    <legend className='text-center' style={{ fontWeight: 'bold' }}>Login</legend>
+                                    <legend className='text-center' style={{ fontWeight: '800' }}>Login</legend>
                                     <hr style={{ border: '2px solid #198754' }} />
                                     <Form.Group className="mb-2" controlId="Username1" >
-                                        <Form.Label>Username</Form.Label>
-                                        <Form.Control className='shadow-none' type="text" placeholder="Enter username" onChange={(e) => setEmail(e.target.value)}/>
+                                        <Form.Label className='font'>Username</Form.Label>
+                                        <Form.Control className='shadow-none' type="text" placeholder="Enter username" onChange={(e) => setEmail(e.target.value)} />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="Passwords" >
-                                        <Form.Label>Password</Form.Label>
+                                        <Form.Label className='font'>Password</Form.Label>
                                         <div className='number' >
                                             <Form.Control className='input shadow-none' type={
                                                 visible ? "password" : "text"}
@@ -55,7 +56,7 @@ function Login() {
                                         </div>
                                     </Form.Group>
                                     <div className="d-grid gap-2 my-2 btn1">
-                                        <NavLink to='/dashboard' className='navLinks'> <Button variant="outline-success" className='mt-2 w-100' size="lg" onClick={() => handleLogin()}>
+                                        <NavLink to='/dashboard' className='navLinks'> <Button variant="outline-success" className='mt-2 w-100 fs-4' size="lg" onClick={() => handleLogin()}>
                                             Login
                                         </Button></NavLink>
                                     </div>
@@ -64,7 +65,7 @@ function Login() {
                                     <p>Not Registered ? <span className='text-danger signUp'><Link to='/signup'>Sign Up</Link>  </span></p>
                                 </div>
                                 <div className='text-center'>
-                                    <Image3 src={require('../assets/login-pow-logo.png')} ></Image3>
+                                    <Image3 className='logo' src={require('../assets/login-pow-logo.png')} ></Image3>
                                 </div>
                             </Container>
                         </Col>

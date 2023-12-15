@@ -30,30 +30,30 @@ function Register() {
     return (
         <div className='pt-1 '>
             <Card className='mx-3 cardBg'>
-                <Row>
-                    <Col lg={7}>
-                        <Image0 src={require('../assets/mountain2.jpg')} fluid className='borderRadius' style={{ height: '100%' }}></Image0>
+                <Row className='row1'>
+                    <Col md={7}>
+                        <Image0 src={require('../assets/mountain2.jpg')} fluid className='borderRadius d-none d-md-block' style={{ height: '100%' }}></Image0>
                     </Col>
-                    <Col lg={5}>
+                    <Col md={5}>
                         <Container className='pt-1'>
                             <Form>
                                 <legend className='text-center ' style={{ fontWeight: 'bold' }}>Register</legend>
                                 <hr style={{ border: '2px solid #198754' }} />
                                 <Form.Group className="mb-1" controlId="Name">
-                                    <Form.Label>Full Name</Form.Label>
+                                    <Form.Label className='font'>Full Name</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="text" placeholder="Enter Your Full Name" onChange={(e) => setName(e.target.value)} />
                                 </Form.Group>
                                 <Form.Group className="mb-1" controlId="formGroupEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label className='font'>Email address</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="DOB">
-                                    <Form.Label>D.O.B</Form.Label>
+                                    <Form.Label className='font'>D.O.B</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="date" placeholder="Enter Date of Birth" onChange={(e) => setDob(e.target.value)} />
                                 </Form.Group>
 
                                 <Form.Group className="mb-1" controlId="Phone">
-                                    <Form.Label>Phone Number</Form.Label>
+                                    <Form.Label className='font'>Phone Number</Form.Label>
                                     <InputGroup className='number'>
                                         <InputGroup.Text id="inputGroup-sizing-sm">+91
                                             <Form.Control size="sm" className='paddingStyle shadow-none' type="text" placeholder="Enter Phone Number" onChange={(e) => setNumber(e.target.value)} />
@@ -62,7 +62,7 @@ function Register() {
 
                                 </Form.Group>
                                 <Form.Group className="mb-1" controlId="Password">
-                                    <Form.Label>Password </Form.Label>
+                                    <Form.Label className='font'>Password </Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
                                             visible ? "password" : "text"}
@@ -74,7 +74,7 @@ function Register() {
                                     </div>
                                 </Form.Group>
                                 <Form.Group className="mb-1" controlId="ConfirmPassword">
-                                    <Form.Label>Confirm Password</Form.Label>
+                                    <Form.Label className='font'>Confirm Password</Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
                                             visible1 ? "password" : "text"} placeholder="Confirm Password" />
@@ -86,7 +86,7 @@ function Register() {
                                     </div>
                                 </Form.Group>
                                 <div className="d-grid gap-2 my-2">
-                                    <NavLink to='/'> <Button variant="outline-success" className='mt-2 w-100' size="sm" onClick={() => handleSignup()}>
+                                    <NavLink to='/'> <Button variant="outline-success" className='mt-2 w-100 fw-bold fs-4' size="sm" onClick={() => handleSignup()}>
                                         Sign Up
                                     </Button>
                                     </NavLink>
