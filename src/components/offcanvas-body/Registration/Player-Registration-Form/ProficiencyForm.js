@@ -19,7 +19,6 @@ function ProficiencyForm() {
                             <Form>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
-
                                         <FloatingLabel className='mb-2'
                                             controlId="specialization"
                                             label="Specialization*"

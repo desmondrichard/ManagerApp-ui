@@ -8,6 +8,8 @@ import ImageUpload from '../../ImageUpload';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './StaffPersonalInformation.css';
+import Phone from '../../../Phone';
+
 function StaffPersonalInformation() {
     return (
         <div>
@@ -148,15 +150,7 @@ function StaffPersonalInformation() {
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="mobileNo"
-                                                type="text"
-                                                placeholder="mobile number"
-
-                                            />
-                                            <label htmlFor="mobileNo" className='text-muted'>Mobile Number*</label>
-                                        </Form.Floating>
+                                      <Phone />
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">

@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Phone from '../../Phone';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 function EmergencyContact() {
     return (
         <div>
@@ -26,32 +28,31 @@ function EmergencyContact() {
                                             <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={5} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="emgContactRel"
-                                                type="text"
-                                                placeholder="emgContactRel"
-                                            />
-                                            <label htmlFor="emgContactRel" className='text-muted fontSize'>Emg.Contact Other*</label>
-                                        </Form.Floating>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <FloatingLabel className='mb-2'
+                                            controlId="emgcontactrel"
+                                            label="Emg.Contact Relation*"
+                                        >
+                                            <Form.Select aria-label="Emg.Contact Relation*">
+                                                <option>Select Type</option>
+                                                <option value="batsman">PARENTS</option>
+                                                <option value="bowler">GUARDIAN</option>
+                                                <option value="allrounder">SPONSORS</option>
+                                                <option value="wicketkeeper">FRIENDS</option>
+                                                <option value="wicketkeeper">FAMILY MEMBER</option>
+                                                <option value="wicketkeeper">NEIGHBOUR</option>
+                                            </Form.Select>
+                                        </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col '>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="mob"
-                                                type="text"
-                                                placeholder="mob"
-                                            />
-                                            <label htmlFor="mob" className='text-muted fontSize'>Mobile NO*</label>
-                                        </Form.Floating>
+                                    <Col xs={12} lg={4} className='col '>
+                                        <Phone />
                                     </Col>
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
-                                    <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
+                                    <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>

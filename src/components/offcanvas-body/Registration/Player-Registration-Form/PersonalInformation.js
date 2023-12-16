@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './PersonalInformation.css';
 import { useRef } from 'react';
+import Phone from '../../Phone';
 function PersonalInformation() {
     // 
     // const [selectValue, setSelectValue] = useState("");
@@ -184,15 +185,7 @@ function PersonalInformation() {
                                         </Form.Control> */}
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="mobileNo"
-                                                type="text"
-                                                placeholder="mobile number"
-                                                ref={mobile}
-                                            />
-                                            <label htmlFor="mobileNo" className='text-muted'>Mobile Number*</label>
-                                        </Form.Floating>
+                                        <Phone />
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">

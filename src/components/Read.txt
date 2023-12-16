@@ -1,0 +1,15 @@
+LINK:     
+http://192.168.1.146:8089/
+
+ODMS:
+http://52.172.96.40/LSdmsweb/#/ 
+
+CMSODMS 
+
+CMSODMS 
+
+100100 
+
+------------------------------------------------------
+country codes react:
+https://www.npmjs.com/package/react-phone-number-input

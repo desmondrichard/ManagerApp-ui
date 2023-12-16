@@ -5,3 +5,7 @@
 .row{
     margin-right:30px;
 }
+
+.form-check-input{
+	appearance: auto;
+}

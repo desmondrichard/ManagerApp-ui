@@ -38,8 +38,8 @@ function ThingsTodo() {
       <Container fluid className='p-0 m-0'>
           <Row style={{ margin: '0px' }} className=''>
             <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
-              {/* Tab:2 */}
-              <Tab eventKey='tab-2' title='Representative'>
+              {/* Tab:1 */}
+              <Tab eventKey='tab-1' title='Representative'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
@@ -62,8 +62,8 @@ function ThingsTodo() {
                 </Table>
               </Tab>
 
-              {/* Tab:3 */}
-              <Tab eventKey='tab-3' title='Coach Therapist'>
+              {/* Tab:2 */}
+              <Tab eventKey='tab-2' title='Coach Therapist'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
@@ -83,8 +83,8 @@ function ThingsTodo() {
                 </Table>
               </Tab>
 
-              {/* Tab:4 */}
-              <Tab eventKey='tab-4' title='Fixtures'>
+              {/* Tab:3 */}
+              <Tab eventKey='tab-3' title='Fixtures'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
@@ -107,8 +107,8 @@ function ThingsTodo() {
                   </tbody>
                 </Table>
               </Tab>
-              {/* Tab:5 */}
-              <Tab eventKey='tab-5' title='Hotel Accomodation'>
+              {/* Tab:4 */}
+              <Tab eventKey='tab-4' title='Hotel Accomodation'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
@@ -139,8 +139,8 @@ function ThingsTodo() {
                   </tbody>
                 </Table>
               </Tab>
-              {/* Tab:6 */}
-              <Tab eventKey='tab-6' title='Mat Equipment Form'>
+              {/* Tab:5 */}
+              <Tab eventKey='tab-5' title='Mat Equipment Form'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
@@ -161,8 +161,8 @@ function ThingsTodo() {
                   </tbody>
                 </Table>
               </Tab>
-              {/* Tab:7 */}
-              <Tab eventKey='tab-7' title='Transport Form'>
+              {/* Tab:6 */}
+              <Tab eventKey='tab-6' title='Transport Form'>
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>

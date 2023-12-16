@@ -11,18 +11,19 @@ import ImageSponsor from 'react-bootstrap/Image';
 import ImageSupportStaff from 'react-bootstrap/Image';
 import ImageSponsorNew from 'react-bootstrap/Image';
 import ImageOrganizor from 'react-bootstrap/Image';
-// import PlayerRegistration from './offcanvas-body/Registration/PlayerRegistration';
+
 
 function Dashboard() {
     return (
         <div>
             <Container fluid className="my-3 py-3">
-                <Row>
+                <Row className='row1'>
                     <Col lg={8} >
-                        <Card className='bg-light ps-2 pb-4 boxShadow'>
+                        {/* ps-2 */}
+                        <Card className='bg-light pb-4 boxShadow'>
                             <Row>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImagePlayer className='img' style={{ height: '100px', width: '140px' }} src={require('../assets/playernew1.png')}></ImagePlayer>
                                             <div className='content'>
@@ -35,7 +36,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageManager className='img' style={{ height: '100px', width: '100px' }} src={require('../assets/managericon.jpg')}></ImageManager>
                                             <div className='content'>
@@ -48,7 +49,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSponsorNew className='img' style={{ height: '100px', width: '120px' }} src={require('../assets/sponsornewicon.png')}></ImageSponsorNew>
                                             <div className='content'>
@@ -61,7 +62,7 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSupportStaff className='img' style={{ height: '100px', width: '150px' }} src={require('../assets/supportstaffsicon.png')}></ImageSupportStaff>
                                             <div className='content'>
@@ -74,10 +75,10 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSponsor className='img' style={{ height: '105px', width: '200px' }} src={require('../assets/sponsoricon.png')}></ImageSponsor>
-                                            <div className='content'>
+                                            <div className='contentPartners'>
                                                 <Card.Title className='a'>PARTNERS</Card.Title>
                                                 <Card.Text className='b'>
                                                     <h2>5</h2>
@@ -87,11 +88,11 @@ function Dashboard() {
                                     </Card.Body>
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ maxWidth: '265px', borderRadius: '5px', height: '140px',marginRight:'20px' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageOrganizor className='img' style={{ height: '105px', width: '120px' }} src={require('../assets/organizoricon.jpg')}></ImageOrganizor>
                                             <div className='content'>
-                                                <Card.Title  className='a'>ORGANIZERS</Card.Title>
+                                                <Card.Title className='a'>ORGANIZERS</Card.Title>
                                                 <Card.Text className='b'>
                                                     <h2>10</h2>
                                                 </Card.Text>
@@ -127,7 +128,7 @@ function Dashboard() {
                             <Card border='dark' style={{ height: '200px' }} className='mb-2'>
                                 <Card.Header className='bg-dark'><h4 className='text-center text-white'>IN PROGRESS</h4></Card.Header>
                                 <Card.Body>
-                                    <Card.Title style={{ whiteSpace: 'nowrap' }}><mark><span className='accessorriesFont'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
+                                    <Card.Title ><mark><span className='accessorriesFont'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
                                     <Card.Text>
                                         5 Players not Issued Accessories
                                     </Card.Text>
@@ -148,7 +149,7 @@ function Dashboard() {
                     </Row>
                 </Card>
             </Container>
-       
+
         </div>
     )
 }

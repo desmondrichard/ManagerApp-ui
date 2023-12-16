@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Phone from '../../../Phone';
 function StaffEmergencyContact() {
   return (
     <div>
@@ -25,7 +26,7 @@ function StaffEmergencyContact() {
                                             <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={5} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="emgContactRel"
@@ -35,15 +36,8 @@ function StaffEmergencyContact() {
                                             <label htmlFor="emgContactRel" className='text-muted fontSize'>Emg.Contact Other*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col '>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="mob"
-                                                type="text"
-                                                placeholder="mob"
-                                            />
-                                            <label htmlFor="mob" className='text-muted fontSize'>Mobile NO*</label>
-                                        </Form.Floating>
+                                    <Col xs={12} lg={4} className='col '>
+                                       <Phone />
                                     </Col>
                                 </Row>
 
