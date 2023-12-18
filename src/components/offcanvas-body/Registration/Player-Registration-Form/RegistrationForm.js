@@ -8,6 +8,7 @@ import ImageUpload from '../ImageUpload';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
+
 function RegistrationForm() {
     const [firstName, setFirstName] = useState("");
     const [midName, setMidName] = useState("");
@@ -48,6 +49,8 @@ function RegistrationForm() {
         mob1.current.value = "";
         gender1.current.checked = false;
     }
+
+
     return (
         <div>
             <Accordion defaultActiveKey="0" >
@@ -156,7 +159,7 @@ function RegistrationForm() {
                                     <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="bloodGroup"
-                    
+
                                             label="BloodGroup*"
                                             ref={bloodGrp1}
                                             onChange={(e) => setBloodGrp(e.target.value)}
@@ -224,7 +227,7 @@ function RegistrationForm() {
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleResetBtn()}>CLEAR</Button>
-                                        <Button variant="success" className='mx-3' style={{ whiteSpace: 'nowrap',width:'130px' }} >Save and Next</Button>
+                                        <Button variant="success" className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
                                     </Col>
                                 </Row>
                             </Form>
@@ -232,7 +235,7 @@ function RegistrationForm() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-           
+
         </div>
     )
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-// import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import './ThingsTodoFormTab.css';
 import Form from 'react-bootstrap/Form';
@@ -161,7 +159,7 @@ function ThingsToDoFormTab() {
                         <Tab eventKey='tab-3' title='Coach PhysioTherapist'>
                             <Card className='bg-light p-4'>
                                 <Row className='fw-bold' style={{ fontSize: '16px' }}>
-                                    <Col xs={8} md={{ span: 3, offset: 1 }} className='py-4 c1'>
+                                    <Col xs={12} md={{ span: 3, offset: 1 }} className='py-4 c1'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="name"
@@ -172,7 +170,7 @@ function ThingsToDoFormTab() {
                                             <label htmlFor="name" className='text-muted'>Name</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={8} md={{ span: 3, offset: 1 }} className='py-4 c1'>
+                                    <Col xs={12} md={{ span: 3, offset: 1 }} className='py-4 c1'>
                                         <FloatingLabel
                                             controlId="designation"
                                             label="Designation*"
@@ -184,7 +182,7 @@ function ThingsToDoFormTab() {
                                         </FloatingLabel>
                                     </Col>
 
-                                    <Col md={{ span: 3, offset: 1 }} xs={8} className='py-4 c1'>
+                                    <Col md={{ span: 3, offset: 1 }} xs={12} className='py-4 c1'>
                                         <FloatingLabel
                                             controlId="year"
                                             label="Year*"
@@ -404,7 +402,7 @@ function ThingsToDoFormTab() {
                         <Tab eventKey='tab-6' title='Match Reqirements'>
                             <Card className='bg-light p-4'>
                                 <Row className='fw-bold' style={{ fontSize: '16px' }}>
-                                    <Col md={4} xs={6} className='my-3 c1'>
+                                    <Col md={4} xs={12} className='my-3 c1'>
                                         <Form.Floating>
                                             <Form.Control
                                                 id="name"
@@ -415,7 +413,7 @@ function ThingsToDoFormTab() {
                                             <label htmlFor="name" className='text-muted'>Name</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col md={4} xs={6} className='my-3 c1'>
+                                    <Col md={4} xs={12} className='my-3 c1'>
                                         <Form.Floating>
                                             <Form.Control
                                                 id="equipments"
@@ -426,7 +424,7 @@ function ThingsToDoFormTab() {
                                             <label htmlFor="equipments" className='text-muted'>Equipments</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col md={4} xs={6} className='my-3 c1'>
+                                    <Col md={4} xs={12} className='my-3 c1'>
                                         <Form.Floating>
                                             <Form.Control
                                                 id="equipmentstype"
@@ -438,7 +436,7 @@ function ThingsToDoFormTab() {
                                         </Form.Floating>
                                     </Col>
 
-                                    <Col md={4} xs={6} className='my-3 c1' >
+                                    <Col md={4} xs={12} className='my-3 c1' >
                                         <FloatingLabel className='mb-4'
                                             controlId="year"
                                             label="Year*"
@@ -454,7 +452,7 @@ function ThingsToDoFormTab() {
 
                                 </Row>
                                 <Row>
-                                    <Col className='end' xs={12} btns>
+                                    <Col className='text-end btns' xs={12} >
                                         <Button variant="dark" className='me-1'>BACK</Button>
                                         <Button variant="warning" className='me-1' style={{ color: 'white' }}>CLEAR</Button>
                                         <Button variant="success" className='me-1'>SAVE</Button>

@@ -23,14 +23,13 @@ function Login() {
     function handleLogin() {
         // e.preventDefault();
         alert("You have logged in successfully");
-
     }
     return (
         <div style={{ paddingTop: '3%' }} className='div1' >
             <Container>
                 <Card className='verticalAlign'>
                     {/*  */}
-                    <Row className='row1'>
+                    <Row className='row1parent'>
                         <Col md={7} className='d-none d-md-block'>
                             <Image style={{ height: '100%' }} src={require('../assets/mountain1.jpeg')} fluid className='borderRadius image-fluid'></Image>
                         </Col>

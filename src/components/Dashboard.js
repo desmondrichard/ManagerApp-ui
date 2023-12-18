@@ -29,7 +29,7 @@ function Dashboard() {
                                             <div className='content'>
                                                 <Card.Title className='a'>PLAYERS</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>21</h2>
+                                                    21
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -42,7 +42,7 @@ function Dashboard() {
                                             <div className='content'>
                                                 <Card.Title className='a'>MANAGEMENT</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>5</h2>
+                                                    5
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -55,7 +55,7 @@ function Dashboard() {
                                             <div className='content'>
                                                 <Card.Title className='a'>SPONSORS</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>5</h2>
+                                                   5
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@ function Dashboard() {
                                             <div className='content'>
                                                 <Card.Title className='a'>SUPPORT STAFFS</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>15</h2>
+                                                  15
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@ function Dashboard() {
                                             <div className='contentPartners'>
                                                 <Card.Title className='a'>PARTNERS</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>5</h2>
+                                                  5
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@ function Dashboard() {
                                             <div className='content'>
                                                 <Card.Title className='a'>ORGANIZERS</Card.Title>
                                                 <Card.Text className='b'>
-                                                    <h2>10</h2>
+                                                    10
                                                 </Card.Text>
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@ function Dashboard() {
                             <Card border='dark' style={{ height: '200px' }} className='mb-2'>
                                 <Card.Header className='bg-dark'><h4 className='text-center text-white'>IN PROGRESS</h4></Card.Header>
                                 <Card.Body>
-                                    <Card.Title ><mark><span className='accessorriesFont'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
+                                    <Card.Title ><mark><span className='accessorriesFont text-dark'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
                                     <Card.Text>
                                         5 Players not Issued Accessories
                                     </Card.Text>

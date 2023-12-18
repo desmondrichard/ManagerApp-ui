@@ -9,7 +9,6 @@ import SearchButton from '../../ModalComponents/SearchButton';
 import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
-import Form from 'react-bootstrap/Form';
 import SupportStaffRegistration from './Support-Staff-Registration-Form/SupportStaffRegistration';
 import PersonalInformation from './Player-Registration-Form/PersonalInformation';
 import ProficiencyForm from './Player-Registration-Form/ProficiencyForm';
@@ -101,9 +100,6 @@ function PlayerRegistration(props) {
       >
         <thead>
           <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-            <th >
-              <Form.Check aria-label="option 1" label="Select to Download All" />
-            </th>
             <th >Player Image</th>
             <th>Player Name</th>
             <th>Display Name</th>
@@ -113,20 +109,21 @@ function PlayerRegistration(props) {
             <th>Jersey No</th>
             <th>Club</th>
             <th>Action</th>
+            <th>Download As</th>
           </tr>
         </thead>
         <tbody className='table-light'>
           <tr className='text-center'>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th className='p-1 d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></th>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+            <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
           </tr>
 
         </tbody>

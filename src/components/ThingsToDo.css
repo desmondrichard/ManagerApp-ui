@@ -32,3 +32,8 @@
     font-size: 15px;
 }
 
+@media only screen and (min-width: 768px){
+    .row11parent{
+        padding-left: 0px !important;
+    }
+  }

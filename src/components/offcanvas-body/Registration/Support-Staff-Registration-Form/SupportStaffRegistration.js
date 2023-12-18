@@ -9,7 +9,6 @@ import Container from 'react-bootstrap/Container';
 import SearchButton from '../../../ModalComponents/SearchButton';
 import ExploreOptions from '../../../ModalComponents/ExploreOptions';
 import Table from 'react-bootstrap/Table';
-import Form from 'react-bootstrap/Form';
 import PlayerRegistration from '../PlayerRegistration';
 import StaffPersonalInformation from './Support-Staff-Modal-Forms/StaffPersonalInformation';
 import StaffKittingDetails from './Support-Staff-Modal-Forms/StaffKittingDetails';
@@ -92,9 +91,6 @@ function SupportStaffRegistration(props) {
             >
                 <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                        <th >
-                            <Form.Check aria-label="option 1" label="Select to Download All" />
-                        </th>
                         <th >Staff Image</th>
                         <th>Staff Name</th>
                         <th>Image ID</th>
@@ -107,25 +103,25 @@ function SupportStaffRegistration(props) {
                         <th>jersey No</th>
                         <th>Club</th>
                         <th>Action</th>
+                        <th>Download As</th>
                     </tr>
                 </thead>
                 <tbody className='table-light'>
                     <tr className='text-center'>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
-                        <th>7</th>
-                        <th>8</th>
-                        <th>9</th>
-                        <th>10</th>
-                        <th>11</th>
-                        <th>12</th>
-                        <th className='p-1 d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></th>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+                        <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
                     </tr>
-
                 </tbody>
             </Table>
         </div>
