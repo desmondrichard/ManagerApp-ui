@@ -6,6 +6,7 @@ function ImageUpload() {
     const inputRef = useRef(null);
     const [image, setImage] = useState("");
 
+
     function handleImageClick() {
         inputRef.current.click();
     }

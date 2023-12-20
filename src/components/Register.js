@@ -6,13 +6,13 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Image0 from 'react-bootstrap/Image';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Image1 from 'react-bootstrap/Image';
 import Image2 from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './Register.css';
 import { useFormik } from 'formik';
-
+import { useNavigate } from "react-router-dom";
 // Validation:
 const validate = values => {
     const errors = {};
@@ -57,20 +57,20 @@ const validate = values => {
 }
 
 function Register() {
-    // const [email, setEmail] = useState();
-    // const [pwd, setPwd] = useState();
-    // const [name, setName] = useState();
-    // const [dob, setDob] = useState();
-    // const [number, setNumber] = useState();
-
+    const navigate = useNavigate();
     // password show/hide:
     const [visible, setVisible] = useState(true);
     const [visible1, setVisible1] = useState(true);
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        alert('signup success');
-    }
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     alert('signup success');
+    //     // navigate("/");
+    //     console.log("error",formik.errors);
+    //     if(!Object.keys(formik.errors).length){
+    //         // navigate("/");
+    //     }
+    // }
 
     // Formik:
     const formik = useFormik({
@@ -85,9 +85,11 @@ function Register() {
         },
         validate,
         onSubmit: values => {
-            alert(`Hello!,${values.fullname}you have successfully signed up`);
+            alert(`Hello! ,${values.fullname}you have successfully signed up`);
+            navigate("/");
         }
     });
+    //try:
     // console.log(name);
     // console.log(formik.values.fullname);
     // console.log(formik.values);
@@ -101,7 +103,7 @@ function Register() {
                     </Col>
                     <Col md={5}>
                         <Container className='pt-1'>
-                            <Form onSubmit={formik.handleSignup}>
+                            <Form onSubmit={formik.handleSubmit}>
                                 <legend className='text-center ' style={{ fontWeight: 'bold' }}>Register</legend>
                                 <hr style={{ border: '2px solid #198754' }} />
 
@@ -189,10 +191,10 @@ function Register() {
                                 </Form.Group>
                                 {/* Submit Button: */}
                                 <div className="d-grid gap-2 my-2">
-                                    <NavLink to='/'> <Button type='submit' value='submit' variant="outline-success" className='mt-2 w-100 fw-bold fs-4' size="sm" onClick={(e) => handleSubmit(e)}>
+                                    <Button type='submit' value='submit' variant="outline-success" className='mt-2 w-100 fw-bold fs-4' size="sm">
                                         Sign Up
                                     </Button>
-                                    </NavLink>
+
                                 </div>
                             </Form>
                             <div className='text-center py-2'>

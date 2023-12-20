@@ -14,6 +14,8 @@ import PlayerRegistration from './components/offcanvas-body/Registration/PlayerR
 import App1 from './components/App1';
 import AccreditionForm from './components/AccreditionForm';
 import ThingsTodoForm from './components/ThingsTodoForm';
+// import PersonalInformation from './components/offcanvas-body/Registration/Player-Registration-Form/PersonalInformation';
+// import ProficiencyForm from './components/offcanvas-body/Registration/Player-Registration-Form/ProficiencyForm';
 
 function App() {
   return (
@@ -35,6 +37,10 @@ function App() {
           <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
 
           <Route path='/history' exact element={<History />} />
+
+          {/* <Route path='/playerpersonalinformation' exact element={<PersonalInformation />} />
+          <Route path='/playerproficiencyinformation' exact element={<ProficiencyForm />} /> */}
+          
 
         </Routes>
       </BrowserRouter>

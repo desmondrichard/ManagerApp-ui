@@ -23,6 +23,7 @@ import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 
 
 
+
 function PlayerRegistration(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
