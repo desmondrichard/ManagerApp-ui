@@ -3,7 +3,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import './KittingDetailsForm.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -12,7 +11,7 @@ import { useFormik } from 'formik';
 import { Country, State, City } from 'country-state-city';
 import { useEffect, useState } from "react";
 import Select from "react-select";
-
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -57,6 +56,38 @@ const validate = values => {
     return errors;
 }
 function Iddetails() {
+    // reset form start: 
+    const aadharno1 = useRef("");
+    const panno1 = useRef("");
+    const passno1 = useRef("");
+    const passexp1 = useRef("");
+    const birth1 = useRef("");
+    const visaYes = useRef(false);
+    const visaNo = useRef(false);
+    const addressRef0 = useRef("");
+    const addressRef1 = useRef("");
+    const addressRef2 = useRef("");
+    const addressRef3 = useRef("");
+  
+
+
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
+        aadharno1.current.value = "";
+        panno1.current.value = "";
+        passno1.current.value = "";
+        passexp1.current.value = "";
+        birth1.current.value = "";
+        visaYes.current.checked = false;
+        visaNo.current.checked = false;
+        addressRef0.current.value = "";
+        addressRef1.current.value = "";
+        addressRef2.current.value = "";
+        addressRef3.current.value = "";
+        formik.resetForm();
+    }
+
+
     const formik = useFormik({
         initialValues: {
             aadharno: '',
@@ -98,6 +129,7 @@ function Iddetails() {
                                                 type="text"
                                                 placeholder="aadharno"
                                                 name="aadharno"
+                                                ref={aadharno1}
                                                 value={formik.values.aadharno} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -113,6 +145,7 @@ function Iddetails() {
                                                 type="text"
                                                 placeholder="panno"
                                                 name="panno"
+                                                ref={panno1}
                                                 value={formik.values.panno} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -128,6 +161,7 @@ function Iddetails() {
                                                 type="text"
                                                 placeholder="passno"
                                                 name="passno"
+                                                ref={passno1}
                                                 value={formik.values.passno} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -143,6 +177,7 @@ function Iddetails() {
                                                 type="date"
                                                 placeholder="passexp"
                                                 name="passexp"
+                                                ref={passexp1}
                                                 value={formik.values.passexp} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -158,6 +193,7 @@ function Iddetails() {
                                                 type="text"
                                                 placeholder="birth"
                                                 name="birth"
+                                                ref={birth1}
                                                 value={formik.values.birth} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -178,6 +214,7 @@ function Iddetails() {
                                                     name="visa"
                                                     type={type}
                                                     id={`inline-${type}-provided`}
+                                                    ref={visaYes}
                                                 />
                                                 <Form.Check
                                                     inline
@@ -185,6 +222,8 @@ function Iddetails() {
                                                     name="visa"
                                                     type={type}
                                                     id={`inline-${type}-notprovided`}
+                                                    defaultChecked={true}
+                                                    ref={visaNo}
                                                 />
                                             </div>
                                         ))}
@@ -197,6 +236,7 @@ function Iddetails() {
                                                 type="text"
                                                 placeholder="address"
                                                 name="address"
+                                                ref={addressRef0}
                                                 value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -211,6 +251,7 @@ function Iddetails() {
                                                 id="address1"
                                                 type="text"
                                                 placeholder="address1"
+                                                ref={addressRef1}
                                             />
                                             <label htmlFor="address1" className='text-muted'>ADDRESS LINE 1*</label>
                                         </Form.Floating>
@@ -221,6 +262,7 @@ function Iddetails() {
                                                 id="address2"
                                                 type="text"
                                                 placeholder="address2"
+                                                ref={addressRef2}
                                             />
                                             <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
                                         </Form.Floating>
@@ -231,13 +273,14 @@ function Iddetails() {
                                                 id="address3"
                                                 type="text"
                                                 placeholder="address3"
+                                                ref={addressRef3}
                                             />
                                             <label htmlFor="address3" className='text-muted'>ADDRESS LINE 3</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
-                                        <label for="country">Country:</label>
-                                        <Select style={{zIndex:100}}
+                                        <label htmlFor="country">Country:</label>
+                                        <Select style={{ zIndex: 100 }}
                                             options={Country.getAllCountries()}
                                             getOptionLabel={(options) => {
                                                 return options["name"];
@@ -249,13 +292,13 @@ function Iddetails() {
                                             onChange={(item) => {
                                                 setSelectedCountry(item);
                                             }}
-                                        
+
                                         />
 
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
-                                        <label for="state">State:</label>
-                                        <Select style={{zIndex:100}}
+                                        <label htmlFor="state">State:</label>
+                                        <Select style={{ zIndex: 100 }}
                                             options={State?.getStatesOfCountry(selectedCountry?.isoCode)}
                                             getOptionLabel={(options) => {
                                                 return options["name"];
@@ -268,11 +311,10 @@ function Iddetails() {
                                                 setSelectedState(item);
                                             }}
                                         />
-
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
-                                        <label for="city">City:</label>
-                                        <Select style={{zIndex:100}}
+                                        <label htmlFor="city">City:</label>
+                                        <Select style={{ zIndex: 100 }}
                                             options={City.getCitiesOfState(
                                                 selectedState?.countryCode,
                                                 selectedState?.isoCode
@@ -292,8 +334,8 @@ function Iddetails() {
                                     </Col>
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                        <Button variant="success" type="submit" value="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
+                                        <Button variant="success" type="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                     </Col>
                                 </Row>
 

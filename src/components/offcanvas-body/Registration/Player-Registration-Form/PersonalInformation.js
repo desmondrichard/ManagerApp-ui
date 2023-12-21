@@ -19,16 +19,23 @@ const validate = values => {
     if (!values.fName) {
         errors.fName = "*Required";
     }
-    else if (!/^[a-zA-Z]{2,10}$/.test(values.fName)) {
-        errors.fName = "First name should be between 2 to 10 characters long or only letters allowed";
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.fName)) {
+        errors.fName = "First name should be between 3 to 10 characters long or only letters allowed";
     }
 
     if (!/^[a-zA-Z]{0,10}$/.test(values.mName)) {
         errors.mName = "Middle name should be maximum 10 characters long or only letters allowed";
     }
 
-    if (!/^[a-zA-Z]{0,10}$/.test(values.lName)) {
-        errors.lName = "Last Name should be maximum 10 characters long or only letters allowed";
+    if (!values.lName) {
+        errors.lName = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.lName)) {
+        errors.lName = "Last Name should be between 3 to 10 characters long or only letters allowed";
+    }
+    
+    if (!values.initials) {
+        errors.initials = "*Required";
     }
     else if (!/^[a-zA-Z]{0,1}$/.test(values.initials)) {
         errors.initials = "Initial can only contain one letter"
@@ -37,14 +44,14 @@ const validate = values => {
     if (!values.dName) {
         errors.dName = "*Required";
     }
-    else if (!/^[a-zA-Z]{4,10}$/.test(values.dName)) {
-        errors.dName = 'Display Name must be alphanumeric and have length between 4 to 10 or only letters allowed'
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.dName)) {
+        errors.dName = 'Display Name must be alphanumeric and have length between 3 to 10 or only letters allowed'
     }
 
     if (!values.fatherName) {
         errors.fatherName = "*Required.";
     }
-    else if (!/^[a-zA-Z]{2,10}$/.test(values.fatherName)) {
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.fatherName)) {
         errors.fatherName = "Father Name should be maximum 10 characters long or only letters allowed";
     }
 
@@ -63,7 +70,7 @@ const validate = values => {
     if (!values.email) {
         errors.email = "*Required";
     }
-    else if (!/^[a-zA-Z]{0,10}$/.test(values.email)) {
+    else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
         errors.email = "*Invalid email address";
     }
 
@@ -88,7 +95,6 @@ function PersonalInformation() {
     const mothersName = useRef("");
     const dob = useRef("");
     const bloodgrp = useRef("");
-    // const mobile = useRef(false);
     const email = useRef("");
     const genderMale = useRef(false);
     const genderFemale = useRef(false);
@@ -110,7 +116,7 @@ function PersonalInformation() {
         genderMale.current.checked = false;
         genderFemale.current.checked = false;
         // console.log("Ref",genderMale);
-
+        formik.resetForm();
     }
     // reset form end: 
 
@@ -126,7 +132,6 @@ function PersonalInformation() {
             dob: '',
             bloodGroup: '',
             email: ''
-
         },
         validate,
         onSubmit: values => {
@@ -345,7 +350,7 @@ function PersonalInformation() {
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
-                                        <Button variant="success" type='submit' value='submit' className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
+                                        <Button variant="success" type='submit' className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
                                     </Col>
                                 </Row>
                             </Form>

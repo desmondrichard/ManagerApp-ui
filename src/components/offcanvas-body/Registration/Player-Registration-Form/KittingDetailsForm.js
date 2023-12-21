@@ -8,7 +8,8 @@ import './KittingDetailsForm.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useFormik } from 'formik';
-
+import DynamicFields from './DynamicFields';
+import { useRef } from 'react';
 const validate = values => {
     const errors = {};
 
@@ -22,9 +23,7 @@ const validate = values => {
     if (!values.JerseyNo) {
         errors.JerseyNo = "*Required";
     }
-    else if (!/[0-9]$/.test(values.JerseyNo)) {
-        errors.JerseyNo = "Jersey Name should contain only digits";
-    }
+    
 
     if (!values.jerseysize) {
         errors.jerseysize = "*Required";
@@ -37,9 +36,7 @@ const validate = values => {
     if (!values.trowserlength) {
         errors.trowserlength = "*Required";
     }
-    else if (!/[0-9]$/.test(values.trowserlength)) {
-        errors.trowserlength = "Jersey Name should contain only digits";
-    }
+    
 
     if (!values.shortssize) {
         errors.shortssize = "*Required";
@@ -53,7 +50,7 @@ const validate = values => {
         errors.circkethelmet = "*Required";
     }
 
-    if (!values.travelpolo) { 
+    if (!values.travelpolo) {
         errors.travelpolo = "*Required";
     }
 
@@ -63,6 +60,38 @@ const validate = values => {
 
 
 function KittingDetailsForm() {
+     // reset form start: 
+     const JerseyName1=useRef("");
+     const JerseyNo1=useRef("");
+     const jerseysize1=useRef("");
+     const trowsersize1=useRef("");
+     const trowserlength1=useRef("");
+     const shortssize1=useRef("");
+     const tracksuit1=useRef("");
+     const circkethelmet1=useRef("");
+     const travelpolo1=useRef("");
+     const familyjerseyno1=useRef("");
+     const bowlerA=useRef(false);
+     const bowlerB=useRef(false);
+ 
+ 
+     // for npm custom component dont use useRef instead use useState i.e for phone component
+     function handleReset() {
+        JerseyName1.current.value = "";
+        JerseyNo1.current.value = "";
+        jerseysize1.current.value = "none";
+        trowsersize1.current.value = "none";
+        trowserlength1.current.value = "";
+        shortssize1.current.value = "none";
+        tracksuit1.current.value = "none";
+        circkethelmet1.current.value = "none";
+        travelpolo1.current.value = "none";
+        familyjerseyno1.current.value = "";
+        bowlerA.current.checked=false;
+        bowlerB.current.checked=false;
+         formik.resetForm();
+     }
+     // reset form end: 
     const formik = useFormik({
         initialValues: {
             JerseyName: '',
@@ -75,7 +104,6 @@ function KittingDetailsForm() {
             circkethelmet: '',
             travelpolo: '',
             familyjerseyno: '',
-
 
         },
         validate,
@@ -100,6 +128,7 @@ function KittingDetailsForm() {
                                                 type="text"
                                                 placeholder="JerseyName"
                                                 name="JerseyName"
+                                                ref={JerseyName1}
                                                 value={formik.values.JerseyName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -112,9 +141,11 @@ function KittingDetailsForm() {
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="JerseyNo"
-                                                type="text"
+                                                type="number"
+                                                min="0" max="999"
                                                 placeholder="JerseyNo"
                                                 name="JerseyNo"
+                                                ref={JerseyNo1}
                                                 value={formik.values.JerseyNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -131,7 +162,7 @@ function KittingDetailsForm() {
                                             value={formik.values.jerseysize} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
-                                            <Form.Select aria-label="jerseysize">
+                                            <Form.Select aria-label="jerseysize" ref={jerseysize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -151,9 +182,10 @@ function KittingDetailsForm() {
                                             controlId="trowsersize"
                                             label="Trowser Size*"
                                             name="trowsersize"
+                                            min="0" max="999"   
                                             value={formik.values.trowsersize} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="trowsersize">
+                                            <Form.Select aria-label="trowsersize" ref={trowsersize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -172,9 +204,11 @@ function KittingDetailsForm() {
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="trowserlength"
-                                                type="text"
+                                                type="number"
                                                 placeholder="Trowser Length"
                                                 name="trowserlength"
+                                                min="0" max="999"
+                                                ref={trowserlength1}
                                                 value={formik.values.trowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -190,7 +224,7 @@ function KittingDetailsForm() {
                                             name="shortssize"
                                             value={formik.values.trowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="shortssize">
+                                            <Form.Select aria-label="shortssize"    ref={shortssize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -212,7 +246,7 @@ function KittingDetailsForm() {
                                             name="tracksuit"
                                             value={formik.values.tracksuit} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="tracksuit">
+                                            <Form.Select aria-label="tracksuit" ref={tracksuit1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -234,7 +268,7 @@ function KittingDetailsForm() {
                                             name="circkethelmet"
                                             value={formik.values.circkethelmet} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="circkethelmet">
+                                            <Form.Select aria-label="circkethelmet" ref={circkethelmet1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="Junior">Junior (52-54 cm)</option>
                                                 <option value="Youth">Youth (54-57 cm)</option>
@@ -254,7 +288,7 @@ function KittingDetailsForm() {
                                             name="travelpolo"
                                             value={formik.values.travelpolo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="travelpolo">
+                                            <Form.Select aria-label="travelpolo" ref={travelpolo1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -276,6 +310,8 @@ function KittingDetailsForm() {
                                                 type="number"
                                                 placeholder="familyjerseyno"
                                                 name="familyjerseyno"
+                                                min="0" max="999"
+                                                ref={familyjerseyno1}
                                             />
                                             {
                                                 formik.touched.familyjerseyno && formik.errors.familyjerseyno ? <span className='span'>{formik.errors.familyjerseyno}</span> : null
@@ -297,6 +333,7 @@ function KittingDetailsForm() {
                                                     name="group1"
                                                     type={type}
                                                     id={`inline-${type}-provided`}
+                                                    ref={bowlerA}
                                                 />
                                                 <Form.Check
                                                     inline
@@ -304,6 +341,8 @@ function KittingDetailsForm() {
                                                     name="group1"
                                                     type={type}
                                                     id={`inline-${type}-notprovided`}
+                                                    defaultChecked={true}
+                                                    ref={bowlerB}
                                                 />
                                             </div>
                                         ))}
@@ -317,15 +356,17 @@ function KittingDetailsForm() {
                                             />
                                         </div>
                                     </Col>
+                                    {/* Dynamic Form: */}
+                                    <Col xs={12} lg={12} className='col'>
+                                        <DynamicFields />
+                                    </Col>
                                 </Row>
                                 {/* <Row> */}
-                                <Col className='text-center'>
-                                    <Button variant="primary" className='rounded-circle'><i className="bi bi-plus fa-8x" style={{ fontSize: '20px' }}></i></Button>
-                                </Col>
+                               
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                     <Button variant="success" type="submit" value="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 ' style={{ width: "130px" }}>CLEAR</Button>
+                                    <Button variant="warning" type="button" className='text-white mb-2 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>

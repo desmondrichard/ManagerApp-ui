@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import './ProficiencyForm.css';
 import Container from 'react-bootstrap/Container';
 import { useFormik } from 'formik';
-
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -17,7 +17,7 @@ const validate = values => {
     if (!values.specialization) {
         errors.specialization = "*Required";
     }
-   
+
     if (!values.battingorder) {
         errors.battingorder = "*Required";
     }
@@ -25,25 +25,46 @@ const validate = values => {
     if (!values.bowlingstyle) {
         errors.bowlingstyle = "*Required";
     }
-    
+
     if (!values.bowlingspecification) {
         errors.bowlingspecification = "*Required";
     }
 
 
-
     return errors
 }
 
+
 function ProficiencyForm() {
+
+    // reset form start: 
+    const specs = useRef("");
+    const batLeft = useRef(false);
+    const batRight = useRef(false);
+    const batOrder = useRef("");
+    const armLeft = useRef(false);
+    const armRight = useRef(false);
+    const bowlStyle = useRef("");
+    const bowlSpecs = useRef("");
+
+    function handleReset() {
+        specs.current.value = "none";
+        batLeft.current.checked = false;
+        batRight.current.checked = false;
+        batOrder.current.value = "none";
+        armLeft.current.checked = false;
+        armRight.current.checked = false;
+        bowlStyle.current.value = "none";
+        bowlSpecs.current.value = "none";
+        formik.resetForm();
+    }
+
     const formik = useFormik({
         initialValues: {
-            specialization:'',
-            battingorder:'',
-            bowlingstyle:'',
-            bowlingspecification:''
-            
-       
+            specialization: '',
+            battingorder: '',
+            bowlingstyle: '',
+            bowlingspecification: ''
 
         },
         validate,
@@ -51,7 +72,8 @@ function ProficiencyForm() {
             alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
             // navigate("/playerproficiencyinformation");
         }
-    });
+    })
+
     return (
         <div>
             <Accordion>
@@ -65,10 +87,10 @@ function ProficiencyForm() {
                                         <FloatingLabel className='mb-2'
                                             controlId="specialization"
                                             label="Specialization*"
-                                            name="specialization"
+                                            name="specialization"                                   
                                             value={formik.values.specialization} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="specialization">
+                                            <Form.Select aria-label="specialization" ref={specs}>
                                                 <option>Select Type</option>
                                                 <option value="batsman">BATSMAN</option>
                                                 <option value="bowler">BOWLER</option>
@@ -78,7 +100,7 @@ function ProficiencyForm() {
                                             {
                                                 formik.touched.specialization && formik.errors.specialization ? <span className='span'>{formik.errors.specialization}</span> : null
                                             }
-                                            
+
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className=' col'>
@@ -90,6 +112,7 @@ function ProficiencyForm() {
                                                     label="Left Hand"
                                                     name="BatHand"
                                                     type={type}
+                                                    ref={batLeft}
                                                     id={`inline-${type}-left`}
                                                 />
                                                 <Form.Check
@@ -98,6 +121,8 @@ function ProficiencyForm() {
                                                     name="BatHand"
                                                     type={type}
                                                     id={`inline-${type}-right`}
+                                                    defaultChecked={true}
+                                                    ref={batRight}
                                                 />
                                             </div>
                                         ))}
@@ -109,8 +134,8 @@ function ProficiencyForm() {
                                             name="battingorder"
                                             value={formik.values.battingorder} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="battingorder">
-                                                <option>Select Type</option>
+                                            <Form.Select aria-label="battingorder" ref={batOrder}>
+                                                <option value="none">Select Type</option>
                                                 <option value="top">TOP ORDER</option>
                                                 <option value="middle">MIDDLE ORDER</option>
                                                 <option value="lower">LOWER ORDER</option>
@@ -132,6 +157,7 @@ function ProficiencyForm() {
                                                         name="Arm"
                                                         type={type}
                                                         id={`inline-${type}-leftarm`}
+                                                        ref={armLeft}
                                                     />
                                                     <Form.Check
                                                         inline
@@ -139,6 +165,8 @@ function ProficiencyForm() {
                                                         name="Arm"
                                                         type={type}
                                                         id={`inline-${type}-rightarm`}
+                                                        defaultChecked={true}
+                                                        ref={armRight}
                                                     />
                                                 </span>
                                             </div>
@@ -152,8 +180,8 @@ function ProficiencyForm() {
                                             name="bowlingstyle"
                                             value={formik.values.bowlingstyle} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="bowlingstyle">
-                                                <option>Select Type</option>
+                                            <Form.Select aria-label="bowlingstyle"  ref={bowlStyle}>
+                                                <option value="none">Select Type</option>
                                                 <option value="fast">FAST</option>
                                                 <option value="spin">SPIN</option>
                                             </Form.Select>
@@ -169,8 +197,8 @@ function ProficiencyForm() {
                                             name="bowlingspecification"
                                             value={formik.values.bowlingspecification} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="bowlingspecification">
-                                                <option>Select Type</option>
+                                            <Form.Select aria-label="bowlingspecification"  ref={bowlSpecs}>
+                                                <option value="none">Select Type</option>
                                                 <option value="sample1">sample1</option>
                                                 <option value="sample2">sample2</option>
                                             </Form.Select>
@@ -182,7 +210,7 @@ function ProficiencyForm() {
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='mb-2' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button variant="success" type="submit" value="submit" className='mx-3 mb-2' style={{ width: "130px" }}>Save and Next</Button>
-                                        <Button variant="warning" className='mx-1 text-white mb-2' style={{ width: "130px" }}>CLEAR</Button>
+                                        <Button variant="warning" className='mx-1 text-white mb-2' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                     </Col>
                                 </Row>
                             </Form>

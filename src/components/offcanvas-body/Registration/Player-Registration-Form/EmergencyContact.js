@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './EmergencyContact.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
@@ -8,7 +8,57 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Phone from '../../Phone';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useFormik } from 'formik';
+import { useRef } from 'react';
+
+// validation:
+const validate = values => {
+    const errors = {};
+
+    if (!values.emgcontactperson) {
+        errors.emgcontactperson = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,15}$/.test(values.emgcontactperson)) {
+        errors.emgcontactperson = "Name should be between 3 to 15 characters long or only letters allowed";
+    }
+
+    if (!values.emgcontactrel) {
+        errors.emgcontactrel = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,15}$/.test(values.emgcontactrel)) {
+        errors.fName = "Name should be between 3 to 15 characters long or only letters allowed";
+    }
+
+    return errors;
+}
 function EmergencyContact() {
+const [mobileValue, setMobileValue] = useState(false);
+
+    const formik = useFormik({
+        initialValues: {
+            emgcontactperson: '',
+            emgcontactrel: '',
+
+
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            // navigate("/playerproficiencyinformation");
+        }
+    });
+
+    // reset form start: 
+    const emgcontactperson1 = useRef("");
+    const emgcontactrel1 = useRef("");
+
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
+        emgcontactperson1.current.value = "";
+        emgcontactrel1.current.value = "";
+        setMobileValue(true);
+        formik.resetForm();
+    }
     return (
         <div>
             <Accordion>
@@ -16,7 +66,7 @@ function EmergencyContact() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>EMERGENCY CONTACT INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
-                            <Form style={{ paddingRight: '60px' }}>
+                            <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
@@ -24,7 +74,14 @@ function EmergencyContact() {
                                                 id="emgcontactperson"
                                                 type="text"
                                                 placeholder="emgcontactperson"
+                                                name="emgcontactperson"
+                                                ref={emgcontactperson1}
+                                                value={formik.values.emgcontactperson} onBlur={formik.handleBlur} onChange={formik.handleChange}
+
                                             />
+                                            {
+                                                formik.touched.emgcontactperson && formik.errors.emgcontactperson ? <span className='span'>{formik.errors.emgcontactperson}</span> : null
+                                            }
                                             <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact*</label>
                                         </Form.Floating>
                                     </Col>
@@ -32,8 +89,11 @@ function EmergencyContact() {
                                         <FloatingLabel className='mb-2'
                                             controlId="emgcontactrel"
                                             label="Emg.Contact Relation*"
+                                            name="emgcontactrel"
+                                            value={formik.values.emgcontactrel} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="Emg.Contact Relation*">
+
+                                            <Form.Select aria-label="Emg.Contact Relation*" ref={emgcontactrel1}>
                                                 <option>Select Type</option>
                                                 <option value="batsman">PARENTS</option>
                                                 <option value="bowler">GUARDIAN</option>
@@ -43,16 +103,19 @@ function EmergencyContact() {
                                                 <option value="wicketkeeper">NEIGHBOUR</option>
                                             </Form.Select>
                                         </FloatingLabel>
+                                        {
+                                            formik.touched.emgcontactrel && formik.errors.emgcontactrel ? <span className='span'>{formik.errors.emgcontactrel}</span> : null
+                                        }
                                     </Col>
                                     <Col xs={12} lg={4} className='col '>
-                                        <Phone />
+                                        <Phone isClear={mobileValue} />
                                     </Col>
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
+                                    <Button variant="success" type="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>

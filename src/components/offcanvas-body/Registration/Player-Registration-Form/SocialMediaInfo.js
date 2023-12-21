@@ -6,10 +6,31 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { useRef } from 'react';
 function SocialMediaInfo() {
-  return (
-    <div>
-         <Accordion>
+    // reset form start: 
+    const fbid1 = useRef("");
+    const fblink1 = useRef("");
+    const instagramid1 = useRef("");
+    const instagramlink1 = useRef("");
+    const twitterid1 = useRef("");
+    const twitterlink1 = useRef("");
+
+
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
+        fbid1.current.value = "";
+        fblink1.current.value = "";
+        instagramid1.current.value = "";
+        instagramlink1.current.value = "";
+        twitterid1.current.value = "";
+        twitterlink1.current.value = "";
+
+    }
+
+    return (
+        <div>
+            <Accordion>
                 <Accordion.Item eventKey="9">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>SOCIAL MEDIA INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
@@ -22,6 +43,7 @@ function SocialMediaInfo() {
                                                 id="fbid"
                                                 type="text"
                                                 placeholder="fbid"
+                                                ref={fbid1}
                                             />
                                             <label htmlFor="fbid" className='text-muted'>Facebook ID</label>
                                         </Form.Floating>
@@ -32,6 +54,8 @@ function SocialMediaInfo() {
                                                 id="fblink"
                                                 type="text"
                                                 placeholder="fblink"
+                                                ref={fblink1}
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="fblink" className='text-muted'>Facebook Link</label>
                                         </Form.Floating>
@@ -42,6 +66,8 @@ function SocialMediaInfo() {
                                                 id="instagramid"
                                                 type="text"
                                                 placeholder="instagramid"
+                                                ref={instagramid1}
+                                                
                                             />
                                             <label htmlFor="instagramid" className='text-muted'>Instagram ID</label>
                                         </Form.Floating>
@@ -52,6 +78,8 @@ function SocialMediaInfo() {
                                                 id="instagramlink"
                                                 type="text"
                                                 placeholder="instagramlink"
+                                                ref={instagramlink1}
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="instagramlink" className='text-muted'>Instagram Link</label>
                                         </Form.Floating>
@@ -62,6 +90,8 @@ function SocialMediaInfo() {
                                                 id="twitterid"
                                                 type="text"
                                                 placeholder="twitterid"
+                                                ref={twitterid1}
+                                            
                                             />
                                             <label htmlFor="twitterid" className='text-muted'>Twitter ID</label>
                                         </Form.Floating>
@@ -72,6 +102,8 @@ function SocialMediaInfo() {
                                                 id="twitterlink"
                                                 type="text"
                                                 placeholder="twitterlink"
+                                                ref={twitterlink1}
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="twitterlink" className='text-muted'>Twitter Link</label>
                                         </Form.Floating>
@@ -79,17 +111,17 @@ function SocialMediaInfo() {
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
-                                    <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
+                                    <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default SocialMediaInfo
