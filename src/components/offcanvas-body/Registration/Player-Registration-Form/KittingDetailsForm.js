@@ -329,18 +329,18 @@ function KittingDetailsForm() {
                                                     padding: '20px'
                                                 }}
                                                     inline
-                                                    label="Provided"
+                                                    label="Yes"
                                                     name="group1"
                                                     type={type}
-                                                    id={`inline-${type}-provided`}
+                                                    id={`inline-${type}-yes`}
                                                     ref={bowlerA}
                                                 />
                                                 <Form.Check
                                                     inline
-                                                    label="Not Provided"
+                                                    label="No"
                                                     name="group1"
                                                     type={type}
-                                                    id={`inline-${type}-notprovided`}
+                                                    id={`inline-${type}-no`}
                                                     defaultChecked={true}
                                                     ref={bowlerB}
                                                 />

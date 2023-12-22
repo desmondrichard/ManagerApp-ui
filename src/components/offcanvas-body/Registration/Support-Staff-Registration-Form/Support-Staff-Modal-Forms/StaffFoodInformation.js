@@ -59,6 +59,7 @@ function StaffFoodInformation() {
                                                     name="eggit"
                                                     type={type}
                                                     id={`inline-${type}-no`}
+                                                    defaultChecked={true}
                                                 />
                                             </div>
                                         ))}
@@ -82,6 +83,7 @@ function StaffFoodInformation() {
                                                     name="seafood"
                                                     type={type}
                                                     id={`inline-${type}-no`}
+                                                    defaultChecked={true}
                                                 />
                                             </div>
                                         ))}
@@ -98,6 +100,7 @@ function StaffFoodInformation() {
                                                     name="redmeat"
                                                     type={type}
                                                     id={`inline-${type}-yes`}
+                                                    defaultChecked={true}
                                                 />
                                                 <Form.Check 
                                                     inline
@@ -128,6 +131,7 @@ function StaffFoodInformation() {
                                                     name="allergy"
                                                     type={type}
                                                     id={`inline-${type}-no`}
+                                                    defaultChecked={true}
                                                 />
                                             </div>
                                         ))}

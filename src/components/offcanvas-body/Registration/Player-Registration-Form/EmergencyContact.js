@@ -26,7 +26,7 @@ const validate = values => {
         errors.emgcontactrel = "*Required";
     }
     else if (!/^[a-zA-Z]{3,15}$/.test(values.emgcontactrel)) {
-        errors.fName = "Name should be between 3 to 15 characters long or only letters allowed";
+        errors.emgcontactrel = "Name should be between 3 to 15 characters long or only letters allowed";
     }
 
     return errors;
@@ -77,12 +77,11 @@ const [mobileValue, setMobileValue] = useState(false);
                                                 name="emgcontactperson"
                                                 ref={emgcontactperson1}
                                                 value={formik.values.emgcontactperson} onBlur={formik.handleBlur} onChange={formik.handleChange}
-
                                             />
                                             {
                                                 formik.touched.emgcontactperson && formik.errors.emgcontactperson ? <span className='span'>{formik.errors.emgcontactperson}</span> : null
                                             }
-                                            <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact*</label>
+                                            <label htmlFor="emgcontactperson" className='text-muted fontSize'>Emg.Contact Name*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>

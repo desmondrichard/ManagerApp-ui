@@ -31,6 +31,7 @@ function StaffSocialMediaInfo() {
                                                 id="fblink"
                                                 type="text"
                                                 placeholder="fblink"
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="fblink" className='text-muted'>Facebook Link</label>
                                         </Form.Floating>
@@ -51,6 +52,7 @@ function StaffSocialMediaInfo() {
                                                 id="instagramlink"
                                                 type="text"
                                                 placeholder="instagramlink"
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="instagramlink" className='text-muted'>Instagram Link</label>
                                         </Form.Floating>
@@ -71,6 +73,7 @@ function StaffSocialMediaInfo() {
                                                 id="twitterlink"
                                                 type="text"
                                                 placeholder="twitterlink"
+                                                style={{color:'blue',cursor:'pointer'}}
                                             />
                                             <label htmlFor="twitterlink" className='text-muted'>Twitter Link</label>
                                         </Form.Floating>
@@ -79,7 +82,7 @@ function StaffSocialMediaInfo() {
 
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
+                                    <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
                                     <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
                                 </Col>
                             </Form>

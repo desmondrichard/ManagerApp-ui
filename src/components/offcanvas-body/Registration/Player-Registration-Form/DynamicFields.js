@@ -6,15 +6,14 @@ import Col from 'react-bootstrap/Col';
 const DynamicFields = () => {
     const [fields, setFields] = useState([]);
     const [optionsLabel, setOptionsLabel] = useState('');
-
   
     const addFields = () => {
         const newFieldSet = {  
             id: fields.length,
             radioLabel: optionsLabel || 'Options',
             radios: [
-                { id: `radioA-${fields.length}`, label: 'Provided' },
-                { id: `radioB-${fields.length}`, label: 'Not Provided'},
+                { id: `radioA-${fields.length}`, label: 'Yes' },
+                { id: `radioB-${fields.length}`, label: 'No'},
             ],
             text: { id: `text-${fields.length}`, placeholder: 'Enter text' },
             
@@ -22,7 +21,7 @@ const DynamicFields = () => {
         setFields([...fields, newFieldSet]);
         setOptionsLabel(''); // Clear input after adding fields
     };
-
+   
     return (
         <div>
             <Form.Group controlId="optionsLabel">
@@ -45,7 +44,7 @@ const DynamicFields = () => {
                                     <Form.Label>{field.radioLabel}</Form.Label>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         {field.radios.map((radio) => (
-                                            <div key={radio.id} style={{ marginRight: '10px' }}>
+                                            <div key={radio.id} style={{ marginRight: '10px',paddingRight:'30px' }}>
                                                 <Form.Check
                                                     type="radio"
                                                     id={radio.id}

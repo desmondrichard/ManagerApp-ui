@@ -5,8 +5,68 @@ import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import { useFormik } from 'formik';
 
+// validation:
+const validate = values => {
+    const errors = {};
+
+    if (!values.staffAadharNo) {
+        errors.staffAadharNo = "*Required";
+    }
+    else if (!/^[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}$/.test(values.staffAadharNo)) {
+        errors.staffAadharNo = "Enter Valid Aadhar Number"
+    }
+
+    if (!values.staffPanNo) {
+        errors.staffPanNo = "*Required";
+    }
+    else if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(values.staffPanNo)) {
+        errors.staffPanNo = "Enter Valid Pan Card Number"
+    }
+
+    if (!values.staffPassNo) {
+        errors.staffPassNo = "*Required";
+    }
+    else if (!/^[a-zA-Z0-9]{10}$/.test(values.staffPassNo)) {
+        errors.staffPassNo = "Enter Valid Passport Number"
+    }
+
+    if (!values.staffPassExp) {
+        errors.staffPassExp = "*Required";
+    }
+
+    if (!/^[0-9]{6,14}$/.test(values.staffBirth)) {
+        errors.staffBirth = "Enter Valid Birth Certificate Number"
+    }
+
+    if (!/^4[0-9]{12}(?:[0-9]{3})?$/.test(values.staffVisaNo)) {
+        errors.staffVisaNo = "Enter Valid Visa Number"
+    }
+
+
+    if (!values.staffAddress) {
+        errors.staffAddress = "*Required";
+    }
+    return errors;
+}
 function StaffIDCardDetails() {
+    const formik = useFormik({
+        initialValues: {
+            staffAadharNo: '',
+            staffPanNo: '',
+            staffPassNo: '',
+            staffPassExp: '',
+            staffBirth: '',
+            staffVisaNo:'',
+            staffAddress: '',
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            // navigate("/playerproficiencyinformation");
+        }
+    });
   return (
     <div>
          <Accordion>
@@ -14,56 +74,81 @@ function StaffIDCardDetails() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>ID CARD DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
-                            <Form style={{ paddingRight: '60px' }}>
+                            <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="aadharno"
+                                                id="staffAadharNo"
                                                 type="text"
                                                 placeholder="aadharno"
-                                            />
-                                            <label htmlFor="aadharno" className='text-muted'>AADHAR NO*</label>
+                                                name="staffAadharNo"
+                                                value={formik.values.staffAadharNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffAadharNo && formik.errors.staffAadharNo ? <span className='span'>{formik.errors.staffAadharNo}</span> : null
+                                                }
+                                            <label htmlFor="staffAadharNo" className='text-muted'>AADHAR NO*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="panno"
+                                                id="staffPanNo"
                                                 type="text"
                                                 placeholder="panno"
-                                            />
-                                            <label htmlFor="panno" className='text-muted'>PANCARD NO*</label>
+                                                name="staffPanNo"
+                                                value={formik.values.staffPanNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffPanNo && formik.errors.staffPanNo ? <span className='span'>{formik.errors.staffPanNo}</span> : null
+                                                }
+                                            <label htmlFor="staffPanNo" className='text-muted'>PANCARD NO*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="passno"
+                                                id="staffPassNo"
                                                 type="text"
                                                 placeholder="passno"
-                                            />
-                                            <label htmlFor="passno" className='text-muted'>PASSPORT NO*</label>
+                                                name="staffPassNo"
+                                                value={formik.values.staffPassNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffPassNo && formik.errors.staffPassNo ? <span className='span'>{formik.errors.staffPassNo}</span> : null
+                                                }
+                                            <label htmlFor="staffPassNo" className='text-muted'>PASSPORT NO*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="passexp"
+                                                id="staffPassExp"
                                                 type="date"
                                                 placeholder="passexp"
-                                            />
-                                            <label htmlFor="passexp" className='text-muted'>PASSPORT EXP DATE*</label>
+                                                name="staffPassExp"
+                                                value={formik.values.staffPassExp} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffPassExp && formik.errors.staffPassExp ? <span className='span'>{formik.errors.staffPassExp}</span> : null
+                                                }
+                                            <label htmlFor="staffPassExp" className='text-muted'>PASSPORT EXP DATE*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="birth"
+                                                id="staffBirth"
                                                 type="text"
                                                 placeholder="birth"
-                                            />
-                                            <label htmlFor="birth" className='text-muted' style={{fontSize:'13px'}}>BIRTH CERTIFICATE NO*</label>
+                                                name="staffBirth"
+                                                value={formik.values.staffBirth} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffBirth && formik.errors.staffBirth ? <span className='span'>{formik.errors.staffBirth}</span> : null
+                                                }
+                                            <label htmlFor="staffBirth" className='text-muted' style={{fontSize:'13px'}}>BIRTH CERTIFICATE NO*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
@@ -85,6 +170,7 @@ function StaffIDCardDetails() {
                                                     name="visa"
                                                     type={type}
                                                     id={`inline-${type}-notprovided`}
+                                                    defaultChecked={true}
                                                 />
                                             </div>
                                         ))}
@@ -92,37 +178,48 @@ function StaffIDCardDetails() {
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="visano"
+                                                id="staffVisaNo"
                                                 type="text"
                                                 placeholder="visano"
-                                            />
-                                            <label htmlFor="visano" className='text-muted' style={{fontSize:'13px'}}>VISA NO</label>
+                                                name="staffVisaNo"
+                                                value={formik.values.staffVisaNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffVisaNo && formik.errors.staffVisaNo ? <span className='span'>{formik.errors.staffVisaNo}</span> : null
+                                                }
+                                            <label htmlFor="staffVisaNo" className='text-muted' style={{fontSize:'13px'}}>VISA NO</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="visavalidity"
+                                                id="staffVisaValidity"
                                                 type="date"
                                                 placeholder="visavalidity"
+                                                name="staffVisaValidity"
                                             />
-                                            <label htmlFor="visavalidity" className='text-muted' style={{fontSize:'13px'}}>VISA VALIDITY</label>
+                                            <label htmlFor="staffVisaValidity" className='text-muted' style={{fontSize:'13px'}}>VISA VALIDITY</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="address"
+                                                id="staffAddress"
                                                 type="text"
                                                 placeholder="address"
-                                            />
-                                            <label htmlFor="address" className='text-muted'>ADDRESS*</label>
+                                                name="staffAddress"
+                                                value={formik.values.staffAddress} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffAddress && formik.errors.staffAddress ? <span className='span'>{formik.errors.staffAddress}</span> : null
+                                                }
+                                            <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
                                         </Form.Floating>
                                     </Col>
                                    
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                        <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
+                                        <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
                                         <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
                                     </Col>
                                 </Row>

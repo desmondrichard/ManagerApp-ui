@@ -52,10 +52,11 @@ const validate = values => {
         errors.address = "*Required";
     }
 
-
     return errors;
 }
 function Iddetails() {
+    const [isFocus,setIsFocus]=useState(false);
+
     // reset form start: 
     const aadharno1 = useRef("");
     const panno1 = useRef("");
@@ -68,8 +69,6 @@ function Iddetails() {
     const addressRef1 = useRef("");
     const addressRef2 = useRef("");
     const addressRef3 = useRef("");
-  
-
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -113,6 +112,7 @@ function Iddetails() {
         console.log(State?.getStatesOfCountry(selectedCountry?.isoCode));
     }, [selectedCountry]);
 
+    // console.log("Focus",address);
     return (
         <div>
             <Accordion>
@@ -237,6 +237,7 @@ function Iddetails() {
                                                 placeholder="address"
                                                 name="address"
                                                 ref={addressRef0}
+                                                
                                                 value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -280,7 +281,7 @@ function Iddetails() {
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <label htmlFor="country">Country:</label>
-                                        <Select style={{ zIndex: 100 }}
+                                        <Select className="dynamicSelect" style={{ zIndex: 100 }}
                                             options={Country.getAllCountries()}
                                             getOptionLabel={(options) => {
                                                 return options["name"];
@@ -292,7 +293,6 @@ function Iddetails() {
                                             onChange={(item) => {
                                                 setSelectedCountry(item);
                                             }}
-
                                         />
 
                                     </Col>
@@ -314,7 +314,7 @@ function Iddetails() {
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <label htmlFor="city">City:</label>
-                                        <Select style={{ zIndex: 100 }}
+                                        <Select className="dynamicSelect" style={{ zIndex: 100 }}
                                             options={City.getCitiesOfState(
                                                 selectedState?.countryCode,
                                                 selectedState?.isoCode

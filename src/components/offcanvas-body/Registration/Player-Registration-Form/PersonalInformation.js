@@ -34,6 +34,10 @@ const validate = values => {
         errors.lName = "Last Name should be between 3 to 10 characters long or only letters allowed";
     }
     
+    if (!values.bloodGroup) {
+        errors.bloodGroup = "*Required";
+    }
+
     if (!values.initials) {
         errors.initials = "*Required";
     }

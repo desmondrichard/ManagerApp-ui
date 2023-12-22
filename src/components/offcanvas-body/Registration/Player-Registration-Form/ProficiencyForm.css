@@ -9,3 +9,13 @@
 .form-check-input{
 	appearance: auto;
 }
+
+.form-control:focus{
+    box-shadow:none !important;
+    border:2px solid black !important;
+  }
+
+  select:focus{
+    border:2px solid black !important;
+    box-shadow: none !important;
+  }

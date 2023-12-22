@@ -7,7 +7,64 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { useFormik } from 'formik';
+
+const validate = values => {
+    const errors = {};
+
+    if (!values.staffJerseyName) {
+        errors.staffJerseyName = "*Required";
+    }
+    else if (!/^[a-zA-Z]{2,10}$/.test(values.staffJerseyName)) {
+        errors.staffJerseyName = "Jersey Name should be between 2 to 10 characters long or only letters allowed";
+    }
+
+    if (!values.staffJerseyNo) {
+        errors.staffJerseyNo = "*Required";
+    }
+    else if (!/^[0-9]{0,3}$/.test(values.staffJerseyNo)) {
+        errors.staffJerseyNo = "enter valid Digits";
+    }
+
+
+    if (!values.staffJerseysize) {
+        errors.staffJerseysize = "*Required";
+    }
+
+    if (!/^[a-zA-Z]{0,1}$/.test(values.staffInitialprint)) {
+        errors.staffInitialprint = "only one letter allowed";
+    }
+    
+    
+    if (!/^[0-9]{0,2}$/.test(values.staffTrowserlength)) {
+        errors.staffTrowserlength = "only two Digits allowed";
+    }
+    
+
+    if (!/^[0-9]{0,3}$/.test(values.staffFamilyjerseyno)) {
+        errors.staffFamilyjerseyno = "upto 3 Digits allowed";
+    }
+
+
+    return errors
+}
+
 function StaffKittingDetails() {
+    const formik = useFormik({
+        initialValues: {
+            staffJerseyName: '',
+            staffJerseyNo: '',
+            staffJerseysize: '',
+            staffInitialprint:'',
+            staffTrowserlength: '',
+            staffFamilyjerseyno:''
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            // navigate("/playerproficiencyinformation");
+        }
+    });
     return (
         <div>
             <Accordion>
@@ -15,34 +72,47 @@ function StaffKittingDetails() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>KITTING DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
-                            <Form style={{ paddingRight: '60px' }}>
+                            <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="JerseyName"
+                                                id="staffJerseyName"
                                                 type="text"
                                                 placeholder="JerseyName"
+                                                name='staffJerseyName'
+                                                value={formik.values.staffJerseyName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="JerseyName" className='text-muted'>Name on Jersey*</label>
+                                            {
+                                                formik.touched.staffJerseyName && formik.errors.staffJerseyName ? <span className='span'>{formik.errors.staffJerseyName}</span> : null
+                                            }
+                                            <label htmlFor="staffJerseyName" className='text-muted'>Name on Jersey*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="JerseyNo"
+                                                id="staffJerseyNo"
                                                 type="text"
                                                 placeholder="JerseyNo"
+                                                name="staffJerseyNo"
+                                                value={formik.values.staffJerseyNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="JerseyNo" className='text-muted'>Jersey No*</label>
+                                            {
+                                                formik.touched.staffJerseyNo && formik.errors.staffJerseyNo ? <span className='span'>{formik.errors.staffJerseyNo}</span> : null
+                                            }
+                                            <label htmlFor="staffJerseyNo" className='text-muted'>Jersey No*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="jerseysize"
-                                            label="Jersey Size*"
+                                            controlId="staffJerseysize"
+                                            label="Jersey Size"
+                                            name="staffJerseysize"
+                                            value={formik.values.staffJerseysize} onBlur={formik.handleBlur} onChange={formik.handleChange}
+
                                         >
-                                            <Form.Select aria-label="jerseysize">
+                                            <Form.Select aria-label="staffJerseysize">
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -52,26 +122,36 @@ function StaffKittingDetails() {
                                                 <option value="3XL">3XL</option>
                                                 <option value="4XL">4XL</option>
                                             </Form.Select>
+                                            {
+                                                formik.touched.staffJerseysize && formik.errors.staffJerseysize ? <span className='span'>{formik.errors.staffJerseysize}</span> : null
+                                            }
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="initialprint"
+                                                id="staffInitialprint"
                                                 type="text"
                                                 placeholder="initialprint"
+                                                name="staffInitialprint"
+                                                value={formik.values.staffInitialprint} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="initialprint" className='text-muted'>Initial Print*</label>
+                                            {
+                                                formik.touched.staffInitialprint && formik.errors.staffInitialprint ? <span className='span'>{formik.errors.staffInitialprint}</span> : null
+                                            }
+                                            <label htmlFor="staffInitialprint" className='text-muted'>Initial Print</label>
                                         </Form.Floating>
                                     </Col>
 
 
                                     <Col xs={12} lg={3} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="trowsersize"
-                                            label="Trowser Size*"
+                                            controlId="staffIrowsersize"
+                                            label="Trowser Size"
+                                            name="staffIrowsersize"
                                         >
-                                            <Form.Select aria-label="trowsersize">
+                                            
+                                            <Form.Select aria-label="staffIrowsersize">
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -81,24 +161,31 @@ function StaffKittingDetails() {
                                                 <option value="3XL">3XL</option>
                                                 <option value="4XL">4XL</option>
                                             </Form.Select>
+                                            
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="trowserlength"
+                                                id="staffTrowserlength"
                                                 type="text"
                                                 placeholder="Trowser Length"
+                                                name="staffTrowserlength"
+                                                value={formik.values.staffTrowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="trowserlength" className='text-muted'>Trowser Length</label>
+                                            {
+                                                formik.touched.staffTrowserlength && formik.errors.staffTrowserlength ? <span className='span'>{formik.errors.staffTrowserlength}</span> : null
+                                            }
+                                            <label htmlFor="staffTrowserlength" className='text-muted'>Trowser Length</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="shortssize"
-                                            label="Shorts Size*"
+                                            controlId="staffShortssize"
+                                            label="Shorts Size"
+                                            name="staffShortssize"
                                         >
-                                            <Form.Select aria-label="shortssize">
+                                            <Form.Select aria-label="staffShortssize">
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -108,14 +195,17 @@ function StaffKittingDetails() {
                                                 <option value="3XL">3XL</option>
                                                 <option value="4XL">4XL</option>
                                             </Form.Select>
+                                         
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="tracksuit"
-                                            label="Track suit*"
+                                            controlId="staffTracksuit"
+                                            label="Track suit"
+                                            name="staffTracksuit"
                                         >
-                                            <Form.Select aria-label="tracksuit">
+
+                                            <Form.Select aria-label="staffTracksuit">
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -125,14 +215,17 @@ function StaffKittingDetails() {
                                                 <option value="3XL">3XL</option>
                                                 <option value="4XL">4XL</option>
                                             </Form.Select>
+                                           
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="travelpolo"
+                                            controlId="staffTravelpolo"
                                             label="Travel Polo"
-                                        >
-                                            <Form.Select aria-label="travelpolo">
+                                            name="staffTravelpolo"
+                                            >
+                                           
+                                            <Form.Select aria-label="staffTravelpolo">
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -142,23 +235,29 @@ function StaffKittingDetails() {
                                                 <option value="3XL">3XL</option>
                                                 <option value="4XL">4XL</option>
                                             </Form.Select>
+                                          
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="familyjerseyno"
+                                                id="staffFamilyjerseyno"
                                                 type="text"
                                                 placeholder="familyjerseyno"
-                                            />
-                                            <label htmlFor="familyjerseyno" className='text-muted'>Family Jersey No</label>
+                                                name="staffFamilyjerseyno"
+                                                value={formik.values.staffFamilyjerseyno} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffFamilyjerseyno && formik.errors.staffFamilyjerseyno ? <span className='span'>{formik.errors.staffFamilyjerseyno}</span> : null
+                                                }
+                                            <label htmlFor="staffFamilyjerseyno" className='text-muted'>Family Jersey No</label>
                                         </Form.Floating>
                                     </Col>
                                 </Row>
-                               
+
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                    <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
                                     <Button variant="warning" className='text-white mb-2 ' style={{ width: "130px" }}>CLEAR</Button>
                                 </Col>
                             </Form>

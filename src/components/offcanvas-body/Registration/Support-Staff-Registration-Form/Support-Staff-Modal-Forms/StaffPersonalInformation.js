@@ -9,8 +9,104 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './StaffPersonalInformation.css';
 import Phone from '../../../Phone';
+import { useFormik } from 'formik';
+
+// validation:
+const validate = values => {
+    const errors = {};
+
+    if (!values.staffFName) {
+        errors.staffFName = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.staffFName)) {
+        errors.staffFName = "First name should be between 3 to 10 characters long or only letters allowed";
+    }
+
+    if (!/^[a-zA-Z]{0,10}$/.test(values.staffSName)) {
+        errors.staffSName = "Middle name should be maximum 10 characters long or only letters allowed";
+    }
+
+    if (!values.staffDesignation) {
+        errors.staffDesignation = "*Required";
+    }
+
+    if (!values.staffSpecialization) {
+        errors.staffSpecialization = "*Required";
+    }
+
+    if (!values.staffLName) {
+        errors.staffLName = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.staffLName)) {
+        errors.staffLName = "Last Name should be between 3 to 10 characters long or only letters allowed";
+    }
+
+    if (!values.staffintials) {
+        errors.staffintials = "*Required";
+    }
+    else if (!/^[a-zA-Z]{0,1}$/.test(values.staffintials)) {
+        errors.staffintials = "Initial can only contain one letter"
+    }
+
+    if (!values.staffDisplayName) {
+        errors.staffDisplayName = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.staffDisplayName)) {
+        errors.staffDisplayName = 'Display Name must be alphanumeric and have length between 3 to 10 or only letters allowed'
+    }
+
+    if (!values.staffFatherName) {
+        errors.staffFatherName = "*Required.";
+    }
+    else if (!/^[a-zA-Z]{3,10}$/.test(values.staffFatherName)) {
+        errors.staffFatherName = "Father Name should be maximum 10 characters long or only letters allowed";
+    }
+
+    if (!/^[a-zA-Z]{0,10}$/.test(values.staffMotherName)) {
+        errors.staffMotherName = "Mother Name should be maximum 10 characters long or only letters allowed"
+    }
+
+    if (!values.staffDob) {
+        errors.staffDob = "*Required";
+    }
+
+    if (!values.staffBloodGroup) {
+        errors.staffBloodGroup = "*Required";
+    }
+
+    if (!values.staffEmail) {
+        errors.staffEmail = "*Required";
+    }
+    else if (!/^\S+@\S+\.\S+$/.test(values.staffEmail)) {
+        errors.staffEmail = "*Invalid email address";
+    }
+
+
+    return errors;
+}
 
 function StaffPersonalInformation() {
+    const formik = useFormik({
+        initialValues: {
+            staffFName: '',
+            staffSName: '',
+            staffLName: '',
+            staffDesignation: '',
+            staffSpecialization: '',
+            staffintials: '',
+            staffDisplayName: '',
+            staffFatherName: '',
+            staffMotherName: '',
+            staffDob: '',
+            staffBloodGroup: '',
+            staffEmail: ''
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            // navigate("/playerproficiencyinformation");
+        }
+    });
     return (
         <div>
             <Accordion defaultActiveKey="0" >
@@ -18,125 +114,173 @@ function StaffPersonalInformation() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>PERSONAL INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container>
-                            <Form >
+                            <Form onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="fName"
+                                                id="staffFName"
                                                 type="text"
                                                 placeholder="first name"
-
+                                                name="staffFName"
+                                                value={formik.values.staffFName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="fName" className='text-muted'>Staff First Name*</label>
+                                            {
+                                                formik.touched.staffFName && formik.errors.staffFName ? <span className='span'>{formik.errors.staffFName}</span> : null
+                                            }
+                                            <label htmlFor="staffFName" className='text-muted'>Staff First Name*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="mName"
+                                                id="staffSName"
                                                 type="text"
                                                 placeholder="second name"
-
+                                                name="staffSName"
+                                                value={formik.values.staffSName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="mName" className='text-muted'>Staff Middle Name</label>
+                                            {
+                                                formik.touched.staffSName && formik.errors.staffSName ? <span className='span'>{formik.errors.staffSName}</span> : null
+                                            }
+                                            <label htmlFor="staffSName" className='text-muted'>Staff Middle Name</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="lName"
+                                                id="staffLName"
                                                 type="text"
-                                                placeholder="second name"
-
+                                                placeholder="last name"
+                                                name="staffLName"
+                                                value={formik.values.staffLName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="lName" className='text-muted'>Staff Last Name*</label>
+                                            {
+                                                formik.touched.staffLName && formik.errors.staffLName ? <span className='span'>{formik.errors.staffLName}</span> : null
+                                            }
+                                            <label htmlFor="staffLName" className='text-muted'>Staff Last Name*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="desig"
+                                            controlId="staffDesignation"
                                             label="Designation*"
+                                            name="staffDesignation"
+                                            value={formik.values.staffDesignation} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="desig">
+
+                                            <Form.Select aria-label="staffDesignation">
                                                 <option value="none">Select Type</option>
-                                                <option value="management">Management</option>                                            
+                                                <option value="management">Management</option>
                                             </Form.Select>
+                                            {
+                                                formik.touched.staffDesignation && formik.errors.staffDesignation ? <span className='span'>{formik.errors.staffDesignation}</span> : null
+                                            }
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="spec"
+                                            controlId="staffSpecialization"
                                             label="Specialization*"
+                                            name="staffSpecialization"
+                                            value={formik.values.staffSpecialization} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="spec">
+
+                                            <Form.Select aria-label="staffSpecialization">
                                                 <option value="none">Select Type</option>
-                                                <option value="management">Management</option>                                            
+                                                <option value="management">Management</option>
                                             </Form.Select>
+                                            {
+                                                formik.touched.staffSpecialization && formik.errors.staffSpecialization ? <span className='span'>{formik.errors.staffSpecialization}</span> : null
+                                            }
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="initials"
+                                                id="staffintials"
                                                 type="text"
                                                 placeholder="initials"
+                                                name="staffintials"
 
+                                                value={formik.values.staffintials} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="initials" className='text-muted'>Initials</label>
+                                            {
+                                                formik.touched.staffintials && formik.errors.staffintials ? <span className='span'>{formik.errors.staffintials}</span> : null
+                                            }
+                                            <label htmlFor="staffintials" className='text-muted'>Initials</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="dName"
+                                                id="staffDisplayName"
                                                 type="text"
                                                 placeholder="display name"
+                                                name="staffDisplayName"
 
+                                                value={formik.values.staffDisplayName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="dName" className='text-muted'>Display Name*</label>
+                                            {
+                                                formik.touched.staffDisplayName && formik.errors.staffDisplayName ? <span className='span'>{formik.errors.staffDisplayName}</span> : null
+                                            }
+                                            <label htmlFor="staffDisplayName" className='text-muted'>Display Name*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="fatherName"
+                                                id="staffFatherName"
                                                 type="text"
                                                 placeholder="father name"
-
+                                                name="staffFatherName"
+                                                value={formik.values.staffFatherName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="fatherName" className='text-muted'>Father's Name*</label>
+                                            {
+                                                formik.touched.staffFatherName && formik.errors.staffFatherName ? <span className='span'>{formik.errors.staffFatherName}</span> : null
+                                            }
+                                            <label htmlFor="staffFatherName" className='text-muted'>Father's Name*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="motherName"
+                                                id="staffMotherName"
                                                 type="text"
                                                 placeholder="mother name"
-
+                                                name="staffMotherName"
+                                                value={formik.values.staffMotherName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="motherName" className='text-muted'>Mother's Name</label>
+                                            {
+                                                formik.touched.staffMotherName && formik.errors.staffMotherName ? <span className='span'>{formik.errors.staffMotherName}</span> : null
+                                            }
+                                            <label htmlFor="staffMotherName" className='text-muted'>Mother's Name</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="dob1"
+                                                id="staffDob"
                                                 type="date"
                                                 placeholder="dob"
-
+                                                name="staffDob"
+                                                value={formik.values.staffDob} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="dob1" className='text-muted'>Date of Birth*</label>
+                                            {
+                                                formik.touched.staffDob && formik.errors.staffDob ? <span className='span'>{formik.errors.staffDob}</span> : null
+                                            }
+                                            <label htmlFor="staffDob" className='text-muted'>Date of Birth*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
-                                            controlId="bloodGroup"
+                                            controlId="staffBloodGroup"
                                             label="BloodGroup*"
-
+                                            name="staffBloodGroup"
+                                            value={formik.values.staffBloodGroup} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="bloodGroup">
+
+                                            <Form.Select aria-label="staffBloodGroup">
                                                 <option value="none">Select Type</option>
                                                 <option value="O+">O+</option>
                                                 <option value="O-">O-</option>
@@ -147,37 +291,45 @@ function StaffPersonalInformation() {
                                                 <option value="AB+">AB+</option>
                                                 <option value="AB-">AB-</option>
                                             </Form.Select>
+                                            {
+                                                formik.touched.staffBloodGroup && formik.errors.staffBloodGroup ? <span className='span'>{formik.errors.staffBloodGroup}</span> : null
+                                            }
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                      <Phone />
+                                        <Phone />
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="email"
-                                                type="email"
+                                                id="staffEmail"
+                                                type="staffEmail"
                                                 placeholder="email"
-
+                                                name="staffEmail"
+                                                value={formik.values.staffEmail} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
-                                            <label htmlFor="email" className='text-muted'>Email Address*</label>
+                                            {
+                                                formik.touched.staffEmail && formik.errors.staffEmail ? <span className='span'>{formik.errors.staffEmail}</span> : null
+                                            }
+                                            <label htmlFor="staffEmail" className='text-muted'>Email Address*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='d-flex justify-content-center pt-3 col'>
                                         <label className='text-muted me-2' htmlFor="gender">Gender</label>
                                         {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} className="mb-3" style={{whiteSpace:'nowrap'}}>
+                                            <div key={`inline-${type}`} className="mb-3" style={{ whiteSpace: 'nowrap' }}>
                                                 <Form.Check
                                                     inline
                                                     label="Male"
-                                                    name="gender"
+                                                    name="staffGender"
                                                     type={type}
                                                     id={`inline-${type}-male`}
+                                                    defaultChecked={true}
                                                 />
                                                 <Form.Check
                                                     inline
                                                     label="Female"
-                                                    name="gender"
+                                                    name="staffGender"
                                                     type={type}
                                                     id={`inline-${type}-female`}
                                                 />
@@ -189,7 +341,7 @@ function StaffPersonalInformation() {
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }}>CLEAR</Button>
-                                        <Button variant="success" className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
+                                        <Button variant="success" className='mx-3' type="submit" style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
                                     </Col>
                                 </Row>
                             </Form>

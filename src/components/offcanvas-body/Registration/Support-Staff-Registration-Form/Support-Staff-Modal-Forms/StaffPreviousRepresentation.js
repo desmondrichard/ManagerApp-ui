@@ -5,7 +5,48 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { useFormik } from 'formik';
+
+// validation:
+const validate = values => {
+    const errors = {};
+
+    if (!values.staffCity) {
+        errors.staffCity = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,15}$/.test(values.staffCity)) {
+        errors.staffCity = "City name should be between 3 to 15 characters long or only letters allowed";
+    }
+
+    if (!values.staffClub) {
+        errors.staffClub = "*Required";
+    }
+    else if (!/^[a-zA-Z]{3,15}$/.test(values.staffClub)) {
+        errors.staffClub = "Club name should be between 3 to 15 characters maximum or only letters allowed";
+    }
+
+    if (!values.staffDivision) {
+        errors.staffDivision = "*Required";
+    }
+    else if (!/^[a-zA-Z1-9]{0,10}$/.test(values.staffDivision)) {
+        errors.staffDivision = "Division name should be between 10 characters maximum";
+    }
+    return errors;
+}
 function StaffPreviousRepresentation() {
+    const formik = useFormik({
+        initialValues: {
+            staffCity: '',
+            staffClub: '',
+            staffDivision: '',
+
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            // navigate("/playerproficiencyinformation");
+        }
+    });
   return (
     <div>
  <Accordion>
@@ -13,7 +54,7 @@ function StaffPreviousRepresentation() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>REPRESENTATION INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
-                            <Form style={{ paddingRight: '60px' }}>
+                            <Form style={{ paddingRight: '60px' }}  onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
@@ -21,8 +62,13 @@ function StaffPreviousRepresentation() {
                                                 id="city"
                                                 type="text"
                                                 placeholder="city"
-                                            />
-                                            <label htmlFor="city" className='text-muted'>State/City/District</label>
+                                                name="staffCity"
+                                                value={formik.values.staffCity} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffCity && formik.errors.staffCity ? <span className='span'>{formik.errors.staffCity}</span> : null
+                                                }
+                                            <label htmlFor="staffCity" className='text-muted'>State/City/District*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
@@ -31,8 +77,13 @@ function StaffPreviousRepresentation() {
                                                 id="club"
                                                 type="text"
                                                 placeholder="club"
-                                            />
-                                            <label htmlFor="club" className='text-muted'>Club/Franchise</label>
+                                                name="staffClub"
+                                                value={formik.values.staffClub} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffClub && formik.errors.staffClub ? <span className='span'>{formik.errors.staffClub}</span> : null
+                                                }
+                                            <label htmlFor="staffClub" className='text-muted'>Club/Franchise*</label>
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
@@ -41,15 +92,20 @@ function StaffPreviousRepresentation() {
                                                 id="division"
                                                 type="text"
                                                 placeholder="division"
-                                            />
-                                            <label htmlFor="division" className='text-muted'>Past Team Name</label>
+                                                name="staffDivision"
+                                                value={formik.values.staffDivision} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                />
+                                                {
+                                                    formik.touched.staffDivision && formik.errors.staffDivision ? <span className='span'>{formik.errors.staffDivision}</span> : null
+                                                }
+                                            <label htmlFor="staffDivision" className='text-muted'>Past Team Name*</label>
                                         </Form.Floating>
                                     </Col>
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
+                                    <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
                                     <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
                                 </Col>
                             </Form>
