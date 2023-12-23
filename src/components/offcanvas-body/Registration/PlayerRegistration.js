@@ -129,9 +129,8 @@ function PlayerRegistration(props) {
 
         </tbody>
       </Table>
-      {/* Sample support staff Registraion Form: */}
-      <hr />
-      <SupportStaffRegistration />
+    
+
     </div>
   )
 }

@@ -15,8 +15,8 @@ import ImageOrganizor from 'react-bootstrap/Image';
 
 function Dashboard() {
     return (
-        <div>
-            <Container fluid className="my-3 py-3">
+        <div >
+            <Container fluid className="my-3 py-3" >
                 <Row className='row1'>
                     <Col lg={8} >
                         {/* ps-2 */}

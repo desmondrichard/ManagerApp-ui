@@ -14,6 +14,7 @@ import PlayerRegistration from './components/offcanvas-body/Registration/PlayerR
 import App1 from './components/App1';
 import AccreditionForm from './components/AccreditionForm';
 import ThingsTodoForm from './components/ThingsTodoForm';
+import SupportStaffRegistration from './components/offcanvas-body/Registration/Support-Staff-Registration-Form/SupportStaffRegistration';
 // import PersonalInformation from './components/offcanvas-body/Registration/Player-Registration-Form/PersonalInformation';
 // import ProficiencyForm from './components/offcanvas-body/Registration/Player-Registration-Form/ProficiencyForm';
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/signup' exact element={<Register />} />
           <Route path='/dashboard' exact element={<App1 />} />
           <Route path='/playerregister' exact element={<PlayerRegistration />} />
+          <Route path='/staffregister' exact element={<SupportStaffRegistration />} />
 
           <Route path='/accessories' exact element={<Accessories />} />
           <Route path='/playersauctionlist' exact element={<PlayersAuctionList />} />

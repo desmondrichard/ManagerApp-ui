@@ -30,7 +30,6 @@ const validate = values => {
         errors.bowlingspecification = "*Required";
     }
 
-
     return errors
 }
 
