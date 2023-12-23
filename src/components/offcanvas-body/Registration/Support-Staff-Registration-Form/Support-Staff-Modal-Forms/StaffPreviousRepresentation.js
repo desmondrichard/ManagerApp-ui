@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useFormik } from 'formik';
-
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -34,6 +34,19 @@ const validate = values => {
     return errors;
 }
 function StaffPreviousRepresentation() {
+     // reset form start: 
+     const city1 = useRef("");
+     const club1 = useRef("");
+     const division1 = useRef("");
+ 
+ 
+     // for npm custom component dont use useRef instead use useState i.e for phone component
+     function handleReset() {
+         city1.current.value = "";
+         club1.current.value = "";
+         division1.current.value = "";
+         formik.resetForm();
+     }
     const formik = useFormik({
         initialValues: {
             staffCity: '',
@@ -63,6 +76,7 @@ function StaffPreviousRepresentation() {
                                                 type="text"
                                                 placeholder="city"
                                                 name="staffCity"
+                                                ref={city1}
                                                 value={formik.values.staffCity} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -78,6 +92,7 @@ function StaffPreviousRepresentation() {
                                                 type="text"
                                                 placeholder="club"
                                                 name="staffClub"
+                                                ref={club1}
                                                 value={formik.values.staffClub} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -92,6 +107,7 @@ function StaffPreviousRepresentation() {
                                                 id="division"
                                                 type="text"
                                                 placeholder="division"
+                                                ref={division1}
                                                 name="staffDivision"
                                                 value={formik.values.staffDivision} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
@@ -106,7 +122,7 @@ function StaffPreviousRepresentation() {
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
                                     <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
+                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>

@@ -8,10 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import './Iddetails.css';
 import { useFormik } from 'formik';
-import { Country, State, City } from 'country-state-city';
-import { useEffect, useState } from "react";
-import Select from "react-select";
 import { useRef } from 'react';
+import AddressDynamicFocus from './AddressDynamicFocus';
 // validation:
 const validate = values => {
     const errors = {};
@@ -55,7 +53,7 @@ const validate = values => {
     return errors;
 }
 function Iddetails() {
-    const [isFocus,setIsFocus]=useState(false);
+    // const [isFocus,setIsFocus]=useState(false);
 
     // reset form start: 
     const aadharno1 = useRef("");
@@ -66,9 +64,6 @@ function Iddetails() {
     const visaYes = useRef(false);
     const visaNo = useRef(false);
     const addressRef0 = useRef("");
-    const addressRef1 = useRef("");
-    const addressRef2 = useRef("");
-    const addressRef3 = useRef("");
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -80,9 +75,6 @@ function Iddetails() {
         visaYes.current.checked = false;
         visaNo.current.checked = false;
         addressRef0.current.value = "";
-        addressRef1.current.value = "";
-        addressRef2.current.value = "";
-        addressRef3.current.value = "";
         formik.resetForm();
     }
 
@@ -102,15 +94,6 @@ function Iddetails() {
             // navigate("/playerproficiencyinformation");
         }
     });
-    // country-state-city:
-    const [selectedCountry, setSelectedCountry] = useState(null);
-    const [selectedState, setSelectedState] = useState(null);
-    const [selectedCity, setSelectedCity] = useState(null);
-    useEffect(() => {
-        console.log(selectedCountry);
-        console.log(selectedCountry?.isoCode);
-        console.log(State?.getStatesOfCountry(selectedCountry?.isoCode));
-    }, [selectedCountry]);
 
     // console.log("Focus",address);
     return (
@@ -170,7 +153,7 @@ function Iddetails() {
                                             <label htmlFor="passno" className='text-muted'>PASSPORT NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="passexp"
@@ -186,7 +169,7 @@ function Iddetails() {
                                             <label htmlFor="passexp" className='text-muted'>PASSPORT EXP DATE*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="birth"
@@ -202,7 +185,7 @@ function Iddetails() {
                                             <label htmlFor="birth" className='text-muted' style={{ fontSize: '13px' }}>BIRTH CERTIFICATE NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <label className='text-muted' htmlFor="battingpads">DO YOU HAVE VISA</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
@@ -237,7 +220,7 @@ function Iddetails() {
                                                 placeholder="address"
                                                 name="address"
                                                 ref={addressRef0}
-                                                
+
                                                 value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -246,92 +229,9 @@ function Iddetails() {
                                             <label htmlFor="address" className='text-muted'>ADDRESS*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address1"
-                                                type="text"
-                                                placeholder="address1"
-                                                ref={addressRef1}
-                                            />
-                                            <label htmlFor="address1" className='text-muted'>ADDRESS LINE 1*</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address2"
-                                                type="text"
-                                                placeholder="address2"
-                                                ref={addressRef2}
-                                            />
-                                            <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address3"
-                                                type="text"
-                                                placeholder="address3"
-                                                ref={addressRef3}
-                                            />
-                                            <label htmlFor="address3" className='text-muted'>ADDRESS LINE 3</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <label htmlFor="country">Country:</label>
-                                        <Select className="dynamicSelect" style={{ zIndex: 100 }}
-                                            options={Country.getAllCountries()}
-                                            getOptionLabel={(options) => {
-                                                return options["name"];
-                                            }}
-                                            getOptionValue={(options) => {
-                                                return options["name"];
-                                            }}
-                                            value={selectedCountry}
-                                            onChange={(item) => {
-                                                setSelectedCountry(item);
-                                            }}
-                                        />
-
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <label htmlFor="state">State:</label>
-                                        <Select style={{ zIndex: 100 }}
-                                            options={State?.getStatesOfCountry(selectedCountry?.isoCode)}
-                                            getOptionLabel={(options) => {
-                                                return options["name"];
-                                            }}
-                                            getOptionValue={(options) => {
-                                                return options["name"];
-                                            }}
-                                            value={selectedState}
-                                            onChange={(item) => {
-                                                setSelectedState(item);
-                                            }}
-                                        />
-                                    </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <label htmlFor="city">City:</label>
-                                        <Select className="dynamicSelect" style={{ zIndex: 100 }}
-                                            options={City.getCitiesOfState(
-                                                selectedState?.countryCode,
-                                                selectedState?.isoCode
-                                            )}
-                                            getOptionLabel={(options) => {
-                                                return options["name"];
-                                            }}
-                                            getOptionValue={(options) => {
-                                                return options["name"];
-                                            }}
-                                            value={selectedCity}
-                                            onChange={(item) => {
-                                                setSelectedCity(item);
-                                            }}
-                                        />
-
-                                    </Col>
+                                   
+                                        <AddressDynamicFocus />
+                                    
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button variant="success" type="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>

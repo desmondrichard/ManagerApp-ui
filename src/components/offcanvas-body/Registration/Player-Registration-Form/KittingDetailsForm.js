@@ -224,7 +224,7 @@ function KittingDetailsForm() {
                                             name="shortssize"
                                             value={formik.values.trowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                                            <Form.Select aria-label="shortssize"    ref={shortssize1}>
+                                            <Form.Select aria-label="shortssize" ref={shortssize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>

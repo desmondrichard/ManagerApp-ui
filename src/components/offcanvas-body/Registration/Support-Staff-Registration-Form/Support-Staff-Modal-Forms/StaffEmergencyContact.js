@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Phone from '../../../Phone';
 import { useFormik } from 'formik';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -30,6 +30,7 @@ const validate = values => {
     return errors;
 }
 function StaffEmergencyContact() {
+    const [mobileValue, setMobileValue] = useState(false);
     const formik = useFormik({
         initialValues: {
             staffEmgcontactperson: '',
@@ -41,6 +42,17 @@ function StaffEmergencyContact() {
             // navigate("/playerproficiencyinformation");
         }
     });
+    // reset form start: 
+    const emgcontactperson1 = useRef("");
+    const emgcontactrel1 = useRef("");
+
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
+        emgcontactperson1.current.value = "";
+        emgcontactrel1.current.value = "";
+        setMobileValue(true);
+        formik.resetForm();
+    }
     return (
         <div>
             <Accordion>
@@ -57,6 +69,7 @@ function StaffEmergencyContact() {
                                                 type="text"
                                                 placeholder="emgcontactperson"
                                                 name="staffEmgcontactperson"
+                                                ref={emgcontactperson1}
                                                 value={formik.values.staffEmgcontactperson} onBlur={formik.handleBlur} onChange={formik.handleChange}
 
                                             />
@@ -74,8 +87,8 @@ function StaffEmergencyContact() {
                                             value={formik.values.StaffEmgContactRel} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
-                                            <Form.Select aria-label="Emg.Contact Relation*">
-                                                <option>Select Type</option>
+                                            <Form.Select aria-label="Emg.Contact Relation*" ref={emgcontactrel1}>
+                                                <option value="none">Select Type</option>
                                                 <option value="batsman">PARENTS</option>
                                                 <option value="bowler">GUARDIAN</option>
                                                 <option value="allrounder">SPONSORS</option>
@@ -91,14 +104,14 @@ function StaffEmergencyContact() {
 
                                     </Col>
                                     <Col xs={12} lg={4} className='col '>
-                                        <Phone />
+                                        <Phone  isClear={mobileValue}/>
                                     </Col>
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                     <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
+                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>

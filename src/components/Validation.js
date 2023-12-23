@@ -17,5 +17,12 @@ export default function Validation(values) {
     else if (!password_pattern.test(values.password)) {
         errors.password = "Password must contain at least one number, one uppercase letter, one lowercase letter, and a special character.";
     }
+    else if (!password_pattern === "") {
+        errors.password = "*Required";
+    }
+    else if (!username_pattern.test(values.username)) {
+        errors.username = "*Required";
+    }
     return errors;
+
 }

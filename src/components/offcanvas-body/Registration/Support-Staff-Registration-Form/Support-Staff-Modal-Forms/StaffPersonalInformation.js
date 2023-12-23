@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import './StaffPersonalInformation.css';
 import Phone from '../../../Phone';
 import { useFormik } from 'formik';
-
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -86,6 +86,45 @@ const validate = values => {
 }
 
 function StaffPersonalInformation() {
+    const [mobileValue, setMobileValue] = useState(false);
+
+     // reset form start: 
+     const firstName = useRef("");
+     const middleName = useRef("");
+     const lastName = useRef("");
+     const initials = useRef("");
+     const displayName = useRef("");
+     const fathersName = useRef("");
+     const mothersName = useRef("");
+     const dob = useRef("");
+     const bloodgrp = useRef("");
+     const email = useRef("");
+     const genderMale = useRef(false);
+     const genderFemale = useRef(false);
+    const desig=useRef("");
+    const spec=useRef("");
+
+
+     function handleReset() {
+        firstName.current.value = "";
+        middleName.current.value = "";
+        lastName.current.value = "";
+        initials.current.value = "";
+        displayName.current.value = "";
+        fathersName.current.value = "";
+        mothersName.current.value = "";
+        dob.current.value = "";
+        bloodgrp.current.value = "none"; //since default or initial value in html code below is none
+        setMobileValue(true);
+        email.current.value = "";
+        genderMale.current.checked = false;
+        genderFemale.current.checked = false;
+        desig.current.value="none";
+        spec.current.value="none";
+        // console.log("Ref",genderMale);
+        formik.resetForm();
+    }
+
     const formik = useFormik({
         initialValues: {
             staffFName: '',
@@ -123,6 +162,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="first name"
                                                 name="staffFName"
+                                                ref={firstName}
                                                 value={formik.values.staffFName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -138,6 +178,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="second name"
                                                 name="staffSName"
+                                                ref={middleName}
                                                 value={formik.values.staffSName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -153,6 +194,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="last name"
                                                 name="staffLName"
+                                                ref={lastName}
                                                 value={formik.values.staffLName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -166,10 +208,11 @@ function StaffPersonalInformation() {
                                             controlId="staffDesignation"
                                             label="Designation*"
                                             name="staffDesignation"
+                                            
                                             value={formik.values.staffDesignation} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
-                                            <Form.Select aria-label="staffDesignation">
+                                            <Form.Select aria-label="staffDesignation" ref={desig}>
                                                 <option value="none">Select Type</option>
                                                 <option value="management">Management</option>
                                             </Form.Select>
@@ -186,7 +229,7 @@ function StaffPersonalInformation() {
                                             value={formik.values.staffSpecialization} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
-                                            <Form.Select aria-label="staffSpecialization">
+                                            <Form.Select aria-label="staffSpecialization" ref={spec}>
                                                 <option value="none">Select Type</option>
                                                 <option value="management">Management</option>
                                             </Form.Select>
@@ -202,7 +245,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="initials"
                                                 name="staffintials"
-
+                                                ref={initials}
                                                 value={formik.values.staffintials} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -218,7 +261,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="display name"
                                                 name="staffDisplayName"
-
+                                                ref={displayName}
                                                 value={formik.values.staffDisplayName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -234,6 +277,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="father name"
                                                 name="staffFatherName"
+                                                ref={fathersName}
                                                 value={formik.values.staffFatherName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -249,6 +293,7 @@ function StaffPersonalInformation() {
                                                 type="text"
                                                 placeholder="mother name"
                                                 name="staffMotherName"
+                                                ref={mothersName}
                                                 value={formik.values.staffMotherName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -264,6 +309,7 @@ function StaffPersonalInformation() {
                                                 type="date"
                                                 placeholder="dob"
                                                 name="staffDob"
+                                                ref={dob}
                                                 value={formik.values.staffDob} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -280,7 +326,7 @@ function StaffPersonalInformation() {
                                             value={formik.values.staffBloodGroup} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
-                                            <Form.Select aria-label="staffBloodGroup">
+                                            <Form.Select aria-label="staffBloodGroup" ref={bloodgrp}>
                                                 <option value="none">Select Type</option>
                                                 <option value="O+">O+</option>
                                                 <option value="O-">O-</option>
@@ -297,7 +343,7 @@ function StaffPersonalInformation() {
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <Phone />
+                                        <Phone isClear={mobileValue} />
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
@@ -306,6 +352,7 @@ function StaffPersonalInformation() {
                                                 type="staffEmail"
                                                 placeholder="email"
                                                 name="staffEmail"
+                                                ref={email}
                                                 value={formik.values.staffEmail} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -325,6 +372,7 @@ function StaffPersonalInformation() {
                                                     type={type}
                                                     id={`inline-${type}-male`}
                                                     defaultChecked={true}
+                                                    ref={genderMale}
                                                 />
                                                 <Form.Check
                                                     inline
@@ -332,6 +380,7 @@ function StaffPersonalInformation() {
                                                     name="staffGender"
                                                     type={type}
                                                     id={`inline-${type}-female`}
+                                                    ref={genderFemale}
                                                 />
                                             </div>
                                         ))}
@@ -340,7 +389,7 @@ function StaffPersonalInformation() {
                                         <ImageUpload />
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
-                                        <Button variant="warning" style={{ color: "white", width: "130px" }}>CLEAR</Button>
+                                        <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                         <Button variant="success" className='mx-3' type="submit" style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
                                     </Col>
                                 </Row>

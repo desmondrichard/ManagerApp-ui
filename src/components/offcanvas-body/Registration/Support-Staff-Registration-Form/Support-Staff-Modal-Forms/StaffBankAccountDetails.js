@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useFormik } from 'formik';
+import { useRef } from 'react';
 // validation:
 const validate = values => {
     const errors = {};
@@ -63,6 +64,45 @@ const validate = values => {
 
 function StaffBankAccountDetails() {
 
+     // reset form start: 
+     const beneficiaryname1 = useRef("");
+     const bankname1 = useRef("");
+     const currencytype1 = useRef("");
+     const accountno1 = useRef("");
+     const savings1 = useRef("");
+     const current1 = useRef("");
+     const ifsc1 = useRef("");
+     const swiftbic1 = useRef("");
+     const micr1 = useRef("");
+     const iban1 = useRef("");
+     const gst1 = useRef("");
+     const bankcontact1 = useRef("");
+     const bankaddress1 = useRef("");
+     const bankcountry1 = useRef("");
+     
+ 
+ 
+     // for npm custom component dont use useRef instead use useState i.e for phone component
+     function handleReset() {
+         beneficiaryname1.current.value = "";
+         bankname1.current.value = "";
+         currencytype1.current.value = "";
+         accountno1.current.value = "";
+         savings1.current.checked = false;
+         current1.current.checked = false;
+         ifsc1.current.value = "";
+         swiftbic1.current.value = "";
+         micr1.current.value = ""; 
+         iban1.current.value = "";
+         gst1.current.checked ="";
+         bankcontact1.current.value = "";
+         bankaddress1.current.value = "";
+         bankcountry1.current.value = "";
+ 
+         // console.log("Ref",genderMale);
+         formik.resetForm();
+     }
+     // reset form end: 
     // 
     const formik = useFormik({
         initialValues: {
@@ -100,6 +140,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="beneficiaryname"
                                                 name="StaffBeneficiaryname"
+                                                ref={beneficiaryname1}
                                                 value={formik.values.StaffBeneficiaryname} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -115,6 +156,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="bankname"
                                                 name="staffBankName"
+                                                ref={bankname1}
                                                 value={formik.values.staffBankName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -130,6 +172,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="currencytype"
                                                 name="staffCurrencytype"
+                                                ref={currencytype1}
                                                 value={formik.values.staffCurrencytype} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -145,6 +188,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="accountno"
                                                 name="staffAccountno"
+                                                ref={accountno1}
                                                 value={formik.values.staffAccountno} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -166,6 +210,7 @@ function StaffBankAccountDetails() {
                                                     type={type}
                                                     id={`inline-${type}-savings`}
                                                     defaultChecked={true}
+                                                    ref={savings1}
                                                 />
                                                 <Form.Check
                                                     inline
@@ -173,6 +218,7 @@ function StaffBankAccountDetails() {
                                                     name="type"
                                                     type={type}
                                                     id={`inline-${type}-current`}
+                                                    ref={current1}
                                                 />
                                             </div>
                                         ))}
@@ -184,6 +230,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="ifsc"
                                                 name="staffIfsc"
+                                                ref={ifsc1}
                                                 value={formik.values.staffIfsc} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -199,6 +246,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="swiftbic"
                                                 name="staffSwiftbic"
+                                                ref={swiftbic1}
                                             />
 
                                             {/*  */}
@@ -212,6 +260,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="micr"
                                                 name="staffMicr"
+                                                ref={micr1}
                                                 value={formik.values.staffMicr} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -227,6 +276,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="iban"
                                                 name="staffIban"
+                                                ref={iban1}
                                             />
 
                                             <label htmlFor="staffIban" className='text-muted'>IBAN Code</label>
@@ -239,6 +289,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="gst"
                                                 name="staffGst"
+                                                ref={gst1}
                                                 value={formik.values.staffGst} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -254,6 +305,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="bankcontact"
                                                 name="staffBankcontact"
+                                                ref={bankcontact1}
                                                 value={formik.values.staffBankcontact} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -270,6 +322,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="bankaddress"
                                                 name="staffBankaddress"
+                                                ref={bankaddress1}
                                             />
                                             <label htmlFor="staffBankaddress" className='text-muted'>Bank Address</label>
                                         </Form.Floating>
@@ -281,6 +334,7 @@ function StaffBankAccountDetails() {
                                                 type="text"
                                                 placeholder="bankcountry"
                                                 name="staffBankcountry"
+                                                ref={bankcountry1}
                                                 value={formik.values.staffBankcountry} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -292,7 +346,7 @@ function StaffBankAccountDetails() {
                                     <Col lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }}>CLEAR</Button>
+                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                     </Col>
                                 </Row>
 

@@ -12,11 +12,11 @@ import { useRef } from 'react';
 const validate = values => {
     const errors = {};
    
-    if (!/^[a-zA-Z]{3,15}$/.test(values.travelFrom)) {
+    if (!/^[a-zA-Z]{0,15}$/.test(values.travelFrom)) {
         errors.travelFrom = "should be between 3 to 15 characters long or only letters allowed";
     }
 
-    if (!/^[a-zA-Z]{3,15}$/.test(values.destn)) {
+    if (!/^[a-zA-Z]{0,15}$/.test(values.destn)) {
         errors.destn = "should be between 3 to 15 characters long or only letters allowed";
     }
     return errors;

@@ -10,6 +10,7 @@ function YearAccessories() {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
+
     return (
         <div>
             <FormControl variant="filled" sx={{width: '20ch' }}>

@@ -6,7 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
-
+import { useRef } from 'react';
+import StaffAddressDynamicFocus from './StaffAddressDynamicFocus';
 // validation:
 const validate = values => {
     const errors = {};
@@ -51,6 +52,36 @@ const validate = values => {
     return errors;
 }
 function StaffIDCardDetails() {
+
+ // reset form start: 
+ const aadharno1 = useRef("");
+ const panno1 = useRef("");
+ const passno1 = useRef("");
+ const passexp1 = useRef("");
+ const birth1 = useRef("");
+ const visaYes = useRef(false);
+ const visaNo = useRef(false);
+ const visaValid=useRef("");
+ const visaNumber =useRef("");
+ const addressRef0 = useRef("");
+
+
+ // for npm custom component dont use useRef instead use useState i.e for phone component
+ function handleReset() {
+     aadharno1.current.value = "";
+     panno1.current.value = "";
+     passno1.current.value = "";
+     passexp1.current.value = "";
+     birth1.current.value = "";
+     visaYes.current.checked = false;
+     visaNo.current.checked = false;
+     visaNumber.current.value="";
+     visaValid.current.value="";
+     addressRef0.current.value = "";
+     formik.resetForm();
+ }
+
+
     const formik = useFormik({
         initialValues: {
             staffAadharNo: '',
@@ -83,6 +114,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="aadharno"
                                                 name="staffAadharNo"
+                                                ref={aadharno1}
                                                 value={formik.values.staffAadharNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -98,6 +130,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="panno"
                                                 name="staffPanNo"
+                                                ref={panno1}
                                                 value={formik.values.staffPanNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -113,6 +146,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="passno"
                                                 name="staffPassNo"
+                                                ref={passno1}
                                                 value={formik.values.staffPassNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -128,6 +162,7 @@ function StaffIDCardDetails() {
                                                 type="date"
                                                 placeholder="passexp"
                                                 name="staffPassExp"
+                                                ref={passexp1}
                                                 value={formik.values.staffPassExp} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -143,6 +178,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="birth"
                                                 name="staffBirth"
+                                                ref={birth1}
                                                 value={formik.values.staffBirth} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -163,6 +199,7 @@ function StaffIDCardDetails() {
                                                     name="visa"
                                                     type={type}
                                                     id={`inline-${type}-provided`}
+                                                    ref={visaYes}
                                                 />
                                                 <Form.Check 
                                                     inline
@@ -171,6 +208,7 @@ function StaffIDCardDetails() {
                                                     type={type}
                                                     id={`inline-${type}-notprovided`}
                                                     defaultChecked={true}
+                                                    ref={visaNo}
                                                 />
                                             </div>
                                         ))}
@@ -182,6 +220,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="visano"
                                                 name="staffVisaNo"
+                                                ref={visaNumber}
                                                 value={formik.values.staffVisaNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -197,6 +236,7 @@ function StaffIDCardDetails() {
                                                 type="date"
                                                 placeholder="visavalidity"
                                                 name="staffVisaValidity"
+                                                ref={visaValid}
                                             />
                                             <label htmlFor="staffVisaValidity" className='text-muted' style={{fontSize:'13px'}}>VISA VALIDITY</label>
                                         </Form.Floating>
@@ -208,6 +248,7 @@ function StaffIDCardDetails() {
                                                 type="text"
                                                 placeholder="address"
                                                 name="staffAddress"
+                                                ref={addressRef0}
                                                 value={formik.values.staffAddress} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -216,11 +257,11 @@ function StaffIDCardDetails() {
                                             <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
                                         </Form.Floating>
                                     </Col>
-                                   
+                                   <StaffAddressDynamicFocus />
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
                                         <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}}>CLEAR</Button>
+                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}} onClick={() => handleReset()}>CLEAR</Button>
                                     </Col>
                                 </Row>
 

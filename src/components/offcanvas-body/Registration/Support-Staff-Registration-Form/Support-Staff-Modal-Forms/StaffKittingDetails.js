@@ -8,6 +8,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useFormik } from 'formik';
+import { useRef } from 'react';
 
 const validate = values => {
     const errors = {};
@@ -50,6 +51,35 @@ const validate = values => {
 }
 
 function StaffKittingDetails() {
+
+     // reset form start: 
+     const JerseyName1=useRef("");
+     const JerseyNo1=useRef("");
+     const jerseysize1=useRef("");
+     const trowsersize1=useRef("");
+     const trowserlength1=useRef("");
+     const shortssize1=useRef("");
+     const tracksuit1=useRef("");
+     const travelpolo1=useRef("");
+     const familyjerseyno1=useRef("");
+    
+ 
+ 
+     // for npm custom component dont use useRef instead use useState i.e for phone component
+     function handleReset() {
+        JerseyName1.current.value = "";
+        JerseyNo1.current.value = "";
+        jerseysize1.current.value = "none";
+        trowsersize1.current.value = "none";
+        trowserlength1.current.value = "";
+        shortssize1.current.value = "none";
+        tracksuit1.current.value = "none";
+        travelpolo1.current.value = "none";
+        familyjerseyno1.current.value = "";
+         formik.resetForm();
+     }
+     // reset form end: 
+
     const formik = useFormik({
         initialValues: {
             staffJerseyName: '',
@@ -81,6 +111,7 @@ function StaffKittingDetails() {
                                                 type="text"
                                                 placeholder="JerseyName"
                                                 name='staffJerseyName'
+                                                ref={JerseyName1}
                                                 value={formik.values.staffJerseyName} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -96,6 +127,7 @@ function StaffKittingDetails() {
                                                 type="text"
                                                 placeholder="JerseyNo"
                                                 name="staffJerseyNo"
+                                                ref={JerseyNo1}
                                                 value={formik.values.staffJerseyNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -112,7 +144,7 @@ function StaffKittingDetails() {
                                             value={formik.values.staffJerseysize} onBlur={formik.handleBlur} onChange={formik.handleChange}
 
                                         >
-                                            <Form.Select aria-label="staffJerseysize">
+                                            <Form.Select aria-label="staffJerseysize" ref={jerseysize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -134,6 +166,7 @@ function StaffKittingDetails() {
                                                 type="text"
                                                 placeholder="initialprint"
                                                 name="staffInitialprint"
+                                                
                                                 value={formik.values.staffInitialprint} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -151,7 +184,7 @@ function StaffKittingDetails() {
                                             name="staffIrowsersize"
                                         >
                                             
-                                            <Form.Select aria-label="staffIrowsersize">
+                                            <Form.Select aria-label="staffIrowsersize" ref={trowsersize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -171,6 +204,7 @@ function StaffKittingDetails() {
                                                 type="text"
                                                 placeholder="Trowser Length"
                                                 name="staffTrowserlength"
+                                                ref={trowserlength1}
                                                 value={formik.values.staffTrowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -185,7 +219,7 @@ function StaffKittingDetails() {
                                             label="Shorts Size"
                                             name="staffShortssize"
                                         >
-                                            <Form.Select aria-label="staffShortssize">
+                                            <Form.Select aria-label="staffShortssize" ref={shortssize1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -205,7 +239,7 @@ function StaffKittingDetails() {
                                             name="staffTracksuit"
                                         >
 
-                                            <Form.Select aria-label="staffTracksuit">
+                                            <Form.Select aria-label="staffTracksuit" ref={tracksuit1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -225,7 +259,7 @@ function StaffKittingDetails() {
                                             name="staffTravelpolo"
                                             >
                                            
-                                            <Form.Select aria-label="staffTravelpolo">
+                                            <Form.Select aria-label="staffTravelpolo" ref={travelpolo1}>
                                                 <option value="none">Select Type</option>
                                                 <option value="S">S</option>
                                                 <option value="M">M</option>
@@ -245,6 +279,7 @@ function StaffKittingDetails() {
                                                 type="text"
                                                 placeholder="familyjerseyno"
                                                 name="staffFamilyjerseyno"
+                                                ref={familyjerseyno1}
                                                 value={formik.values.staffFamilyjerseyno} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 />
                                                 {
@@ -258,7 +293,7 @@ function StaffKittingDetails() {
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                     <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 ' style={{ width: "130px" }}>CLEAR</Button>
+                                    <Button variant="warning" className='text-white mb-2 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>
                         </Container>
