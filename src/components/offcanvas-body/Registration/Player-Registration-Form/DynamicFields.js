@@ -25,11 +25,11 @@ const DynamicFields = () => {
     return (
         <div>
             <Form.Group controlId="optionsLabel">
-                <Form.Label>Enter Label for Options:</Form.Label>
+                <Form.Label>Enter Label for Options:[enter text in uppercase]</Form.Label>
                 <Form.Control
                     type="text"
                     value={optionsLabel}
-                    onChange={(e) => setOptionsLabel(e.target.value)}
+                    onChange={(e) => setOptionsLabel(e.target.value)}      
                 />
             </Form.Group>
             <div className='text-center my-2' >

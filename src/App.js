@@ -38,7 +38,7 @@ function App() {
           <Route path='/accreditionform' exact element={<AccreditionForm />} />
           <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
 
-          <Route path='/history' exact element={<History />} />
+          {/* <Route path='/history' exact element={<History />} /> */}
 
           {/* <Route path='/playerpersonalinformation' exact element={<PersonalInformation />} />
           <Route path='/playerproficiencyinformation' exact element={<ProficiencyForm />} /> */}

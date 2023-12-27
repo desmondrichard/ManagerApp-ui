@@ -7,7 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
-import StaffAddressDynamicFocus from './StaffAddressDynamicFocus';
+// import StaffAddressDynamicFocus from './StaffAddressDynamicFocus';
+import DynamicTextFields from '../DynamicTextFields';
 // validation:
 const validate = values => {
     const errors = {};
@@ -53,33 +54,33 @@ const validate = values => {
 }
 function StaffIDCardDetails() {
 
- // reset form start: 
- const aadharno1 = useRef("");
- const panno1 = useRef("");
- const passno1 = useRef("");
- const passexp1 = useRef("");
- const birth1 = useRef("");
- const visaYes = useRef(false);
- const visaNo = useRef(false);
- const visaValid=useRef("");
- const visaNumber =useRef("");
- const addressRef0 = useRef("");
+    // reset form start: 
+    const aadharno1 = useRef("");
+    const panno1 = useRef("");
+    const passno1 = useRef("");
+    const passexp1 = useRef("");
+    const birth1 = useRef("");
+    const visaYes = useRef(false);
+    const visaNo = useRef(false);
+    const visaValid = useRef("");
+    const visaNumber = useRef("");
+    const addressRef0 = useRef("");
 
 
- // for npm custom component dont use useRef instead use useState i.e for phone component
- function handleReset() {
-     aadharno1.current.value = "";
-     panno1.current.value = "";
-     passno1.current.value = "";
-     passexp1.current.value = "";
-     birth1.current.value = "";
-     visaYes.current.checked = false;
-     visaNo.current.checked = false;
-     visaNumber.current.value="";
-     visaValid.current.value="";
-     addressRef0.current.value = "";
-     formik.resetForm();
- }
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
+        aadharno1.current.value = "";
+        panno1.current.value = "";
+        passno1.current.value = "";
+        passexp1.current.value = "";
+        birth1.current.value = "";
+        visaYes.current.checked = false;
+        visaNo.current.checked = false;
+        visaNumber.current.value = "";
+        visaValid.current.value = "";
+        addressRef0.current.value = "";
+        formik.resetForm();
+    }
 
 
     const formik = useFormik({
@@ -89,7 +90,7 @@ function StaffIDCardDetails() {
             staffPassNo: '',
             staffPassExp: '',
             staffBirth: '',
-            staffVisaNo:'',
+            staffVisaNo: '',
             staffAddress: '',
         },
         validate,
@@ -98,16 +99,16 @@ function StaffIDCardDetails() {
             // navigate("/playerproficiencyinformation");
         }
     });
-  return (
-    <div>
-         <Accordion>
+    return (
+        <div>
+            <Accordion>
                 <Accordion.Item eventKey="2">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>ID CARD DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
                             <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffAadharNo"
@@ -116,14 +117,14 @@ function StaffIDCardDetails() {
                                                 name="staffAadharNo"
                                                 ref={aadharno1}
                                                 value={formik.values.staffAadharNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffAadharNo && formik.errors.staffAadharNo ? <span className='span'>{formik.errors.staffAadharNo}</span> : null
-                                                }
+                                            />
+                                            {
+                                                formik.touched.staffAadharNo && formik.errors.staffAadharNo ? <span className='span'>{formik.errors.staffAadharNo}</span> : null
+                                            }
                                             <label htmlFor="staffAadharNo" className='text-muted'>AADHAR NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffPanNo"
@@ -132,14 +133,14 @@ function StaffIDCardDetails() {
                                                 name="staffPanNo"
                                                 ref={panno1}
                                                 value={formik.values.staffPanNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffPanNo && formik.errors.staffPanNo ? <span className='span'>{formik.errors.staffPanNo}</span> : null
-                                                }
+                                            />
+                                            {
+                                                formik.touched.staffPanNo && formik.errors.staffPanNo ? <span className='span'>{formik.errors.staffPanNo}</span> : null
+                                            }
                                             <label htmlFor="staffPanNo" className='text-muted'>PANCARD NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffPassNo"
@@ -148,14 +149,14 @@ function StaffIDCardDetails() {
                                                 name="staffPassNo"
                                                 ref={passno1}
                                                 value={formik.values.staffPassNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffPassNo && formik.errors.staffPassNo ? <span className='span'>{formik.errors.staffPassNo}</span> : null
-                                                }
+                                            />
+                                            {
+                                                formik.touched.staffPassNo && formik.errors.staffPassNo ? <span className='span'>{formik.errors.staffPassNo}</span> : null
+                                            }
                                             <label htmlFor="staffPassNo" className='text-muted'>PASSPORT NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffPassExp"
@@ -164,14 +165,14 @@ function StaffIDCardDetails() {
                                                 name="staffPassExp"
                                                 ref={passexp1}
                                                 value={formik.values.staffPassExp} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffPassExp && formik.errors.staffPassExp ? <span className='span'>{formik.errors.staffPassExp}</span> : null
-                                                }
+                                            />
+                                            {
+                                                formik.touched.staffPassExp && formik.errors.staffPassExp ? <span className='span'>{formik.errors.staffPassExp}</span> : null
+                                            }
                                             <label htmlFor="staffPassExp" className='text-muted'>PASSPORT EXP DATE*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffBirth"
@@ -180,19 +181,19 @@ function StaffIDCardDetails() {
                                                 name="staffBirth"
                                                 ref={birth1}
                                                 value={formik.values.staffBirth} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffBirth && formik.errors.staffBirth ? <span className='span'>{formik.errors.staffBirth}</span> : null
-                                                }
-                                            <label htmlFor="staffBirth" className='text-muted' style={{fontSize:'13px'}}>BIRTH CERTIFICATE NO*</label>
+                                            />
+                                            {
+                                                formik.touched.staffBirth && formik.errors.staffBirth ? <span className='span'>{formik.errors.staffBirth}</span> : null
+                                            }
+                                            <label htmlFor="staffBirth" className='text-muted' style={{ fontSize: '13px' }}>BIRTH CERTIFICATE NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <label className='text-muted' htmlFor="battingpads">DO YOU HAVE VISA</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
                                                 <Form.Check style={{
-                                                 
+
                                                 }}
                                                     inline
                                                     label="Yes"
@@ -201,7 +202,7 @@ function StaffIDCardDetails() {
                                                     id={`inline-${type}-provided`}
                                                     ref={visaYes}
                                                 />
-                                                <Form.Check 
+                                                <Form.Check
                                                     inline
                                                     label="No"
                                                     name="visa"
@@ -213,7 +214,7 @@ function StaffIDCardDetails() {
                                             </div>
                                         ))}
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffVisaNo"
@@ -222,14 +223,14 @@ function StaffIDCardDetails() {
                                                 name="staffVisaNo"
                                                 ref={visaNumber}
                                                 value={formik.values.staffVisaNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffVisaNo && formik.errors.staffVisaNo ? <span className='span'>{formik.errors.staffVisaNo}</span> : null
-                                                }
-                                            <label htmlFor="staffVisaNo" className='text-muted' style={{fontSize:'13px'}}>VISA NO</label>
+                                            />
+                                            {
+                                                formik.touched.staffVisaNo && formik.errors.staffVisaNo ? <span className='span'>{formik.errors.staffVisaNo}</span> : null
+                                            }
+                                            <label htmlFor="staffVisaNo" className='text-muted' style={{ fontSize: '13px' }}>VISA NO</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    <Col xs={12} lg={3} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffVisaValidity"
@@ -238,10 +239,10 @@ function StaffIDCardDetails() {
                                                 name="staffVisaValidity"
                                                 ref={visaValid}
                                             />
-                                            <label htmlFor="staffVisaValidity" className='text-muted' style={{fontSize:'13px'}}>VISA VALIDITY</label>
+                                            <label htmlFor="staffVisaValidity" className='text-muted' style={{ fontSize: '13px' }}>VISA VALIDITY</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
+                                    {/* <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffAddress"
@@ -250,18 +251,21 @@ function StaffIDCardDetails() {
                                                 name="staffAddress"
                                                 ref={addressRef0}
                                                 value={formik.values.staffAddress} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.staffAddress && formik.errors.staffAddress ? <span className='span'>{formik.errors.staffAddress}</span> : null
-                                                }
+                                            />
+                                            {
+                                                formik.touched.staffAddress && formik.errors.staffAddress ? <span className='span'>{formik.errors.staffAddress}</span> : null
+                                            }
                                             <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
                                         </Form.Floating>
+                                    </Col> */}
+                                    <Col xs={12}>
+                                        <DynamicTextFields />
                                     </Col>
-                                   <StaffAddressDynamicFocus />
+
                                     <Col xs={12} lg={12} className='my-4 col'>
-                                        <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                        <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}} onClick={() => handleReset()}>CLEAR</Button>
+                                        <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                        <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                        <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                     </Col>
                                 </Row>
 
@@ -270,8 +274,8 @@ function StaffIDCardDetails() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default StaffIDCardDetails
