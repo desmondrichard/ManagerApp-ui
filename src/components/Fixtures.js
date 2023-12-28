@@ -15,7 +15,7 @@ function Fixtures() {
       >
         <thead>
           <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-            <th >DateTime</th>
+            <th >Date</th>
             <th>GroundName</th>
             <th>Team A</th>
             <th>Team B</th>

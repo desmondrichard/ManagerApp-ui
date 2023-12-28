@@ -64,7 +64,7 @@ function StaffIDCardDetails() {
     const visaNo = useRef(false);
     const visaValid = useRef("");
     const visaNumber = useRef("");
-    const addressRef0 = useRef("");
+    // const addressRef0 = useRef("");
 
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
@@ -78,7 +78,7 @@ function StaffIDCardDetails() {
         visaNo.current.checked = false;
         visaNumber.current.value = "";
         visaValid.current.value = "";
-        addressRef0.current.value = "";
+        // addressRef0.current.value = "";
         formik.resetForm();
     }
 
@@ -242,22 +242,6 @@ function StaffIDCardDetails() {
                                             <label htmlFor="staffVisaValidity" className='text-muted' style={{ fontSize: '13px' }}>VISA VALIDITY</label>
                                         </Form.Floating>
                                     </Col>
-                                    {/* <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="staffAddress"
-                                                type="text"
-                                                placeholder="address"
-                                                name="staffAddress"
-                                                ref={addressRef0}
-                                                value={formik.values.staffAddress} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                            />
-                                            {
-                                                formik.touched.staffAddress && formik.errors.staffAddress ? <span className='span'>{formik.errors.staffAddress}</span> : null
-                                            }
-                                            <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
-                                        </Form.Floating>
-                                    </Col> */}
                                     <Col xs={12}>
                                         <DynamicTextFields />
                                     </Col>

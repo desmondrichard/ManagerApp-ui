@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import './Iddetails.css';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
-import AddressDynamicFocus from './AddressDynamicFocus';
+import PlayerDynamicTextFields from './PlayerDynamicTextFields';
 // validation:
 const validate = values => {
     const errors = {};
@@ -54,7 +54,6 @@ const validate = values => {
 }
 function Iddetails() {
     // const [isFocus,setIsFocus]=useState(false);
-
     // reset form start: 
     const aadharno1 = useRef("");
     const panno1 = useRef("");
@@ -63,7 +62,7 @@ function Iddetails() {
     const birth1 = useRef("");
     const visaYes = useRef(false);
     const visaNo = useRef(false);
-    const addressRef0 = useRef("");
+    // const addressRef0 = useRef("");
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -74,7 +73,7 @@ function Iddetails() {
         birth1.current.value = "";
         visaYes.current.checked = false;
         visaNo.current.checked = false;
-        addressRef0.current.value = "";
+        // addressRef0.current.value = "";
         formik.resetForm();
     }
 
@@ -153,7 +152,7 @@ function Iddetails() {
                                             <label htmlFor="passno" className='text-muted'>PASSPORT NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="passexp"
@@ -169,7 +168,7 @@ function Iddetails() {
                                             <label htmlFor="passexp" className='text-muted'>PASSPORT EXP DATE*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="birth"
@@ -185,7 +184,7 @@ function Iddetails() {
                                             <label htmlFor="birth" className='text-muted' style={{ fontSize: '13px' }}>BIRTH CERTIFICATE NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <label className='text-muted' htmlFor="battingpads">DO YOU HAVE VISA</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
@@ -211,27 +210,10 @@ function Iddetails() {
                                             </div>
                                         ))}
                                     </Col>
-
-                                    <Col xs={12} lg={3} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="address"
-                                                type="text"
-                                                placeholder="address"
-                                                name="address"
-                                                ref={addressRef0}
-
-                                                value={formik.values.address} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                            />
-                                            {
-                                                formik.touched.address && formik.errors.address ? <span className='span'>{formik.errors.address}</span> : null
-                                            }
-                                            <label htmlFor="address" className='text-muted'>ADDRESS*</label>
-                                        </Form.Floating>
+                                    <Col xs={12}>
+                                        <PlayerDynamicTextFields />
                                     </Col>
-                                   
-                                        <AddressDynamicFocus />
-                                    
+
                                     <Col xs={12} lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button variant="success" type="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>

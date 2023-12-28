@@ -18,9 +18,9 @@ function Accessories() {
             <Col md={2} xs={6}>
               <FilterAccessories />
             </Col>
-            <Col md={2} xs={6}>
+            {/* <Col md={2} xs={6}>
               <YearAccessories />
-            </Col>
+            </Col> */}
             <Col md={7}></Col>
           </Row>
         </Container>
@@ -43,7 +43,7 @@ function Accessories() {
             <th>WK Gloves</th>
             <th>WK Pad</th>
             <th>Shoulder Bag</th>
-            <th>Year</th>
+            {/* <th>Year</th> */}
           </tr>
         </thead>
         <tbody className='table-light'>
@@ -62,7 +62,7 @@ function Accessories() {
             <th>12</th>
             <th>13</th>
             <th>14</th>
-            <th>15</th>
+            {/* <th>15</th> */}
           </tr>
 
         </tbody>

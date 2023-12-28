@@ -9,7 +9,6 @@ import PlayersAuctionList from './components/PlayersAuctionList';
 import Fixtures from './components/Fixtures';
 import ThingsTodo from './components/ThingsTodo';
 import Accreditationcard from './components/Accreditationcard';
-import History from './components/History';
 import PlayerRegistration from './components/offcanvas-body/Registration/PlayerRegistration';
 import App1 from './components/App1';
 import AccreditionForm from './components/AccreditionForm';
@@ -38,10 +37,7 @@ function App() {
           <Route path='/accreditionform' exact element={<AccreditionForm />} />
           <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
 
-          {/* <Route path='/history' exact element={<History />} /> */}
-
-          {/* <Route path='/playerpersonalinformation' exact element={<PersonalInformation />} />
-          <Route path='/playerproficiencyinformation' exact element={<ProficiencyForm />} /> */}
+          
           
 
         </Routes>

@@ -2,10 +2,11 @@ import React, { useRef, useState } from 'react';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 
-function ImageUpload() {
+function ImageUpload({showImage}) {
     const inputRef = useRef(null);
     const [image, setImage] = useState("");
 
+  
 
     function handleImageClick() {
         inputRef.current.click();
@@ -33,7 +34,7 @@ function ImageUpload() {
                     (<Image style={{ width: '150px', height: '110px', border: '1px solid #DEE2E6', marginBottom: '9px',cursor:'pointer' }} src={require('../../../assets/imageupload.png')}></Image>)
             }
 
-            <input type="file" ref={inputRef} onChange={(e) => handleImageChange(e)} style={{ display: 'none' }} /><br />
+            <input type="file"  ref={inputRef} onChange={(e) => handleImageChange(e)} style={{ display: 'none' }} /><br />
             <Button variant="success" className='uploadImageBtn' style={{whiteSpace:'nowrap'}}>Select to Upload</Button>
         </div>
         </>

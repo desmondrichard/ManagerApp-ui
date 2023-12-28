@@ -16,8 +16,8 @@ function Menubar() {
                     <Accordion.Item eventKey="0">
                         <Accordion.Header> <ListGroup.Item action variant="secondary" className='py-3 a' ><i className="bi bi-journal-text"></i> REGISTRATION</ListGroup.Item></Accordion.Header>
                         <Accordion.Body>
-                            <NavLink className='nav-bar-link text' to='/playerregister'><ListGroup.Item action variant="secondary" className='py-3 a' ><i className="bi bi-caret-right-fill"></i> PLAYER REGISTRATION</ListGroup.Item></NavLink>
-                            <NavLink className='nav-bar-link text' to='/staffregister'><ListGroup.Item action variant="secondary" className='py-3 a'style={{whiteSpace:'nowrap'}}><i className="bi bi-caret-right-fill"></i> SUPPORT STAFF REGISTRATION</ListGroup.Item></NavLink>
+                            <NavLink className='nav-bar-link text' to='/playerregister'><ListGroup.Item action variant="secondary" className='py-3 a' style={{whiteSpace:'nowrap'}}><i className="bi bi-caret-right-fill"></i> PLAYER REGISTRATION</ListGroup.Item></NavLink>
+                            <NavLink className='nav-bar-link text' to='/staffregister'><ListGroup.Item action variant="secondary" className='py-3 a'style={{whiteSpace:'nowrap'}}><i className="bi bi-caret-right-fill"></i> STAFF REGISTRATION</ListGroup.Item></NavLink>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

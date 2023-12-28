@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -11,6 +11,9 @@ import './StaffPersonalInformation.css';
 import Phone from '../../../Phone';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
+import ProgressBarWithLabel from '../../ProgressBarWithLabel';
+import { useNavigate } from "react-router-dom";
+
 // validation:
 const validate = values => {
     const errors = {};
@@ -87,25 +90,35 @@ const validate = values => {
 
 function StaffPersonalInformation() {
     const [mobileValue, setMobileValue] = useState(false);
+    const [showImage,setShowImage]=useState(false);
+    // //
+    // const navigate = useNavigate();
+    // const [accordionOpen, setAccordionOpen] = useState(false);
+    // //
+    // function handleSubmit() {
+    //     setAccordionOpen(true);
+    //     navigate("/dashboard");
+    // }
 
-     // reset form start: 
-     const firstName = useRef("");
-     const middleName = useRef("");
-     const lastName = useRef("");
-     const initials = useRef("");
-     const displayName = useRef("");
-     const fathersName = useRef("");
-     const mothersName = useRef("");
-     const dob = useRef("");
-     const bloodgrp = useRef("");
-     const email = useRef("");
-     const genderMale = useRef(false);
-     const genderFemale = useRef(false);
-    const desig=useRef("");
-    const spec=useRef("");
+    // reset form start: 
+    const firstName = useRef("");
+    const middleName = useRef("");
+    const lastName = useRef("");
+    const initials = useRef("");
+    const displayName = useRef("");
+    const fathersName = useRef("");
+    const mothersName = useRef("");
+    const dob = useRef("");
+    const bloodgrp = useRef("");
+    const email = useRef("");
+    const genderMale = useRef(false);
+    const genderFemale = useRef(false);
+    const desig = useRef("");
+    const spec = useRef("");
+    
 
 
-     function handleReset() {
+    function handleReset() {
         firstName.current.value = "";
         middleName.current.value = "";
         lastName.current.value = "";
@@ -119,8 +132,9 @@ function StaffPersonalInformation() {
         email.current.value = "";
         genderMale.current.checked = false;
         genderFemale.current.checked = false;
-        desig.current.value="none";
-        spec.current.value="none";
+        desig.current.value = "none";
+        spec.current.value = "none";
+       
         // console.log("Ref",genderMale);
         formik.resetForm();
     }
@@ -150,7 +164,8 @@ function StaffPersonalInformation() {
         <div>
             <Accordion defaultActiveKey="0" >
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>PERSONAL INFORMATION</span></Accordion.Header>
+                    <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>PERSONAL INFORMATION </span><ProgressBarWithLabel /> </Accordion.Header>
+
                     <Accordion.Body>
                         <Container>
                             <Form onSubmit={formik.handleSubmit}>
@@ -208,7 +223,7 @@ function StaffPersonalInformation() {
                                             controlId="staffDesignation"
                                             label="Designation*"
                                             name="staffDesignation"
-                                            
+
                                             value={formik.values.staffDesignation} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
 
@@ -386,7 +401,7 @@ function StaffPersonalInformation() {
                                         ))}
                                     </Col>
                                     <Col xs={5} lg={2} className='col'>
-                                        <ImageUpload />
+                                        <ImageUpload isClearImage={showImage} />
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
@@ -396,6 +411,7 @@ function StaffPersonalInformation() {
                             </Form>
                         </Container>
                     </Accordion.Body>
+
                 </Accordion.Item>
             </Accordion>
         </div>

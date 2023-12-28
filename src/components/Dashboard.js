@@ -78,7 +78,7 @@ function Dashboard() {
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <div className='image'>
                                             <ImageSponsor className='img' style={{ height: '105px', width: '200px' }} src={require('../assets/sponsoricon.png')}></ImageSponsor>
-                                            <div className='contentPartners'>
+                                            <div className='contentPartners1'>
                                                 <Card.Title className='a'>PARTNERS</Card.Title>
                                                 <Card.Text className='b'>
                                                   5

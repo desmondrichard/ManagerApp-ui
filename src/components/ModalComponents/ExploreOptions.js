@@ -11,7 +11,7 @@ function ExploreOptions() {
     };
     return (
         <div>
-            <FormControl variant="filled" sx={{ minWidth: '21ch'}}>
+            <FormControl variant="filled" sx={{ minWidth: '24ch'}}>
                 <InputLabel id="demo-simple-select-filled-label">Download</InputLabel>
                 <Select
                     labelId="demo-simple-select-filled-label"

@@ -2,7 +2,8 @@ LINK:
 http://192.168.1.146:8089/
 
 ODMS:
-http://52.172.96.40/LSdmsweb/#/ 
+http://52.172.96.40/LSdmsweb/#/
+http://192.168.1.146:8080/#/admin-dashboard 
 
 CMSODMS 
 
@@ -78,3 +79,9 @@ export default function App() {
     </div>
   );
 }
+
+
+
+progressbar:
+  this.filledpercent = (filledfields.length / totalfields.length) * 100;
+  this.completedpercent = Math.floor(Number(this.filledpercent));

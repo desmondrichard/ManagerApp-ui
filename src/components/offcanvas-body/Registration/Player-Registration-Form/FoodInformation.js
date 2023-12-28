@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FoodInformation.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
@@ -9,6 +9,28 @@ import Container from 'react-bootstrap/Container';
 import { useRef } from 'react';
 
 function FoodInformation() {
+    //Dynamic Radio btns:
+    const [isFocused, setIsFocused] = useState(false);
+    const [allergyFocused, setAllergyIsFocused] = useState(true);
+
+    const handleFocusVeg = () => {
+        setIsFocused(false);
+    };
+
+    const handleFocusNonVeg = () => {
+        setIsFocused(true);
+
+    };
+
+    const allergyYes1 = () => {
+        setAllergyIsFocused(true);
+    }
+
+    const allergyNo1 = () => {
+        setAllergyIsFocused(false);
+    }
+
+
     // reset form start: 
     const vegYes = useRef(false);
     const vegNo = useRef(false);
@@ -20,7 +42,7 @@ function FoodInformation() {
     const meatNo = useRef(false);
     const allergyYes = useRef(false);
     const allergyNo = useRef(false);
-    const allergy1=useRef("");
+    const allergy1 = useRef("");
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -34,10 +56,10 @@ function FoodInformation() {
         meatNo.current.checked = false;
         allergyYes.current.checked = false;
         allergyNo.current.checked = false;
-        allergy1.current.value="";
+        allergy1.current.value = "";
     }
 
-    
+
     // reset form end: 
     return (
         <div>
@@ -48,6 +70,49 @@ function FoodInformation() {
                         <Container >
                             <Form style={{ paddingRight: '60px' }} >
                                 <Row>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <label className='text-muted me-2' htmlFor="foodtype">Allergy if any</label>
+                                        {['radio'].map((type) => (
+                                            <div key={`inline-${type}`} >
+                                                <Form.Check style={{
+                                                    padding: '20px'
+                                                }}
+                                                    inline
+                                                    label="Yes"
+                                                    name="allergy"
+                                                    type={type}
+                                                    id={`inline-${type}-yes`}
+                                                    ref={allergyYes}
+                                                />
+                                                <Form.Check
+                                                    inline
+                                                    label="No"
+                                                    name="allergy"
+                                                    type={type}
+                                                    id={`inline-${type}-no`}
+                                                    defaultChecked={true}
+                                                    ref={allergyNo}
+                                                />
+                                                {
+                                                    allergyFocused && (
+                                                        <div>
+                                                            <Col xs={12} lg={4} className='col'>
+                                                                <Form.Floating className="mb-2">
+                                                                    <Form.Control
+                                                                        id="allergy"
+                                                                        type="text"
+                                                                        placeholder="allergy"
+                                                                        ref={allergy1}
+                                                                    />
+                                                                    <label htmlFor="allergy" className='text-muted'>Allergy</label>
+                                                                </Form.Floating>
+                                                            </Col>
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        ))}
+                                    </Col>
                                     <Col xs={12} lg={4} className='col'>
                                         <label className='text-muted me-2' htmlFor="foodtype">Food Type</label>
                                         <span style={{ whiteSpace: 'nowrap' }}>
@@ -155,43 +220,8 @@ function FoodInformation() {
                                             </div>
                                         ))}
                                     </Col>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <label className='text-muted me-2' htmlFor="foodtype">Allergy if any</label>
-                                        {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} >
-                                                <Form.Check style={{
-                                                    padding: '20px'
-                                                }}
-                                                    inline
-                                                    label="Yes"
-                                                    name="allergy"
-                                                    type={type}
-                                                    id={`inline-${type}-yes`}
-                                                    ref={allergyYes}
-                                                />
-                                                <Form.Check
-                                                    inline
-                                                    label="No"
-                                                    name="allergy"
-                                                    type={type}
-                                                    id={`inline-${type}-no`}
-                                                    defaultChecked={true}
-                                                    ref={allergyNo}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Col>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="allergy"
-                                                type="text"
-                                                placeholder="allergy"
-                                                ref={allergy1}
-                                            />
-                                            <label htmlFor="allergy" className='text-muted'>Allergy</label>
-                                        </Form.Floating>
-                                    </Col>
+
+
                                     <Col lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>

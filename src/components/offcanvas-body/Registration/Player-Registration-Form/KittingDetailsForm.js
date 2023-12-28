@@ -73,7 +73,7 @@ function KittingDetailsForm() {
      const familyjerseyno1=useRef("");
      const bowlerA=useRef(false);
      const bowlerB=useRef(false);
- 
+     const qty=useRef("");
  
      // for npm custom component dont use useRef instead use useState i.e for phone component
      function handleReset() {
@@ -89,6 +89,7 @@ function KittingDetailsForm() {
         familyjerseyno1.current.value = "";
         bowlerA.current.checked=false;
         bowlerB.current.checked=false;
+        qty.current.value="";
          formik.resetForm();
      }
      // reset form end: 
@@ -121,7 +122,7 @@ function KittingDetailsForm() {
                         <Container >
                             <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="JerseyName"
@@ -137,7 +138,7 @@ function KittingDetailsForm() {
                                             <label htmlFor="JerseyName" className='text-muted'>Name on Jersey*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="JerseyNo"
@@ -154,7 +155,7 @@ function KittingDetailsForm() {
                                             <label htmlFor="JerseyNo" className='text-muted'>Jersey No*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="jerseysize"
                                             label="Jersey Size*"
@@ -177,7 +178,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="trowsersize"
                                             label="Trowser Size*"
@@ -200,7 +201,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="trowserlength"
@@ -217,7 +218,7 @@ function KittingDetailsForm() {
                                             <label htmlFor="trowserlength" className='text-muted'>Trowser Length</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="shortssize"
                                             label="Shorts Size*"
@@ -239,7 +240,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="tracksuit"
                                             label="Track suit*"
@@ -261,7 +262,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="circkethelmet"
                                             label="Cricket Helmet*"
@@ -281,7 +282,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <FloatingLabel className='mb-2'
                                             controlId="travelpolo"
                                             label="Travel Polo"
@@ -303,7 +304,7 @@ function KittingDetailsForm() {
                                             }
                                         </FloatingLabel>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="familyjerseyno"
@@ -321,7 +322,7 @@ function KittingDetailsForm() {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={12} lg={6} className='col'>
+                                    <Col xs={12} lg={{span:6}} className='col ps-5'>
                                         <label className='text-muted' htmlFor="battingpads">BOWLER TYPE</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
@@ -350,9 +351,10 @@ function KittingDetailsForm() {
                                     <Col xs={12} lg={6} className='col' >
                                         <div>
                                             <Form.Label htmlFor="qty" style={{ color: '#7C7F81' }}>QUANTITY</Form.Label>
-                                            <Form.Control size="sm"
+                                            <Form.Control size="md"
                                                 type="number"
                                                 id="qty"
+                                                ref={qty}
                                             />
                                         </div>
                                     </Col>

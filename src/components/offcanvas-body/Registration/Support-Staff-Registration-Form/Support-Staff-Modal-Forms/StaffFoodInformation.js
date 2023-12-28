@@ -135,7 +135,6 @@ function StaffFoodInformation() {
                                                     defaultChecked={true}
                                                 />
                                                 <Form.Check
-                                                    style={{ marginRight: '5px' }}
                                                     inline
                                                     label="Non-Veg"
                                                     name="foodtype"
@@ -147,8 +146,8 @@ function StaffFoodInformation() {
                                                 {isFocused ? (
                                                     <div>
                                                         <Row>
-                                                            <Col xs={12} lg={3} className='col'>
-                                                                <label className='text-muted me-2' htmlFor="foodtype">Sea Food</label>
+                                                            <Col xs={12} lg={3} className='col' >
+                                                                <label className='text-muted' htmlFor="foodtype">Sea Food</label>
                                                                 {['radio'].map((type) => (
                                                                     <div key={`inline-${type}`} >
                                                                         <Form.Check style={{
@@ -174,7 +173,7 @@ function StaffFoodInformation() {
                                                                 ))}
                                                             </Col>
                                                             <Col xs={12} lg={3} className='col'>
-                                                                <label className='text-muted me-2' htmlFor="foodtype">Red Meat</label>
+                                                                <label className='text-muted' htmlFor="foodtype">Red Meat</label>
                                                                 {['radio'].map((type) => (
                                                                     <div key={`inline-${type}`} >
                                                                         <Form.Check style={{

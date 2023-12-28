@@ -33,7 +33,7 @@ const validate = values => {
     else if (!/^[a-zA-Z]{3,10}$/.test(values.lName)) {
         errors.lName = "Last Name should be between 3 to 10 characters long or only letters allowed";
     }
-    
+
     if (!values.bloodGroup) {
         errors.bloodGroup = "*Required";
     }
@@ -84,6 +84,7 @@ const validate = values => {
 
 
 function PersonalInformation() {
+    
     const navigate = useNavigate();
     // const [activeKey, setActiveKey] = useState(0);
     const [mobileValue, setMobileValue] = useState(false);
@@ -266,12 +267,14 @@ function PersonalInformation() {
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
+                                        {/*  */}
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="dob1"
                                                 type="date"
-                                                placeholder="dob"
-                                                ref={dob}
+                                                ref={dob}  
+                                                placeholder='DD-MM-YYYY'
+                                                min="1990-01-01" max="2030-12-31"
                                                 name="dob"
                                                 value={formik.values.dob} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
@@ -288,7 +291,7 @@ function PersonalInformation() {
                                             name="bloodGroup"
                                             value={formik.values.bloodGroup} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
-                        
+
                                             <Form.Select aria-label="bloodGroup" className='' ref={bloodgrp}>
                                                 <option value="none">Select Type</option>
                                                 <option value="O+">O+</option>
@@ -363,7 +366,7 @@ function PersonalInformation() {
                 </Accordion.Item>
             </Accordion>
 
-           
+
         </div>
     )
 }
