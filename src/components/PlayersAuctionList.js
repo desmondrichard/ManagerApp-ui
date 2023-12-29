@@ -30,7 +30,7 @@ function PlayersAuctionList() {
       <Table striped hover responsive className='tableHead my-3 table-dark'
       >
         <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+          <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
             <th >ID</th>
             <th>Player Name</th>
             <th>DOB</th>

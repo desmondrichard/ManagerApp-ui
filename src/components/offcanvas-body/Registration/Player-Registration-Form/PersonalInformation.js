@@ -78,7 +78,6 @@ const validate = values => {
         errors.email = "*Invalid email address";
     }
 
-
     return errors;
 }
 
@@ -88,6 +87,7 @@ function PersonalInformation() {
     const navigate = useNavigate();
     // const [activeKey, setActiveKey] = useState(0);
     const [mobileValue, setMobileValue] = useState(false);
+    const [imageValue,setImageValue]=useState(false);   
     // const [imageValue,setImageValue]=useState(false);
 
     // reset form start: 
@@ -120,6 +120,7 @@ function PersonalInformation() {
         email.current.value = "";
         genderMale.current.checked = false;
         genderFemale.current.checked = false;
+        setImageValue(true);
         // console.log("Ref",genderMale);
         formik.resetForm();
     }
@@ -353,7 +354,7 @@ function PersonalInformation() {
                                         ))}
                                     </Col>
                                     <Col xs={5} lg={2} className='col'>
-                                        <ImageUpload />
+                                        <ImageUpload isClearImage={imageValue} />
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>

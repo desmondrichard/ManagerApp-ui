@@ -10,19 +10,14 @@
     padding-top:20px !important;
 }
 
-.form-control:focus{
-    box-shadow:none !important;
-    border:2px solid black !important;
-  }
+.css-t3ipsp-control{
+  border-color:black !important;
+  box-shadow:none !important;
+}
+ 
+.css-t3ipsp-control:hover{
+  border-color:black !important;
+  border-width: 2px;
+}
 
-  select:focus{
-    border:2px solid black !important;
-    box-shadow: none !important;
-  }
-
-  /* .dynamicSelect:focus{
-    outline:2px solid black !important;
-    border:1px solid black !important;
-    
-  } */
-
+ 

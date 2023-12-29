@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -53,7 +53,8 @@ const validate = values => {
     return errors;
 }
 function Iddetails() {
-    // const [isFocus,setIsFocus]=useState(false);
+    const [clearValue, setClearValue] = useState(false);
+
     // reset form start: 
     const aadharno1 = useRef("");
     const panno1 = useRef("");
@@ -73,6 +74,7 @@ function Iddetails() {
         birth1.current.value = "";
         visaYes.current.checked = false;
         visaNo.current.checked = false;
+        setClearValue(true);
         // addressRef0.current.value = "";
         formik.resetForm();
     }
@@ -211,7 +213,7 @@ function Iddetails() {
                                         ))}
                                     </Col>
                                     <Col xs={12}>
-                                        <PlayerDynamicTextFields />
+                                        <PlayerDynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue}/>
                                     </Col>
 
                                     <Col xs={12} lg={12} className='my-4 col'>

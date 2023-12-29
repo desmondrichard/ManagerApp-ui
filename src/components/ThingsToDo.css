@@ -6,17 +6,17 @@
 }
 
 /* Horizontal Scroll bar for tab:start */
-.nav-justified .nav-item .nav-link{
-    width:215px !important;
+.nav-justified .nav-item .nav-link {
+    width: 215px !important;
 }
 
 
 .tab {
     overflow-x: auto;
     flex-wrap: nowrap;
- }
+}
 
- /* Horizontal Scroll bar for tab:end */
+/* Horizontal Scroll bar for tab:end */
 .nav-pills .nav-item:not(:nth-last-child(1)) .nav-link {
     border-right: 1px solid white;
 }
@@ -29,11 +29,12 @@
 }
 
 .font {
-    font-size: 15px;
+    font-size: 14px !important;
 }
 
-@media only screen and (min-width: 768px){
-    .row11parent{
+@media only screen and (min-width: 768px) {
+    .row11parent {
         padding-left: 0px !important;
     }
-  }
+}
+

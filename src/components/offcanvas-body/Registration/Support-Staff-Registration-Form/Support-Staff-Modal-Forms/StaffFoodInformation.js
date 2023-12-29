@@ -34,10 +34,8 @@ function StaffFoodInformation() {
     const vegNo = useRef(false);
     const eggYes = useRef(false);
     const eggNo = useRef(false);
-    const seaYes = useRef(false);
-    const seaNo = useRef(false);
-    const meatYes = useRef(false);
-    const meatNo = useRef(false);
+    // const meatYes = useRef(false);
+    // const meatNo = useRef(false);
     const allergyYes = useRef(false);
     const allergyNo = useRef(false);
     const allergy1 = useRef("");
@@ -48,10 +46,8 @@ function StaffFoodInformation() {
         vegNo.current.checked = false;
         eggYes.current.checked = false;
         eggNo.current.checked = false;
-        seaYes.current.checked = false;
-        seaNo.current.checked = false;
-        meatYes.current.checked = false;
-        meatNo.current.checked = false;
+        // meatYes.current.checked = false;
+        // meatNo.current.checked = false;
         allergyYes.current.checked = false;
         allergyNo.current.checked = false;
         allergy1.current.value = "";
@@ -158,7 +154,7 @@ function StaffFoodInformation() {
                                                                             name="seafood"
                                                                             type={type}
                                                                             id={`inline-${type}-yes`}
-                                                                            ref={seaYes}
+                                                                            ref={eggYes}
                                                                         />
                                                                         <Form.Check
                                                                             inline
@@ -167,7 +163,7 @@ function StaffFoodInformation() {
                                                                             type={type}
                                                                             id={`inline-${type}-no`}
                                                                             defaultChecked={true}
-                                                                            ref={seaNo}
+                                                                            ref={eggNo}
                                                                         />
                                                                     </div>
                                                                 ))}
@@ -185,7 +181,7 @@ function StaffFoodInformation() {
                                                                             type={type}
                                                                             id={`inline-${type}-yes`}
                                                                             defaultChecked={true}
-                                                                            ref={meatYes}
+                                                                            ref={eggYes}
                                                                         />
                                                                         <Form.Check
                                                                             inline
@@ -193,7 +189,7 @@ function StaffFoodInformation() {
                                                                             name="redmeat"
                                                                             type={type}
                                                                             id={`inline-${type}-no`}
-                                                                            ref={meatNo}
+                                                                            ref={eggNo}
                                                                         />
                                                                     </div>
                                                                 ))}
@@ -227,6 +223,7 @@ function StaffFoodInformation() {
                                                                         defaultChecked={true}
                                                                         ref={eggNo}
                                                                     />
+                                                             
                                                                 </div>
                                                             ))}
                                                         </Col>
@@ -236,33 +233,7 @@ function StaffFoodInformation() {
                                             </div>
                                         ))}
                                     </Col>
-                                    {/* <Col xs={12} lg={4} className='col'>
-                                        <label className='text-muted me-2' htmlFor="foodtype">Eggiterian</label>
-                                        {['radio'].map((type) => (
-                                            <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
-                                                <Form.Check style={{
-                                                    padding: '20px'
-                                                }}
-                                                    inline
-                                                    label="Yes"
-                                                    name="eggit"
-                                                    type={type}
-                                                    id={`inline-${type}-yes`}
-                                                    ref={eggYes}
 
-                                                />
-                                                <Form.Check style={{ marginLeft: '10px' }}
-                                                    inline
-                                                    label="No"
-                                                    name="eggit"
-                                                    type={type}
-                                                    id={`inline-${type}-no`}
-                                                    defaultChecked={true}
-                                                    ref={eggNo}
-                                                />
-                                            </div>
-                                        ))}
-                                    </Col> */}
 
                                     <Col lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>

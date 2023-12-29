@@ -14,12 +14,11 @@ function Fixtures() {
       <Table striped hover responsive className='tableHead my-3 table-dark'
       >
         <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+          <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
             <th >Date</th>
             <th>GroundName</th>
             <th>Team A</th>
             <th>Team B</th>
-            <th>Year</th>
           </tr>
         </thead>
         <tbody className='table-light'>
@@ -28,7 +27,7 @@ function Fixtures() {
             <th>2</th>
             <th>3</th>
             <th>4</th>
-            <th>5</th>
+            
           </tr>
         </tbody>
       </Table>

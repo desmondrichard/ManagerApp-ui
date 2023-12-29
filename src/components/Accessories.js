@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
-import YearAccessories from './YearAccessories';
 import FilterAccessories from './FilterAccessories';
 function Accessories() {
   return (
@@ -18,9 +17,7 @@ function Accessories() {
             <Col md={2} xs={6}>
               <FilterAccessories />
             </Col>
-            {/* <Col md={2} xs={6}>
-              <YearAccessories />
-            </Col> */}
+
             <Col md={7}></Col>
           </Row>
         </Container>
@@ -28,7 +25,7 @@ function Accessories() {
       <Table striped hover responsive className='tableHead my-3 table-dark'
       >
         <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+          <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
             <th >ID</th>
             <th>Player Name</th>
             <th>Jersey No</th>
@@ -43,7 +40,7 @@ function Accessories() {
             <th>WK Gloves</th>
             <th>WK Pad</th>
             <th>Shoulder Bag</th>
-            {/* <th>Year</th> */}
+
           </tr>
         </thead>
         <tbody className='table-light'>
@@ -62,7 +59,7 @@ function Accessories() {
             <th>12</th>
             <th>13</th>
             <th>14</th>
-            {/* <th>15</th> */}
+
           </tr>
 
         </tbody>

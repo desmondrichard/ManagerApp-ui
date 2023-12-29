@@ -19,10 +19,10 @@ function ThingsTodo() {
         <div className='playersList'>THINGS TODO LIST</div>
 
         <>
-          <NavLink to='/thingstodoform' className='navLinks'><Button variant="primary" className='mt-3 addPlayers'>
+          {/* <NavLink to='/thingstodoform' className='navLinks'><Button variant="primary" className='mt-3 addPlayers'>
             ADD THINGS
           </Button>
-          </NavLink>
+          </NavLink> */}
         </>
 
         <Container fluid className='py-2 mt-4 bg-light'>
@@ -43,14 +43,14 @@ function ThingsTodo() {
                 <Table striped hover responsive className='tableHead table-dark'
                 >
                   <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap'}}>
                       <th className='font'>ID</th>
                       <th className='font'>Team Logo</th>
                       <th className='font'>Team Flage</th>
                       <th className='font'>Side Flages</th>
                       <th className='font'>Standees</th>
                       <th className='font'>Bus Branding</th>
-                      <th className='font'>Side Flages</th>
+                      <th className='font'>Bus Booking</th>
                       <th className='font'>Action</th>
 
                     </tr>

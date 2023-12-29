@@ -1,9 +1,10 @@
 LINK:     
 http://192.168.1.146:8089/
+http://192.168.1.146:8080/#/admin-dashboard 
 
 ODMS:
 http://52.172.96.40/LSdmsweb/#/
-http://192.168.1.146:8080/#/admin-dashboard 
+
 
 CMSODMS 
 
@@ -14,6 +15,9 @@ CMSODMS
 ------------------------------------------------------
 country codes react:
 https://www.npmjs.com/package/react-phone-number-input
+
+country-state-city 
+https://codesandbox.io/p/sandbox/countrydropdown-l8d4en?file=%2Fsrc%2FApp.js
 
 
 country-state-city app:

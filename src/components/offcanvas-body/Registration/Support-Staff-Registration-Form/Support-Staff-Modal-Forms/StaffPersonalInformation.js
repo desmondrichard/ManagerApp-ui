@@ -84,14 +84,14 @@ const validate = values => {
         errors.staffEmail = "*Invalid email address";
     }
 
-
     return errors;
 }
 
 function StaffPersonalInformation() {
     const [mobileValue, setMobileValue] = useState(false);
-    const [showImage,setShowImage]=useState(false);
-    // //
+    const [imageValue,setImageValue]=useState(false);
+    
+    // 
     // const navigate = useNavigate();
     // const [accordionOpen, setAccordionOpen] = useState(false);
     // //
@@ -134,7 +134,7 @@ function StaffPersonalInformation() {
         genderFemale.current.checked = false;
         desig.current.value = "none";
         spec.current.value = "none";
-       
+        setImageValue(true);
         // console.log("Ref",genderMale);
         formik.resetForm();
     }
@@ -401,7 +401,7 @@ function StaffPersonalInformation() {
                                         ))}
                                     </Col>
                                     <Col xs={5} lg={2} className='col'>
-                                        <ImageUpload isClearImage={showImage} />
+                                        <ImageUpload isClearImage={imageValue}/>
                                     </Col>
                                     <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                         <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>

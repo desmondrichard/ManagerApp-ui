@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import './DynamicTextFields.css';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -6,10 +6,18 @@ import { Country, State, City } from 'country-state-city';
 import { useEffect } from "react";
 import Select from "react-select";
 import Row from 'react-bootstrap/Row';
-function DynamicTextFields() {
+function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, isClearAddress3 }) {
+    //reset address:
+    const [value0, setValue0] = useState();
+    const [value1, setValue1] = useState();
+    const [value2, setValue2] = useState();
+    const [value3, setValue3] = useState();
+
+     //reset country:
+    
+
     const [isFocused, setIsFocused] = useState(false); //initially other fields wont be displayed
-    const inputRef = useRef(null);
-    // 
+
     // country-state-city:
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [selectedState, setSelectedState] = useState(null);
@@ -40,7 +48,10 @@ function DynamicTextFields() {
                             type="text"
                             placeholder="address"
                             name="staffAddress"
-                            ref={inputRef}
+                            value={
+                                isClearAddress0 ? "" : value0
+                            }
+                            onChange={e => setValue0(e.target.value)}
                             onFocus={handleFocus}
                         // onBlur={handleBlur}
                         />
@@ -55,6 +66,11 @@ function DynamicTextFields() {
                                     id="address1"
                                     type="text"
                                     placeholder="address1"
+                                    name="address1"
+                                    value={
+                                        isClearAddress1 ? "" : value1
+                                    }
+                                    onChange={e => setValue1(e.target.value)}
 
                                 />
                                 <label htmlFor="address1" className='text-muted'>ADDRESS LINE 1</label>
@@ -66,6 +82,11 @@ function DynamicTextFields() {
                                     id="address2"
                                     type="text"
                                     placeholder="address2"
+                                    name="address2"
+                                    value={
+                                        isClearAddress2 ? "" : value2
+                                    }
+                                    onChange={e => setValue2(e.target.value)}
                                 />
                                 <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
                             </Form.Floating>
@@ -76,7 +97,11 @@ function DynamicTextFields() {
                                     id="address3"
                                     type="text"
                                     placeholder="address3"
-
+                                    name="address3"
+                                    value={
+                                        isClearAddress3 ? "" : value3
+                                    }
+                                    onChange={e => setValue3(e.target.value)}
                                 />
                                 <label htmlFor="address3" className='text-muted'>ADDRESS LINE 3</label>
                             </Form.Floating>
@@ -85,7 +110,8 @@ function DynamicTextFields() {
                         {/* country-state-city: */}
                         <Col xs={12} lg={3} className='col'>
                             <label htmlFor="country">Country:</label>
-                            <Select className="dynamicSelect" style={{ zIndex: 100, outline: 'none', border: 'none' }}
+                            <Select
+                                className="dynamicSelect" style={{ zIndex: 100, outline: 'none', border: 'none' }}
                                 options={Country.getAllCountries()}
                                 getOptionLabel={(options) => {
                                     return options["name"];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
@@ -53,6 +53,13 @@ const validate = values => {
     return errors;
 }
 function StaffIDCardDetails() {
+    //reset address:
+    const [clearValue, setClearValue] = useState(false);
+
+    //reset country:
+    const [selectCountry, setSelectCountry] = useState(false);
+    const [selectState, setSelectState] = useState(false);
+    const [selectCity, setSelectCity] = useState(false);
 
     // reset form start: 
     const aadharno1 = useRef("");
@@ -66,7 +73,6 @@ function StaffIDCardDetails() {
     const visaNumber = useRef("");
     // const addressRef0 = useRef("");
 
-
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
         aadharno1.current.value = "";
@@ -78,7 +84,13 @@ function StaffIDCardDetails() {
         visaNo.current.checked = false;
         visaNumber.current.value = "";
         visaValid.current.value = "";
+        //reset address:
+        setClearValue(true);
         // addressRef0.current.value = "";
+        // reset country:
+        setSelectCountry(true);
+        setSelectState(true);
+        setSelectCity(true);
         formik.resetForm();
     }
 
@@ -243,7 +255,7 @@ function StaffIDCardDetails() {
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12}>
-                                        <DynamicTextFields />
+                                        <DynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue} isClearAddress3={clearValue} isClearCountry={selectCountry} isClearState={selectState} isClearCity={selectCity} />
                                     </Col>
 
                                     <Col xs={12} lg={12} className='my-4 col'>
