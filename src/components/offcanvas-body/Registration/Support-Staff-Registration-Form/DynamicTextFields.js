@@ -55,7 +55,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
                             onFocus={handleFocus}
                         // onBlur={handleBlur}
                         />
-                        <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
+                        <label htmlFor="staffAddress" className='text-muted'>ADDRESS</label>
                     </Form.Floating>
                 </Col>
                 {isFocused && (

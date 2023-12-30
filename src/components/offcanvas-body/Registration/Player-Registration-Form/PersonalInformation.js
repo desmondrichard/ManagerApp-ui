@@ -145,6 +145,9 @@ function PersonalInformation() {
             // navigate("/playerproficiencyinformation");
         }
     });
+
+    
+   
     return (
         <div>
             <Accordion defaultActiveKey="0" >

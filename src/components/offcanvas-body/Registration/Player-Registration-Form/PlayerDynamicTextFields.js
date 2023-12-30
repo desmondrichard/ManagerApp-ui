@@ -51,7 +51,7 @@ function PlayerDynamicTextFields({isClearAddress0,isClearAddress1,isClearAddress
                             onChange={e=>{setValue0(e.target.value)}}
                         // onBlur={handleBlur}
                         />
-                        <label htmlFor="staffAddress" className='text-muted'>ADDRESS*</label>
+                        <label htmlFor="staffAddress" className='text-muted'>ADDRESS</label>
                     </Form.Floating>
                 </Col>
                 {isFocused && (

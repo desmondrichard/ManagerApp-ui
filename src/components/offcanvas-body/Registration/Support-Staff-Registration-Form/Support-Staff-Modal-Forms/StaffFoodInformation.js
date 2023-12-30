@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-
+import './StaffFoodInformation.css';
 function StaffFoodInformation() {
     //Dynamic Radio btns:
     const [isFocused, setIsFocused] = useState(false);
@@ -38,7 +38,7 @@ function StaffFoodInformation() {
     // const meatNo = useRef(false);
     const allergyYes = useRef(false);
     const allergyNo = useRef(false);
-    const allergy1 = useRef("");
+    // const allergy1 = useRef("");
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -50,9 +50,8 @@ function StaffFoodInformation() {
         // meatNo.current.checked = false;
         allergyYes.current.checked = false;
         allergyNo.current.checked = false;
-        allergy1.current.value = "";
+        // allergy1.current.value = "";
     }
-
     return (
         <div>
             <Accordion>
@@ -62,59 +61,54 @@ function StaffFoodInformation() {
                         <Container >
                             <Form style={{ paddingRight: '60px' }}>
                                 <Row>
-                                    <div>
-                                        <Col xs={12} lg={12} className='col'>
+                                    <Col md={6} style={{ whiteSpace: 'nowrap' }}>
+                                        <label className='text-muted me-2' htmlFor="foodtype">Allergy if any</label>
+                                        {['radio'].map((type) => (
+                                            <div key={`inline-${type}`} >
+                                                <Form.Check style={{
+                                                    padding: '20px'
+                                                }}
+                                                    inline
+                                                    label="Yes"
+                                                    name="allergy"
+                                                    type={type}
+                                                    id={`inline-${type}-yes`}
+                                                    ref={allergyYes}
+                                                    onFocus={allergyYes1}
+                                                    defaultChecked={true}
+                                                />
+                                                <Form.Check
+                                                    inline
+                                                    label="No"
+                                                    name="allergy"
+                                                    type={type}
+                                                    id={`inline-${type}-no`}
+                                                    ref={allergyNo}
+                                                    onFocus={allergyNo1}
+                                                />
 
-                                            <label className='text-muted me-2' htmlFor="foodtype">Allergy if any</label>
-                                            {['radio'].map((type) => (
-                                                <div key={`inline-${type}`} >
-                                                    <Form.Check style={{
-                                                        padding: '20px'
-                                                    }}
-                                                        inline
-                                                        label="Yes"
-                                                        name="allergy"
-                                                        type={type}
-                                                        id={`inline-${type}-yes`}
-                                                        ref={allergyYes}
-                                                        onFocus={allergyYes1}
-                                                        defaultChecked={true}
-                                                    />
-                                                    <Form.Check
-                                                        inline
-                                                        label="No"
-                                                        name="allergy"
-                                                        type={type}
-                                                        id={`inline-${type}-no`}
-                                                        ref={allergyNo}
-                                                        onFocus={allergyNo1}
-                                                    />
+                                                {
+                                                    allergyFocused && (
+                                                        <div>
+                                                            <Col >
+                                                                <Form.Floating className="mb-2">
+                                                                    <Form.Control
+                                                                        id="allergy"
+                                                                        type="text"
+                                                                        placeholder="allergy"
+                                                                    // ref={allergy1}
+                                                                    />
+                                                                    <label htmlFor="allergy" className='text-muted'>Allergy</label>
 
-                                                    {
-                                                        allergyFocused && (
-                                                            <div>
-                                                                <Col>
-                                                                    <Form.Floating className="mb-2">
-                                                                        <Form.Control
-                                                                            id="allergy"
-                                                                            type="text"
-                                                                            placeholder="allergy"
-                                                                            ref={allergy1}
-                                                                        />
-                                                                        <label htmlFor="allergy" className='text-muted'>Allergy</label>
-
-                                                                    </Form.Floating>
-                                                                </Col>
-                                                            </div>
-                                                        )
-                                                    }
-                                                </div>
-                                            ))}
-
-                                        </Col>
-
-                                    </div>
-                                    <Col xs={12} lg={12} className='col me-2'>
+                                                                </Form.Floating>
+                                                            </Col>
+                                                        </div>
+                                                    )
+                                                }
+                                            </div>
+                                        ))}
+                                    </Col>
+                                    <Col md={{ span: 5, offset: 1 }}>
                                         <label className='text-muted' htmlFor="foodtype">Food Type</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
@@ -142,7 +136,7 @@ function StaffFoodInformation() {
                                                 {isFocused ? (
                                                     <div>
                                                         <Row>
-                                                            <Col xs={12} lg={3} className='col' >
+                                                            <Col xs={12} lg={3} className='col col2' style={{ marginRight: '100px' }}>
                                                                 <label className='text-muted' htmlFor="foodtype">Sea Food</label>
                                                                 {['radio'].map((type) => (
                                                                     <div key={`inline-${type}`} >
@@ -168,7 +162,7 @@ function StaffFoodInformation() {
                                                                     </div>
                                                                 ))}
                                                             </Col>
-                                                            <Col xs={12} lg={3} className='col'>
+                                                            <Col xs={12} lg={3} className='col col2'>
                                                                 <label className='text-muted' htmlFor="foodtype">Red Meat</label>
                                                                 {['radio'].map((type) => (
                                                                     <div key={`inline-${type}`} >
@@ -200,7 +194,7 @@ function StaffFoodInformation() {
                                                 ) : (
                                                     <div>
                                                         <Col xs={12} lg={4} className='col'>
-                                                            <label className='text-muted me-2' htmlFor="foodtype">Eggiterian</label>
+                                                            <label className='text-muted ' htmlFor="foodtype">Eggiterian</label>
                                                             {['radio'].map((type) => (
                                                                 <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
                                                                     <Form.Check style={{
@@ -223,18 +217,14 @@ function StaffFoodInformation() {
                                                                         defaultChecked={true}
                                                                         ref={eggNo}
                                                                     />
-                                                             
                                                                 </div>
                                                             ))}
                                                         </Col>
-
                                                     </div>
                                                 )}
                                             </div>
                                         ))}
                                     </Col>
-
-
                                     <Col lg={12} className='my-4 col'>
                                         <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                         <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
