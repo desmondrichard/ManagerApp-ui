@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SupportStaffRegistration.css';
 import Header from '../../../Header';
 import Button from 'react-bootstrap/Button';
@@ -23,6 +23,18 @@ function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    //Data Binding:
+    const [showData, setShowData] = useState(null);
+    useEffect(() => {
+        fetch('http://192.168.1.192/ManagerApi/GetStaffAllDataAndImages')
+            .then((data) => data.json())
+            .then((data) => {
+                // console.log("data",data);
+                console.log("Success in getting data", data);
+                setShowData(data);  // showData=data;
+            })
+    }, [])
     return (
         <div>
             <Header />
@@ -87,43 +99,54 @@ function SupportStaffRegistration(props) {
                     </Row>
                 </Container>
             </div>
-            <Table striped hover responsive className='tableHead my-3 table-dark'
-            >
-                <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                        <th >Staff Image</th>
-                        <th>Staff Name</th>
-                        <th>Image ID</th>
-                        <th>Player ID</th>
-                        <th>Player Image</th>
-                        <th>Designation</th>
-                        <th>Mobile No</th>
-                        <th>Email ID</th>
-                        <th>Specialization</th>
-                        <th>jersey No</th>
-                        <th>Club</th>
-                        <th>Action</th>
-                        <th>Download As</th>
-                    </tr>
-                </thead>
-                <tbody className='table-light'>
-                    <tr className='text-center'>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
-                        <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
-                    </tr>
-                </tbody>
-            </Table>
+
+            {/* Table Data Binding: */}
+            {
+                showData ?
+                    (<Table striped hover responsive className='tableHead my-3 table-dark'
+                    >
+                        <thead>
+                            <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                                <th>Staff Name</th>
+                                <th>Image ID</th>
+                                <th>Player ID</th>
+                                <th>Player Image</th>
+                                <th>Designation</th>
+                                <th>Mobile No</th>
+                                <th>Email ID</th>
+                                <th>Specialization</th>
+                                <th>jersey No</th>
+                                <th>Club</th>
+                                <th>Action</th>
+                                <th>Download As</th>
+                            </tr>
+                        </thead>
+                        {
+                            showData.map((showData, i) => {
+                                console.log("showData", showData)
+                                return (
+                                    <tbody className='table-light' key={i}>
+                                        <tr className='text-center'>
+                                            <td>{showData.playerData.supportStaffName ? showData.playerData.supportStaffName : '-'}</td>
+                                            <td>3</td>
+                                            <td>{showData.playerData.alldataStaffId ? showData.playerData.alldataStaffId : '-'}</td>
+                                            <td>5</td>
+                                            <td>{showData.playerData.designation ? showData.playerData.designation : '-'}</td>
+                                            <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : '-'}</td>
+                                            <td>{showData.playerData.emailId ? showData.playerData.emailId : '-'}</td>
+                                            <td>{showData.playerData.specialization ? showData.playerData.specialization : '-'}</td>
+                                            <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : '-'}</td>
+                                            <td>{showData.playerData.club ? showData.playerData.club : '-'}</td>
+                                            <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+                                            <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
+                                        </tr>
+                                    </tbody>
+
+                                )
+                            })
+                        }
+                    </Table>) : (<h4>Loading...</h4>)
+            }
         </div>
     )
 }

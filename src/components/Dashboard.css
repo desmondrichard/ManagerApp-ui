@@ -2,7 +2,6 @@
     box-shadow: -1px 10px 38px 0px rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: -1px 10px 38px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: -1px 10px 38px 0px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 576px) {
@@ -185,3 +184,4 @@
 .accordion-button:hover {
     background-color: #c4c8cb !important;
 }
+

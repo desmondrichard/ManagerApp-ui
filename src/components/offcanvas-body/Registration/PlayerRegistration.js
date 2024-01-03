@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Header';
 import './PlayerRegistration.css';
 import Button from 'react-bootstrap/Button';
@@ -9,7 +9,6 @@ import SearchButton from '../../ModalComponents/SearchButton';
 import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
-import SupportStaffRegistration from './Support-Staff-Registration-Form/SupportStaffRegistration';
 import PersonalInformation from './Player-Registration-Form/PersonalInformation';
 import ProficiencyForm from './Player-Registration-Form/ProficiencyForm';
 import KittingDetailsForm from './Player-Registration-Form/KittingDetailsForm';
@@ -25,9 +24,22 @@ import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 
 
 function PlayerRegistration(props) {
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //Data Binding:
+  const [showData, setShowData] = useState(null);
+  useEffect(() => {
+    fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages')
+      .then((data) => data.json())
+      .then((data) => {
+        // console.log("data",data);
+        // console.log("Success in getting players data", data);
+        setShowData(data);  // showData=data;
+      })
+  }, [])
 
   return (
     <div>
@@ -97,39 +109,54 @@ function PlayerRegistration(props) {
         </Container>
       </div>
 
-      <Table striped hover responsive className='tableHead my-3 table-dark'
-      >
-        <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-            <th >Player Image</th>
-            <th>Player Name</th>
-            <th>Display Name</th>
-            <th>Mobile No</th>
-            <th>Email Id</th>
-            <th>Specialization</th>
-            <th>Jersey No</th>
-            <th>Club</th>
-            <th>Action</th>
-            <th>Download As</th>
-          </tr>
-        </thead>
-        <tbody className='table-light'>
-          <tr className='text-center'>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
-            <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
-          </tr>
+      {/* Table Data Binding: */}
+      {
+        (showData) ?
+          (<Table striped hover responsive className='tableHead my-3 table-dark'
+          >
+            <thead>
+              <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                <th >Player ID</th>
+                <th >Player Image</th>
+                <th >Image ID</th>
+                <th>Player Name</th>
+                <th>Display Name</th>
+                <th>Mobile No</th>
+                <th>Email Id</th>
+                <th>Specialization</th>
+                <th>Jersey No</th>
+                <th>Club</th>
+                <th>Action</th>
+                <th>Download As</th>
+              </tr>
+            </thead>
+            {
+              showData.map((showData, i) => {
+                console.log("ShowData", showData);
+                return (
+                  <tbody className='table-light' key={i}>
+                    <tr className='text-center'>
+                      <td>{showData.playerData.alldataplayerId}</td>
+                      {/* blob to image: */}
+                      <td>{<img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} />}</td>
+                      <td>{(showData.playerImage ? showData.playerImage.imageId : "NA")}</td>
+                      <td>{showData.playerData.playerName ? showData.playerData.playerName : '-'}</td>
+                      <td>{showData.playerData.displayName ? showData.playerData.displayName : '-'}</td>
+                      <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : '-'}</td>
+                      <td>{showData.playerData.emailId ? showData.playerData.emailId : '-'}</td>
+                      <td>{showData.playerData.specialization ? showData.playerData.specialization : '-'}</td>
+                      <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : '-'}</td>
+                      <td>{showData.playerData.club ? showData.playerData.club : '-'}</td>
+                      <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+                      <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
+                    </tr>
+                  </tbody>
+                )
+              })
+            }
 
-        </tbody>
-      </Table>
-    
+          </Table>) : (<h4>Loading...</h4>)
+      }
 
     </div>
   )

@@ -23,9 +23,7 @@ const validate = values => {
     }
     if (!values.username) {
         errors.username = "*Required";
-    } else if (values.fullname.length > 20) {
-        errors.username = "Username must not exceed 20 characters.";
-    } else if (!/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/.test(values.username)) {
+    } else if (!/^(?=[a-zA-Z0-9._]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/.test(values.username)) {
         errors.username = "Enter Valid username";
     }
     if (!values.email) {

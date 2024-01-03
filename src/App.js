@@ -14,6 +14,8 @@ import App1 from './components/App1';
 import AccreditionForm from './components/AccreditionForm';
 import ThingsTodoForm from './components/ThingsTodoForm';
 import SupportStaffRegistration from './components/offcanvas-body/Registration/Support-Staff-Registration-Form/SupportStaffRegistration';
+import DashboardCard from './components/DashboardCard';
+import DashboardSupportStaffCard from './components/DashboardSupportStaffCard';
 // import PersonalInformation from './components/offcanvas-body/Registration/Player-Registration-Form/PersonalInformation';
 // import ProficiencyForm from './components/offcanvas-body/Registration/Player-Registration-Form/ProficiencyForm';
 
@@ -37,8 +39,9 @@ function App() {
           <Route path='/accreditionform' exact element={<AccreditionForm />} />
           <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
 
-          
-          
+          <Route path='/dashboardplayerscard' exact element={<DashboardCard />} />
+          <Route path='/dashboardstaffcard' exact element={<DashboardSupportStaffCard />} />
+
 
         </Routes>
       </BrowserRouter>

@@ -9,6 +9,12 @@
     background: linear-gradient(264deg, rgba(2, 0, 36, 1) 0%, rgba(116, 105, 217, 1) 0%, rgba(37, 134, 215, 1) 53%, rgba(18, 57, 57, 1) 99%);
 }
 
+.fixed{
+    position:sticky;
+    top:0;
+    z-index:1;
+    width:100%;
+}
 .btn1 {
     --bs-btn-color: none;
     --bs-btn-bg: none;
