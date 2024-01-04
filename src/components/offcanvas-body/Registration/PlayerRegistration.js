@@ -22,7 +22,6 @@ import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 
 
 
-
 function PlayerRegistration(props) {
 
   const [show, setShow] = useState(false);
@@ -116,18 +115,18 @@ function PlayerRegistration(props) {
           >
             <thead>
               <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                <th >Player ID</th>
-                <th >Player Image</th>
-                <th >Image ID</th>
-                <th>Player Name</th>
-                <th>Display Name</th>
-                <th>Mobile No</th>
-                <th>Email Id</th>
-                <th>Specialization</th>
-                <th>Jersey No</th>
-                <th>Club</th>
-                <th>Action</th>
-                <th>Download As</th>
+                <th >PLAYER ID</th>
+                <th >PLAYER IMAGE</th>
+                <th >IMAGE ID</th>
+                <th>PLAYER NAME</th>
+                <th>DISPLAY NAME</th>
+                <th>MOBILE NO</th>
+                <th>EMAIL ID</th>
+                <th>SPECIALIZATION</th>
+                <th>JERSEY NO</th>
+                <th>CLUB</th>
+                <th>ACTION</th>
+                <th>DOWNLOAD AS</th>
               </tr>
             </thead>
             {
@@ -139,14 +138,14 @@ function PlayerRegistration(props) {
                       <td>{showData.playerData.alldataplayerId}</td>
                       {/* blob to image: */}
                       <td>{<img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} />}</td>
-                      <td>{(showData.playerImage ? showData.playerImage.imageId : "NA")}</td>
-                      <td>{showData.playerData.playerName ? showData.playerData.playerName : '-'}</td>
-                      <td>{showData.playerData.displayName ? showData.playerData.displayName : '-'}</td>
-                      <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : '-'}</td>
-                      <td>{showData.playerData.emailId ? showData.playerData.emailId : '-'}</td>
-                      <td>{showData.playerData.specialization ? showData.playerData.specialization : '-'}</td>
-                      <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : '-'}</td>
-                      <td>{showData.playerData.club ? showData.playerData.club : '-'}</td>
+                      <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td>
+                      <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
+                      <td>{showData.playerData.displayName ? showData.playerData.displayName : 'N/A'}</td>
+                      <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>
+                      <td>{showData.playerData.emailId ? showData.playerData.emailId : 'N/A'}</td>
+                      <td>{showData.playerData.specialization ? showData.playerData.specialization : 'N/A'}</td>
+                      <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : 'N/A'}</td>
+                      <td>{showData.playerData.club ? showData.playerData.club : 'N/A'}</td>
                       <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
                       <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
                     </tr>

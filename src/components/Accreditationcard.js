@@ -42,11 +42,11 @@ function Accreditationcard() {
               >
                 <thead>
                   <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>Name</th>
-                    <th className='font'>Designation</th>
-                    <th className='font'>Mobile No</th>
-                    <th className='font'>Email</th>
-                    <th className='font'>Duty Pass</th>
+                    <th className='font'>NAME</th>
+                    <th className='font'>DESIGNATION</th>
+                    <th className='font'>MOBILE NO</th>
+                    <th className='font'>EMAIL</th>
+                    <th className='font'>DUTY PASS</th>
 
 
                   </tr>
@@ -71,11 +71,11 @@ function Accreditationcard() {
               >
                 <thead>
                   <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>Name</th>
-                    <th className='font'>Designation</th>
-                    <th className='font'>Mobile No</th>
-                    <th className='font'>Email</th>
-                    <th className='font'>Duty Pass</th>
+                    <th className='font'>NAME</th>
+                    <th className='font'>DESIGNATION</th>
+                    <th className='font'>MOBILE NO</th>
+                    <th className='font'>EMAIL</th>
+                    <th className='font'>DUTY PASS</th>
 
                   </tr>
                 </thead>
@@ -98,10 +98,10 @@ function Accreditationcard() {
               >
                 <thead>
                   <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>Name</th>
-                    <th className='font'>Designation</th>
-                    <th className='font'>Mobile No</th>
-                    <th className='font'>Email</th>
+                    <th className='font'>NAME</th>
+                    <th className='font'>DESIGNATION</th>
+                    <th className='font'>MOBILE NO</th>
+                    <th className='font'>EMAIL</th>
                   </tr>
                 </thead>
                 <tbody className='table-light' style={{ fontSize: '13px' }}>
@@ -121,10 +121,10 @@ function Accreditationcard() {
               >
                 <thead>
                   <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>Name</th>
-                    <th className='font'>Designation</th>
-                    <th className='font'>Mobile No</th>
-                    <th className='font'>Email</th>
+                    <th className='font'>NAME</th>
+                    <th className='font'>DESIGNATION</th>
+                    <th className='font'>MOBILE NO</th>
+                    <th className='font'>EMAIL</th>
 
                   </tr>
                 </thead>
@@ -147,10 +147,10 @@ function Accreditationcard() {
               >
                 <thead>
                   <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>Name</th>
-                    <th className='font'>Designation</th>
-                    <th className='font'>Mobile No</th>
-                    <th className='font'>Email</th>
+                    <th className='font'>NAME</th>
+                    <th className='font'>DESIGNATION</th>
+                    <th className='font'>MOBILE NO</th>
+                    <th className='font'>EMAIL</th>
 
                   </tr>
                 </thead>

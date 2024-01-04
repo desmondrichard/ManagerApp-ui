@@ -31,12 +31,12 @@ function PlayersAuctionList() {
       >
         <thead>
           <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
-            <th >ID</th>
-            <th>Player Name</th>
+            <th >SL.NO</th>
+            <th>PLAYER NAME</th>
             <th>DOB</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Role</th>
+            <th>PRICE</th>
+            <th>CATEGORY</th>
+            <th>ROLE</th>
             {/* <th>Year</th> */}
 
           </tr>

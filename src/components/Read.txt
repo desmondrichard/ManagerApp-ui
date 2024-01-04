@@ -92,3 +92,15 @@ export default function App() {
 progressbar:
   this.filledpercent = (filledfields.length / totalfields.length) * 100;
   this.completedpercent = Math.floor(Number(this.filledpercent));
+
+  ----------------------------------------------------------------------------
+  API:
+
+1.Player Registration => GET => Table:
+  `http://192.168.1.192/ManagerApi/GetAllDataAndImages`
+  
+2.Support Staff Registration => GET => Table:
+  `http://192.168.1.192/ManagerApi/GetStaffAllDataAndImages`
+
+3.
+  

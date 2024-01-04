@@ -321,9 +321,10 @@ function KittingDetailsForm() {
                                         </Form.Floating>
                                     </Col>
                                 </Row>
+
                                 <Row>
-                                    <Col xs={12} lg={{span:6}} className='col ps-5'>
-                                        <label className='text-muted' htmlFor="battingpads">BOWLER TYPE</label>
+                                    <Col  className='col radioFields'>
+                                        <label className='text-muted' htmlFor="battingpads" style={{whiteSpace:'nowrap'}}>BATTING PADS</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
                                                 <Form.Check style={{
@@ -348,13 +349,14 @@ function KittingDetailsForm() {
                                             </div>
                                         ))}
                                     </Col>
-                                    <Col xs={12} lg={6} className='col' >
+                                    <Col className='col QtyMainMargin'>
                                         <div>
                                             <Form.Label htmlFor="qty" style={{ color: '#7C7F81' }}>QUANTITY</Form.Label>
                                             <Form.Control size="md"
                                                 type="number"
                                                 id="qty"
                                                 ref={qty}
+                                                style={{width:'80px'}}
                                             />
                                         </div>
                                     </Col>

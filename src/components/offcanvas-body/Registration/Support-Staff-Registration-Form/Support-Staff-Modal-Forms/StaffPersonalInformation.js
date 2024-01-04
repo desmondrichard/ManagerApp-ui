@@ -377,7 +377,7 @@ function StaffPersonalInformation() {
                                         </Form.Floating>
                                     </Col>
                                     <Col xs={12} lg={4} className='d-flex justify-content-center pt-3 col'>
-                                        <label className='text-muted me-2' htmlFor="gender">Gender</label>
+                                        <label className='text-muted me-2' htmlFor="gender">Gender:</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} className="mb-3" style={{ whiteSpace: 'nowrap' }}>
                                                 <Form.Check

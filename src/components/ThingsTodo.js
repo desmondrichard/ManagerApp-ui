@@ -44,14 +44,14 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap'}}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Team Logo</th>
-                      <th className='font'>Team Flage</th>
-                      <th className='font'>Side Flages</th>
-                      <th className='font'>Standees</th>
-                      <th className='font'>Bus Branding</th>
-                      <th className='font'>Bus Booking</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>TEAM LOGO</th>
+                      <th className='font'>TEAM FLAGE</th>
+                      <th className='font'>SIDE FLAGES</th>
+                      <th className='font'>STANDEES</th>
+                      <th className='font'>BUS BRANDING</th>
+                      <th className='font'>BUS BOOKING</th>
+                      <th className='font'>ACTION</th>
 
                     </tr>
                   </thead>
@@ -76,11 +76,11 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Representatives</th>
-                      <th className='font'>Team Uniform</th>
-                      <th className='font'>Team Tshirt</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>REPRESENTATIVES</th>
+                      <th className='font'>TEAM UNIFORM</th>
+                      <th className='font'>TEAM TSHIRT</th>
+                      <th className='font'>ACTION</th>
 
                     </tr>
                   </thead>
@@ -102,10 +102,10 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Name</th>
-                      <th className='font'>Designation</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>NAME</th>
+                      <th className='font'>DESIGNATION</th>
+                      <th className='font'>ACTION</th>
                     </tr>
                   </thead>
                   <tbody className='table-light' style={{ fontSize: '13px' }}>
@@ -126,12 +126,12 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Date</th>
-                      <th className='font'>Ground Name</th>
-                      <th className='font'>Team A</th>
-                      <th className='font'>Team B</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>DATE</th>
+                      <th className='font'>GROUND NAME</th>
+                      <th className='font'>TEAM A</th>
+                      <th className='font'>TEAM B</th>
+                      <th className='font'>ACTION</th>
                     </tr>
                   </thead>
                   <tbody className='table-light' style={{ fontSize: '13px' }}>
@@ -153,16 +153,16 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Hotel Name</th>
-                      <th className='font'>City Name</th>
-                      <th className='font'>No of Rooms</th>
-                      <th className='font'>Room No</th>
-                      <th className='font'>Check In</th>
-                      <th className='font'>Check Out</th>
-                      <th className='font'>Days Stayed</th>
-                      <th className='font'>No of People</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>HOTEL NAME</th>
+                      <th className='font'>CITY NAME</th>
+                      <th className='font'>NO OF ROOMS</th>
+                      <th className='font'>ROOM NO</th>
+                      <th className='font'>CHECK IN</th>
+                      <th className='font'>CHECK OUT</th>
+                      <th className='font'>DAYS STAYED</th>
+                      <th className='font'>NO OF PEOPLE</th>
+                      <th className='font'>ACTION</th>
                     </tr>
                   </thead>
                   <tbody className='table-light' style={{ fontSize: '13px' }}>
@@ -188,11 +188,11 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Name</th>
-                      <th className='font'>Equipments</th>
-                      <th className='font'>Equipments Type</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>NAME</th>
+                      <th className='font'>EQUIPMENTS</th>
+                      <th className='font'>EQUIPMENTS TYPE</th>
+                      <th className='font'>ACTION</th>
                     </tr>
                   </thead>
                   <tbody className='table-light' style={{ fontSize: '13px' }}>
@@ -213,18 +213,18 @@ function ThingsTodo() {
                 >
                   <thead>
                     <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>ID</th>
-                      <th className='font'>Leaving from</th>
-                      <th className='font'>Going To</th>
-                      <th className='font'>Date of Journey</th>
-                      <th className='font'>Return Date</th>
-                      <th className='font'>Bus Type</th>
-                      <th className='font'>Travel Type</th>
-                      <th className='font'>Transport Type</th>
-                      <th className='font'>Time Slot</th>
-                      <th className='font'>No of Seats Booked</th>
-                      <th className='font'>Seat No</th>
-                      <th className='font'>Action</th>
+                      <th className='font'>SL.NO</th>
+                      <th className='font'>LEAVING FROM</th>
+                      <th className='font'>GOING TO</th>
+                      <th className='font'>DATE OF JOURNEY</th>
+                      <th className='font'>RETURN DATE</th>
+                      <th className='font'>BUS TYPE</th>
+                      <th className='font'>TRAVEL TYPE</th>
+                      <th className='font'>TRANSPORT TYPE</th>
+                      <th className='font'>TIME SLOT</th>
+                      <th className='font'>NO OF SEATS BOOKED</th>
+                      <th className='font'>SEAT NO</th>
+                      <th className='font'>ACTION</th>
                     </tr>
                   </thead>
                   <tbody className='table-light' style={{ fontSize: '13px' }}>

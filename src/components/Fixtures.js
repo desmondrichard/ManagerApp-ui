@@ -15,10 +15,10 @@ function Fixtures() {
       >
         <thead>
           <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
-            <th >Date</th>
-            <th>GroundName</th>
-            <th>Team A</th>
-            <th>Team B</th>
+            <th >DATE</th>
+            <th>GROUND NAME</th>
+            <th>TEAM A</th>
+            <th>TEAM B</th>
           </tr>
         </thead>
         <tbody className='table-light'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Accessories.css';
 import Header from './Header';
 import Row from 'react-bootstrap/Row';
@@ -7,6 +7,18 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import FilterAccessories from './FilterAccessories';
 function Accessories() {
+
+  //Data Binding:
+  const [showData, setShowData] = useState(null);
+  useEffect(() => {
+    fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages')
+      .then((data) => data.json())
+      .then((data) => {
+        // console.log("data",data);
+        console.log("Success in getting data", data);
+        setShowData(data);  // showData=data;
+      })
+  }, [])
   return (
     <div>
       <Header />
@@ -22,49 +34,59 @@ function Accessories() {
           </Row>
         </Container>
       </div>
-      <Table striped hover responsive className='tableHead my-3 table-dark'
-      >
-        <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
-            <th >ID</th>
-            <th>Player Name</th>
-            <th>Jersey No</th>
-            <th>Initial Print</th>
-            <th>Trowser Length</th>
-            <th>Shorts Size</th>
-            <th>Track Suit</th>
-            <th>Travel Polo</th>
-            <th>Helmet</th>
-            <th>Batting Pads</th>
-            <th>Batting Gloves</th>
-            <th>WK Gloves</th>
-            <th>WK Pad</th>
-            <th>Shoulder Bag</th>
+      {
+        showData ?
+          (<Table striped hover responsive className='tableHead my-3 table-dark'
+          >
+            <thead>
+              <tr className='text-center thead' style={{ whiteSpace: 'nowrap', fontSize: '14px' }}>
+                <th >SL.NO</th>
+                <th>PLAYER NAME</th>
+                <th>JERSEY NO</th>
+                <th>INITIAL PRINT</th>
+                <th>TROWSER LENGTH</th>
+                <th>SHORTS SIZE</th>
+                <th>TRACK SUIT</th>
+                <th>TRAVEL POLO</th>
+                <th>HELMET</th>
+                <th>BATTING PADS</th>
+                <th>BATTING GLOVES</th>
+                <th>WK GLOVES</th>
+                <th>WK PAD</th>
+                <th>SHOULDER BAG</th>
 
-          </tr>
-        </thead>
-        <tbody className='table-light'>
-          <tr className='text-center'>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
+              </tr>
+            </thead>
+            {
+              showData.map((showData, i) => {
+                console.log("showData", showData)
+                return (
+                  < tbody className='table-light' key={i} >
+                    <tr className='text-center'>
+                      <td>{showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</td>
+                      <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
+                      <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : 'N/A'}</td>
+                      <td>{showData.playerData.initials ? showData.playerData.initials : 'N/A'}</td>
+                      <td>{showData.playerData.trouserLength ? showData.playerData.trouserLength : 'N/A'}</td>
+                      <td>{showData.playerData.shortsSize ? showData.playerData.shortsSize : 'N/A'}</td>
+                      <td>{showData.playerData.trackSuit ? showData.playerData.trackSuit : 'N/A'}</td>
+                      <td>{showData.playerData.travelPolo ? showData.playerData.travelPolo : 'N/A'}</td>
+                      <td style={{ whiteSpace: 'nowrap' }}>{showData.playerData.helmet ? showData.playerData.helmet : 'N/A'}</td>
+                      <td>{showData.playerData.battingPads ? showData.playerData.battingPads : 'N/A'}</td>
+                      <td>{showData.playerData.battingGloves ? showData.playerData.battingGloves : 'N/A'}</td>
+                      <td>{showData.playerData.wkGloves ? showData.playerData.wkGloves : 'N/A'}</td>
+                      <td>{showData.playerData.wkPad ? showData.playerData.wkPad : 'N/A'}</td>
+                      <td>{showData.playerData.shoulderBag ? showData.playerData.shoulderBag : 'N/A'}</td>
 
-          </tr>
+                    </tr>
 
-        </tbody>
-      </Table>
-    </div>
+                  </tbody>
+                )
+              })
+            }
+          </Table>) : (<h4>Loading...</h4>)
+      }
+    </div >
   )
 }
 
