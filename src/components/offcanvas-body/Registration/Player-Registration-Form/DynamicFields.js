@@ -41,7 +41,6 @@ const DynamicFields = () => {
                                                     id={radio.id}
                                                     label={radio.label}
                                                     name={`radioGroup-${field.id}`}
-                                                    
                                                 />
                                             </div>
                                         ))}

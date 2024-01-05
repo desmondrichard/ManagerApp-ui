@@ -5,26 +5,29 @@ import './SearchButton.css';
 
 function SearchButton() {
     return (
-        <div>
+        <div >
             <Box
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': {width: '26ch'},
+                    '& .MuiTextField-root': { maxWidth: '28ch' },
                 }}
                 noValidate
                 autoComplete="off"
             ></Box>
             <div>
-                <TextField
+                <TextField style={{zIndex:'0'}}
                     id="filled-multiline-flexible"
                     label="Search"
                     multiline
-                    maxRows={4}
+                    maxRows={5}
                     variant="filled"
                     placeholder='Ex:Admin'
-                    
+                    inputProps={{
+                        maxLength: 6,
+                    }}
                 />
             </div>
+            
         </div>
     )
 }

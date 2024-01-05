@@ -10,9 +10,9 @@ function ExploreOptions() {
         setAge(event.target.value);
     };
     return (
-        <div>
-            <FormControl variant="filled" sx={{ minWidth: '24ch'}}>
-                <InputLabel id="demo-simple-select-filled-label">Download</InputLabel>
+        <div >
+            <FormControl variant="filled" sx={{ width: '26ch'}}>
+                <InputLabel id="demo-simple-select-filled-label" style={{zIndex:'0'}}>Download</InputLabel>
                 <Select
                     labelId="demo-simple-select-filled-label"
                     id="demo-simple-select-filled"

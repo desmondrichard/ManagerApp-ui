@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ThingsToDo.css';
 import Header from './Header';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +11,17 @@ import { NavLink } from 'react-router-dom';
 import ExploreOptions from './ModalComponents/ExploreOptions';
 
 function ThingsTodo() {
-
+  //Data Binding:
+  const [showData, setShowData] = useState(null);
+  useEffect(() => {
+    fetch('http://192.168.1.192/ManagerApi/register/AllDataThingsToDo')
+      .then((data) => data.json())
+      .then((data) => {
+        // console.log("data",data);
+        // console.log("Success in getting data", data);
+        setShowData(data);  // showData=data;
+      })
+  }, [])
   return (
     <div>
       <Header />
@@ -25,9 +35,9 @@ function ThingsTodo() {
           </NavLink> */}
         </>
 
-        <Container fluid className='py-2 mt-4 bg-light'>
+        <Container fluid className='py-2 mt-4 bg-light' style={{ zIndex: '-100' }}>
           <Row>
-            <Col sm={{span:4,offset:9}} xs={12}>
+            <Col sm={{ span: 4, offset: 9 }} xs={12}>
               <ExploreOptions />
             </Col>
           </Row>
@@ -36,219 +46,305 @@ function ThingsTodo() {
 
       {/* Tabs: start*/}
       <Container fluid className='p-0 m-0'>
-          <Row style={{ margin: '0px' }} className=''>
-            <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
-              {/* Tab:0 */}
-            <Tab eventKey='tab-0' title='Branding'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap'}}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>TEAM LOGO</th>
-                      <th className='font'>TEAM FLAGE</th>
-                      <th className='font'>SIDE FLAGES</th>
-                      <th className='font'>STANDEES</th>
-                      <th className='font'>BUS BRANDING</th>
-                      <th className='font'>BUS BOOKING</th>
-                      <th className='font'>ACTION</th>
+        <Row style={{ margin: '0px' }} className=''>
+          <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
+            {/* Tab:0 */}
+            <Tab eventKey='tab-0' title='BRANDING'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>TEAM LOGO</th>
+                          <th className='font'>TEAM FLAGE</th>
+                          <th className='font'>SIDE FLAGES</th>
+                          <th className='font'>STANDEES</th>
+                          <th className='font'>BUS BRANDING</th>
+                          <th className='font'>BUS BOOKING</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.teamLogo ? showData.teamLogo : 'N/A'}</td>
+                                <td>{showData.teamFlage ? showData.teamFlage : 'N/A'}</td>
+                                <td>{showData.sideFlages ? showData.sideFlages : 'N/A'}</td>
+                                <td>{showData.standees ? showData.standees : 'N/A'}</td>
+                                <td>{showData.busBranding ? showData.busBranding : 'N/A'}</td>
+                                <td>{showData.busBooking ? showData.busBooking : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                      <td>7</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
 
-              {/* Tab:1 */}
-              <Tab eventKey='tab-1' title='Representative'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>REPRESENTATIVES</th>
-                      <th className='font'>TEAM UNIFORM</th>
-                      <th className='font'>TEAM TSHIRT</th>
-                      <th className='font'>ACTION</th>
+            </Tab>
 
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button> <Button variant="primary"  style={{marginTop:'-7px'}}><i className="bi bi-trash"></i></Button> </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
+            {/* Tab:1 */}
+            <Tab eventKey='tab-1' title='REPRESENTATIVE'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>REPRESENTATIVES</th>
+                          <th className='font'>TEAM UNIFORM</th>
+                          <th className='font'>TEAM TSHIRT</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId}</td>
+                                <td>{showData.representatives}</td>
+                                <td>{showData.teamUniform}</td>
+                                <td>{showData.teamTshirt}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-              {/* Tab:2 */}
-              <Tab eventKey='tab-2' title='Coach Therapist'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>NAME</th>
-                      <th className='font'>DESIGNATION</th>
-                      <th className='font'>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
-                      
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
 
-              {/* Tab:3 */}
-              <Tab eventKey='tab-3' title='Fixtures'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>DATE</th>
-                      <th className='font'>GROUND NAME</th>
-                      <th className='font'>TEAM A</th>
-                      <th className='font'>TEAM B</th>
-                      <th className='font'>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
+            </Tab>
 
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
-              {/* Tab:4 */}
-              <Tab eventKey='tab-4' title='Hotel Accomodation'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>HOTEL NAME</th>
-                      <th className='font'>CITY NAME</th>
-                      <th className='font'>NO OF ROOMS</th>
-                      <th className='font'>ROOM NO</th>
-                      <th className='font'>CHECK IN</th>
-                      <th className='font'>CHECK OUT</th>
-                      <th className='font'>DAYS STAYED</th>
-                      <th className='font'>NO OF PEOPLE</th>
-                      <th className='font'>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                      <td>7</td>
-                      <td>8</td>
-                      <td>9</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
+            {/* Tab:2 */}
+            <Tab eventKey='tab-2' title='COACH THERAPIST'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.name ? showData.name : 'N/A'}</td>
+                                <td>{showData.designation ? showData.designation : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
-              {/* Tab:5 */}
-              <Tab eventKey='tab-5' title='Match Equipment Form'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>NAME</th>
-                      <th className='font'>EQUIPMENTS</th>
-                      <th className='font'>EQUIPMENTS TYPE</th>
-                      <th className='font'>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
 
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
-              {/* Tab:6 */}
-              <Tab eventKey='tab-6' title='Transport Form'>
-                <Table striped hover responsive className='tableHead table-dark'
-                >
-                  <thead>
-                    <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                      <th className='font'>SL.NO</th>
-                      <th className='font'>LEAVING FROM</th>
-                      <th className='font'>GOING TO</th>
-                      <th className='font'>DATE OF JOURNEY</th>
-                      <th className='font'>RETURN DATE</th>
-                      <th className='font'>BUS TYPE</th>
-                      <th className='font'>TRAVEL TYPE</th>
-                      <th className='font'>TRANSPORT TYPE</th>
-                      <th className='font'>TIME SLOT</th>
-                      <th className='font'>NO OF SEATS BOOKED</th>
-                      <th className='font'>SEAT NO</th>
-                      <th className='font'>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody className='table-light' style={{ fontSize: '13px' }}>
-                    <tr className='text-center font'>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                      <td>7</td>
-                      <td>8</td>
-                      <td>9</td>
-                      <td>10</td>
-                      <td>11</td>
-                      <td><Button variant="primary" style={{marginTop:'-7px'}}><i className="bi bi-eye-fill"></i></Button></td>
-                      
-                    </tr>
-                  </tbody>
-                </Table>
-              </Tab>
-            </Tabs>
-          </Row>
-      
+            </Tab>
+
+            {/* Tab:3 */}
+            <Tab eventKey='tab-3' title='FIXTURES'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>DATE</th>
+                          <th className='font'>GROUND NAME</th>
+                          <th className='font'>TEAM A</th>
+                          <th className='font'>TEAM B</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.dateTime ? showData.dateTime : 'N/A'}</td>
+                                <td>{showData.groundName ? showData.groundName : 'N/A'}</td>
+                                <td>{showData.teamA ? showData.teamA : 'N/A'}</td>
+                                <td>{showData.teamB ? showData.teamB : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
+
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
+            </Tab>
+            {/* Tab:4 */}
+            <Tab eventKey='tab-4' title='HOTEL ACCOMODATION'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>HOTEL NAME</th>
+                          <th className='font'>CITY NAME</th>
+                          <th className='font'>NO OF ROOMS</th>
+                          <th className='font'>ROOM NO</th>
+                          <th className='font'>CHECK IN</th>
+                          <th className='font'>CHECK OUT</th>
+                          <th className='font'>DAYS STAYED</th>
+                          <th className='font'>NO OF PEOPLE</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.hotelName ? showData.hotelName : 'N/A'}</td>
+                                <td>{showData.cityName ? showData.cityName : 'N/A'}</td>
+                                <td>{showData.noOfRooms ? showData.noOfRooms : 'N/A'}</td>
+                                <td>{showData.roomsNo ? showData.roomsNo : 'N/A'}</td>
+                                <td>{showData.checkIn ? showData.checkIn : 'N/A'}</td>
+                                <td>{showData.checkOut ? showData.checkOut : 'N/A'}</td>
+                                <td>{showData.daysStayed ? showData.daysStayed : 'N/A'}</td>
+                                <td>{showData.noOfPeople ? showData.noOfPeople : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
+
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
+            </Tab>
+            {/* Tab:5 */}
+            <Tab eventKey='tab-5' title='MATCH EQUIPMENT'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>NAME</th>
+                          <th className='font'>EQUIPMENTS</th>
+                          <th className='font'>EQUIPMENTS TYPE</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.name ? showData.name : 'N/A'}</td>
+                                <td>{showData.equipments ? showData.equipments : 'N/A'}</td>
+                                <td>{showData.equipmentsType ? showData.equipmentsType : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                              </tr>
+                            </tbody>
+                          )
+
+                        })
+                      }
+
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
+            </Tab>
+            {/* Tab:6 */}
+            <Tab eventKey='tab-6' title='TRANSPORT FORM'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>SL.NO</th>
+                          <th className='font'>LEAVING FROM</th>
+                          <th className='font'>GOING TO</th>
+                          <th className='font'>DATE OF JOURNEY</th>
+                          <th className='font'>RETURN DATE</th>
+                          <th className='font'>BUS TYPE</th>
+                          <th className='font'>TRAVEL TYPE</th>
+                          <th className='font'>TRANSPORT TYPE</th>
+                          <th className='font'>TIME SLOT</th>
+                          <th className='font'>NO OF SEATS BOOKED</th>
+                          <th className='font'>SEAT NO</th>
+                          <th className='font'>ACTION</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.leavingFrom ? showData.leavingFrom : 'N/A'}</td>
+                                <td>{showData.goingTo ? showData.goingTo : 'N/A'}</td>
+                                <td>{showData.dateOfJourney ? showData.dateOfJourney : 'N/A'}</td>
+                                <td>{showData.returnDate ? showData.returnDate : 'N/A'}</td>
+                                <td>{showData.busType ? showData.busType : 'N/A'}</td>
+                                <td>{showData.travelType ? showData.travelType : 'N/A'}</td>
+                                <td>{showData.transportType ? showData.transportType : 'N/A'}</td>
+                                <td>{showData.timeSlot ? showData.timeSlot : 'N/A'}</td>
+                                <td>{showData.noOfSeatsBooked ? showData.noOfSeatsBooked : 'N/A'}</td>
+                                <td>{showData.seatNumbers ? showData.seatNumbers : 'N/A'}</td>
+                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
+
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
+            </Tab>
+          </Tabs>
+        </Row>
+
       </Container>
       {/* Tabs:end */}
     </div>

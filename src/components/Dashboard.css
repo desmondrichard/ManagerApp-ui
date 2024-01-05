@@ -109,6 +109,14 @@
     }
 }
 
+@media only screen and (min-width: 992px) {
+  .content{
+    width:80%;
+    left:20px;
+  }
+
+}
+
 @media only screen and (min-width: 768px) {
     .contentPartners1 {
         width: 100% !important;
@@ -133,8 +141,8 @@
 
 @media only screen and (min-width: 1079px) {
     .contentPartners1 {
-        width: 97% !important;
-        left: 4px !important;
+        width: 80% !important;
+        left: 14px !important;
     }
 
     .row {

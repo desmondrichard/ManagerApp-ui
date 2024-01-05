@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Accreditationcard.css';
 import Header from './Header';
 import Container from 'react-bootstrap/Container';
@@ -9,8 +9,19 @@ import ExploreOptions from './ModalComponents/ExploreOptions';
 import { Tab, Tabs } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from 'react-router-dom';
-function Accreditationcard() {
 
+function Accreditationcard() {
+  //Data Binding:
+  const [showData, setShowData] = useState(null);
+  useEffect(() => {
+    fetch('http://192.168.1.192/ManagerApi/AllDataAccreadiation')
+      .then((data) => data.json())
+      .then((data) => {
+        // console.log("data",data);
+        console.log("Success in getting Accreadiation data", data);
+        setShowData(data);  // showData=data;
+      })
+  }, [])
   return (
     <div>
       <Header />
@@ -36,134 +47,191 @@ function Accreditationcard() {
         <Row style={{ margin: '0px' }}>
           <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab ms-2'>
             {/* Tab:1 */}
-            <Tab eventKey='tab-1' title='Players' >
+            <Tab eventKey='tab-1' title='PLAYERS' >
               {/* Tab1 content */}
-              <Table striped hover responsive className='tableHead table-dark'
-              >
-                <thead>
-                  <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>NAME</th>
-                    <th className='font'>DESIGNATION</th>
-                    <th className='font'>MOBILE NO</th>
-                    <th className='font'>EMAIL</th>
-                    <th className='font'>DUTY PASS</th>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>MOBILE NO</th>
+                          <th className='font'>EMAIL</th>
+                          <th className='font'>DUTY PASS</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.playersName ? showData.playersName : 'N/A'}</td>
+                                <td>{showData.playersDesignation ? showData.playersDesignation : 'N/A'}</td>
+                                <td>{showData.playersMobilNo ? showData.playersMobilNo : 'N/A'}</td>
+                                <td>{showData.playersEmailId ? showData.playersEmailId : 'N/A'}</td>
+                                <td>{showData.playersDutyPass ? showData.playersDutyPass : 'N/A'}</td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
+                    </Table>
 
-                  </tr>
-                </thead>
-                <tbody className='table-light' style={{ fontSize: '13px' }}>
-                  <tr className='text-center font'>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
+                  ) : (<h4>Loading...</h4>)
+              }
 
-                  </tr>
-                </tbody>
-              </Table>
             </Tab>
 
 
             {/* Tab:2 */}
-            <Tab eventKey='tab-2' title='Support Staffs'>
-              <Table striped hover responsive className='tableHead table-dark'
-              >
-                <thead>
-                  <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>NAME</th>
-                    <th className='font'>DESIGNATION</th>
-                    <th className='font'>MOBILE NO</th>
-                    <th className='font'>EMAIL</th>
-                    <th className='font'>DUTY PASS</th>
+            <Tab eventKey='tab-2' title='SUPPORT STAFFS'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>MOBILE NO</th>
+                          <th className='font'>EMAIL</th>
+                          <th className='font'>DUTY PASS</th>
 
-                  </tr>
-                </thead>
-                <tbody className='table-light' style={{ fontSize: '13px' }}>
-                  <tr className='text-center font'>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.staffName}</td>
+                                <td>{showData.staffDesignation}</td>
+                                <td>{showData.staffMobilNo}</td>
+                                <td>{showData.staffEmailId}</td>
+                                <td>N/A</td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-                  </tr>
-                </tbody>
-              </Table>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
             </Tab>
 
             {/* Tab:3 */}
-            <Tab eventKey='tab-3' title='Owner/Management'>
-              <Table striped hover responsive className='tableHead table-dark'
-              >
-                <thead>
-                  <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>NAME</th>
-                    <th className='font'>DESIGNATION</th>
-                    <th className='font'>MOBILE NO</th>
-                    <th className='font'>EMAIL</th>
-                  </tr>
-                </thead>
-                <tbody className='table-light' style={{ fontSize: '13px' }}>
-                  <tr className='text-center font'>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                  </tr>
-                </tbody>
-              </Table>
+            <Tab eventKey='tab-3' title='OWNER/MANAGEMENT'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>MOBILE NO</th>
+                          <th className='font'>EMAIL</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.ownerName ? showData.ownerName : 'N/A'}</td>
+                                <td>{showData.ownerDesignation ? showData.ownerDesignation : 'N/A'}</td>
+                                <td>{showData.ownerMobilNo ? showData.ownerMobilNo : 'N/A'}</td>
+                                <td>{showData.ownerEmailId ? showData.ownerEmailId : 'N/A'}</td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
+                    </Table>) : (<h4>Loading...</h4>)
+              }
+
             </Tab>
 
             {/* Tab:4 */}
-            <Tab eventKey='tab-4' title='Franchise Officials'>
-              <Table striped hover responsive className='tableHead table-dark'
-              >
-                <thead>
-                  <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>NAME</th>
-                    <th className='font'>DESIGNATION</th>
-                    <th className='font'>MOBILE NO</th>
-                    <th className='font'>EMAIL</th>
+            <Tab eventKey='tab-4' title='FRANCHISE OFFICIALS'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>MOBILE NO</th>
+                          <th className='font'>EMAIL</th>
 
-                  </tr>
-                </thead>
-                <tbody className='table-light' style={{ fontSize: '13px' }}>
-                  <tr className='text-center font'>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }}>
+                              <tr className='text-center font'>
+                                <td>{showData.officialName ? showData.officialName : 'N/A'}</td>
+                                <td>{showData.officialDesignation ? showData.officialDesignation : 'N/A'}</td>
+                                <td>{showData.officialMobilNo ? showData.officialMobilNo : 'N/A'}</td>
+                                <td>{showData.officialEmailId ? showData.officialEmailId : 'N/A'}</td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-                  </tr>
-                </tbody>
-              </Table>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
+
             </Tab>
 
 
             {/* Tab:5 */}
-            <Tab eventKey='tab-5' title='Franchise Sponsors'>
-              <Table striped hover responsive className='tableHead table-dark'
-              >
-                <thead>
-                  <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                    <th className='font'>NAME</th>
-                    <th className='font'>DESIGNATION</th>
-                    <th className='font'>MOBILE NO</th>
-                    <th className='font'>EMAIL</th>
+            <Tab eventKey='tab-5' title='FRANCHISE SPONSORS'>
+              {
+                showData ?
+                  (
+                    <Table striped hover responsive className='tableHead table-dark'
+                    >
+                      <thead>
+                        <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>NAME</th>
+                          <th className='font'>DESIGNATION</th>
+                          <th className='font'>MOBILE NO</th>
+                          <th className='font'>EMAIL</th>
+                        </tr>
+                      </thead>
+                      {
+                        showData.map((showData, i) => {
+                          return (
+                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                              <tr className='text-center font'>
+                                <td>{showData.sponsorName ? showData.sponsorName : 'N/A'}</td>
+                                <td>{showData.sponsorDesignation ? showData.sponsorDesignation : 'N/A'}</td>
+                                <td>{showData.sponsorMobilNo ? showData.sponsorMobilNo : 'N/A'}</td>
+                                <td>{showData.sponsorEmailId ? showData.sponsorEmailId : 'N/A'}</td>
+                              </tr>
+                            </tbody>
+                          )
+                        })
+                      }
 
-                  </tr>
-                </thead>
-                <tbody className='table-light' style={{ fontSize: '13px' }}>
-                  <tr className='text-center font'>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                    </Table>
+                  ) : (<h4>Loading...</h4>)
+              }
 
-                  </tr>
-                </tbody>
-              </Table>
             </Tab>
 
           </Tabs>

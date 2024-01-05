@@ -361,7 +361,7 @@ function KittingDetailsForm() {
                                         </div>
                                     </Col>
                                     {/* Dynamic Form: */}
-                                    <Col xs={12} lg={12} className='col'>
+                                    <Col xs={12} lg={{span:12}} className='col'>
                                         <DynamicFields />
                                     </Col>
                                 </Row>

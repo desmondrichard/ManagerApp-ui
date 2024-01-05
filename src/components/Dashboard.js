@@ -42,6 +42,23 @@ function Dashboard() {
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
+                                        <NavLink to='/dashboardstaffcard' className='navLinks'>
+                                            <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>
+                                                <div className='image'>
+                                                    <ImageSupportStaff className='img' style={{ height: '100px', width: '150px' }} src={require('../assets/supportstaffsicon.png')}></ImageSupportStaff>
+                                                    <div className='content'>
+                                                        <Card.Title className='a'>SUPPORT STAFFS</Card.Title>
+                                                        <Card.Text className='b'>
+                                                            15
+                                                        </Card.Text>
+                                                    </div>
+                                                </div>
+                                            </Button>
+                                        </NavLink>
+                                    </Card.Body>
+                                </Col>
+                                <Col lg={4} sm={6} xs={12} className='col'>
+                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>
                                             <div className='image'>
                                                 <ImageManager className='img' style={{ height: '100px', width: '100px' }} src={require('../assets/managericon.jpg')}></ImageManager>
@@ -70,23 +87,7 @@ function Dashboard() {
                                         </Button>
                                     </Card.Body>
                                 </Col>
-                                <Col lg={4} sm={6} xs={12} className='col'>
-                                    <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
-                                        <NavLink to='/dashboardstaffcard' className='navLinks'>
-                                            <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>
-                                                <div className='image'>
-                                                    <ImageSupportStaff className='img' style={{ height: '100px', width: '150px' }} src={require('../assets/supportstaffsicon.png')}></ImageSupportStaff>
-                                                    <div className='content'>
-                                                        <Card.Title className='a'>SUPPORT STAFFS</Card.Title>
-                                                        <Card.Text className='b'>
-                                                            15
-                                                        </Card.Text>
-                                                    </div>
-                                                </div>
-                                            </Button>
-                                        </NavLink>
-                                    </Card.Body>
-                                </Col>
+
                                 <Col lg={4} sm={6} xs={12} className='col'>
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className=' mt-3 text-center pt-4 boxShadow bg-light wrapper'>
                                         <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>

@@ -19,8 +19,7 @@ import Travelinformation from './Player-Registration-Form/Travelinformation';
 import RepresentationInfo from './Player-Registration-Form/RepresentationInfo';
 import EmergencyContact from './Player-Registration-Form/EmergencyContact';
 import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
-
-
+import DImage from 'react-bootstrap/Image';
 
 function PlayerRegistration(props) {
 
@@ -95,15 +94,15 @@ function PlayerRegistration(props) {
         </>
         {/* modal end: */}
         {/* Search,Select Components: */}
-        <Container fluid className='py-2 mt-3 bg-light'>
+        <Container fluid className='py-2 mt-3 bg-light' style={{ zIndex: '-100' }}>
           <Row>
-            <Col md={2} sm={4}>
+            <Col xl={2} lg={2} md={2} sm={4} xs={4}>
               <SearchButton />
             </Col>
-            <Col md={2} sm={3}>
+            <Col xl={{span:2,offset:8}} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
               <ExploreOptions />
             </Col>
-            <Col md={7}></Col>
+            <Col sm={1} xs={2}></Col>
           </Row>
         </Container>
       </div>
@@ -135,9 +134,9 @@ function PlayerRegistration(props) {
                 return (
                   <tbody className='table-light' key={i}>
                     <tr className='text-center'>
-                      <td>{showData.playerData.alldataplayerId}</td>
+                      <td>{showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</td>
                       {/* blob to image: */}
-                      <td>{<img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} />}</td>
+                      <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
                       <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td>
                       <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
                       <td>{showData.playerData.displayName ? showData.playerData.displayName : 'N/A'}</td>

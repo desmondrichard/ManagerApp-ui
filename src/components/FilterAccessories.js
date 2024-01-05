@@ -14,7 +14,7 @@ function FilterAccessories() {
                 autoComplete="off"
             ></Box>
 
-            <TextField id="filled-basic" label="Filter" variant="filled" placeholder='EX:Admin'/>
+            <TextField style={{zIndex:'0'}} id="filled-basic" label="Filter" variant="filled" placeholder='EX:Admin'/>
         </div>
     )
 }
