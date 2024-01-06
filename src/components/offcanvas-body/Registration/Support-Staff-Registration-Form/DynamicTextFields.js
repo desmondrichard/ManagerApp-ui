@@ -11,7 +11,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
     const [value0, setValue0] = useState();
     const [value1, setValue1] = useState();
     const [value2, setValue2] = useState();
-    const [value3, setValue3] = useState();
+    
 
      //reset country:
     
@@ -41,7 +41,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
         // flex used
         <div>
             <Row className='row1'>
-                <Col xs={12} lg={3} className='col'>
+                <Col xs={12} lg={4} className='col'>
                     <Form.Floating className="mb-2">
                         <Form.Control
                             id="staffAddress"
@@ -60,7 +60,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
                 </Col>
                 {isFocused && (
                     <>
-                        <Col xs={12} lg={3} className='col'>
+                        <Col xs={12} lg={4} className='col'>
                             <Form.Floating className="mb-2">
                                 <Form.Control
                                     id="address1"
@@ -76,7 +76,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
                                 <label htmlFor="address1" className='text-muted'>ADDRESS LINE 1</label>
                             </Form.Floating>
                         </Col>
-                        <Col xs={12} lg={3} className='col'>
+                        <Col xs={12} lg={4} className='col'>
                             <Form.Floating className="mb-2">
                                 <Form.Control
                                     id="address2"
@@ -91,21 +91,7 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
                                 <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
                             </Form.Floating>
                         </Col>
-                        <Col xs={12} lg={3} className='col' >
-                            <Form.Floating className="mb-2">
-                                <Form.Control
-                                    id="address3"
-                                    type="text"
-                                    placeholder="address3"
-                                    name="address3"
-                                    value={
-                                        isClearAddress3 ? "" : value3
-                                    }
-                                    onChange={e => setValue3(e.target.value)}
-                                />
-                                <label htmlFor="address3" className='text-muted'>ADDRESS LINE 3</label>
-                            </Form.Floating>
-                        </Col>
+                       
 
                         {/* country-state-city: */}
                         <Col xs={12} lg={3} className='col'>

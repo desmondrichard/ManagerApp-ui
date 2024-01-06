@@ -99,7 +99,7 @@ function PlayerRegistration(props) {
             <Col xl={2} lg={2} md={2} sm={4} xs={4}>
               <SearchButton />
             </Col>
-            <Col xl={{span:2,offset:8}} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
+            <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
               <ExploreOptions />
             </Col>
             <Col sm={1} xs={2}></Col>
@@ -116,7 +116,7 @@ function PlayerRegistration(props) {
               <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
                 <th >PLAYER ID</th>
                 <th >PLAYER IMAGE</th>
-                <th >IMAGE ID</th>
+                {/* <th >IMAGE ID</th> */}
                 <th>PLAYER NAME</th>
                 <th>DISPLAY NAME</th>
                 <th>MOBILE NO</th>
@@ -137,7 +137,7 @@ function PlayerRegistration(props) {
                       <td>{showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</td>
                       {/* blob to image: */}
                       <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
-                      <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td>
+                      {/* <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td> */}
                       <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
                       <td>{showData.playerData.displayName ? showData.playerData.displayName : 'N/A'}</td>
                       <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>

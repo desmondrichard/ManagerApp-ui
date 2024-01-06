@@ -32,7 +32,7 @@ function Dashboard() {
                                                     <div className='content'>
                                                         <Card.Title className='a'>PLAYERS</Card.Title>
                                                         <Card.Text className='b'>
-                                                            21
+                                                            600
                                                         </Card.Text>
                                                     </div>
                                                 </div>

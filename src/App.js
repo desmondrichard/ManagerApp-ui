@@ -16,6 +16,7 @@ import ThingsTodoForm from './components/ThingsTodoForm';
 import SupportStaffRegistration from './components/offcanvas-body/Registration/Support-Staff-Registration-Form/SupportStaffRegistration';
 import DashboardCard from './components/DashboardCard';
 import DashboardSupportStaffCard from './components/DashboardSupportStaffCard';
+import ThingsToDoViewCard from './components/offcanvas-body/ThingsToDoViewCard';
 // import PersonalInformation from './components/offcanvas-body/Registration/Player-Registration-Form/PersonalInformation';
 // import ProficiencyForm from './components/offcanvas-body/Registration/Player-Registration-Form/ProficiencyForm';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path='/dashboardplayerscard' exact element={<DashboardCard />} />
           <Route path='/dashboardstaffcard' exact element={<DashboardSupportStaffCard />} />
 
+          <Route path='/thingstodoviewcard' exact element={<ThingsToDoViewCard />} />
 
         </Routes>
       </BrowserRouter>

@@ -14,7 +14,7 @@ const DynamicFields = () => {
             radioLabel: optionsLabel || 'Options',
             radios: [
                 { id: `radioA-${fields.length}`, label: 'Yes' },
-                { id: `radioB-${fields.length}`, label: 'No' },
+                { id: `radioB-${fields.length}`, label: 'No'},
             ],
             text: { id: `text-${fields.length}`, placeholder: 'Enter text' },
 

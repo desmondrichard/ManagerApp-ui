@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import FilterAccessories from './FilterAccessories';
+import ExploreOptions from './ModalComponents/ExploreOptions';
 function Accessories() {
 
   //Data Binding:
@@ -26,11 +27,12 @@ function Accessories() {
         <div className='playersList'>ACCESSORIES LIST</div>
         <Container fluid className='py-2 mt-3 bg-light'>
           <Row>
-            <Col md={2} xs={6}>
+            <Col xl={2} xs={4} md={3} lg={3}>
               <FilterAccessories />
             </Col>
-
-            <Col md={7}></Col>
+            <Col xl={{ span: 2, offset: 8 }} lg={{ span: 3, offset: 6 }} md={{ span: 3, offset: 5 }} sm={{ span: 4, offset: 4 }} xs={{ span: 3 }}>
+              <ExploreOptions />
+            </Col>
           </Row>
         </Container>
       </div>
@@ -40,7 +42,7 @@ function Accessories() {
           >
             <thead>
               <tr className='text-center thead' style={{ whiteSpace: 'nowrap', fontSize: '14px' }}>
-                <th >SL.NO</th>
+                <th >S.NO</th>
                 <th>PLAYER NAME</th>
                 <th>JERSEY NO</th>
                 <th>INITIAL PRINT</th>

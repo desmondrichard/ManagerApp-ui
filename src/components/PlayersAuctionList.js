@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './PlayersAuctionList.css';
 import Header from './Header';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +7,20 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import FilterAccessories from './FilterAccessories';
 import ExploreOptions from './ModalComponents/ExploreOptions';
+import format from 'date-fns/format';
 function PlayersAuctionList() {
+  var formattedDate = '';
+  //Data Binding:
+  const [showData, setShowData] = useState(null);
+  useEffect(() => {
+    fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages')
+      .then((data) => data.json())
+      .then((data) => {
+        // console.log("data",data);
+        // console.log("Success in getting players data", data);
+        setShowData(data);  // showData=data;
+      })
+  }, [])
   return (
     <div>
       <Header />
@@ -15,45 +28,58 @@ function PlayersAuctionList() {
         <div className='playersList'>AUCTION LIST</div>
         <Container fluid className='py-2 mt-3 bg-light'>
           <Row>
-            <Col xs={12} md={3} lg={2}>
+            <Col xl={2} xs={4} md={3} lg={3}>
               <FilterAccessories />
             </Col>
-            <Col md={6} lg={8}>
-
-            </Col>
-            <Col xs={12} md={3} lg={2}>
+            <Col xl={{ span: 2, offset: 8 }} lg={{ span: 3, offset: 6 }} md={{ span: 3, offset: 5 }} sm={{ span: 4, offset: 4 }} xs={{ span: 3 }}>
               <ExploreOptions />
             </Col>
           </Row>
         </Container>
       </div>
-      <Table striped hover responsive className='tableHead my-3 table-dark'
-      >
-        <thead>
-          <tr className='text-center thead' style={{ whiteSpace: 'nowrap',fontSize:'14px' }}>
-            <th >SL.NO</th>
-            <th>PLAYER NAME</th>
-            <th>DOB</th>
-            <th>PRICE</th>
-            <th>CATEGORY</th>
-            <th>ROLE</th>
-            {/* <th>Year</th> */}
+      {
+        showData ?
+          (
+            <Table striped hover responsive className='tableHead my-3 table-dark'
+            >
+              <thead>
 
-          </tr>
-        </thead>
-        <tbody className='table-light'>
-          <tr className='text-center'>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            {/* <th>7</th> */}
-          </tr>
+                <tr className='text-center thead' style={{ whiteSpace: 'nowrap', fontSize: '14px' }}>
+                  <th >S.NO</th>
+                  <th>PLAYER NAME</th>
+                  <th>DOB</th>
+                  <th>PRICE</th>
+                  <th>CATEGORY</th>
+                  <th>ROLE</th>
+                  {/* <th>Year</th> */}
 
-        </tbody>
-      </Table>
+                </tr>
+              </thead>
+              {
+                showData.map((showData, i) => {
+                  return (
+                    <tbody className='table-light' key={i}>
+                      <tr className='text-center'>
+                        <td>{showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</td>
+                        <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
+                        <td>
+                          {showData.playerData.dateOfBirth ? formattedDate = format(new Date(showData.playerData.dateOfBirth),
+                            'MMMM dd yyyy') : 'N/A'}
+                        </td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        {/* <th>7</th> */}
+                      </tr>
+                    </tbody>
+                  )
+                })
+              }
+
+            </Table>
+          ) : (<h4>Loading...</h4>)
+      }
+
     </div>
   )
 }

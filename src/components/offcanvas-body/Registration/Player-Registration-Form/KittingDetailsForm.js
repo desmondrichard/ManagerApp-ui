@@ -357,6 +357,8 @@ function KittingDetailsForm() {
                                                 id="qty"
                                                 ref={qty}
                                                 style={{width:'80px'}}
+                                                min="0"
+                                                max="5"
                                             />
                                         </div>
                                     </Col>

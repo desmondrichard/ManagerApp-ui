@@ -79,7 +79,7 @@ function BankAccountDetails() {
     const bankcontact1 = useRef("");
     const bankaddress1 = useRef("");
     const bankcountry1 = useRef("");
-    
+
 
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
@@ -92,9 +92,9 @@ function BankAccountDetails() {
         current1.current.checked = false;
         ifsc1.current.value = "";
         swiftbic1.current.value = "";
-        micr1.current.value = ""; 
+        micr1.current.value = "";
         iban1.current.value = "";
-        gst1.current.checked ="";
+        gst1.current.checked = "";
         bankcontact1.current.value = "";
         bankaddress1.current.value = "";
         bankcountry1.current.value = "";
@@ -135,7 +135,7 @@ function BankAccountDetails() {
                         <Container >
                             <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="beneficiaryname"
@@ -143,7 +143,7 @@ function BankAccountDetails() {
                                                 placeholder="beneficiaryname"
                                                 name="beneficiaryname"
                                                 ref={beneficiaryname1}
-                                                style={{zIndex:-1}}
+                                                style={{ zIndex: -1 }}
                                                 value={formik.values.beneficiaryname} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -152,7 +152,7 @@ function BankAccountDetails() {
                                             <label htmlFor="beneficiaryname" className='text-muted'>Beneficiary Name*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="bankname"
@@ -169,7 +169,7 @@ function BankAccountDetails() {
                                             <label htmlFor="bankname" className='text-muted'>Bank Name*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3}>
+                                    <Col xs={12} lg={4}>
                                         <Form.Floating className="mb-2 col">
                                             <Form.Control
                                                 id="currencytype"
@@ -185,7 +185,7 @@ function BankAccountDetails() {
                                             <label htmlFor="currencytype" className='text-muted'>Currency Type</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="accountno"
@@ -201,7 +201,7 @@ function BankAccountDetails() {
                                             <label htmlFor="accountno" className='text-muted'>Account No*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col colAccount'>
                                         <label className='text-muted' htmlFor="battingpads">Account Type*</label>
                                         {['radio'].map((type) => (
 
@@ -228,7 +228,7 @@ function BankAccountDetails() {
                                             </div>
                                         ))}
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="ifsc"
@@ -244,7 +244,7 @@ function BankAccountDetails() {
                                             <label htmlFor="ifsc" className='text-muted'>IFSC Code*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="swiftbic"
@@ -257,7 +257,7 @@ function BankAccountDetails() {
                                             <label htmlFor="swiftbic" className='text-muted '>Swift/Bic No Type</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="micr"
@@ -273,7 +273,7 @@ function BankAccountDetails() {
                                             <label htmlFor="micr" className='text-muted'>MICR Code</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="iban"
@@ -286,7 +286,7 @@ function BankAccountDetails() {
                                             <label htmlFor="iban" className='text-muted'>IBAN Code</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="gst"
@@ -302,7 +302,7 @@ function BankAccountDetails() {
                                             <label htmlFor="gst" className='text-muted'>GST Number</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="bankcontact"
@@ -319,7 +319,7 @@ function BankAccountDetails() {
                                             <label htmlFor="bankcontact" className='text-muted '>Bank Contact No</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="bankaddress"
@@ -331,7 +331,7 @@ function BankAccountDetails() {
                                             <label htmlFor="bankaddress" className='text-muted'>Bank Address</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
+                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="bankcountry"

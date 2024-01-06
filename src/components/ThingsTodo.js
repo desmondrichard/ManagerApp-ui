@@ -9,8 +9,10 @@ import { Tab, Tabs } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from 'react-router-dom';
 import ExploreOptions from './ModalComponents/ExploreOptions';
+import format from 'date-fns/format';
 
 function ThingsTodo() {
+  let formattedDate = "";
   //Data Binding:
   const [showData, setShowData] = useState(null);
   useEffect(() => {
@@ -23,7 +25,7 @@ function ThingsTodo() {
       })
   }, [])
   return (
-    <div>
+    <>
       <Header />
       <div className='text-center'>
         <div className='playersList'>THINGS TODO LIST</div>
@@ -37,7 +39,7 @@ function ThingsTodo() {
 
         <Container fluid className='py-2 mt-4 bg-light' style={{ zIndex: '-100' }}>
           <Row>
-            <Col sm={{ span: 4, offset: 9 }} xs={12}>
+            <Col xl={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 9 }} md={{ span: 4, offset: 8 }} xs={4}>
               <ExploreOptions />
             </Col>
           </Row>
@@ -57,7 +59,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>TEAM LOGO</th>
                           <th className='font'>TEAM FLAGE</th>
                           <th className='font'>SIDE FLAGES</th>
@@ -79,7 +81,7 @@ function ThingsTodo() {
                                 <td>{showData.standees ? showData.standees : 'N/A'}</td>
                                 <td>{showData.busBranding ? showData.busBranding : 'N/A'}</td>
                                 <td>{showData.busBooking ? showData.busBooking : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td className='btnPadding' style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -101,7 +103,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>REPRESENTATIVES</th>
                           <th className='font'>TEAM UNIFORM</th>
                           <th className='font'>TEAM TSHIRT</th>
@@ -117,7 +119,7 @@ function ThingsTodo() {
                                 <td>{showData.representatives}</td>
                                 <td>{showData.teamUniform}</td>
                                 <td>{showData.teamTshirt}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -139,7 +141,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>ACTION</th>
@@ -153,7 +155,7 @@ function ThingsTodo() {
                                 <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
                                 <td>{showData.name ? showData.name : 'N/A'}</td>
                                 <td>{showData.designation ? showData.designation : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -175,7 +177,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>DATE</th>
                           <th className='font'>GROUND NAME</th>
                           <th className='font'>TEAM A</th>
@@ -189,11 +191,14 @@ function ThingsTodo() {
                             <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
                               <tr className='text-center font'>
                                 <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
-                                <td>{showData.dateTime ? showData.dateTime : 'N/A'}</td>
+                                <td>{showData.dateTime ? formattedDate = format(
+                                  new Date(showData.dateTime),
+                                  'dd/MM/yyyy'
+                                ) : 'N/A'}</td>
                                 <td>{showData.groundName ? showData.groundName : 'N/A'}</td>
                                 <td>{showData.teamA ? showData.teamA : 'N/A'}</td>
                                 <td>{showData.teamB ? showData.teamB : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
 
                               </tr>
                             </tbody>
@@ -211,11 +216,11 @@ function ThingsTodo() {
               {
                 showData ?
                   (
-                    <Table striped hover responsive className='tableHead table-dark'
+                    <Table striped hover responsive className='tableHead table-dark tableSticky'
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>HOTEL NAME</th>
                           <th className='font'>CITY NAME</th>
                           <th className='font'>NO OF ROOMS</th>
@@ -230,7 +235,7 @@ function ThingsTodo() {
                       {
                         showData.map((showData, i) => {
                           return (
-                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                            <tbody className='table-light' style={{ fontSize: '13px', whiteSpace: 'nowrap' }} key={i}>
                               <tr className='text-center font'>
                                 <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
                                 <td>{showData.hotelName ? showData.hotelName : 'N/A'}</td>
@@ -241,7 +246,7 @@ function ThingsTodo() {
                                 <td>{showData.checkOut ? showData.checkOut : 'N/A'}</td>
                                 <td>{showData.daysStayed ? showData.daysStayed : 'N/A'}</td>
                                 <td>{showData.noOfPeople ? showData.noOfPeople : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -262,7 +267,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>EQUIPMENTS</th>
                           <th className='font'>EQUIPMENTS TYPE</th>
@@ -278,7 +283,7 @@ function ThingsTodo() {
                                 <td>{showData.name ? showData.name : 'N/A'}</td>
                                 <td>{showData.equipments ? showData.equipments : 'N/A'}</td>
                                 <td>{showData.equipmentsType ? showData.equipmentsType : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -300,7 +305,7 @@ function ThingsTodo() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                          <th className='font'>SL.NO</th>
+                          <th className='font'>S.NO</th>
                           <th className='font'>LEAVING FROM</th>
                           <th className='font'>GOING TO</th>
                           <th className='font'>DATE OF JOURNEY</th>
@@ -311,13 +316,13 @@ function ThingsTodo() {
                           <th className='font'>TIME SLOT</th>
                           <th className='font'>NO OF SEATS BOOKED</th>
                           <th className='font'>SEAT NO</th>
-                          <th className='font'>ACTION</th>
+                          <th className='font' style={{ whiteSpace: 'nowrap' }}>ACTION</th>
                         </tr>
                       </thead>
                       {
                         showData.map((showData, i) => {
                           return (
-                            <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
+                            <tbody className='table-light' style={{ fontSize: '13px', whiteSpace: 'nowrap' }} key={i}>
                               <tr className='text-center font'>
                                 <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
                                 <td>{showData.leavingFrom ? showData.leavingFrom : 'N/A'}</td>
@@ -330,7 +335,7 @@ function ThingsTodo() {
                                 <td>{showData.timeSlot ? showData.timeSlot : 'N/A'}</td>
                                 <td>{showData.noOfSeatsBooked ? showData.noOfSeatsBooked : 'N/A'}</td>
                                 <td>{showData.seatNumbers ? showData.seatNumbers : 'N/A'}</td>
-                                <td><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></td>
+                                <td style={{whiteSpace:'nowrap'}}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -347,7 +352,7 @@ function ThingsTodo() {
 
       </Container>
       {/* Tabs:end */}
-    </div>
+    </>
   )
 }
 

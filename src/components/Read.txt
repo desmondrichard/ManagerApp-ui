@@ -1,5 +1,5 @@
 LINK:     
-
+http://192.168.1.146:8079/#/admin-dashboard
 
 ODMS:
 http://52.172.96.40/LSdmsweb/#/
@@ -93,13 +93,24 @@ progressbar:
   this.completedpercent = Math.floor(Number(this.filledpercent));
 
   ----------------------------------------------------------------------------
-  API:
+API:
 
 1.Player Registration => GET => Table:
   `http://192.168.1.192/ManagerApi/GetAllDataAndImages`
   
 2.Support Staff Registration => GET => Table:
   `http://192.168.1.192/ManagerApi/GetStaffAllDataAndImages`
+  
+3.Accessories Distribution  => GET  => Table:
+refer player Registration(1)
 
-3.
+4.Things To Do => GET => Table
+http://192.168.1.192/ManagerApi/register/AllDataThingsToDo
+ 
+5.Accreadiation => GET => Table
+`http://192.168.1.192/ManagerApi/AllDataAccreadiation`
+
+6.Fixtures Form => GET => Table
+refer Things TODO (4)
+
   

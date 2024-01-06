@@ -108,10 +108,9 @@ function SupportStaffRegistration(props) {
                     >
                         <thead>
                             <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
-                                <th>Staff Name</th>
-                                <th>Image ID</th>
-                                <th>Player ID</th>
                                 <th>Player Image</th>
+                                <th>Staff Name</th>
+                                <th>Player ID</th>
                                 <th>Designation</th>
                                 <th>Mobile No</th>
                                 <th>Email ID</th>
@@ -128,10 +127,9 @@ function SupportStaffRegistration(props) {
                                 return (
                                     <tbody className='table-light' key={i}>
                                         <tr className='text-center'>
+                                            <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '40px', height: '35px' }} /> : <DImage src={require('./../../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
                                             <td>{showData.playerData.supportStaffName ? showData.playerData.supportStaffName : 'N/A'}</td>
-                                            <td>{showData.playerImage ? showData.playerImage.imageId : 'N/A'}</td>
                                             <td>{showData.playerData.alldataStaffId ? showData.playerData.alldataStaffId : 'N/A'}</td>
-                                            <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
                                             <td>{showData.playerData.designation ? showData.playerData.designation : 'N/A'}</td>
                                             <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>
                                             <td>{showData.playerData.emailId ? showData.playerData.emailId : 'N/A'}</td>

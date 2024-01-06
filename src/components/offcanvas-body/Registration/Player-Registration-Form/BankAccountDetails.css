@@ -15,3 +15,9 @@
     border:2px solid black !important;
     box-shadow: none !important;
   }
+
+  @media only screen and (min-width: 1200px){
+    .colAccount{
+        text-align: center !important;
+    }
+}

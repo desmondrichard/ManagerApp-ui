@@ -200,8 +200,8 @@ function StaffIDCardDetails() {
                                             <label htmlFor="staffBirth" className='text-muted' style={{ fontSize: '13px' }}>BIRTH CERTIFICATE NO*</label>
                                         </Form.Floating>
                                     </Col>
-                                    <Col xs={12} lg={3} className='col'>
-                                        <label className='text-muted' htmlFor="battingpads">DO YOU HAVE VISA</label>
+                                    <Col xs={12} lg={3} className='col' style={{textAlign:'center'}}>
+                                        <label className='text-muted' htmlFor="battingpads">DO YOU HAVE VISA CARD</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} >
                                                 <Form.Check style={{

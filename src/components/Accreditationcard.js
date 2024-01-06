@@ -27,7 +27,6 @@ function Accreditationcard() {
       <Header />
       <div className='text-center'>
         <div className='playersList'>ACCREADIATION LIST</div>
-
         <>
           <NavLink to='/accreditionform' className='navLinks'><Button variant="primary" className='mt-3 addPlayers'>
             ADD PLAYERS
@@ -37,7 +36,7 @@ function Accreditationcard() {
 
         <Container fluid className='py-2 mt-4 bg-light'>
           <Row>
-            <Col xs={12} sm={{ span: 4, offset: 8 }} md={{ span: 3, offset: 9 }} lg={{ span: 2, offset: 10 }}>
+            <Col xl={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 9 }} md={{ span: 4, offset: 8 }} xs={4}>
               <ExploreOptions />
             </Col>
           </Row>
@@ -56,6 +55,7 @@ function Accreditationcard() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
@@ -68,6 +68,7 @@ function Accreditationcard() {
                           return (
                             <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
                               <tr className='text-center font'>
+                                <td>{showData.alldataAccreadiationId ? showData.alldataAccreadiationId : 'N/A'}</td>
                                 <td>{showData.playersName ? showData.playersName : 'N/A'}</td>
                                 <td>{showData.playersDesignation ? showData.playersDesignation : 'N/A'}</td>
                                 <td>{showData.playersMobilNo ? showData.playersMobilNo : 'N/A'}</td>
@@ -96,11 +97,12 @@ function Accreditationcard() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
-                          <th className='font'>DUTY PASS</th>
+                          {/* <th className='font'>DUTY PASS</th> */}
 
                         </tr>
                       </thead>
@@ -109,11 +111,11 @@ function Accreditationcard() {
                           return (
                             <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
                               <tr className='text-center font'>
-                                <td>{showData.staffName}</td>
-                                <td>{showData.staffDesignation}</td>
-                                <td>{showData.staffMobilNo}</td>
-                                <td>{showData.staffEmailId}</td>
-                                <td>N/A</td>
+                                <td>{showData.alldataAccreadiationId ? showData.alldataAccreadiationId : 'N/A'}</td>
+                                <td>{showData.staffName ? showData.staffName : 'N/A'}</td>
+                                <td>{showData.staffDesignation ? showData.staffDesignation : 'N/A'}</td>
+                                <td>{showData.staffMobilNo ? showData.staffMobilNo : 'N/A'}</td>
+                                <td>{showData.staffEmailId ? showData.staffEmailId : 'N/A'}</td>
                               </tr>
                             </tbody>
                           )
@@ -135,6 +137,7 @@ function Accreditationcard() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
@@ -146,6 +149,7 @@ function Accreditationcard() {
                           return (
                             <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
                               <tr className='text-center font'>
+                                <td>{showData.alldataAccreadiationId ? showData.alldataAccreadiationId : 'N/A'}</td>
                                 <td>{showData.ownerName ? showData.ownerName : 'N/A'}</td>
                                 <td>{showData.ownerDesignation ? showData.ownerDesignation : 'N/A'}</td>
                                 <td>{showData.ownerMobilNo ? showData.ownerMobilNo : 'N/A'}</td>
@@ -169,6 +173,7 @@ function Accreditationcard() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
@@ -181,6 +186,7 @@ function Accreditationcard() {
                           return (
                             <tbody className='table-light' style={{ fontSize: '13px' }}>
                               <tr className='text-center font'>
+                                <td>{showData.alldataAccreadiationId ? showData.alldataAccreadiationId : 'N/A'}</td>
                                 <td>{showData.officialName ? showData.officialName : 'N/A'}</td>
                                 <td>{showData.officialDesignation ? showData.officialDesignation : 'N/A'}</td>
                                 <td>{showData.officialMobilNo ? showData.officialMobilNo : 'N/A'}</td>
@@ -207,6 +213,7 @@ function Accreditationcard() {
                     >
                       <thead>
                         <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
+                          <th className='font'>S.NO</th>
                           <th className='font'>NAME</th>
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
@@ -218,6 +225,7 @@ function Accreditationcard() {
                           return (
                             <tbody className='table-light' style={{ fontSize: '13px' }} key={i}>
                               <tr className='text-center font'>
+                                <td>{showData.alldataAccreadiationId ? showData.alldataAccreadiationId : 'N/A'}</td>
                                 <td>{showData.sponsorName ? showData.sponsorName : 'N/A'}</td>
                                 <td>{showData.sponsorDesignation ? showData.sponsorDesignation : 'N/A'}</td>
                                 <td>{showData.sponsorMobilNo ? showData.sponsorMobilNo : 'N/A'}</td>

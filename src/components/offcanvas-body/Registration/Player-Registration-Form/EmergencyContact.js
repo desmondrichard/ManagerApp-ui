@@ -18,8 +18,8 @@ const validate = values => {
     if (!values.emgcontactperson) {
         errors.emgcontactperson = "*Required";
     }
-    else if (!/^[a-zA-Z]{3,15}$/.test(values.emgcontactperson)) {
-        errors.emgcontactperson = "Name should be between 3 to 15 characters long or only letters allowed";
+    else if (!/^[a-zA-Z ]{3,25}$/.test(values.emgcontactperson)) {
+        errors.emgcontactperson = "Name should be between 3 to 25 characters long or only letters allowed";
     }
 
     if (!values.emgcontactrel) {
