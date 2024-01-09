@@ -15,7 +15,7 @@ function ThingsToDoFormTab() {
             {/* Tabs: start*/}
             <Container fluid >
                 <Row style={{ margin: '0px' }} className=''>
-                    <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
+                    <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab' style={{borderRadius:'5px'}}>
                         {/* Tab:1 */}
                         <Tab eventKey='tab-1' title='Branding'>
                             <Card className='bg-light p-4'>

@@ -6,10 +6,6 @@ import './AccreditionForm.css';
 import AccreditionFormTab from './AccreditionFormTab';
 import Container from 'react-bootstrap/Container';
 
-// import Col from 'react-bootstrap/Col';
-// import YearAccessories from './YearAccessories';
-// import ExploreOptions from './ModalComponents/ExploreOptions';
-
 function AccreditionForm() {
     return (
         <div>

@@ -42,9 +42,9 @@ function Accreditationcard() {
           </Row>
         </Container>
       </div>
-      <Container fluid className='p-0 m-0 mt-2'>
+      <Container fluid className='p-0 mt-2'>
         <Row style={{ margin: '0px' }}>
-          <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab ms-2'>
+          <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
             {/* Tab:1 */}
             <Tab eventKey='tab-1' title='PLAYERS' >
               {/* Tab1 content */}
@@ -61,6 +61,7 @@ function Accreditationcard() {
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
                           <th className='font'>DUTY PASS</th>
+                          <th className='font'>ACTION</th>
                         </tr>
                       </thead>
                       {
@@ -74,6 +75,7 @@ function Accreditationcard() {
                                 <td>{showData.playersMobilNo ? showData.playersMobilNo : 'N/A'}</td>
                                 <td>{showData.playersEmailId ? showData.playersEmailId : 'N/A'}</td>
                                 <td>{showData.playersDutyPass ? showData.playersDutyPass : 'N/A'}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -102,7 +104,7 @@ function Accreditationcard() {
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
-                          {/* <th className='font'>DUTY PASS</th> */}
+                          <th className='font'>ACTION</th>
 
                         </tr>
                       </thead>
@@ -116,6 +118,7 @@ function Accreditationcard() {
                                 <td>{showData.staffDesignation ? showData.staffDesignation : 'N/A'}</td>
                                 <td>{showData.staffMobilNo ? showData.staffMobilNo : 'N/A'}</td>
                                 <td>{showData.staffEmailId ? showData.staffEmailId : 'N/A'}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -142,6 +145,7 @@ function Accreditationcard() {
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
+                          <th className='font'>ACTION</th>
                         </tr>
                       </thead>
                       {
@@ -154,6 +158,7 @@ function Accreditationcard() {
                                 <td>{showData.ownerDesignation ? showData.ownerDesignation : 'N/A'}</td>
                                 <td>{showData.ownerMobilNo ? showData.ownerMobilNo : 'N/A'}</td>
                                 <td>{showData.ownerEmailId ? showData.ownerEmailId : 'N/A'}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -178,7 +183,7 @@ function Accreditationcard() {
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
-
+                          <th className='font'>ACTION</th>
                         </tr>
                       </thead>
                       {
@@ -191,6 +196,7 @@ function Accreditationcard() {
                                 <td>{showData.officialDesignation ? showData.officialDesignation : 'N/A'}</td>
                                 <td>{showData.officialMobilNo ? showData.officialMobilNo : 'N/A'}</td>
                                 <td>{showData.officialEmailId ? showData.officialEmailId : 'N/A'}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )
@@ -218,6 +224,7 @@ function Accreditationcard() {
                           <th className='font'>DESIGNATION</th>
                           <th className='font'>MOBILE NO</th>
                           <th className='font'>EMAIL</th>
+                          <th className='font'>ACTION</th>
                         </tr>
                       </thead>
                       {
@@ -230,6 +237,7 @@ function Accreditationcard() {
                                 <td>{showData.sponsorDesignation ? showData.sponsorDesignation : 'N/A'}</td>
                                 <td>{showData.sponsorMobilNo ? showData.sponsorMobilNo : 'N/A'}</td>
                                 <td>{showData.sponsorEmailId ? showData.sponsorEmailId : 'N/A'}</td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             </tbody>
                           )

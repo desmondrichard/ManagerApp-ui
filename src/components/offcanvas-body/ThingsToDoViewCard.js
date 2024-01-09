@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import './ThingsToDoViewCard.css';
 import Button from 'react-bootstrap/Button';
@@ -8,6 +8,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ExploreOptions from '../ModalComponents/ExploreOptions';
 function ThingsToDoViewCard() {
+    //Data Binding:
+    const [showData, setShowData] = useState(null);
+    useEffect(() => {
+        fetch('http://192.168.1.192/ManagerApi/register/AllDataThingsToDo')
+            .then((data) => data.json())
+            .then((data) => {
+                // console.log("data",data);
+                setShowData(data);  // showData=data;
+            })
+    }, [])
     return (
         <div>
             <Header />
@@ -19,62 +29,120 @@ function ThingsToDoViewCard() {
                     <Col lg={3} className='mb-2'>
                         <NavLink to='/thingstodo' className='navLinks'><Button variant="primary" style={{ fontWeight: 'bold' }}>Go Back</Button></NavLink>
                     </Col>
-                    <Col lg={{span:3,offset:6}} ><ExploreOptions /></Col>
+                    <Col lg={{ span: 3, offset: 6 }} ><ExploreOptions /></Col>
                 </Row>
             </div>
 
-            <Card className='my-3 m-auto' style={{ width: '90%', border: '2px outset #2E83D8'}}>
+            <Card className='my-3 m-auto' style={{ width: '90%', border: '2px outset #2E83D8' }}>
                 <Card.Body>
                     {/* Card:1 */}
                     <Card style={{ width: '100%' }} className='todoSubCard'>
                         <Card.Header className='todoHeader'>REPRESENTATIVES FORM</Card.Header>
                         <Card.Body>
-                            <Row>
-                                <Col md={4} className='todoCol'><div className='divCard'>ID: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Representatives Name: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team Name: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team Tshirt: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team Uniform: </div></Col>
-                            </Row>
+                            {
+                                showData ?
+                                    (
+                                        <Row>
+                                            {
+                                                showData.map((showData, i) => {
+                                                    return (
+                                                        <React.Fragment key={i}>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>ID: <span style={{ fontWeight: '400' }}>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Representatives Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Team Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Team Tshirt: <span style={{ fontWeight: '400' }}>{showData.teamTshirt ? showData.teamTshirt : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Team Uniform: <span style={{ fontWeight: '400' }}>{showData.teamUniform ? showData.teamUniform : 'N/A'}</span></div></Col>
+                                                        </React.Fragment>
+                                                    )
+                                                })
+                                            }
+                                        </Row>
+                                    ) : (<h4>Loading...</h4>)
+                            }
+
                         </Card.Body>
                     </Card>
                     {/* Card:2 */}
                     <Card style={{ width: '100%' }} className='mt-3 todoSubCard'>
                         <Card.Header className='todoHeader'>BRANDING FORM</Card.Header>
                         <Card.Body>
-                            <Row>
-                                <Col md={4} className='todoCol'><div className='divCard'>ID: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team Logo: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team Flage: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Standees: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Side Flages: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Bus Item: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Bus Booking: </div></Col>
-                            </Row>
+                            {
+                                showData ?
+                                    (<Row>
+                                        {
+                                            showData.map((showData, i) => {
+                                                return (
+                                                    <React.Fragment key={i}>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>ID: {showData.alldataThingsId}</div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Team Logo: {showData.teamLogo}</div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Team Flage: {showData.teamFlage}</div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Standees: {showData.standees}</div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Side Flages: {showData.sideFlages}</div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Bus Item: </div></Col>
+                                                        <Col md={4} className='todoCol'><div className='divCard'>Bus Booking: {showData.busBooking}</div></Col>
+                                                    </React.Fragment>
+                                                )
+
+                                            })
+                                        }
+
+                                    </Row>) : (<h4>Loading...</h4>)
+                            }
+
                         </Card.Body>
                     </Card>
                     {/* Card:3 */}
                     <Card style={{ width: '100%' }} className='mt-3 todoSubCard'>
                         <Card.Header className='todoHeader'>COACH THERAPIST FORM</Card.Header>
                         <Card.Body>
-                            <Row>
-                                <Col md={4} className='todoCol'><div className='divCard'>ID: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Item Name: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Designation: </div></Col>
-                            </Row>
+                            {
+                                showData ?
+                                    (
+                                        <Row>
+                                            {
+                                                showData.map((showData, i) => {
+                                                    return (
+                                                        <React.Fragment key={i}>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>ID: {showData.alldataThingsId}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Item Name: {showData.name}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Designation: {showData.designation}</div></Col>
+                                                        </React.Fragment>
+                                                    )
+                                                })
+                                            }
+
+                                        </Row>
+                                    ) : (<h4>Loading...</h4>)
+                            }
+
                         </Card.Body>
                     </Card>
                     {/* Card:4 */}
                     <Card style={{ width: '100%' }} className='mt-3 todoSubCard' >
                         <Card.Header className='todoHeader'>FIXTURES FORM</Card.Header>
                         <Card.Body>
-                            <Row>
-                                <Col md={4} className='todoCol'><div className='divCard'>ID: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Ground Name: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team A: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Team B: </div></Col>
-                                <Col md={4} className='todoCol'><div className='divCard'>Date: </div></Col>
-                            </Row>
+                            {
+                                showData ?
+                                    (
+                                        <Row>
+                                            {
+                                                showData.map((showData, i) => {
+                                                    return (
+                                                        <React.Fragment key={i}>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>ID: {showData.alldataThingsId}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Ground Name: {showData.groundName}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Team A: {showData.teamA}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Team B: {showData.teamB}</div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard'>Date: </div></Col>
+                                                        </React.Fragment>
+                                                    )
+                                                })
+                                            }
+
+                                        </Row>
+                                    ) : (<h4>Loading...</h4>)
+                            }
+
                         </Card.Body>
                     </Card>
                     {/* Card:5 */}
