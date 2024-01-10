@@ -34,7 +34,14 @@ function App() {
           <Route path='/accessories' exact element={<Accessories />} />
           <Route path='/playersauctionlist' exact element={<PlayersAuctionList />} />
           <Route path='/fixtures' exact element={<Fixtures />} />
-          <Route path='/thingstodo' exact element={<ThingsTodo />} />
+
+          {/* Nested Routes: */}
+          <Route path='thingstodo'>
+            <Route index element={<ThingsTodo />} />
+           
+            <Route path='thingstodoviewcard' exact element={<ThingsToDoViewCard />} />
+          </Route>
+
 
           <Route path='/accreditationcards' exact element={<Accreditationcard />} />
           <Route path='/accreditionform' exact element={<AccreditionForm />} />
@@ -43,8 +50,9 @@ function App() {
           <Route path='/dashboardplayerscard' exact element={<DashboardCard />} />
           <Route path='/dashboardstaffcard' exact element={<DashboardSupportStaffCard />} />
 
-          <Route path='/thingstodoviewcard' exact element={<ThingsToDoViewCard />} />
+          {/* <Route path='/thingstodoviewcard' exact element={<ThingsToDoViewCard />} /> */}
           <Route path='/thingstodoaddlist' exact element={<ThingsToDoAddList />} />
+
 
         </Routes>
       </BrowserRouter>

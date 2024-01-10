@@ -48,7 +48,7 @@ function ThingsToDoViewCard() {
                                                     return (
                                                         <React.Fragment key={i}>
                                                             <Col md={4} className='todoCol'><div className='divCard'>ID: <span style={{ fontWeight: '400' }}>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</span></div></Col>
-                                                            <Col md={4} className='todoCol'><div className='divCard'>Representatives Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard' style={{whiteSpace:'nowrap'}}>Representatives Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Tshirt: <span style={{ fontWeight: '400' }}>{showData.teamTshirt ? showData.teamTshirt : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Uniform: <span style={{ fontWeight: '400' }}>{showData.teamUniform ? showData.teamUniform : 'N/A'}</span></div></Col>

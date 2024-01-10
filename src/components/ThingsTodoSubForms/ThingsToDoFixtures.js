@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useRef} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useFormik } from 'formik';
 function ThingsToDoFixtures() {
+
+
+  //reset:
+  const name1 = useRef("");
+  const teamA = useRef("");
+  const teamB = useRef("");
+  const date = useRef("");
+
+  function handleReset() {
+    name1.current.value = "";
+    teamA.current.value = "";
+    teamB.current.value = "";
+    date.current.value = "";
+    // formik.resetForm();
+  }
   return (
     <div>
       <Row>
@@ -13,10 +29,9 @@ function ThingsToDoFixtures() {
             <Form.Control
               id="dob1"
               type="date"
-              min={new Date().toISOString().split('T')[0]}
               placeholder='DD-MM-YYYY'
               name="dob"
-
+              ref={date}
             />
 
             <label htmlFor="dob1" className='text-muted'>Date of Birth*</label>
@@ -29,6 +44,7 @@ function ThingsToDoFixtures() {
               type="text"
               placeholder="coachname"
               name="coachname"
+              ref={name1}
             />
             <label htmlFor="name" className='text-muted'>Ground Name*</label>
           </Form.Floating>
@@ -40,6 +56,7 @@ function ThingsToDoFixtures() {
               type="text"
               placeholder="coachname"
               name="coachname"
+              ref={teamA}
             />
             <label htmlFor="name" className='text-muted'>Team A</label>
           </Form.Floating>
@@ -51,6 +68,7 @@ function ThingsToDoFixtures() {
               type="text"
               placeholder="coachname"
               name="coachname"
+              ref={teamB}
             />
             <label htmlFor="name" className='text-muted'>Team B</label>
           </Form.Floating>
@@ -59,7 +77,7 @@ function ThingsToDoFixtures() {
       <Row>
         <Col className='end btns'>
           <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
-          <Button variant="warning" className='mx-2' style={{ color: 'white' }}>CLEAR</Button>
+          <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
           <Button variant="success" className='mx-2' type="submit">SAVE AND NEXT</Button>
         </Col>
       </Row>

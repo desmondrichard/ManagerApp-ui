@@ -1,41 +1,58 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './ThingsToDoBranding.css';
-
+import { useFormik } from 'formik';
 function ThingsToDoBranding() {
+  //reset:
+  const logoChecked = useRef(false);
+  const flagChecked = useRef(false);
+  const sideFlagChecked = useRef(false);
+  const standeesChecked = useRef(false);
+  const brandingChecked = useRef(false);
+  const bookingChecked = useRef(false);
+
+  function handleReset() {
+    logoChecked.current.checked = false;
+    flagChecked.current.checked = false;
+    sideFlagChecked.current.checked = false;
+    standeesChecked.current.checked = false;
+    brandingChecked.current.checked = false;
+    bookingChecked.current.checked = false;
+    // formik.resetForm();
+  }
   return (
     <div>
       <Card className='bg-light p-4'>
         <Form>
           <Row className='fw-bold' style={{ fontSize: '16px' }}>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Team Logo" />
+              <Form.Check label="Team Logo" ref={logoChecked} />
             </Col>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Team Flag" />
+              <Form.Check label="Team Flag" ref={flagChecked} />
             </Col>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Side Flag" />
+              <Form.Check label="Side Flag" ref={sideFlagChecked} />
             </Col>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Standees" />
+              <Form.Check label="Standees" ref={standeesChecked} />
             </Col>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Bus Branding" />
+              <Form.Check label="Bus Branding" ref={brandingChecked} />
             </Col>
             <Col xs={12} md={4} className='py-3'>
-              <Form.Check label="Bus Booking" />
+              <Form.Check label="Bus Booking" ref={bookingChecked} />
             </Col>
 
           </Row>
           <Row>
             <Col className='end btns'>
               <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
-              <Button variant="warning" className='mx-2' style={{ color: 'white' }}>CLEAR</Button>
+              <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
               <Button variant="success" className='mx-2' type="submit">SAVE AND NEXT</Button>
             </Col>
           </Row>

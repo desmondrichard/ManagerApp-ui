@@ -26,6 +26,7 @@
 /* Horizontal Scroll bar for tab:start */
 .nav-justified .nav-item .nav-link{
     width:300px !important;   
+    border-radius: 8px !important;
 }
 .tab {
     overflow-x: auto;
