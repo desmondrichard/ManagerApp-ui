@@ -25,7 +25,7 @@ function Dashboard() {
                             <Row>
                                 <Col lg={4} sm={6} xs={12} className='col'>
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 pt-4 boxShadow bg-light wrapper'>
-                                        <NavLink to='/dashboardplayerscard' className='navLinks'>
+                                        <NavLink to='/dashboard/dashboardplayerscard' className='navLinks'>
                                             <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>
                                                 <div className='image'>
                                                     <ImagePlayer className='img' style={{ height: '100px', width: '140px' }} src={require('../assets/playernew1.png')}></ImagePlayer>
@@ -42,7 +42,7 @@ function Dashboard() {
                                 </Col>
                                 <Col lg={4} sm={6} xs={12} className='col'>
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 text-center pt-4 boxShadow bg-light wrapper'>
-                                        <NavLink to='/dashboardstaffcard' className='navLinks'>
+                                        <NavLink to='/dashboard/dashboardstaffcard' className='navLinks'>
                                             <Button variant="dark" style={{ backgroundColor: 'transparent', border: 'none' }}>
                                                 <div className='image'>
                                                     <ImageSupportStaff className='img' style={{ height: '100px', width: '150px' }} src={require('../assets/supportstaffsicon.png')}></ImageSupportStaff>

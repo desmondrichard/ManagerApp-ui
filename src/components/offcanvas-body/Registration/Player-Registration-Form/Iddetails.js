@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -163,6 +163,7 @@ function Iddetails() {
                                                 name="passexp"
                                                 ref={passexp1}
                                                 value={formik.values.passexp} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                min={new Date().toISOString().split('T')[0]}
                                             />
                                             {
                                                 formik.touched.passexp && formik.errors.passexp ? <span className='span'>{formik.errors.passexp}</span> : null
@@ -179,6 +180,7 @@ function Iddetails() {
                                                 name="birth"
                                                 ref={birth1}
                                                 value={formik.values.birth} onBlur={formik.handleBlur} onChange={formik.handleChange}
+
                                             />
                                             {
                                                 formik.touched.birth && formik.errors.birth ? <span className='span'>{formik.errors.birth}</span> : null
@@ -213,7 +215,7 @@ function Iddetails() {
                                         ))}
                                     </Col>
                                     <Col xs={12}>
-                                        <PlayerDynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue}/>
+                                        <PlayerDynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue} />
                                     </Col>
 
                                     <Col xs={12} lg={12} className='my-4 col'>

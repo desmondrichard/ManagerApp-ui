@@ -48,9 +48,6 @@
         margin-left: 1px;
     }
 
-    .font {
-        font-weight: 700;
-    }
 }
 
 .logo {
@@ -61,4 +58,8 @@
     .row1parent {
         padding-left: 0px !important;
     }
+}
+
+.fontLogin {
+    font-weight: 600;
 }

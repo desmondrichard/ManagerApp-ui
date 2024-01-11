@@ -20,6 +20,7 @@ import StaffPreviousRepresentation from './Support-Staff-Modal-Forms/StaffPrevio
 import StaffEmergencyContact from './Support-Staff-Modal-Forms/StaffEmergencyContact';
 import StaffSocialMediaInfo from './Support-Staff-Modal-Forms/StaffSocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
+import Skeleton from '@mui/material/Skeleton';
 function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -121,12 +122,13 @@ function SupportStaffRegistration(props) {
                                 <th>Download As</th>
                             </tr>
                         </thead>
-                        {
-                            showData.map((showData, i) => {
-                                console.log("showData", showData)
-                                return (
-                                    <tbody className='table-light' key={i}>
-                                        <tr className='text-center'>
+
+                        <tbody className='table-light' >
+                            {
+                                showData.map((showData, i) => {
+                                    console.log("showData", showData)
+                                    return (
+                                        <tr className='text-center' key={i}>
                                             <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '40px', height: '35px' }} /> : <DImage src={require('./../../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
                                             <td>{showData.playerData.supportStaffName ? showData.playerData.supportStaffName : 'N/A'}</td>
                                             <td>{showData.playerData.alldataStaffId ? showData.playerData.alldataStaffId : 'N/A'}</td>
@@ -139,11 +141,12 @@ function SupportStaffRegistration(props) {
                                             <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
                                             <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
                                         </tr>
-                                    </tbody>
-                                )
-                            })
-                        }
-                    </Table>) : (<h4>Loading...</h4>)
+                                    )
+                                })
+                            }
+                        </tbody>
+
+                    </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
             }
         </div>
     )

@@ -91,14 +91,6 @@ function StaffPersonalInformation() {
     const [mobileValue, setMobileValue] = useState(false);
     const [imageValue,setImageValue]=useState(false);
     
-    // 
-    // const navigate = useNavigate();
-    // const [accordionOpen, setAccordionOpen] = useState(false);
-    // //
-    // function handleSubmit() {
-    //     setAccordionOpen(true);
-    //     navigate("/dashboard");
-    // }
 
     // reset form start: 
     const firstName = useRef("");
@@ -325,6 +317,7 @@ function StaffPersonalInformation() {
                                                 placeholder="dob"
                                                 name="staffDob"
                                                 ref={dob}
+                                                max={new Date().toISOString().split('T')[0]}
                                                 value={formik.values.staffDob} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
                                             {
@@ -358,9 +351,6 @@ function StaffPersonalInformation() {
                                         </FloatingLabel>
                                     </Col>
                                     <Col xs={12} lg={4} className='col'>
-                                        <Phone isClear={mobileValue} />
-                                    </Col>
-                                    <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="staffEmail"
@@ -376,6 +366,10 @@ function StaffPersonalInformation() {
                                             <label htmlFor="staffEmail" className='text-muted'>Email Address*</label>
                                         </Form.Floating>
                                     </Col>
+                                    <Col xs={12} lg={4} className='col'>
+                                        <Phone isClear={mobileValue} />
+                                    </Col>
+                                    
                                     <Col xs={12} lg={4} className='d-flex justify-content-center pt-3 col'>
                                         <label className='text-muted me-2' htmlFor="gender">Gender:</label>
                                         {['radio'].map((type) => (

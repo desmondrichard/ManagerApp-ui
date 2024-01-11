@@ -32,6 +32,7 @@ function ThingsToDoFixtures() {
               placeholder='DD-MM-YYYY'
               name="dob"
               ref={date}
+              max={new Date(Date.now() - 24*60*60*1000).toISOString().split("T")[0]} 
             />
 
             <label htmlFor="dob1" className='text-muted'>Date of Birth*</label>

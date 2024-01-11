@@ -102,12 +102,12 @@ function Register() {
                     <Col md={5}>
                         <Container className='pt-1'>
                             <Form onSubmit={formik.handleSubmit}>
-                                <legend className='text-center ' style={{ fontWeight: 'bold' }}>Register</legend>
+                                <legend className='text-center ' style={{ fontWeight: '700' }}>Register</legend>
                                 <hr style={{ border: '2px solid #198754' }} />
 
                                 {/*Full Name Field: */}
                                 <Form.Group className="mb-1" controlId="Name">
-                                    <Form.Label className='font'>Full Name</Form.Label>
+                                    <Form.Label className='fontRegister'>Full Name</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="text" name='fullname' placeholder="Enter Your Full Name" value={formik.values.fullname} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                                     {
                                         formik.touched.fullname && formik.errors.fullname ? <span className='span'>{formik.errors.fullname}</span> : null
@@ -116,7 +116,7 @@ function Register() {
 
                                 {/*Username Field: */}
                                 <Form.Group className="mb-1" controlId="username">
-                                    <Form.Label className='font'>UserName</Form.Label>
+                                    <Form.Label className='fontRegister'>UserName</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="text" name='username' placeholder="Enter Your UserName" value={formik.values.username} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                                     {
                                         formik.touched.username && formik.errors.username ? <span className='span'>{formik.errors.username}</span> : null
@@ -125,7 +125,7 @@ function Register() {
 
                                 {/* Email Field: */}
                                 <Form.Group className="mb-1" controlId="formGroupEmail">
-                                    <Form.Label className='font'>Email address</Form.Label>
+                                    <Form.Label className='fontRegister'>Email address</Form.Label>
                                     <Form.Control size="sm" className='shadow-none' type="email" placeholder="Enter email" name='email' value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />
                                     {
                                         formik.touched.email && formik.errors.email ? <span className='span'>{formik.errors.email}</span> : null
@@ -134,8 +134,8 @@ function Register() {
 
                                 {/* DOB Field: */}
                                 <Form.Group className="mb-3" controlId="DOB">
-                                    <Form.Label className='font'>D.O.B</Form.Label>
-                                    <Form.Control size="sm" className='shadow-none' type="date" placeholder="Enter Date of Birth" name='dob' value={formik.values.dob} onBlur={formik.handleBlur} onChange={formik.handleChange} />
+                                    <Form.Label className='fontRegister'>D.O.B</Form.Label>
+                                    <Form.Control size="sm" className='shadow-none' type="date" placeholder="Enter Date of Birth" name='dob' value={formik.values.dob} onBlur={formik.handleBlur} onChange={formik.handleChange} max={new Date(Date.now() - 24*60*60*1000).toISOString().split("T")[0]}/>
                                     {
                                         formik.touched.dob && formik.errors.dob ? <span className='span'>{formik.errors.dob}</span> : null
                                     }
@@ -143,7 +143,7 @@ function Register() {
 
                                 {/* Mobile Field: */}
                                 <Form.Group className="mb-1" controlId="Phone">
-                                    <Form.Label className='font'>Phone Number</Form.Label>
+                                    <Form.Label className='fontRegister'>Phone Number</Form.Label>
                                     <InputGroup className='number'>
                                         <InputGroup.Text id="inputGroup-sizing-sm">+91
                                             <Form.Control size="sm" className='paddingStyle shadow-none' type="text" placeholder="Enter Phone Number" name='mobile' value={formik.values.mobile} onBlur={formik.handleBlur} onChange={formik.handleChange} />
@@ -156,7 +156,7 @@ function Register() {
 
                                 {/* Password Field: */}
                                 <Form.Group className="mb-1" controlId="Password">
-                                    <Form.Label className='font'>Password </Form.Label>
+                                    <Form.Label className='fontRegister'>Password </Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
                                             visible ? "password" : "text"}
@@ -173,7 +173,7 @@ function Register() {
 
                                 {/* ConfirmPassword Field: */}
                                 <Form.Group className="mb-1" controlId="ConfirmPassword">
-                                    <Form.Label className='font'>Confirm Password</Form.Label>
+                                    <Form.Label className='fontRegister'>Confirm Password</Form.Label>
                                     <div className='pwd' >
                                         <Form.Control size="sm" className='shadow-none' type={
                                             visible1 ? "password" : "text"} name='confirmpassword' placeholder="Confirm Password" value={formik.values.confirmpassword} onBlur={formik.handleBlur} onChange={formik.handleChange} />
@@ -196,7 +196,7 @@ function Register() {
                                 </div>
                             </Form>
                             <div className='text-center py-2'>
-                                <p>Already Have an Account ? <span className='text-danger signUp'><Link to='/'>Login</Link> </span></p>
+                                <p style={{fontWeight:'500'}}>Already Have an Account ? <span className='text-danger signUp' style={{fontSize:'19px'}}><Link to='/'>Login</Link> </span></p>
                             </div>
 
                         </Container>

@@ -20,7 +20,7 @@ import RepresentationInfo from './Player-Registration-Form/RepresentationInfo';
 import EmergencyContact from './Player-Registration-Form/EmergencyContact';
 import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
-
+import Skeleton from '@mui/material/Skeleton';
 function PlayerRegistration(props) {
 
   const [show, setShow] = useState(false);
@@ -33,7 +33,7 @@ function PlayerRegistration(props) {
     fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages')
       .then((data) => data.json())
       .then((data) => {
-        // console.log("data",data);
+         console.log("data",data);
         // console.log("Success in getting players data", data);
         setShowData(data);  // showData=data;
       })
@@ -128,32 +128,34 @@ function PlayerRegistration(props) {
                 <th>DOWNLOAD AS</th>
               </tr>
             </thead>
-            {
-              showData.map((showData, i) => {
-                console.log("ShowData", showData);
-                return (
-                  <tbody className='table-light' key={i}>
-                    <tr className='text-center'>
-                      <td>{showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</td>
+
+            <tbody className='table-light'>
+              {
+                showData.map((showData, i) => {
+                  console.log("ShowData", showData);
+                  return (
+                    <tr className='text-center' key={i}>
+                      <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
                       {/* blob to image: */}
                       <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
                       {/* <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td> */}
-                      <td>{showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</td>
-                      <td>{showData.playerData.displayName ? showData.playerData.displayName : 'N/A'}</td>
-                      <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>
-                      <td>{showData.playerData.emailId ? showData.playerData.emailId : 'N/A'}</td>
-                      <td>{showData.playerData.specialization ? showData.playerData.specialization : 'N/A'}</td>
-                      <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : 'N/A'}</td>
-                      <td>{showData.playerData.club ? showData.playerData.club : 'N/A'}</td>
+                      <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
+                      <td>{showData.displayName ? showData.displayName : 'N/A'}</td>
+                      <td>{showData.mobileNo ? showData.mobileNo : 'N/A'}</td>
+                      <td>{showData.emailId ? showData.emailId : 'N/A'}</td>
+                      <td>{showData.specialization ? showData.specialization : 'N/A'}</td>
+                      <td>{showData.jerseyNo ? showData.jerseyNo : 'N/A'}</td>
+                      <td>{showData.club ? showData.club : 'N/A'}</td>
                       <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
                       <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
                     </tr>
-                  </tbody>
-                )
-              })
-            }
+                  )
+                })
+              }
+            </tbody>
 
-          </Table>) : (<h4>Loading...</h4>)
+
+          </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
       }
 
     </div>

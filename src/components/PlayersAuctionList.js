@@ -8,6 +8,7 @@ import Table from 'react-bootstrap/Table';
 import FilterAccessories from './FilterAccessories';
 import ExploreOptions from './ModalComponents/ExploreOptions';
 import format from 'date-fns/format';
+import Skeleton from '@mui/material/Skeleton';
 function PlayersAuctionList() {
   var formattedDate = '';
   //Data Binding:
@@ -77,7 +78,7 @@ function PlayersAuctionList() {
               }
 
             </Table>
-          ) : (<h4>Loading...</h4>)
+          ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
       }
 
     </div>

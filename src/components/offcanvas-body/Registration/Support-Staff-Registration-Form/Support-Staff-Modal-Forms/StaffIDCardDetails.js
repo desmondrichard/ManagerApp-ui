@@ -177,6 +177,7 @@ function StaffIDCardDetails() {
                                                 name="staffPassExp"
                                                 ref={passexp1}
                                                 value={formik.values.staffPassExp} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                                min={new Date().toISOString().split('T')[0]}
                                             />
                                             {
                                                 formik.touched.staffPassExp && formik.errors.staffPassExp ? <span className='span'>{formik.errors.staffPassExp}</span> : null
@@ -250,6 +251,7 @@ function StaffIDCardDetails() {
                                                 placeholder="visavalidity"
                                                 name="staffVisaValidity"
                                                 ref={visaValid}
+                                                min={new Date().toISOString().split('T')[0]}
                                             />
                                             <label htmlFor="staffVisaValidity" className='text-muted' style={{ fontSize: '13px' }}>VISA VALIDITY</label>
                                         </Form.Floating>

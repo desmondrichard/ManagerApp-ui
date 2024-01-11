@@ -278,7 +278,7 @@ function PersonalInformation() {
                                                 type="date"
                                                 ref={dob}  
                                                 placeholder='DD-MM-YYYY'
-                                                min="1990-01-01" max="2030-12-31"
+                                                min="1960-01-01" max={new Date(Date.now() - 24*60*60*1000).toISOString().split("T")[0]}
                                                 name="dob"
                                                 value={formik.values.dob} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />

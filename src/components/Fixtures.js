@@ -3,7 +3,7 @@ import './Fixtures.css';
 import Header from './Header';
 import Table from 'react-bootstrap/Table';
 import format from 'date-fns/format';
-
+import Skeleton from '@mui/material/Skeleton';
 function Fixtures() {
   let formattedDate = '';
   //Data Binding:
@@ -58,7 +58,7 @@ function Fixtures() {
               }
 
             </Table>
-          ) : (<h4>Loading...</h4>)
+          ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
       }
 
     </div>

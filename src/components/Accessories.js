@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import FilterAccessories from './FilterAccessories';
 import ExploreOptions from './ModalComponents/ExploreOptions';
+import Skeleton from '@mui/material/Skeleton';
 function Accessories() {
 
   //Data Binding:
@@ -86,7 +87,7 @@ function Accessories() {
                 )
               })
             }
-          </Table>) : (<h4>Loading...</h4>)
+          </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
       }
     </div >
   )

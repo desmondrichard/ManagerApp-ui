@@ -36,14 +36,14 @@ function Login() {
                         <Col md={5}>
                             <Container className='pt-4 '>
                                 <Form >
-                                    <legend className='text-center' style={{ fontWeight: '800' }}>Login</legend>
+                                    <legend className='text-center' style={{ fontWeight: '700' }}>Login</legend>
                                     <hr style={{ border: '2px solid #198754' }} />
                                     <Form.Group className="mb-2" controlId="Username1" >
-                                        <Form.Label className='font'>Username</Form.Label>
+                                        <Form.Label className='fontLogin'>Username</Form.Label>
                                         <Form.Control className='shadow-none' type="text" placeholder="Enter username" onChange={(e) => setEmail(e.target.value)} />
                                     </Form.Group>
                                     <Form.Group className="mb-4" controlId="Passwords" >
-                                        <Form.Label className='font'>Password</Form.Label>
+                                        <Form.Label className='fontLogin'>Password</Form.Label>
                                         <div className='number' >
                                             <Form.Control className='input shadow-none' type={
                                                 visible ? "password" : "text"}
@@ -61,7 +61,7 @@ function Login() {
                                     </div>
                                 </Form>
                                 <div className='text-center py-2'>
-                                    <p>Not Registered ? <span className='text-danger signUp'><Link to='/signup'>Sign Up</Link>  </span></p>
+                                    <p style={{fontWeight:'500'}}>Not Registered ? <span className='text-danger signUp' style={{fontSize:'19px'}}><Link to='/signup'>Sign Up</Link>  </span></p>
                                 </div>
                                 <div className='text-center'>
                                     <Image3 className='logo' src={require('../assets/login-pow-logo.png')} ></Image3>

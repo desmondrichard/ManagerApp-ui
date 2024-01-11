@@ -43,12 +43,13 @@
     .row1 {
        margin-left: 1px;
     }
-    .font{
-        font-weight: 500;
-    }
   }
 
   .span{
     color:red;
     font-size: 15px;
+  }
+
+  .fontRegister{
+    font-weight: 600;
   }

@@ -14,9 +14,9 @@ function ThingsToDoTransport() {
   const returnDate = useRef("");
   const seatBooked = useRef("");
   const seatNo = useRef("");
-  const transportType=useRef("");
-  const travelType=useRef("");
-  const busType=useRef("");
+  const transportType = useRef("");
+  const travelType = useRef("");
+  const busType = useRef("");
 
   function handleReset() {
     leavingFrom.current.value = "";
@@ -29,6 +29,15 @@ function ThingsToDoTransport() {
     travelType.current.value = "none";
     busType.current.value = "none";
     // formik.resetForm();
+  }
+
+  function checkIfCheckoutAfterCheckin(checkinDate, checkoutDate) {
+    const checkin = new Date(checkinDate);
+    const checkout = new Date(checkoutDate);
+    if (checkout < checkin) {
+      alert('Checkout date must be after checkin date.');
+      returnDate.current.value = ''; // clear the checkout date
+    }
   }
   return (
     <div>
@@ -57,7 +66,7 @@ function ThingsToDoTransport() {
             <label htmlFor="goingto" className='text-muted'>Going To*</label>
           </Form.Floating>
         </Col>
-        <Col md={3}>
+        {/* <Col md={3}>
           <Form.Floating className="mb-2 mt-3">
             <Form.Control
               id="journeydate"
@@ -81,6 +90,35 @@ function ThingsToDoTransport() {
               ref={returnDate}
             />
             <label htmlFor="returndate" className='text-muted'>Return Date</label>
+          </Form.Floating>
+        </Col> */}
+        <Col md={3} className='my-3'>
+          <Form.Floating className="mb-2">
+            <Form.Control
+              id="checkin"
+              type="date"
+              min={new Date().toISOString().split('T')[0]}
+              placeholder='DD-MM-YYYY'
+              name="journeyDate"
+              ref={journeyDate}
+            />
+
+            <label htmlFor="journeyDate" className='text-muted'>Check In</label>
+          </Form.Floating>
+        </Col>
+        <Col md={3} className='my-3'>
+          <Form.Floating className="mb-2">
+            <Form.Control
+              id="checkout"
+              type="date"
+              min={new Date().toISOString().split('T')[0]}
+              placeholder='DD-MM-YYYY'
+              name="returndate"
+              ref={returnDate}
+              onChange={(e) => checkIfCheckoutAfterCheckin(journeyDate.current.value, e.target.value)}
+            />
+
+            <label htmlFor="returnDate" className='text-muted'>Check Out</label>
           </Form.Floating>
         </Col>
         <Col md={3}>

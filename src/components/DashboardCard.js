@@ -39,19 +39,18 @@ function DashboardCard() {
                                     {
                                         showData.map((showData, i) => {
                                             return (
-                                                <Col md={3} key={i}>
+                                                <Col md={4} key={i}>
                                                     <Card style={{ width: '18rem', cursor: 'pointer' }} className='m-4 zoom'>
                                                         <Card.Img variant="top" src={showData.playerImage ? `data:image;base64,${showData.playerImage.imageData}` : require('./../assets/dummy_profile_img.png')} alt="img" style={{ width: 'auto', height: '300px' }} />
                                                         <Card.Body style={{ borderTop: '1px solid #DDDDDD' }}>
-                                                            <Card.Text style={{ fontSize: '14px', fontWeight: '500' }}>Player ID: {showData.playerData.alldataplayerId ? showData.playerData.alldataplayerId : 'N/A'}</Card.Text>
-                                                            <Card.Text style={{ fontSize: '14px', fontWeight: '500' }}>Player Name: {showData.playerData.playerName ? showData.playerData.playerName : 'N/A'}</Card.Text>
+                                                            <Card.Text style={{ fontSize: '14px', fontWeight: '500' }}>Player ID: {showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</Card.Text>
+                                                            <Card.Text style={{ fontSize: '14px', fontWeight: '500' }}>Player Name: {showData.playerName ? showData.playerName : 'N/A'}</Card.Text>
                                                         </Card.Body>
                                                     </Card>
                                                 </Col>
                                             )
                                         })
                                     }
-
 
                                 </Row>) : (<h4>Loading...</h4>)
                         }

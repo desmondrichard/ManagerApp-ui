@@ -7,8 +7,28 @@ import Header from '../Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ExploreOptions from '../ModalComponents/ExploreOptions';
+//
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 function ThingsToDoViewCard() {
-    //Data Binding:
+    //ID
+    // const param = useParams();
+    // console.log(param);
+    // const [showData, setShowData] = useState({});
+    // const postId = 1; // replace this with the actual post id
+
+    // useEffect(() => {
+    //     axios.get(`http://192.168.1.192/ManagerApi/register/AllDataThingsToDo/${postId}`)
+    //         .then(response => {
+    //             setShowData(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    // }, [postId]);
+
+
+    // Data Binding:
     const [showData, setShowData] = useState(null);
     useEffect(() => {
         fetch('http://192.168.1.192/ManagerApi/register/AllDataThingsToDo')
@@ -18,6 +38,8 @@ function ThingsToDoViewCard() {
                 setShowData(data);  // showData=data;
             })
     }, [])
+
+
     return (
         <div>
             <Header />
@@ -48,7 +70,7 @@ function ThingsToDoViewCard() {
                                                     return (
                                                         <React.Fragment key={i}>
                                                             <Col md={4} className='todoCol'><div className='divCard'>ID: <span style={{ fontWeight: '400' }}>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</span></div></Col>
-                                                            <Col md={4} className='todoCol'><div className='divCard' style={{whiteSpace:'nowrap'}}>Representatives Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
+                                                            <Col md={4} className='todoCol'><div className='divCard' style={{ whiteSpace: 'nowrap' }}>Representatives Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Name: <span style={{ fontWeight: '400' }}>{showData.representatives ? showData.representatives : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Tshirt: <span style={{ fontWeight: '400' }}>{showData.teamTshirt ? showData.teamTshirt : 'N/A'}</span></div></Col>
                                                             <Col md={4} className='todoCol'><div className='divCard'>Team Uniform: <span style={{ fontWeight: '400' }}>{showData.teamUniform ? showData.teamUniform : 'N/A'}</span></div></Col>

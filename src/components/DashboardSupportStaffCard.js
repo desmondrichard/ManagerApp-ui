@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Header from './Header';
 import { ListGroup } from 'react-bootstrap';
+import Placeholder from 'react-bootstrap/Placeholder';
 
 function DashboardSupportStaffCard() {
     //Data Binding:
@@ -32,7 +33,7 @@ function DashboardSupportStaffCard() {
             {/* Card: */}
             <div className='my-3 p-2'>
                 <Card style={{ width: '100%' }}>
-                    <Card.Header style={{ fontWeight: 'bold',fontSize:'18px' }}>SUPPORT STAFFS</Card.Header>
+                    <Card.Header style={{ fontWeight: 'bold', fontSize: '18px' }}>SUPPORT STAFFS</Card.Header>
                     <ListGroup variant='flush'>
                         {
                             showData ?
@@ -58,7 +59,21 @@ function DashboardSupportStaffCard() {
                                             })
                                         }
                                     </Row>
-                                ) : (<h4>Loading...</h4>)
+                                ) : (
+                                    <Card style={{ width: '18rem' }}>
+                                        <Card.Img variant="top" src="" />
+                                        <Card.Body>
+                                            <Placeholder as={Card.Title} animation="glow">
+                                                <Placeholder xs={6} />
+                                            </Placeholder>
+                                            <Placeholder as={Card.Text} animation="glow">
+                                                <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                                <Placeholder xs={6} /> <Placeholder xs={8} />
+                                            </Placeholder>
+                                            <Placeholder.Button variant="primary" xs={6} />
+                                        </Card.Body>
+                                    </Card>
+                                )
                         }
 
                     </ListGroup>

@@ -9,6 +9,7 @@ import ExploreOptions from './ModalComponents/ExploreOptions';
 import { Tab, Tabs } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
 
 function Accreditationcard() {
   //Data Binding:
@@ -28,7 +29,7 @@ function Accreditationcard() {
       <div className='text-center'>
         <div className='playersList'>ACCREADIATION LIST</div>
         <>
-          <NavLink to='/accreditionform' className='navLinks'><Button variant="primary" className='mt-3 addPlayers'>
+          <NavLink to='/accreadiationcards/accreadiationform' className='navLinks'><Button variant="primary" className='mt-3 addPlayers'>
             ADD PLAYERS
           </Button>
           </NavLink>
@@ -84,7 +85,7 @@ function Accreditationcard() {
 
                     </Table>
 
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -126,7 +127,7 @@ function Accreditationcard() {
                       }
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -164,7 +165,7 @@ function Accreditationcard() {
                           )
                         })
                       }
-                    </Table>) : (<h4>Loading...</h4>)
+                    </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -204,7 +205,7 @@ function Accreditationcard() {
                       }
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -245,7 +246,7 @@ function Accreditationcard() {
                       }
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>

@@ -13,7 +13,7 @@ function AccreditionForm() {
             <div className='text-center'>
                 <div className='playersList' style={{ whiteSpace: 'nowrap', width: '300px' }}>ACCREADIATION FORM</div>
             </div>
-            <NavLink to='/accreditationcards' className='navLinks'><Button variant="primary" className='mt-3 addPlayers butn1'>
+            <NavLink to='/accreadiationcards' className='navLinks'><Button variant="primary" className='mt-3 addPlayers butn1'>
                 Go Back
             </Button>
             </NavLink>

@@ -10,10 +10,9 @@ import Table from 'react-bootstrap/Table';
 import { NavLink } from 'react-router-dom';
 import ExploreOptions from './ModalComponents/ExploreOptions';
 import format from 'date-fns/format';
-
+import Skeleton from '@mui/material/Skeleton';
 function ThingsTodo() {
   let formattedDate = "";
-
 
 
   //Getting Row Index for GET:
@@ -45,7 +44,7 @@ function ThingsTodo() {
       <div className='text-center'>
         <div className='playersList'>THINGS TODO LIST</div>
 
-        <NavLink to='/thingstodoaddlist' className='navLinks'><Button variant="primary" className='mt-3 addPlayers butn1'>
+        <NavLink to='/thingstodo/thingstodoaddlist' className='navLinks'><Button variant="primary" className='mt-3 addPlayers butn1'>
           ADD LIST
         </Button>
         </NavLink>
@@ -108,7 +107,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -152,7 +151,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -190,7 +189,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -235,7 +234,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -284,7 +283,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -324,7 +323,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>
@@ -377,7 +376,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : (<h4>Loading...</h4>)
+                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
               }
 
             </Tab>

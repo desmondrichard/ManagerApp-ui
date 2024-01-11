@@ -1,17 +1,38 @@
 import React, { useState } from 'react';
-import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import './Phone.css';
-function Phone({isClear}) {
-    const [value, setValue] = useState();
-    console.log(isClear);
+import Col from 'react-bootstrap/Col';
+function Phone() {
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [valid, setValid] = useState(true);
+
+    const handleChange = (value) => {
+        setPhoneNumber(value);
+        setValid(validatePhoneNumber(value));
+    };
+
+    const validatePhoneNumber = (phoneNumber) => {
+        const phoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
+        return phoneNumberPattern.test(phoneNumber);
+    };
     return (
-        <div style={{}}>
-            <PhoneInput
-                placeholder="Enter phone number"
-                value={isClear?"":value} //True-empty false-value
-                onChange={setValue} />
+        <div>
+            <Col sm={12}>
+                <PhoneInput className='phone'
+                    country={'in'}
+                    value={phoneNumber}
+                    onChange={handleChange}
+                    inputProps={{
+                        required: true,
+                        placeholder: '(e.g. +91 1234567890)',
+                    }}
+                />
+
+                {!valid && (
+                    <p>enter a valid phone number.</p>
+                )}
+            </Col>
         </div>
     )
 }

@@ -27,7 +27,15 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Login />} />
           <Route path='/signup' exact element={<Register />} />
-          <Route path='/dashboard' exact element={<App1 />} />
+
+          {/* Nested Routes for Dashboard: */}
+          <Route path='dashboard'>
+            <Route index element={<App1 />} />
+            <Route path='dashboardplayerscard' exact element={<DashboardCard />} />
+            <Route path='dashboardstaffcard' exact element={<DashboardSupportStaffCard />} />
+          </Route>
+
+
           <Route path='/playerregister' exact element={<PlayerRegistration />} />
           <Route path='/staffregister' exact element={<SupportStaffRegistration />} />
 
@@ -38,20 +46,24 @@ function App() {
           {/* Nested Routes: */}
           <Route path='thingstodo'>
             <Route index element={<ThingsTodo />} />
-           
             <Route path='thingstodoviewcard' exact element={<ThingsToDoViewCard />} />
+            <Route path='thingstodoaddlist' exact element={<ThingsToDoAddList />} />
+            {/* <Route path='thingstodoviewcard/:id' element={<ThingsToDoViewCard />}/> */}
           </Route>
 
+          {/* Nested Routes for Accreadiation: */}
+          <Route path="accreadiationcards">
+            <Route index element={<Accreditationcard />}/>
+            <Route path='accreadiationform' exact element={<AccreditionForm />} />
+          </Route>
+          
 
-          <Route path='/accreditationcards' exact element={<Accreditationcard />} />
-          <Route path='/accreditionform' exact element={<AccreditionForm />} />
+
+          
           <Route path='/thingstodoform' exact element={<ThingsTodoForm />} />
 
-          <Route path='/dashboardplayerscard' exact element={<DashboardCard />} />
-          <Route path='/dashboardstaffcard' exact element={<DashboardSupportStaffCard />} />
 
-          {/* <Route path='/thingstodoviewcard' exact element={<ThingsToDoViewCard />} /> */}
-          <Route path='/thingstodoaddlist' exact element={<ThingsToDoAddList />} />
+
 
 
         </Routes>

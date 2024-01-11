@@ -23,7 +23,7 @@ const validate = values => {
     if (!values.JerseyNo) {
         errors.JerseyNo = "*Required";
     }
-    
+
 
     if (!values.jerseysize) {
         errors.jerseysize = "*Required";
@@ -36,7 +36,7 @@ const validate = values => {
     if (!values.trowserlength) {
         errors.trowserlength = "*Required";
     }
-    
+
 
     if (!values.shortssize) {
         errors.shortssize = "*Required";
@@ -60,23 +60,23 @@ const validate = values => {
 
 
 function KittingDetailsForm() {
-     // reset form start: 
-     const JerseyName1=useRef("");
-     const JerseyNo1=useRef("");
-     const jerseysize1=useRef("");
-     const trowsersize1=useRef("");
-     const trowserlength1=useRef("");
-     const shortssize1=useRef("");
-     const tracksuit1=useRef("");
-     const circkethelmet1=useRef("");
-     const travelpolo1=useRef("");
-     const familyjerseyno1=useRef("");
-     const bowlerA=useRef(false);
-     const bowlerB=useRef(false);
-     const qty=useRef("");
- 
-     // for npm custom component dont use useRef instead use useState i.e for phone component
-     function handleReset() {
+    // reset form start: 
+    const JerseyName1 = useRef("");
+    const JerseyNo1 = useRef("");
+    const jerseysize1 = useRef("");
+    const trowsersize1 = useRef("");
+    const trowserlength1 = useRef("");
+    const shortssize1 = useRef("");
+    const tracksuit1 = useRef("");
+    const circkethelmet1 = useRef("");
+    const travelpolo1 = useRef("");
+    const familyjerseyno1 = useRef("");
+    const bowlerA = useRef(false);
+    const bowlerB = useRef(false);
+    const qty = useRef("");
+
+    // for npm custom component dont use useRef instead use useState i.e for phone component
+    function handleReset() {
         JerseyName1.current.value = "";
         JerseyNo1.current.value = "";
         jerseysize1.current.value = "none";
@@ -87,12 +87,12 @@ function KittingDetailsForm() {
         circkethelmet1.current.value = "none";
         travelpolo1.current.value = "none";
         familyjerseyno1.current.value = "";
-        bowlerA.current.checked=false;
-        bowlerB.current.checked=false;
-        qty.current.value="";
-         formik.resetForm();
-     }
-     // reset form end: 
+        bowlerA.current.checked = false;
+        bowlerB.current.checked = false;
+        qty.current.value = "";
+        formik.resetForm();
+    }
+    // reset form end: 
     const formik = useFormik({
         initialValues: {
             JerseyName: '',
@@ -183,7 +183,7 @@ function KittingDetailsForm() {
                                             controlId="trowsersize"
                                             label="Trowser Size*"
                                             name="trowsersize"
-                                            min="0" max="999"   
+                                            min="0" max="999"
                                             value={formik.values.trowsersize} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                         >
                                             <Form.Select aria-label="trowsersize" ref={trowsersize1}>
@@ -323,8 +323,8 @@ function KittingDetailsForm() {
                                 </Row>
 
                                 <Row>
-                                    <Col  className='col radioFields'>
-                                        <label className='text-muted' htmlFor="battingpads" style={{whiteSpace:'nowrap'}}>BATTING PADS</label>
+                                    <Col className='col radioFields'>
+                                        <label className='text-muted' htmlFor="battingpads" style={{ whiteSpace: 'nowrap' }}>BATTING PADS</label>
                                         {['radio'].map((type) => (
                                             <div key={`inline-${type}`} style={{ whiteSpace: 'nowrap' }}>
                                                 <Form.Check style={{
@@ -356,19 +356,26 @@ function KittingDetailsForm() {
                                                 type="number"
                                                 id="qty"
                                                 ref={qty}
-                                                style={{width:'80px'}}
+                                                style={{ width: '80px' }}
                                                 min="0"
                                                 max="5"
+                                                onChange={(e) => {
+                                                    if (e.target.value > 0) {
+                                                        bowlerA.current.checked = true;
+                                                    }else{
+                                                        bowlerB.current.checked = true;
+                                                    }
+                                                }}
                                             />
                                         </div>
                                     </Col>
                                     {/* Dynamic Form: */}
-                                    <Col xs={12} lg={{span:12}} className='col'>
+                                    <Col xs={12} lg={{ span: 12 }} className='col'>
                                         <DynamicFields />
                                     </Col>
                                 </Row>
                                 {/* <Row> */}
-                               
+
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
                                     <Button variant="success" type="submit" value="submit" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>

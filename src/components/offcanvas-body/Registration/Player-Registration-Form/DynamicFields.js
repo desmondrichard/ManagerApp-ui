@@ -14,7 +14,7 @@ const DynamicFields = () => {
             radioLabel: optionsLabel || 'Options',
             radios: [
                 { id: `radioA-${fields.length}`, label: 'Yes' },
-                { id: `radioB-${fields.length}`, label: 'No'},
+                { id: `radioB-${fields.length}`, label: 'No' },
             ],
             text: { id: `text-${fields.length}`, placeholder: 'Enter text' },
 
@@ -47,11 +47,20 @@ const DynamicFields = () => {
                                     </div>
                                 </Col>
                                 <Col xs={12} sm={6} md={6} lg={6} className='dynamicQtyField'>
-                                    <Form.Label style={{color:'#6F7275'}}>QUANTITY</Form.Label>
+                                    <Form.Label style={{ color: '#6F7275' }}>QUANTITY</Form.Label>
                                     <Form.Control
                                         type="number"
                                         id={field.text.id}
-                                        style={{width:'80px'}}
+                                        style={{ width: '80px' }}
+                                        min="0"
+                                        max="5"
+                                        // onChange={(e) => {
+                                        //     if (e.target.value > 0) {
+                                        //         bowlerA.current.checked = true;
+                                        //     } else {
+                                        //         bowlerB.current.checked = true;
+                                        //     }
+                                        // }}
                                     />
                                 </Col>
                             </Row>
