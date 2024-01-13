@@ -22,6 +22,8 @@ const validate = values => {
 
     if (!values.JerseyNo) {
         errors.JerseyNo = "*Required";
+    } else if (!/^\d{1,3}([.,]{0,2})?$/.test(values.JerseyNo)) {
+        errors.JerseyNo = "enter a valid jersey number";
     }
 
 
@@ -35,6 +37,8 @@ const validate = values => {
 
     if (!values.trowserlength) {
         errors.trowserlength = "*Required";
+    } else if (!/^\d{1,3}([.,]{0,2})?$/.test(values.trowserlength)) {
+        errors.trowserlength = "enter a valid length";
     }
 
 
@@ -55,6 +59,9 @@ const validate = values => {
     }
 
 
+    if (!/^\d{0,3}([.,]{0,2})?$/.test(values.familyJerseyNo)) {
+        errors.familyJerseyNo = "enter a valid jersey number";
+    }
     return errors
 }
 
@@ -74,6 +81,7 @@ function KittingDetailsForm() {
     const bowlerA = useRef(false);
     const bowlerB = useRef(false);
     const qty = useRef("");
+
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
     function handleReset() {
@@ -104,7 +112,7 @@ function KittingDetailsForm() {
             tracksuit: '',
             circkethelmet: '',
             travelpolo: '',
-            familyjerseyno: '',
+            familyJerseyNo: ''
 
         },
         validate,
@@ -142,8 +150,8 @@ function KittingDetailsForm() {
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="JerseyNo"
-                                                type="number"
-                                                min="0" max="999"
+                                                type="text"
+                                                // min="0" max="999"
                                                 placeholder="JerseyNo"
                                                 name="JerseyNo"
                                                 ref={JerseyNo1}
@@ -205,10 +213,10 @@ function KittingDetailsForm() {
                                         <Form.Floating className="mb-2">
                                             <Form.Control
                                                 id="trowserlength"
-                                                type="number"
+                                                type="text"
                                                 placeholder="Trowser Length"
                                                 name="trowserlength"
-                                                min="0" max="999"
+                                                // min="0" max="999"
                                                 ref={trowserlength1}
                                                 value={formik.values.trowserlength} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                             />
@@ -307,17 +315,17 @@ function KittingDetailsForm() {
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
                                             <Form.Control
-                                                id="familyjerseyno"
-                                                type="number"
-                                                placeholder="familyjerseyno"
-                                                name="familyjerseyno"
-                                                min="0" max="999"
+                                                id="familyJerseyNo"
+                                                type="text"
+                                                placeholder="familyJerseyNo"
+                                                name="familyJerseyNo"
+                                                value={formik.values.familyJerseyNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
                                                 ref={familyjerseyno1}
                                             />
                                             {
-                                                formik.touched.familyjerseyno && formik.errors.familyjerseyno ? <span className='span'>{formik.errors.familyjerseyno}</span> : null
+                                                formik.touched.familyJerseyNo && formik.errors.familyJerseyNo ? <span className='span'>{formik.errors.familyJerseyNo}</span> : null
                                             }
-                                            <label htmlFor="familyjerseyno" className='text-muted'>Family Jersey No</label>
+                                            <label htmlFor="familyJerseyNo" className='text-muted'>Family Jersey No</label>
                                         </Form.Floating>
                                     </Col>
                                 </Row>
@@ -362,7 +370,7 @@ function KittingDetailsForm() {
                                                 onChange={(e) => {
                                                     if (e.target.value > 0) {
                                                         bowlerA.current.checked = true;
-                                                    }else{
+                                                    } else {
                                                         bowlerB.current.checked = true;
                                                     }
                                                 }}

@@ -90,7 +90,6 @@ function Accreditationcard() {
 
             </Tab>
 
-
             {/* Tab:2 */}
             <Tab eventKey='tab-2' title='SUPPORT STAFFS'>
               {

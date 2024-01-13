@@ -11,6 +11,8 @@ import { NavLink } from 'react-router-dom';
 import ExploreOptions from './ModalComponents/ExploreOptions';
 import format from 'date-fns/format';
 import Skeleton from '@mui/material/Skeleton';
+// 
+
 function ThingsTodo() {
   let formattedDate = "";
 
@@ -38,6 +40,9 @@ function ThingsTodo() {
   const handleClick2 = (id) => {
     console.log("Representative", id)
   }
+
+  //
+
   return (
     <>
       <Header />
@@ -95,11 +100,11 @@ function ThingsTodo() {
                                 <td>{showData.busBooking ? showData.busBooking : 'N/A'}</td>
                                 <td className='btnPadding' style={{ whiteSpace: 'nowrap' }}>
                                   <NavLink to='/thingstodo/thingstodoviewcard' className='navLinks'>
-                                    <Button variant="primary" style={{ marginTop: '-7px' }}
+                                    <Button variant="primary" style={{ marginTop: '-7px' }} className='marginRight'
                                       onClick={() => handleClick1(showData.alldataThingsId)}
                                     ><i className="bi bi-eye-fill"></i></Button>
                                   </NavLink>
-                                  <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                  <Button variant="primary" style={{ marginTop: '-7px' }} ><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
                           })
@@ -107,7 +112,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -140,7 +145,7 @@ function ThingsTodo() {
                                 <td>{showData.teamTshirt}</td>
                                 <td style={{ whiteSpace: 'nowrap' }}>
                                   {/* <NavLink to='/thingstodoviewcard' className='navLinks'> */}
-                                  <Button variant="primary" style={{ marginTop: '-7px' }} onClick={() => handleClick2(showData.alldataThingsId)}><i className="bi bi-eye-fill"></i></Button>
+                                  <Button variant="primary" style={{ marginTop: '-7px' }} className='marginRight' onClick={() => handleClick2(showData.alldataThingsId)}><i className="bi bi-eye-fill"></i></Button>
                                   {/* </NavLink>  */}
                                   <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
@@ -151,7 +156,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -180,7 +185,7 @@ function ThingsTodo() {
                                 <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
                                 <td>{showData.name ? showData.name : 'N/A'}</td>
                                 <td>{showData.designation ? showData.designation : 'N/A'}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" className='marginRight' style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
                           })
@@ -189,7 +194,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -225,7 +230,7 @@ function ThingsTodo() {
                                 <td>{showData.groundName ? showData.groundName : 'N/A'}</td>
                                 <td>{showData.teamA ? showData.teamA : 'N/A'}</td>
                                 <td>{showData.teamB ? showData.teamB : 'N/A'}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" className='marginRight' style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
                           })
@@ -234,7 +239,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -274,7 +279,7 @@ function ThingsTodo() {
                                 <td>{showData.checkOut ? showData.checkOut : 'N/A'}</td>
                                 <td>{showData.daysStayed ? showData.daysStayed : 'N/A'}</td>
                                 <td>{showData.noOfPeople ? showData.noOfPeople : 'N/A'}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" className='marginRight' style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
                           })
@@ -283,7 +288,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -313,7 +318,7 @@ function ThingsTodo() {
                                 <td>{showData.name ? showData.name : 'N/A'}</td>
                                 <td>{showData.equipments ? showData.equipments : 'N/A'}</td>
                                 <td>{showData.equipmentsType ? showData.equipmentsType : 'N/A'}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" className='marginRight' style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
 
@@ -323,7 +328,7 @@ function ThingsTodo() {
 
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>
@@ -367,7 +372,7 @@ function ThingsTodo() {
                                 <td>{showData.timeSlot ? showData.timeSlot : 'N/A'}</td>
                                 <td>{showData.noOfSeatsBooked ? showData.noOfSeatsBooked : 'N/A'}</td>
                                 <td>{showData.seatNumbers ? showData.seatNumbers : 'N/A'}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
+                                <td style={{ whiteSpace: 'nowrap' }}><NavLink to='/thingstodoviewcard' className='navLinks'><Button variant="primary" className='marginRight' style={{ marginTop: '-7px' }}><i className="bi bi-eye-fill"></i></Button></NavLink> <Button variant="primary" style={{ marginTop: '-7px' }}><i className="bi bi-trash"></i></Button> </td>
                               </tr>
                             )
                           })
@@ -376,7 +381,7 @@ function ThingsTodo() {
                       </tbody>
 
                     </Table>
-                  ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                  ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
               }
 
             </Tab>

@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import SearchButton from '../../../ModalComponents/SearchButton';
-import ExploreOptions from '../../../ModalComponents/ExploreOptions';
+// import ExploreOptions from '../../../ModalComponents/ExploreOptions';
 import Table from 'react-bootstrap/Table';
 import PlayerRegistration from '../PlayerRegistration';
 import StaffPersonalInformation from './Support-Staff-Modal-Forms/StaffPersonalInformation';
@@ -21,6 +21,8 @@ import StaffEmergencyContact from './Support-Staff-Modal-Forms/StaffEmergencyCon
 import StaffSocialMediaInfo from './Support-Staff-Modal-Forms/StaffSocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
 import Skeleton from '@mui/material/Skeleton';
+// download:
+import * as XLSX from 'xlsx';
 function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -37,6 +39,21 @@ function SupportStaffRegistration(props) {
                 setShowData(data);  // showData=data;
             })
     }, [])
+
+    // download:
+    const handleDownloadExcel = async () => {
+        try {
+            const response = await fetch('http://192.168.1.192/ManagerApi/GetStaffAllDataAndImages');
+            const data = await response.json();
+            var wb = XLSX.utils.book_new();
+            var ws = XLSX.utils.json_to_sheet(data);
+            XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+            XLSX.writeFile(wb, "MyExcel.xlsx");
+        } catch (error) {
+            console.error("Error fetching or processing data for Excel download", error);
+        }
+    }
+
     return (
         <div>
             <Header />
@@ -95,7 +112,11 @@ function SupportStaffRegistration(props) {
                             <SearchButton />
                         </Col>
                         <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
-                            <ExploreOptions />
+                            {/* <ExploreOptions /> */}
+                            <Button variant="primary" onClick={() => handleDownloadExcel()} style={{whiteSpace:'nowrap'}}>
+                                Excel Download
+                            </Button>
+
                         </Col>
                         <Col sm={1} xs={2}></Col>
                     </Row>
@@ -146,7 +167,7 @@ function SupportStaffRegistration(props) {
                             }
                         </tbody>
 
-                    </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+                    </Table>) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
             }
         </div>
     )

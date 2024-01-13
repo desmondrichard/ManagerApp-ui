@@ -6,6 +6,21 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import './ThingsToDoRepresentatives.css';
 import { useFormik } from 'formik';
+
+// validation:
+const validate = values => {
+  const errors = {};
+
+  if (!values.name) {
+    errors.name = "*Required";
+  }
+  else if (!/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/.test(values.name)) {
+    errors.name = "enter a valid name";
+  }
+
+  return errors;
+}
+
 function ThingsToDoRepresentatives() {
   //reset:
   const name1 = useRef("");
@@ -16,12 +31,27 @@ function ThingsToDoRepresentatives() {
     name1.current.value = "";
     uniformChecked.current.checked = false;
     tshirtChecked.current.checked = false;
-    // formik.resetForm();
+    formik.resetForm();
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+    },
+    validate,
+    onSubmit: values => {
+      alert(`Hello! ,${values.name} you have successfully signed up`);
+      //  navigate("/");
+    }
+  });
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
   }
   return (
     <div>
       <Card className='bg-light p-4'>
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
           <Row className='fw-bold' style={{ fontSize: '16px' }}>
             <Col xs={12} md={4} className='py-3'>
               <Form.Floating className="mb-2">
@@ -31,21 +61,25 @@ function ThingsToDoRepresentatives() {
                   placeholder="name"
                   ref={name1}
                   name="name"
+                  value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange}
                 />
+                {
+                  formik.touched.name && formik.errors.name ? <span className='span'>{formik.errors.name}</span> : null
+                }
                 <label htmlFor="name" className='text-muted'>Representatives Name*</label>
               </Form.Floating>
             </Col>
             <Col xs={12} md={4} className='col1'>
-              <Form.Check label="Team Uniform" ref={uniformChecked}/>
+              <Form.Check label="Team Uniform" ref={uniformChecked} />
             </Col>
             <Col xs={12} md={4} className='col1'>
-              <Form.Check label="Team Tshirt" ref={tshirtChecked}/>
+              <Form.Check label="Team Tshirt" ref={tshirtChecked} />
             </Col>
           </Row>
           <Row>
             <Col className='end btns'>
               <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-              <Button variant="success" className='mx-2' type="submit">SAVE AND NEXT</Button>
+              <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e)=>handleSubmit(e)}>SAVE AND NEXT</Button>
             </Col>
           </Row>
         </Form>

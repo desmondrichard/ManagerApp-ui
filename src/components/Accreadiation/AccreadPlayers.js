@@ -1,4 +1,4 @@
-import React, { useRef,useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -12,8 +12,12 @@ import { useNavigate } from "react-router-dom";
 // validation:
 const validate = values => {
     const errors = {};
-     if (!/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/.test(values.name)) {
-        errors.name = "enter valid name";
+
+    if (!values.name) {
+        errors.name = "*Required";
+    }
+    else if (!/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/.test(values.name)) {
+        errors.name = "enter a valid name";
     }
 
     if (!/^\S+@\S+\.\S+$/.test(values.email)) {
@@ -61,6 +65,9 @@ function AccreadPlayers() {
     //     }
     // }, [formik.errors]);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
     return (
         <div>
 
@@ -80,7 +87,7 @@ function AccreadPlayers() {
                                 {
                                     formik.touched.name && formik.errors.name ? <span className='span'>{formik.errors.name}</span> : null
                                 }
-                                <label htmlFor="name" className='text-muted'>Name</label>
+                                <label htmlFor="name" className='text-muted'>Name*</label>
                             </Form.Floating>
                         </Col>
                         <Col xs={12} md={4} className='py-3 c1'>
@@ -116,7 +123,7 @@ function AccreadPlayers() {
                         <Col xs={12} md={4} className='py-3 c1'>
                             <FloatingLabel className='mb-2 c1'
                                 controlId="dutypass"
-                                label="Duty Pass*"
+                                label="Duty Pass"
                             >
                                 <Form.Select aria-label="dutypass" ref={dutypass1}>
                                     <option>Select Type</option>
@@ -130,8 +137,8 @@ function AccreadPlayers() {
                     <Row>
                         <Col className='end btns'>
                             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                            <Button variant="success" className='mx-2' type="submit">SAVE AND NEXT</Button>
-                           
+                            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === '' } onClick={() => handleSubmit()}>SAVE AND NEXT</Button>
+
                         </Col>
 
                     </Row>

@@ -4,6 +4,44 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useFormik } from 'formik';
+
+const validate = values => {
+    const errors = {};
+
+    if (!values.hotelName) {
+        errors.hotelName = "*Required";
+    }
+    else if (!/^[a-zA-Z ]*$/.test(values.hotelName)) {
+        errors.hotelName = "enter a valid name";
+    }
+
+
+    if (!values.cityName) {
+        errors.cityName = "*Required";
+    }
+    else if (!/^[a-zA-Z ]*$/.test(values.cityName)) {
+        errors.cityName = "enter a valid name";
+    }
+
+    if (!/^\d{0,3}?$/.test(values.noOfRoom)) {
+        errors.noOfRoom = "enter a valid number";
+    }
+
+    if (!/^\d{0,3}?$/.test(values.roomNo)) {
+        errors.roomNo = "enter a valid number";
+    }
+
+    if (!/^\d{0,3}?$/.test(values.daysStayed)) {
+        errors.daysStayed = "enter a valid number";
+    }
+
+    if (!/^\d{0,3}?$/.test(values.noOfPeople)) {
+        errors.noOfPeople = "enter a valid number";
+    }
+
+
+    return errors;
+}
 function ThingsToDoHotelAccomodation() {
     //reset:
     const name1 = useRef("");
@@ -24,8 +62,24 @@ function ThingsToDoHotelAccomodation() {
         checkOut.current.value = "";
         stayed.current.value = "";
         noOfPeople.current.value = "";
-        // formik.resetForm();
+        formik.resetForm();
     }
+    const formik = useFormik({
+        initialValues: {
+            hotelName: '',
+            cityName: '',
+            teamB: '',
+            noOfRoom: '',
+            roomNo: '',
+            daysStayed: '',
+            noOfPeople: ''
+        },
+        validate,
+        onSubmit: values => {
+            alert(`Hello! ,${values.groundName} you have successfully signed up`);
+            //  navigate("/");
+        }
+    });
 
     function checkIfCheckoutAfterCheckin(checkinDate, checkoutDate) {
         const checkin = new Date(checkinDate);
@@ -35,121 +89,148 @@ function ThingsToDoHotelAccomodation() {
             checkOut.current.value = ''; // clear the checkout date
         }
     }
+
+    const handleSubmit = (e) => {
+        e.preventDafault();
+    }
     return (
         <div>
-            <Row>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="hotelname"
-                            type="text"
-                            placeholder="hotelname"
-                            name="hotelname"
-                            ref={name1}
-                        />
-                        <label htmlFor="hotelname" className='text-muted'>Hotel Name*</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="cityname"
-                            type="text"
-                            placeholder="cityname"
-                            name="cityname"
-                            ref={cityName}
-                        />
-                        <label htmlFor="cityname" className='text-muted'>City Name*</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="noofrroms"
-                            type="number"
-                            placeholder="noofrroms"
-                            name="noofrroms"
-                            min="0"
-                            ref={noOfRoom}
-                        />
-                        <label htmlFor="noofrroms" className='text-muted'>No Of Rooms</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="roomno"
-                            type="text"
-                            placeholder="roomno"
-                            name="roomno"
-                            ref={roomNo}
-                        />
-                        <label htmlFor="roomno" className='text-muted'>Room Number</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="checkin"
-                            type="date"
-                            min={new Date().toISOString().split('T')[0]}
-                            placeholder='DD-MM-YYYY'
-                            name="checkin"
-                            ref={checkIn}
-                        />
+            <Form onSubmit={formik.handleSubmit}>
+                <Row>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="hotelName"
+                                type="text"
+                                placeholder="hotelname"
+                                ref={name1}
+                                name="hotelName"
+                                value={formik.values.hotelName} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.hotelName && formik.errors.hotelName ? <span className='span'>{formik.errors.hotelName}</span> : null
+                            }
 
-                        <label htmlFor="checkin" className='text-muted'>Check In</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="checkout"
-                            type="date"
-                            min={new Date().toISOString().split('T')[0]}
-                            placeholder='DD-MM-YYYY'
-                            name="checkout"
-                            ref={checkOut}
-                            onChange={(e) => checkIfCheckoutAfterCheckin(checkIn.current.value, e.target.value)}
-                        />
+                            <label htmlFor="hotelName" className='text-muted'>Hotel Name*</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="cityName"
+                                type="text"
+                                placeholder="cityName"
+                                ref={cityName}
+                                name="cityName"
+                                value={formik.values.cityName} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.cityName && formik.errors.cityName ? <span className='span'>{formik.errors.cityName}</span> : null
+                            }
+                            <label htmlFor="cityName" className='text-muted'>City Name*</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="noofrroms"
+                                type="text"
+                                placeholder="noofrroms"
+                                ref={noOfRoom}
+                                name="noOfRoom"
+                                value={formik.values.noOfRoom} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.noOfRoom && formik.errors.noOfRoom ? <span className='span'>{formik.errors.noOfRoom}</span> : null
+                            }
+                            <label htmlFor="noOfRoom" className='text-muted'>No Of Rooms</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="roomNo"
+                                type="text"
+                                placeholder="roomno"
+                                ref={roomNo}
+                                name="roomNo"
+                                value={formik.values.roomNo} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.roomNo && formik.errors.roomNo ? <span className='span'>{formik.errors.roomNo}</span> : null
+                            }
+                            <label htmlFor="roomNo" className='text-muted'>Room Number</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="checkin"
+                                type="date"
+                                min={new Date().toISOString().split('T')[0]}
+                                placeholder='DD-MM-YYYY'
+                                name="checkin"
+                                ref={checkIn}
+                            />
 
-                        <label htmlFor="checkout" className='text-muted'>Check Out</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="daysstayed"
-                            type="number"
-                            placeholder="daysstayed"
-                            name="daysstayed"
-                            min="0"
-                            ref={stayed}
-                        />
-                        <label htmlFor="daysstayed" className='text-muted'>Days Stayed</label>
-                    </Form.Floating>
-                </Col>
-                <Col md={3} className='my-3'>
-                    <Form.Floating className="mb-2">
-                        <Form.Control
-                            id="noOfPeople"
-                            type="number"
-                            placeholder="noOfPeople"
-                            name="noOfPeople"
-                            min="0"
-                            ref={noOfPeople}
-                        />
-                        <label htmlFor="noofpeople" className='text-muted'>No Of people</label>
-                    </Form.Floating>
-                </Col>
-            </Row>
-            <Row>
-                <Col className='end btns'>
-                    <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
-                    <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                    <Button variant="success" className='mx-2' type="submit">SAVE AND NEXT</Button>
-                </Col>
-            </Row>
+                            <label htmlFor="checkin" className='text-muted'>Check In</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="checkout"
+                                type="date"
+                                min={new Date().toISOString().split('T')[0]}
+                                placeholder='DD-MM-YYYY'
+                                name="checkout"
+                                ref={checkOut}
+                                onChange={(e) => checkIfCheckoutAfterCheckin(checkIn.current.value, e.target.value)}
+                            />
+
+                            <label htmlFor="checkout" className='text-muted'>Check Out</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="daysstayed"
+                                type="text"
+                                placeholder="daysstayed"
+                                name="daysStayed"
+                                ref={stayed}
+                                value={formik.values.daysStayed} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.daysStayed && formik.errors.daysStayed ? <span className='span'>{formik.errors.daysStayed}</span> : null
+                            }
+                            <label htmlFor="daysStayed" className='text-muted'>Days Stayed</label>
+                        </Form.Floating>
+                    </Col>
+                    <Col md={3} className='my-3'>
+                        <Form.Floating className="mb-2">
+                            <Form.Control
+                                id="noOfPeople"
+                                type="text"
+                                placeholder="noOfPeople"
+                                ref={noOfPeople}
+                                value={formik.values.noOfPeople} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                            />
+                            {
+                                formik.touched.noOfPeople && formik.errors.noOfPeople ? <span className='span'>{formik.errors.noOfPeople}</span> : null
+                            }
+                            <label htmlFor="noOfPeople" className='text-muted'>No Of people</label>
+                        </Form.Floating>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className='end btns'>
+                        <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
+                        <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
+                        <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.hotelName === '' || formik.values.cityName === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+                    </Col>
+                </Row>
+            </Form>
         </div>
     )
 }

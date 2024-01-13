@@ -3,9 +3,10 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import './Phone.css';
 import Col from 'react-bootstrap/Col';
-function Phone() {
+function Phone({ isClear }) {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [valid, setValid] = useState(true);
+    console.log("isClear", isClear)
 
     const handleChange = (value) => {
         setPhoneNumber(value);
@@ -21,7 +22,7 @@ function Phone() {
             <Col sm={12}>
                 <PhoneInput className='phone'
                     country={'in'}
-                    value={phoneNumber}
+                    value={isClear ? "" : phoneNumber}
                     onChange={handleChange}
                     inputProps={{
                         required: true,
@@ -30,7 +31,7 @@ function Phone() {
                 />
 
                 {!valid && (
-                    <p>enter a valid phone number.</p>
+                    <p>enter a valid phone number</p>
                 )}
             </Col>
         </div>

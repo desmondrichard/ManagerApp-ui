@@ -43,7 +43,7 @@ function DashboardSupportStaffCard() {
                                             showData.map((showData, i) => {
                                                 return (
 
-                                                    <Col md={3} key={i}>
+                                                    <Col xs={12} sm={6} md={6} lg={4} key={i}>
                                                         <Card style={{ width: '18rem', cursor: 'pointer' }} className='m-4 zoom'>
                                                             <Card.Img variant="top" src={showData.playerImage ? `data:image;base64,${showData.playerImage.imageData}` : require('./../assets/dummy_profile_img.png')} alt="img" style={{ width: 'auto', height: '300px' }} />
                                                             <Card.Body style={{ borderTop: '1px solid #DDDDDD' }} >
@@ -60,20 +60,53 @@ function DashboardSupportStaffCard() {
                                         }
                                     </Row>
                                 ) : (
-                                    <Card style={{ width: '18rem' }}>
-                                        <Card.Img variant="top" src="" />
-                                        <Card.Body>
-                                            <Placeholder as={Card.Title} animation="glow">
-                                                <Placeholder xs={6} />
-                                            </Placeholder>
-                                            <Placeholder as={Card.Text} animation="glow">
-                                                <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-                                                <Placeholder xs={6} /> <Placeholder xs={8} />
-                                            </Placeholder>
-                                            <Placeholder.Button variant="primary" xs={6} />
-                                        </Card.Body>
-                                    </Card>
+                                    <Row>
+                                        <Col xs={12} sm={12} md={6} lg={4}>
+                                            <Card style={{ width: '18rem' }}>
+                                                <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
+                                                <Card.Body>
+                                                    <Placeholder as={Card.Title} animation="glow">
+                                                        <Placeholder xs={6} />
+                                                    </Placeholder>
+                                                    <Placeholder as={Card.Text} animation="glow">
+                                                        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                                        <Placeholder xs={6} /> <Placeholder xs={8} />
+                                                    </Placeholder>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                        <Col md={6} lg={4} className='d-none d-md-block d-lg-block d-xl-block'>
+                                            <Card style={{ width: '18rem' }}>
+                                                <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
+                                                <Card.Body>
+                                                    <Placeholder as={Card.Title} animation="glow">
+                                                        <Placeholder xs={6} />
+                                                    </Placeholder>
+                                                    <Placeholder as={Card.Text} animation="glow">
+                                                        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                                        <Placeholder xs={6} /> <Placeholder xs={8} />
+                                                    </Placeholder>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                        <Col lg={4} className='d-none d-lg-block d-xl-block'>
+                                            <Card style={{ width: '18rem' }}>
+                                                <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
+                                                <Card.Body>
+                                                    <Placeholder as={Card.Title} animation="glow">
+                                                        <Placeholder xs={6} />
+                                                    </Placeholder>
+                                                    <Placeholder as={Card.Text} animation="glow">
+                                                        <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                                        <Placeholder xs={6} /> <Placeholder xs={8} />
+                                                    </Placeholder>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+
+                                    </Row>
                                 )
+
                         }
 
                     </ListGroup>
