@@ -1,5 +1,5 @@
 LINK:     
-http://192.168.1.146:8079/#/admin-dashboard
+http://192.168.1.146:8081/#/login
 
 ODMS:
 http://52.172.96.40/LSdmsweb/#/
@@ -10,7 +10,13 @@ CMSODMS
 CMSODMS 
 
 100100 
+---------------------------------------------------------
+Login:
 
+
+USERNAME:Rohit
+
+PASSWORD:Rohit@123
 ------------------------------------------------------
 country codes react:
 https://www.npmjs.com/package/react-phone-number-input
