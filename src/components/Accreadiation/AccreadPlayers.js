@@ -20,10 +20,10 @@ const validate = values => {
         errors.name = "enter a valid name";
     }
 
-    if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+    if (!/^^$|^.*@.*\..*$/.test(values.email)) {
         errors.email = "Invalid email address";
     }
-
+//   (^$|^.*@.*\..*$)
     return errors;
 }
 
@@ -137,7 +137,7 @@ function AccreadPlayers() {
                     <Row>
                         <Col className='end btns'>
                             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === '' } onClick={() => handleSubmit()}>SAVE AND NEXT</Button>
+                            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === '' } onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
 
                         </Col>
 
