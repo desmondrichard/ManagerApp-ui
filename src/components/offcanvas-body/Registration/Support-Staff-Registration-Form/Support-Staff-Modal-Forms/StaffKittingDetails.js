@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './StaffKittingDetails.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
@@ -50,7 +50,7 @@ const validate = values => {
     return errors
 }
 
-function StaffKittingDetails() {
+function StaffKittingDetails({activationKey,onActivationKeyChild}) {
 
      // reset form start: 
      const JerseyName1=useRef("");
@@ -63,6 +63,7 @@ function StaffKittingDetails() {
      const travelpolo1=useRef("");
      const familyjerseyno1=useRef("");
     
+     const [childNextKey, setChildNextKey] = useState("2");
  
  
      // for npm custom component dont use useRef instead use useState i.e for phone component
@@ -92,16 +93,16 @@ function StaffKittingDetails() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
+            onActivationKeyChild(childNextKey)
         }
     });
     return (
-        <div>
-            <Accordion>
+       
                 <Accordion.Item eventKey="1">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>KITTING DETAILS</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
+                            <p>{activationKey}</p>
                             <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={3} className='col'>
@@ -299,8 +300,7 @@ function StaffKittingDetails() {
                         </Container>
                     </Accordion.Body>
                 </Accordion.Item>
-            </Accordion>
-        </div>
+         
     )
 }
 

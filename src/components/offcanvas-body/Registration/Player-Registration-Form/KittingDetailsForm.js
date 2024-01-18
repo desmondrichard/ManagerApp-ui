@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -66,7 +66,9 @@ const validate = values => {
 }
 
 
-function KittingDetailsForm() {
+function KittingDetailsForm({activationKey,onActivationKeyChild}) {
+    //next btn:
+    const [childNextKey,setChildNextKey]=useState("3")
     // reset form start: 
     const JerseyName1 = useRef("");
     const JerseyNo1 = useRef("");
@@ -118,12 +120,11 @@ function KittingDetailsForm() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
+            onActivationKeyChild(childNextKey);
         }
     });
     return (
-        <div>
-            <Accordion>
+        
                 <Accordion.Item eventKey="2">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>KITTING DETAILS</span></Accordion.Header>
                     <Accordion.Body>
@@ -393,8 +394,7 @@ function KittingDetailsForm() {
                         </Container>
                     </Accordion.Body>
                 </Accordion.Item>
-            </Accordion>
-        </div>
+           
     )
 }
 

@@ -21,11 +21,15 @@ import EmergencyContact from './Player-Registration-Form/EmergencyContact';
 import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
 import Skeleton from '@mui/material/Skeleton';
+import Accordion from 'react-bootstrap/Accordion';
+
 function PlayerRegistration(props) {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  //Next Btn:
+  const [parentkey, setParentKey] = useState("0");
 
   //Data Binding:
   const [showData, setShowData] = useState(null);
@@ -33,12 +37,16 @@ function PlayerRegistration(props) {
     fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages')
       .then((data) => data.json())
       .then((data) => {
-         console.log("data",data);
+        console.log("data", data);
         // console.log("Success in getting players data", data);
         setShowData(data);  // showData=data;
       })
   }, [])
 
+  function getKeyFromChild(k) {
+    setParentKey(k);
+    console.log("getkeyfromchild", k);
+  }
   return (
     <div>
       <Header />
@@ -62,27 +70,30 @@ function PlayerRegistration(props) {
               <Modal.Title className='text-white'><h5>PLAYERS FORM</h5></Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              {/* <RegistrationForm /> */}
-              {/* Accordion:1 */}
-              <PersonalInformation />
-              {/* Accordion:2 */}
-              <ProficiencyForm />
-              {/* Accordion:3 */}
-              <KittingDetailsForm />
-              {/* Accordion:4 */}
-              <Iddetails />
-              {/* Accordion:5 */}
-              <BankAccountDetails />
-              {/* Accordion:6 */}
-              <FoodInformation />
-              {/*Accordion:7 */}
-              <Travelinformation />
-              {/* Accordion:8 */}
-              <RepresentationInfo />
-              {/* Accordion:9 */}
-              <EmergencyContact />
-              {/* Accordion:10 */}
-              <SocialMediaInfo />
+              <p>{parentkey}</p>
+              <Accordion activeKey={parentkey}>
+                {/* <RegistrationForm /> */}
+                {/* Accordion:1 */}
+                <PersonalInformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:2 */}
+                <ProficiencyForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:3 */}
+                <KittingDetailsForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:4 */}
+                <Iddetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:5 */}
+                <BankAccountDetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:6 */}
+                <FoodInformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/*Accordion:7 */}
+                <Travelinformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:8 */}
+                <RepresentationInfo activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:9 */}
+                <EmergencyContact activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                {/* Accordion:10 */}
+                <SocialMediaInfo activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+              </Accordion>
             </Modal.Body>
             {/* Footer: */}
             <Modal.Footer>
@@ -155,7 +166,7 @@ function PlayerRegistration(props) {
             </tbody>
 
 
-          </Table>) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+          </Table>) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
       }
 
     </div>

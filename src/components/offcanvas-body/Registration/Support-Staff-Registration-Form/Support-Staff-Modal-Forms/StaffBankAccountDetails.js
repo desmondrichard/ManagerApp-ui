@@ -125,9 +125,9 @@ function StaffBankAccountDetails() {
         }
     });
 
+    
     return (
-        <div>
-            <Accordion>
+        
                 <Accordion.Item eventKey="3">
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>BANK ACCOUNT DETAILS</span></Accordion.Header>
                     <Accordion.Body>
@@ -355,8 +355,7 @@ function StaffBankAccountDetails() {
                         </Container>
                     </Accordion.Body>
                 </Accordion.Item>
-            </Accordion>
-        </div>
+        
     )
 }
 

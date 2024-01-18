@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -31,17 +31,8 @@ const validate = values => {
 }
 function StaffEmergencyContact() {
     const [mobileValue, setMobileValue] = useState(false);
-    const formik = useFormik({
-        initialValues: {
-            staffEmgcontactperson: '',
-            StaffEmgContactRel: '',
-        },
-        validate,
-        onSubmit: values => {
-            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
-        }
-    });
+
+
     // reset form start: 
     const emgcontactperson1 = useRef("");
     const emgcontactrel1 = useRef("");
@@ -53,6 +44,18 @@ function StaffEmergencyContact() {
         setMobileValue(true);
         formik.resetForm();
     }
+
+    const formik = useFormik({
+        initialValues: {
+            staffEmgcontactperson: '',
+            StaffEmgContactRel: ''
+        },
+        validate,
+        onSubmit: values => {
+            alert("you have successfully signed up");
+            // navigate("/playerproficiencyinformation");
+        }
+    });
     return (
         <div>
             <Accordion>
@@ -60,7 +63,7 @@ function StaffEmergencyContact() {
                     <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>EMERGENCY CONTACT INFORMATION</span></Accordion.Header>
                     <Accordion.Body>
                         <Container >
-                            <Form style={{ paddingRight: '60px' }}>
+                            <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
                                 <Row>
                                     <Col xs={12} lg={4} className='col'>
                                         <Form.Floating className="mb-2">
@@ -104,13 +107,13 @@ function StaffEmergencyContact() {
 
                                     </Col>
                                     <Col xs={12} lg={4} className='col '>
-                                        <Phone  isClear={mobileValue}/>
+                                        <Phone isClear={mobileValue} />
                                     </Col>
                                 </Row>
 
                                 <Col lg={12} className='my-4 col'>
                                     <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                    <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                                    <Button type="submit" variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} >Save and Next</Button>
                                     <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                                 </Col>
                             </Form>

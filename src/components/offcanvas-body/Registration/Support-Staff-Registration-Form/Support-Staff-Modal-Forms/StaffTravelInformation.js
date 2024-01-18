@@ -26,11 +26,10 @@ function StaffTravelInformation() {
         initialValues: {
             staffTravelfrom: '',
             staffDestn: '',
-
         },
         validate,
         onSubmit: values => {
-            alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
+            alert("you have successfully signed up");
             // navigate("/playerproficiencyinformation");
         }
     });

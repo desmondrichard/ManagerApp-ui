@@ -38,8 +38,6 @@ const [mobileValue, setMobileValue] = useState(false);
         initialValues: {
             emgcontactperson: '',
             emgcontactrel: '',
-
-
         },
         validate,
         onSubmit: values => {

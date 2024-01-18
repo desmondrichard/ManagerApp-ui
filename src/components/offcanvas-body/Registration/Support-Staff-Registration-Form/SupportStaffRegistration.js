@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Accordion from 'react-bootstrap/Accordion';
 import SearchButton from '../../../ModalComponents/SearchButton';
 // import ExploreOptions from '../../../ModalComponents/ExploreOptions';
 import Table from 'react-bootstrap/Table';
@@ -21,12 +22,22 @@ import StaffEmergencyContact from './Support-Staff-Modal-Forms/StaffEmergencyCon
 import StaffSocialMediaInfo from './Support-Staff-Modal-Forms/StaffSocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
 import Skeleton from '@mui/material/Skeleton';
+//
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable'; // Import the autotable plugin for table support
 // download:
 import * as XLSX from 'xlsx';
+import html2canvas from 'html2canvas';
 function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    //next btn:
+    const [key, setKey] = useState("0")
+
+    //pdf:
+    const [loader, setLoader] = useState(false);
 
     //Data Binding:
     const [showData, setShowData] = useState(null);
@@ -40,20 +51,65 @@ function SupportStaffRegistration(props) {
             })
     }, [])
 
-    // download:
+    // download excel:
     const handleDownloadExcel = async () => {
         try {
             const response = await fetch('http://192.168.1.192/ManagerApi/GetStaffAllDataAndImages');
             const data = await response.json();
+            console.log("response", data);
+
+            // Extract playerData from the response and replace empty values(cells) with "n/a":
+            const playerData = data.map(item => {
+                const sanitizedData = {};
+                for (const key in item.playerData) {
+                    sanitizedData[key] = item.playerData[key] || 'n/a';
+                }
+                return sanitizedData;
+            });
+
             var wb = XLSX.utils.book_new();
-            var ws = XLSX.utils.json_to_sheet(data);
+            var ws = XLSX.utils.json_to_sheet(playerData);
+
             XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
             XLSX.writeFile(wb, "MyExcel.xlsx");
         } catch (error) {
             console.error("Error fetching or processing data for Excel download", error);
         }
+    };
+
+
+    //download pdf:
+    const handleDownloadPdf = () => {
+        const capture = document.querySelector('.tableHead');
+        setLoader(true)
+        // html2canvas(capture).then((canvas) => {
+        //     const imgData = canvas.toDataURL('img/png');
+        //     const doc = new jsPDF('p', 'mm', 'a4');
+        //     const componentWidth = doc.internal.pageSize.getWidth();
+        //     const componentHeight = doc.internal.pageSize.getHeight();
+        //     doc.addImage(imgData, 'PNG', 0, 10, componentWidth, componentHeight);
+        //     setLoader(false);
+        //     doc.save('data.pdf')
+        // });
+
+        html2canvas(document.body, {
+            allowTaint: true,
+            useCors: true
+        })
+            .then(function (canvas) {
+                document.body.appendChild(canvas);
+                const imgData = canvas.toDataURL('img/png');
+                const doc = new jsPDF('p', 'mm', 'a4');
+                doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), 0, 'FAST', 0);
+                doc.save('data.pdf');
+            });
+
+
     }
 
+    function getDataFromChild(k) {
+        setKey(k);
+    }
     return (
         <div>
             <Header />
@@ -77,25 +133,29 @@ function SupportStaffRegistration(props) {
                             <Modal.Title className='text-white'><h5>SUPPORT STAFFS FORM</h5></Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            {/* Accordion:1 */}
-                            <StaffPersonalInformation />
-                            {/* Accordion:2 */}
-                            <StaffKittingDetails />
-                            {/* Accordion:3 */}
-                            <StaffIDCardDetails />
-                            {/* Accordion:4 */}
-                            <StaffBankAccountDetails />
-                            {/* Accordion:5 */}
-                            <StaffFoodInformation />
-                            {/* Accordion:6 */}
-                            <StaffTravelInformation />
-                            {/* Accordion:7 */}
-                            <StaffPreviousRepresentation />
-                            {/* Accordion:8 */}
-                            <StaffEmergencyContact />
-                            {/* Accordion:9 */}
-                            <StaffSocialMediaInfo />
+                            <p>{key}</p>
+                            <Accordion activeKey={key}>
+                                {/* Accordion:1 */}
+                                <StaffPersonalInformation activationKey={key} onActivationKeyChild={getDataFromChild} />
+                                {/* Accordion:2 */}
+                                <StaffKittingDetails activationKey={key} onActivationKeyChild={getDataFromChild} />
+                                {/* Accordion:3 */}
+                                <StaffIDCardDetails activationKey={key} onActivationKeyChild={getDataFromChild} />
+                                {/* Accordion:4 */}
+                                <StaffBankAccountDetails />
+                                {/* Accordion:5 */}
+                                <StaffFoodInformation />
+                                {/* Accordion:6 */}
+                                <StaffTravelInformation />
+                                {/* Accordion:7 */}
+                                <StaffPreviousRepresentation />
+                                {/* Accordion:8 */}
+                                <StaffEmergencyContact />
+                                {/* Accordion:9 */}
+                                <StaffSocialMediaInfo />
+                            </Accordion>
                         </Modal.Body>
+
                         {/* Footer: */}
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>
@@ -113,10 +173,19 @@ function SupportStaffRegistration(props) {
                         </Col>
                         <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
                             {/* <ExploreOptions /> */}
-                            <Button variant="primary" onClick={() => handleDownloadExcel()} style={{whiteSpace:'nowrap'}}>
-                                Excel Download
-                            </Button>
+                            <Row style={{ marginTop: '6px' }}>
+                                <Col xs={6} lg={6}>
+                                    <Button variant="primary" onClick={() => handleDownloadExcel()} style={{ whiteSpace: 'nowrap' }}>
+                                        Excel <i className="bi bi-download"></i>
+                                    </Button>
+                                </Col>
+                                <Col xs={6} lg={6}>
+                                    <Button variant="primary" onClick={() => handleDownloadPdf()} style={{ whiteSpace: 'nowrap' }}>
+                                        PDF <i className="bi bi-download"></i>
+                                    </Button>
+                                </Col>
 
+                            </Row>
                         </Col>
                         <Col sm={1} xs={2}></Col>
                     </Row>
