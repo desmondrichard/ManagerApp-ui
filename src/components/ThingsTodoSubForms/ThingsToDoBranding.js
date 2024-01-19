@@ -27,13 +27,14 @@ function ThingsToDoBranding() {
     // formik.resetForm();
   }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
+    alert("form is submitted")
   }
   return (
     <div>
       <Card className='bg-light p-4'>
-      <Form>
+        <Form>
           <Row className='fw-bold' style={{ fontSize: '16px' }}>
             <Col xs={12} md={4} className='py-3'>
               <Form.Check label="Team Logo" ref={logoChecked} />
@@ -59,7 +60,7 @@ function ThingsToDoBranding() {
             <Col className='end btns'>
               <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
               <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-              <Button variant="success" className='mx-2' type="submit" onClick={(e)=>handleSubmit(e)}>SAVE AND NEXT</Button>
+              <Button variant="success" className='mx-2' type="submit" onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
             </Col>
           </Row>
         </Form>

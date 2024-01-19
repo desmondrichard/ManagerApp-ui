@@ -8,17 +8,21 @@ import Col from 'react-bootstrap/Col';
 import { Tab, Tabs } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from 'react-router-dom';
-import ExploreOptions from './ModalComponents/ExploreOptions';
 import format from 'date-fns/format';
 import Skeleton from '@mui/material/Skeleton';
 // 
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+//excel:
+import * as XLSX from 'xlsx';
+//pdf:
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable'; // Import the autotable plugin for table support
+import html2canvas from 'html2canvas';
 function ThingsTodo() {
   let formattedDate = "";
-
-
-  //Getting Row Index for GET:
-  // const [rowIndex, setRowIndex] = useState("");
 
   //Data Binding:
   const [showData, setShowData] = useState(null);
@@ -42,6 +46,63 @@ function ThingsTodo() {
   }
 
   //
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+  //pdf:
+  const [loader, setLoader] = useState(false);
+
+  const handleDownloadPdf = () => {
+    const capture = document.querySelector('.tableHead');
+    setLoader(true);
+
+    setTimeout(() => {
+      html2canvas(document.body, {
+        allowTaint: true,
+        useCors: true
+      })
+        .then(function (canvas) {
+          const imgData = canvas.toDataURL('img/png');
+          const doc = new jsPDF('p', 'mm', 'a4');
+          doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), 0, 'FAST', 0);
+          doc.save('data.pdf');
+          setLoader(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoader(false);
+        });
+    }, 1000); // Delay of 1000 milliseconds (1 second)
+  }
+
+
+  //excel:
+  const handleDownloadExcel = async () => {
+    try {
+      const response = await fetch('http://192.168.1.192/ManagerApi/register/AllDataThingsToDo');
+      const data = await response.json();
+      console.log("response", data);
+
+      // Extract playerData from the response and replace empty values(cells) with "n/a":
+      const playerData = data.map(item => {
+        const sanitizedData = {};
+        for (const key in item) {
+          sanitizedData[key] = item[key] || 'n/a';
+        }
+        return sanitizedData;
+      });
+
+      var wb = XLSX.utils.book_new();
+      var ws = XLSX.utils.json_to_sheet(playerData);
+
+      XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+      XLSX.writeFile(wb, "MyExcel.xlsx");
+    } catch (error) {
+      console.error("Error fetching or processing data for Excel download", error);
+    }
+  };
 
   return (
     <>
@@ -57,7 +118,27 @@ function ThingsTodo() {
         <Container fluid className='py-2 mt-4 bg-light' style={{ zIndex: '-100' }}>
           <Row>
             <Col xl={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 9 }} md={{ span: 4, offset: 8 }} xs={4}>
-              <ExploreOptions />
+              <div >
+                <FormControl variant="filled" sx={{ width: '26ch' }}>
+                  <InputLabel id="demo-simple-select-filled-label" style={{ zIndex: '0' }}>Download</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={age}
+                    onChange={handleChange}
+
+                  >
+                    <MenuItem value={10} onClick={() => handleDownloadExcel()} style={{ whiteSpace: 'nowrap' }}>
+                      Download Excel
+                    </MenuItem>
+                    <MenuItem value={20} onClick={() => handleDownloadPdf()} style={{
+                      whiteSpace: 'nowrap'
+                    }}>
+                      Download PDF
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -139,10 +220,10 @@ function ThingsTodo() {
                           showData.map((showData, i) => {
                             return (
                               <tr className='text-center font' key={i}>
-                                <td>{showData.alldataThingsId}</td>
-                                <td>{showData.representatives}</td>
-                                <td>{showData.teamUniform}</td>
-                                <td>{showData.teamTshirt}</td>
+                                <td>{showData.alldataThingsId ? showData.alldataThingsId : 'N/A'}</td>
+                                <td>{showData.representatives ? showData.representatives : 'N/A'}</td>
+                                <td>{showData.teamUniform ? showData.teamUniform : 'N/A'}</td>
+                                <td>{showData.teamTshirt ? showData.teamTshirt : 'N/A'}</td>
                                 <td style={{ whiteSpace: 'nowrap' }}>
                                   {/* <NavLink to='/thingstodoviewcard' className='navLinks'> */}
                                   <Button variant="primary" style={{ marginTop: '-7px' }} className='marginRight' onClick={() => handleClick2(showData.alldataThingsId)}><i className="bi bi-eye-fill"></i></Button>

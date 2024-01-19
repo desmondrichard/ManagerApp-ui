@@ -363,7 +363,7 @@ function PersonalInformation({ activationKey,onActivationKeyChild }) {
                             </Col>
                             <Col xs={{ span: 6, offset: 1 }} lg={{ span: 9, offset: 1 }} className='d-flex align-items-center col'>
                                 <Button variant="warning" style={{ color: "white", width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
-                                <Button variant="success" type='submit' className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
+                                <Button variant="success" type='submit' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} className='mx-3' style={{ whiteSpace: 'nowrap', width: '130px' }} >Save and Next</Button>
                             </Col>
                         </Row>
                     </Form>

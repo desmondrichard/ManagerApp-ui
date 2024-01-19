@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,9 @@ import Phone from './../offcanvas-body/Phone';
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
+// import Tab from 'react-bootstrap';
+
+
 // validation:
 const validate = values => {
     const errors = {};
@@ -23,7 +26,7 @@ const validate = values => {
     if (!/^^$|^.*@.*\..*$/.test(values.email)) {
         errors.email = "Invalid email address";
     }
-//   (^$|^.*@.*\..*$)
+    //   (^$|^.*@.*\..*$)
     return errors;
 }
 
@@ -59,17 +62,12 @@ function AccreadPlayers() {
         }
     });
 
-    // useEffect(() => {
-    //     if(Object.keys(formik.errors).length === 0){
-    //         navigate("/");
-    //     }
-    // }, [formik.errors]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
     return (
-        <div>
 
             <Card className='bg-light p-4'>
                 <Form onSubmit={formik.handleSubmit}>
@@ -137,15 +135,15 @@ function AccreadPlayers() {
                     <Row>
                         <Col className='end btns'>
                             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === '' } onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+                            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
 
                         </Col>
 
                     </Row>
                 </Form>
             </Card>
+        
 
-        </div>
     )
 }
 

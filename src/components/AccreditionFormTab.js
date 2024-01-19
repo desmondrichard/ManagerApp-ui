@@ -17,23 +17,23 @@ function AccreditionFormTab() {
         <Row style={{ margin: '0px' }}>
           <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
             {/* Tab:1 */}
-            <Tab eventKey='tab-1' title='Players'>
+            <Tab eventKey='0' title='Players'>
               <AccreadPlayers />
             </Tab>
             {/* Tab:2 */}
-            <Tab eventKey='tab-2' title='Support Staffs'>
+            <Tab eventKey='1' title='Support Staffs'>
               <AccreadSupportStaffs />
             </Tab>
             {/* Tab:3 */}
-            <Tab eventKey='tab-3' title='Owners/Management'>
+            <Tab eventKey='2' title='Owners/Management'>
               <AccreadOwners />
             </Tab>
             {/* Tab:4 */}
-            <Tab eventKey='tab-4' title='Franchise Officials'>
+            <Tab eventKey='3' title='Franchise Officials'>
               <AccreadFranchiseOfficials />
             </Tab>
             {/* Tab:5 */}
-            <Tab eventKey='tab-5' title='Franchise Sponsors'>
+            <Tab eventKey='4' title='Franchise Sponsors'>
               <AccreadFranchiseSponsors />
             </Tab>
 

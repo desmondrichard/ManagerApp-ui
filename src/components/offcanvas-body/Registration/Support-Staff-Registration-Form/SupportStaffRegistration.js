@@ -8,7 +8,6 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Accordion from 'react-bootstrap/Accordion';
 import SearchButton from '../../../ModalComponents/SearchButton';
-// import ExploreOptions from '../../../ModalComponents/ExploreOptions';
 import Table from 'react-bootstrap/Table';
 import PlayerRegistration from '../PlayerRegistration';
 import StaffPersonalInformation from './Support-Staff-Modal-Forms/StaffPersonalInformation';
@@ -22,17 +21,27 @@ import StaffEmergencyContact from './Support-Staff-Modal-Forms/StaffEmergencyCon
 import StaffSocialMediaInfo from './Support-Staff-Modal-Forms/StaffSocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
 import Skeleton from '@mui/material/Skeleton';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 //
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable'; // Import the autotable plugin for table support
+import html2canvas from 'html2canvas';
+
 // download:
 import * as XLSX from 'xlsx';
-import html2canvas from 'html2canvas';
+
 function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [age, setAge] = React.useState('');
 
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
     //next btn:
     const [key, setKey] = useState("0")
 
@@ -79,33 +88,30 @@ function SupportStaffRegistration(props) {
 
 
     //download pdf:
+
     const handleDownloadPdf = () => {
         const capture = document.querySelector('.tableHead');
-        setLoader(true)
-        // html2canvas(capture).then((canvas) => {
-        //     const imgData = canvas.toDataURL('img/png');
-        //     const doc = new jsPDF('p', 'mm', 'a4');
-        //     const componentWidth = doc.internal.pageSize.getWidth();
-        //     const componentHeight = doc.internal.pageSize.getHeight();
-        //     doc.addImage(imgData, 'PNG', 0, 10, componentWidth, componentHeight);
-        //     setLoader(false);
-        //     doc.save('data.pdf')
-        // });
+        setLoader(true);
 
-        html2canvas(document.body, {
-            allowTaint: true,
-            useCors: true
-        })
-            .then(function (canvas) {
-                document.body.appendChild(canvas);
-                const imgData = canvas.toDataURL('img/png');
-                const doc = new jsPDF('p', 'mm', 'a4');
-                doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), 0, 'FAST', 0);
-                doc.save('data.pdf');
-            });
-
-
+        setTimeout(() => {
+            html2canvas(document.body, {
+                allowTaint: true,
+                useCors: true
+            })
+                .then(function (canvas) {
+                    const imgData = canvas.toDataURL('img/png');
+                    const doc = new jsPDF('p', 'mm', 'a4');
+                    doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), 0, 'FAST', 0);
+                    doc.save('data.pdf');
+                    setLoader(false);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    setLoader(false);
+                });
+        }, 1000); // Delay of 1000 milliseconds (1 second)
     }
+
 
     function getDataFromChild(k) {
         setKey(k);
@@ -172,20 +178,27 @@ function SupportStaffRegistration(props) {
                             <SearchButton />
                         </Col>
                         <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
-                            {/* <ExploreOptions /> */}
-                            <Row style={{ marginTop: '6px' }}>
-                                <Col xs={6} lg={6}>
-                                    <Button variant="primary" onClick={() => handleDownloadExcel()} style={{ whiteSpace: 'nowrap' }}>
-                                        Excel <i className="bi bi-download"></i>
-                                    </Button>
-                                </Col>
-                                <Col xs={6} lg={6}>
-                                    <Button variant="primary" onClick={() => handleDownloadPdf()} style={{ whiteSpace: 'nowrap' }}>
-                                        PDF <i className="bi bi-download"></i>
-                                    </Button>
-                                </Col>
+                            <div >
+                                <FormControl variant="filled" sx={{ width: '26ch' }}>
+                                    <InputLabel id="demo-simple-select-filled-label" style={{ zIndex: '0' }}>Download</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-filled-label"
+                                        id="demo-simple-select-filled"
+                                        value={age}
+                                        onChange={handleChange}
 
-                            </Row>
+                                    >
+                                        <MenuItem value={10} onClick={() => handleDownloadExcel()} style={{ whiteSpace: 'nowrap' }}>
+                                            Download Excel
+                                        </MenuItem>
+                                        <MenuItem value={20} onClick={() => handleDownloadPdf()} style={{
+                                            whiteSpace: 'nowrap'
+                                        }}>
+                                            Download PDF
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>
                         </Col>
                         <Col sm={1} xs={2}></Col>
                     </Row>

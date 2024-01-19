@@ -353,7 +353,7 @@ function BankAccountDetails({ activationKey, onActivationKeyChild }) {
                             </Col>
                             <Col lg={12} className='my-4 col'>
                                 <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} type='submit'>Save and Next</Button>
+                                <Button variant="success" className='me-1 mb-2 mx-1 ' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} style={{ width: "130px" }} type='submit'>Save and Next</Button>
                                 <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>
                         </Row>

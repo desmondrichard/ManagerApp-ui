@@ -58,7 +58,7 @@ function Fixtures() {
               }
 
             </Table>
-          ) : ( <Skeleton variant="rectangular" minWidth={50} height={240} style={{marginTop:'22px'}}/>)
+          ) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
       }
 
     </div>

@@ -212,7 +212,7 @@ function ProficiencyForm({ activationKey, onActivationKeyChild }) {
                             </Col>
                             <Col xs={12} lg={12} className='my-4 col'>
                                 <Button variant="primary" className='mb-2' style={{ width: "130px" }}>PREVIOUS</Button>
-                                <Button variant="success" type="submit" value="submit" className='mx-3 mb-2' style={{ width: "130px" }}>Save and Next</Button>
+                                <Button variant="success" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} type="submit" value="submit" className='mx-3 mb-2' style={{ width: "130px" }}>Save and Next</Button>
                                 <Button variant="warning" className='mx-1 text-white mb-2' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>
                         </Row>

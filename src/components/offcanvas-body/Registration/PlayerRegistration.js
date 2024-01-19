@@ -6,7 +6,6 @@ import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import SearchButton from '../../ModalComponents/SearchButton';
-import ExploreOptions from '../../ModalComponents/ExploreOptions';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import PersonalInformation from './Player-Registration-Form/PersonalInformation';
@@ -22,7 +21,24 @@ import SocialMediaInfo from './Player-Registration-Form/SocialMediaInfo';
 import DImage from 'react-bootstrap/Image';
 import Skeleton from '@mui/material/Skeleton';
 import Accordion from 'react-bootstrap/Accordion';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+//excel:
+import * as XLSX from 'xlsx';
+//pdf:
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable'; // Import the autotable plugin for table support
+import html2canvas from 'html2canvas';
+//Filter:
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+// import './SearchButton.css';
 function PlayerRegistration(props) {
 
   const [show, setShow] = useState(false);
@@ -47,6 +63,66 @@ function PlayerRegistration(props) {
     setParentKey(k);
     console.log("getkeyfromchild", k);
   }
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+  //pdf:
+  const [loader, setLoader] = useState(false);
+
+  const handleDownloadPdf = () => {
+    // const capture = document.querySelector('.tableHead');
+    setLoader(true);
+
+    setTimeout(() => {
+      html2canvas(document.body, {
+        allowTaint: true,
+        useCors: true
+      })
+        .then(function (canvas) {
+          const imgData = canvas.toDataURL('img/png');
+          const doc = new jsPDF('p', 'mm', 'a4');
+          doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), 0, 'FAST', 0);
+          doc.save('data.pdf');
+          setLoader(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoader(false);
+        });
+    }, 1000); // Delay of 1000 milliseconds (1 second)
+  }
+
+
+  //excel:
+  const handleDownloadExcel = async () => {
+    try {
+      const response = await fetch('http://192.168.1.192/ManagerApi/GetAllDataAndImages');
+      const data = await response.json();
+      console.log("response", data);
+
+      // Extract playerData from the response and replace empty values(cells) with "n/a":
+      const playerData = data.map(item => {
+        const sanitizedData = {};
+        for (const key in item) {
+          sanitizedData[key] = item[key] || 'n/a';
+        }
+        return sanitizedData;
+      });
+
+      var wb = XLSX.utils.book_new();
+      var ws = XLSX.utils.json_to_sheet(playerData);
+
+      XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+      XLSX.writeFile(wb, "MyExcel.xlsx");
+    } catch (error) {
+      console.error("Error fetching or processing data for Excel download", error);
+    }
+  };
+  // Filter:
+  const [search, setSearch] = useState('');
   return (
     <div>
       <Header />
@@ -108,10 +184,52 @@ function PlayerRegistration(props) {
         <Container fluid className='py-2 mt-3 bg-light' style={{ zIndex: '-100' }}>
           <Row>
             <Col xl={2} lg={2} md={2} sm={4} xs={4}>
-              <SearchButton />
+              {/* <SearchButton /> */}
+              <Box
+                component="form"
+                sx={{
+                  '& .MuiTextField-root': { maxWidth: '28ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              ></Box>
+              <div>
+                <TextField style={{ zIndex: '0' }}
+                  id="filled-multiline-flexible"
+                  label="Search"
+                  multiline
+                  maxRows={5}
+                  variant="filled"
+                  placeholder='Ex:Admin'
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{
+                    maxLength: 6,
+                  }}
+                />
+              </div>
             </Col>
             <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
-              <ExploreOptions />
+              <div >
+                <FormControl variant="filled" sx={{ width: '26ch' }}>
+                  <InputLabel id="demo-simple-select-filled-label" style={{ zIndex: '0' }}>Download</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-filled-label"
+                    id="demo-simple-select-filled"
+                    value={age}
+                    onChange={handleChange}
+
+                  >
+                    <MenuItem value={10} onClick={() => handleDownloadExcel()} style={{ whiteSpace: 'nowrap' }}>
+                      Download Excel
+                    </MenuItem>
+                    <MenuItem value={20} onClick={() => handleDownloadPdf()} style={{
+                      whiteSpace: 'nowrap'
+                    }}>
+                      Download PDF
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
             </Col>
             <Col sm={1} xs={2}></Col>
           </Row>
@@ -127,7 +245,6 @@ function PlayerRegistration(props) {
               <tr className='text-center thead' style={{ whiteSpace: 'nowrap' }}>
                 <th >PLAYER ID</th>
                 <th >PLAYER IMAGE</th>
-                {/* <th >IMAGE ID</th> */}
                 <th>PLAYER NAME</th>
                 <th>DISPLAY NAME</th>
                 <th>MOBILE NO</th>
@@ -142,26 +259,29 @@ function PlayerRegistration(props) {
 
             <tbody className='table-light'>
               {
-                showData.map((showData, i) => {
-                  console.log("ShowData", showData);
-                  return (
-                    <tr className='text-center' key={i}>
-                      <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
-                      {/* blob to image: */}
-                      <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
-                      {/* <td>{(showData.playerImage ? showData.playerImage.imageId : "N/A")}</td> */}
-                      <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
-                      <td>{showData.displayName ? showData.displayName : 'N/A'}</td>
-                      <td>{showData.mobileNo ? showData.mobileNo : 'N/A'}</td>
-                      <td>{showData.emailId ? showData.emailId : 'N/A'}</td>
-                      <td>{showData.specialization ? showData.specialization : 'N/A'}</td>
-                      <td>{showData.jerseyNo ? showData.jerseyNo : 'N/A'}</td>
-                      <td>{showData.club ? showData.club : 'N/A'}</td>
-                      <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
-                      <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
-                    </tr>
+                showData
+                  .filter(item =>
+                    search.length < 3 || search.toLowerCase() === '' ? item : item.playerName.slice(0, 3).toLowerCase() === search.slice(0, 3)
                   )
-                })
+                  .map((showData, i) => {
+                    console.log("ShowData", showData.playerName);
+                    return (
+                      <tr className='text-center' key={i}>
+                        <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
+                        {/* blob to image: */}
+                        <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '30px', height: '30px' }} /> : <DImage src={require('./../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
+                        <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
+                        <td>{showData.displayName ? showData.displayName : 'N/A'}</td>
+                        <td>{showData.mobileNo ? showData.mobileNo : 'N/A'}</td>
+                        <td>{showData.emailId ? showData.emailId : 'N/A'}</td>
+                        <td>{showData.specialization ? showData.specialization : 'N/A'}</td>
+                        <td>{showData.jerseyNo ? showData.jerseyNo : 'N/A'}</td>
+                        <td>{showData.club ? showData.club : 'N/A'}</td>
+                        <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+                        <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
+                      </tr>
+                    )
+                  })
               }
             </tbody>
 
