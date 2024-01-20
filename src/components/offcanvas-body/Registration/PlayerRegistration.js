@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import SearchButton from '../../ModalComponents/SearchButton';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import PersonalInformation from './Player-Registration-Form/PersonalInformation';
@@ -25,6 +24,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+
+
 //excel:
 import * as XLSX from 'xlsx';
 //pdf:
@@ -32,9 +33,6 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable'; // Import the autotable plugin for table support
 import html2canvas from 'html2canvas';
 //Filter:
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -181,7 +179,7 @@ function PlayerRegistration(props) {
         </>
         {/* modal end: */}
         {/* Search,Select Components: */}
-        <Container fluid className='py-2 mt-3 bg-light' style={{ zIndex: '-100' }}>
+        <Container fluid className='py-2 mt-3 bgColor' style={{ zIndex: '-100' }}>
           <Row>
             <Col xl={2} lg={2} md={2} sm={4} xs={4}>
               {/* <SearchButton /> */}
@@ -192,7 +190,8 @@ function PlayerRegistration(props) {
                 }}
                 noValidate
                 autoComplete="off"
-              ></Box>
+              >
+              </Box>
               <div>
                 <TextField style={{ zIndex: '0' }}
                   id="filled-multiline-flexible"
@@ -261,7 +260,7 @@ function PlayerRegistration(props) {
               {
                 showData
                   .filter(item =>
-                    search.length < 3 || search.toLowerCase() === '' ? item : item.playerName.slice(0, 3).toLowerCase() === search.slice(0, 3)
+                    search.length < 2 || search.toLowerCase() === '' ? item : item.playerName.slice(0, 2).toLowerCase() === search.slice(0, 2)
                   )
                   .map((showData, i) => {
                     console.log("ShowData", showData.playerName);

@@ -29,10 +29,11 @@ import Select from '@mui/material/Select';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable'; // Import the autotable plugin for table support
 import html2canvas from 'html2canvas';
-
 // download:
 import * as XLSX from 'xlsx';
-
+//search:
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 function SupportStaffRegistration(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -116,6 +117,9 @@ function SupportStaffRegistration(props) {
     function getDataFromChild(k) {
         setKey(k);
     }
+
+    //search:
+  const [search, setSearch] = useState('');
     return (
         <div>
             <Header />
@@ -172,10 +176,33 @@ function SupportStaffRegistration(props) {
                 </>
                 {/* modal end: */}
                 {/* Search,Select Components: */}
-                <Container fluid className='py-2 mt-3 bg-light' style={{ zIndex: '-100' }}>
+                <Container fluid className='py-2 mt-3' style={{ zIndex: '-100',backgroundColor:'rgb(245, 242, 242)' }}>
                     <Row>
                         <Col xl={2} lg={2} md={2} sm={4} xs={4}>
-                            <SearchButton />
+                            {/* <SearchButton /> */}
+                            <Box
+                component="form"
+                sx={{
+                  '& .MuiTextField-root': { maxWidth: '28ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+              </Box>
+              <div>
+                <TextField style={{ zIndex: '0' }}
+                  id="filled-multiline-flexible"
+                  label="Search"
+                  multiline
+                  maxRows={5}
+                  variant="filled"
+                  placeholder='Ex:Admin'
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{
+                    maxLength: 6,
+                  }}
+                />
+              </div>
                         </Col>
                         <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
                             <div >
@@ -228,24 +255,28 @@ function SupportStaffRegistration(props) {
 
                         <tbody className='table-light' >
                             {
-                                showData.map((showData, i) => {
-                                    console.log("showData", showData)
-                                    return (
-                                        <tr className='text-center' key={i}>
-                                            <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '40px', height: '35px' }} /> : <DImage src={require('./../../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
-                                            <td>{showData.playerData.supportStaffName ? showData.playerData.supportStaffName : 'N/A'}</td>
-                                            <td>{showData.playerData.alldataStaffId ? showData.playerData.alldataStaffId : 'N/A'}</td>
-                                            <td>{showData.playerData.designation ? showData.playerData.designation : 'N/A'}</td>
-                                            <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>
-                                            <td>{showData.playerData.emailId ? showData.playerData.emailId : 'N/A'}</td>
-                                            <td>{showData.playerData.specialization ? showData.playerData.specialization : 'N/A'}</td>
-                                            <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : 'N/A'}</td>
-                                            <td>{showData.playerData.club ? showData.playerData.club : 'N/A'}</td>
-                                            <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
-                                            <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
-                                        </tr>
+                                showData
+                                    .filter(item =>
+                                        search.length < 2 || search.toLowerCase() === '' ? item : item.playerData.supportStaffName.slice(0, 2).toLowerCase() === search.slice(0, 2)
                                     )
-                                })
+                                    .map((showData, i) => {
+                                        console.log("showData", showData)
+                                        return (
+                                            <tr className='text-center' key={i}>
+                                                <td>{showData.playerImage ? <img src={`data:image;base64,${showData.playerImage.imageData}`} alt="img" style={{ width: '40px', height: '35px' }} /> : <DImage src={require('./../../../../assets/dummy_profile_img.png')} alt="img" style={{ width: '30px', height: '30px' }}></DImage>}</td>
+                                                <td>{showData.playerData.supportStaffName ? showData.playerData.supportStaffName : 'N/A'}</td>
+                                                <td>{showData.playerData.alldataStaffId ? showData.playerData.alldataStaffId : 'N/A'}</td>
+                                                <td>{showData.playerData.designation ? showData.playerData.designation : 'N/A'}</td>
+                                                <td>{showData.playerData.mobileNo ? showData.playerData.mobileNo : 'N/A'}</td>
+                                                <td>{showData.playerData.emailId ? showData.playerData.emailId : 'N/A'}</td>
+                                                <td>{showData.playerData.specialization ? showData.playerData.specialization : 'N/A'}</td>
+                                                <td>{showData.playerData.jerseyNo ? showData.playerData.jerseyNo : 'N/A'}</td>
+                                                <td>{showData.playerData.club ? showData.playerData.club : 'N/A'}</td>
+                                                <td className='d-flex'><Button variant="primary" className='me-1'><i className="bi bi-binoculars"></i></Button><Button variant="success" className='me-1'><i className="bi bi-pencil-square"></i></Button><Button variant="warning"><i className="bi bi-trash"></i></Button></td>
+                                                <td><Button variant="dark" className='me-1'><i className="bi bi-filetype-pdf"></i></Button><Button variant="dark" className='me-1'><i className="bi bi-file-earmark-spreadsheet"></i></Button></td>
+                                            </tr>
+                                        )
+                                    })
                             }
                         </tbody>
 

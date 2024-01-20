@@ -1,0 +1,26 @@
+.head {
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size:1.3rem;
+  }
+
+  .live{
+    font-weight: 500;
+    font-style: normal;
+    font-size:medium;
+  }
+
+.matchTime{
+    color:white;
+    font-weight:600;
+    font-size:large;
+
+}
+
+.matchTime1{
+    padding-top:8px;
+    width:150px;
+    margin:auto;
+    background: rgba(224, 112, 6, 0.1);
+}

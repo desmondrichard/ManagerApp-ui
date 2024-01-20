@@ -102,7 +102,7 @@ function Accreditationcard() {
           </NavLink>
         </>
 
-        <Container fluid className='py-2 mt-4 bg-light'>
+        <Container fluid className='py-2 mt-4 bg-light bgColorAccreadiation' style={{backgroundColor: 'rgb(245, 242, 242) !important'}}>
           <Row>
             <Col xl={{ span: 2, offset: 10 }} lg={{ span: 2, offset: 9 }} md={{ span: 4, offset: 8 }} xs={4}>
               <div >

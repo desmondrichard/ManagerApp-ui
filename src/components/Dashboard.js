@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Dashboard.css';
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
 import ImagePlayer from 'react-bootstrap/Image';
 import ImageManager from 'react-bootstrap/Image';
 import ImageSponsor from 'react-bootstrap/Image';
@@ -13,15 +13,18 @@ import ImageSponsorNew from 'react-bootstrap/Image';
 import ImageOrganizor from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import { NavLink } from 'react-router-dom';
+import CarouselScoreCard from './CarouselScoreCard';
+import FullCalendar from './FullCalendar';
+
 
 function Dashboard() {
     return (
         <div >
-            <Container fluid className="my-3 py-3" >
+            <Container fluid className="my-3 py-3">
                 <Row className='row1'>
                     <Col lg={8} >
                         {/* ps-2 */}
-                        <Card className='bg-light pb-4 boxShadow'>
+                        <Card className='bgColor1 pb-4 boxShadow'>
                             <Row>
                                 <Col lg={4} sm={6} xs={12} className='col'>
                                     <Card.Body style={{ borderRadius: '5px', height: '140px', margin: 'auto' }} className='mt-3 pt-4 boxShadow bg-light wrapper'>
@@ -122,50 +125,24 @@ function Dashboard() {
                         </Card>
                     </Col>
 
-                    <Col lg={4} className='mt-4'>
+                    <Col lg={4}>
                         <Card className='boxShadow'>
-                            <Calendar />
+                            {/* <Calendar /> */}
+                            <CarouselScoreCard />
                         </Card>
                     </Col>
                 </Row>
+                <Row>
+                    <Col lg={8}>
+                        <Card className='my-3 boxShadow1' style={{paddingLeft:'0px !important'}}>
+                            <Card.Body>
+                                <FullCalendar />
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col lg={3}>Welcome</Col>
+                </Row>
 
-                <Card className='my-2 px-3 py-3 boxShadow'>
-                    <Row className='ms-3'>
-                        <Col lg={4}>
-                            <Card border="dark" style={{ height: '200px' }} className='mb-2'>
-                                <Card.Header className='bg-dark'><h4 className='text-center text-white'>DONE</h4></Card.Header>
-                                <Card.Body>
-                                    <Card.Title><mark>DUTY PASS</mark></Card.Title>
-                                    <Card.Text>
-                                        Duty Pass issued to All Players and Support Staffs
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col lg={4}>
-                            <Card border='dark' style={{ height: '200px' }} className='mb-2'>
-                                <Card.Header className='bg-dark'><h4 className='text-center text-white'>IN PROGRESS</h4></Card.Header>
-                                <Card.Body>
-                                    <Card.Title ><mark><span className='accessorriesFont text-dark'>ACCESSORIES DISTRIBUTION</span></mark></Card.Title>
-                                    <Card.Text>
-                                        5 Players not Issued Accessories
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col lg={4}>
-                            <Card border='dark' style={{ height: '200px' }} className='mb-2'>
-                                <Card.Header className='bg-dark'><h4 className='text-center text-white'>ON HOLD</h4></Card.Header>
-                                <Card.Body>
-                                    <Card.Title><mark>TAG</mark></Card.Title>
-                                    <Card.Text>
-                                        This is a sample on hold card for future use
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                </Card>
             </Container>
 
         </div>

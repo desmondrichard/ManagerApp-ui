@@ -18,6 +18,9 @@ import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable'; // Import the autotable plugin for table support
 import html2canvas from 'html2canvas';
+//search:
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 function PlayersAuctionList() {
   var formattedDate = '';
   //Data Binding:
@@ -89,6 +92,8 @@ function PlayersAuctionList() {
       console.error("Error fetching or processing data for Excel download", error);
     }
   };
+  //search:
+  const [search, setSearch] = useState('');
   return (
     <div>
       <Header />
@@ -97,7 +102,30 @@ function PlayersAuctionList() {
         <Container fluid className='py-2 mt-3 bg-light'>
           <Row>
             <Col xl={2} xs={4} md={3} lg={3}>
-              <FilterAccessories />
+              {/* <FilterAccessories /> */}
+              <Box
+                component="form"
+                sx={{
+                  '& .MuiTextField-root': { maxWidth: '28ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+              </Box>
+              <div>
+                <TextField style={{ zIndex: '0' }}
+                  id="filled-multiline-flexible"
+                  label="Search"
+                  multiline
+                  maxRows={5}
+                  variant="filled"
+                  placeholder='Ex:Admin'
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{
+                    maxLength: 6,
+                  }}
+                />
+              </div>
             </Col>
             <Col xl={{ span: 2, offset: 8 }} lg={{ span: 3, offset: 6 }} md={{ span: 3, offset: 5 }} sm={{ span: 4, offset: 4 }} xs={{ span: 3 }}>
               <div >
@@ -144,24 +172,28 @@ function PlayersAuctionList() {
                 </tr>
               </thead>
               {
-                showData.map((showData, i) => {
-                  return (
-                    <tbody className='table-light' key={i}>
-                      <tr className='text-center'>
-                        <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
-                        <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
-                        <td>
-                          {showData.dateOfBirth ? formattedDate = format(new Date(showData.dateOfBirth),
-                            'MMMM dd yyyy') : 'N/A'}
-                        </td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        {/* <th>7</th> */}
-                      </tr>
-                    </tbody>
+                showData
+                  .filter(item =>
+                    search.length < 2 || search.toLowerCase() === '' ? item : item.playerName.slice(0, 2).toLowerCase() === search.slice(0, 2)
                   )
-                })
+                  .map((showData, i) => {
+                    return (
+                      <tbody className='table-light' key={i}>
+                        <tr className='text-center'>
+                          <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
+                          <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
+                          <td>
+                            {showData.dateOfBirth ? formattedDate = format(new Date(showData.dateOfBirth),
+                              'MMMM dd yyyy') : 'N/A'}
+                          </td>
+                          <td>4</td>
+                          <td>5</td>
+                          <td>6</td>
+                          {/* <th>7</th> */}
+                        </tr>
+                      </tbody>
+                    )
+                  })
               }
 
             </Table>

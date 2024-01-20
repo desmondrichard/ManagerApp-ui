@@ -110,10 +110,10 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .content{
-    width:80%;
-    left:20px;
-  }
+    .content {
+        width: 80%;
+        left: 20px;
+    }
 
 }
 
@@ -193,3 +193,12 @@
     background-color: #c4c8cb !important;
 }
 
+.bgColor1 {
+    background-color: rgb(22, 21, 21);
+}
+
+.boxShadow1 {
+    box-shadow: -2px 6px 10px 4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -2px 6px 10px 4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 6px 10px 4px rgba(0, 0, 0, 0.75);
+}

@@ -43,3 +43,6 @@ td{
     box-shadow: none !important;
   }
 
+.bgColor{
+    background-color: rgb(245, 242, 242) !important;
+}

@@ -17,6 +17,9 @@ import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable'; // Import the autotable plugin for table support
 import html2canvas from 'html2canvas';
+//search:
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 function Accessories() {
 
@@ -89,6 +92,9 @@ function Accessories() {
       console.error("Error fetching or processing data for Excel download", error);
     }
   };
+
+  //search:
+  const [search, setSearch] = useState('');
   return (
     <div>
       <Header />
@@ -97,7 +103,30 @@ function Accessories() {
         <Container fluid className='py-2 mt-3 bg-light'>
           <Row>
             <Col xl={2} xs={4} md={3} lg={3}>
-              <FilterAccessories />
+              {/* <FilterAccessories /> */}
+              <Box
+                component="form"
+                sx={{
+                  '& .MuiTextField-root': { maxWidth: '28ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+              </Box>
+              <div>
+                <TextField style={{ zIndex: '0' }}
+                  id="filled-multiline-flexible"
+                  label="Search"
+                  multiline
+                  maxRows={5}
+                  variant="filled"
+                  placeholder='Ex:Admin'
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{
+                    maxLength: 6,
+                  }}
+                />
+              </div>
             </Col>
             <Col xl={{ span: 2, offset: 8 }} lg={{ span: 3, offset: 6 }} md={{ span: 3, offset: 5 }} sm={{ span: 4, offset: 4 }} xs={{ span: 3 }}>
               <div >
@@ -149,31 +178,35 @@ function Accessories() {
               </tr>
             </thead>
             {
-              showData.map((showData, i) => {
-                console.log("showData", showData)
-                return (
-                  < tbody className='table-light' key={i} >
-                    <tr className='text-center'>
-                      <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
-                      <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
-                      <td>{showData.jerseyNo ? showData.jerseyNo : 'N/A'}</td>
-                      <td>{showData.initials ? showData.initials : 'N/A'}</td>
-                      <td>{showData.trouserLength ? showData.trouserLength : 'N/A'}</td>
-                      <td>{showData.shortsSize ? showData.shortsSize : 'N/A'}</td>
-                      <td>{showData.trackSuit ? showData.trackSuit : 'N/A'}</td>
-                      <td>{showData.travelPolo ? showData.travelPolo : 'N/A'}</td>
-                      <td style={{ whiteSpace: 'nowrap' }}>{showData.helmet ? showData.helmet : 'N/A'}</td>
-                      <td>{showData.battingPads ? showData.battingPads : 'N/A'}</td>
-                      <td>{showData.battingGloves ? showData.battingGloves : 'N/A'}</td>
-                      <td>{showData.wkGloves ? showData.wkGloves : 'N/A'}</td>
-                      <td>{showData.wkPad ? showData.wkPad : 'N/A'}</td>
-                      <td>{showData.shoulderBag ? showData.shoulderBag : 'N/A'}</td>
+              showData
+              .filter(item =>
+                search.length < 2 || search.toLowerCase() === '' ? item : item.playerName.slice(0, 2).toLowerCase() === search.slice(0, 2)
+              )
+                .map((showData, i) => {
+                  console.log("showData", showData)
+                  return (
+                    < tbody className='table-light' key={i} >
+                      <tr className='text-center'>
+                        <td>{showData.alldataplayerId ? showData.alldataplayerId : 'N/A'}</td>
+                        <td>{showData.playerName ? showData.playerName : 'N/A'}</td>
+                        <td>{showData.jerseyNo ? showData.jerseyNo : 'N/A'}</td>
+                        <td>{showData.initials ? showData.initials : 'N/A'}</td>
+                        <td>{showData.trouserLength ? showData.trouserLength : 'N/A'}</td>
+                        <td>{showData.shortsSize ? showData.shortsSize : 'N/A'}</td>
+                        <td>{showData.trackSuit ? showData.trackSuit : 'N/A'}</td>
+                        <td>{showData.travelPolo ? showData.travelPolo : 'N/A'}</td>
+                        <td style={{ whiteSpace: 'nowrap' }}>{showData.helmet ? showData.helmet : 'N/A'}</td>
+                        <td>{showData.battingPads ? showData.battingPads : 'N/A'}</td>
+                        <td>{showData.battingGloves ? showData.battingGloves : 'N/A'}</td>
+                        <td>{showData.wkGloves ? showData.wkGloves : 'N/A'}</td>
+                        <td>{showData.wkPad ? showData.wkPad : 'N/A'}</td>
+                        <td>{showData.shoulderBag ? showData.shoulderBag : 'N/A'}</td>
 
-                    </tr>
+                      </tr>
 
-                  </tbody>
-                )
-              })
+                    </tbody>
+                  )
+                })
             }
           </Table>) : (<Skeleton variant="rectangular" minWidth={50} height={240} style={{ marginTop: '22px' }} />)
       }
