@@ -43,7 +43,7 @@ function DashboardCard() {
                                         showData.map((showData, i) => {
                                             return (
                                                 <Col md={4} key={i}>
-                                                    <Card style={{ width: '18rem', cursor: 'pointer' }} className='m-4 zoom'>
+                                                    <Card style={{ width: '16rem', cursor: 'pointer' }} className='m-4 zoom'>
                                                         <Card.Img variant="top" src={showData.playerImage ? `data:image;base64,${showData.playerImage.imageData}` : require('./../assets/dummy_profile_img.png')} alt="img" style={{ width: 'auto', height: '300px' }} />
                                                         <Card.Body style={{ borderTop: '1px solid #DDDDDD' }}>
                                                             <Card.Text style={{ fontSize: '14px', fontWeight: '500' }}>Player ID:
@@ -60,7 +60,7 @@ function DashboardCard() {
                                 </Row>) : (
                                     <Row>
                                         <Col xs={12} sm={12} md={6} lg={4}>
-                                            <Card style={{ width: '18rem' }}>
+                                            <Card style={{ width: '16rem' }}>
                                                 <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
                                                 <Card.Body>
                                                     <Placeholder as={Card.Title} animation="glow">
@@ -74,7 +74,7 @@ function DashboardCard() {
                                             </Card>
                                         </Col>
                                         <Col md={6} lg={4} className='d-none d-md-block d-lg-block d-xl-block'>
-                                            <Card style={{ width: '18rem' }}>
+                                            <Card style={{ width: '16rem' }}>
                                                 <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
                                                 <Card.Body>
                                                     <Placeholder as={Card.Title} animation="glow">
@@ -88,7 +88,7 @@ function DashboardCard() {
                                             </Card>
                                         </Col>
                                         <Col lg={4} className='d-none d-lg-block d-xl-block'>
-                                            <Card style={{ width: '18rem' }}>
+                                            <Card style={{ width: '16rem' }}>
                                                 <Card.Img variant="top" src="https://htmlcolorcodes.com/assets/images/colors/gray-color-solid-background-1920x1080.png" />
                                                 <Card.Body>
                                                     <Placeholder as={Card.Title} animation="glow">

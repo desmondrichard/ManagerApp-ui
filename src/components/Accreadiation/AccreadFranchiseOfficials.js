@@ -31,7 +31,8 @@ const validate = values => {
 const handleSubmit = (e) => {
     e.preventDefault();
 }
-function AccreadFranchiseOfficials() {
+function AccreadFranchiseOfficials({ activationKey, onChildNextActivationKey }) {
+    const [childNextKey, setChildNextKey] = useState("4");
     const [mobValue, setMobValue] = useState(false);
     //reset:
     const name1 = useRef("");
@@ -56,7 +57,7 @@ function AccreadFranchiseOfficials() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.name} you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
+            onChildNextActivationKey(childNextKey)
         }
     });
     return (
@@ -129,7 +130,7 @@ function AccreadFranchiseOfficials() {
                         <Col className='end btns'>
                             <Button variant="dark" className='mx-2'>BACK</Button>
                             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                            <Button variant="success" className='mx-2' type='submit' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+                            <Button variant="success" className='mx-2' type='submit' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} >SAVE AND NEXT</Button>
 
                         </Col>
 

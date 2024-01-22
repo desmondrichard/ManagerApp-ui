@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -22,7 +22,7 @@ const validate = values => {
   return errors;
 }
 
-function ThingsToDoPhysiotherapist() {
+function ThingsToDoPhysiotherapist({ activationKey, onChildNextActivationKey }) {
   //reset:
   const name1 = useRef("");
   const desig = useRef("");
@@ -39,61 +39,62 @@ function ThingsToDoPhysiotherapist() {
     validate,
     onSubmit: values => {
       alert(`Hello! ,${values.name} you have successfully signed up`);
-      //  navigate("/");
+      onChildNextActivationKey(childNextKey)
+
     }
   });
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-  }
+  const [childNextKey, setChildNextKey] = useState("3");
+
+
   return (
     <div>
       <Form onSubmit={formik.handleSubmit}>
         <Card className='bg-light p-4'>
-          <Form>
-            <Row className='fw-bold' style={{ fontSize: '16px' }}>
-              <Col xs={12} md={4} className='py-3'>
-                <Form.Floating className="mb-2">
-                  <Form.Control
-                    id="coachname"
-                    type="text"
-                    placeholder="coachname"
-                    ref={name1}
-                    name="name"
-                    value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                  />
-                  {
-                    formik.touched.name && formik.errors.name ? <span className='span'>{formik.errors.name}</span> : null
-                  }
-                  <label htmlFor="name" className='text-muted'>Coach/Physiotherapist Name*</label>
-                </Form.Floating>
-              </Col>
-              <Col xs={12} md={4} className='py-3'>
-                <FloatingLabel className='mb-2 c1'
-                  controlId="coach"
-                  label="Designation"
-                >
-                  <Form.Select aria-label="designation" ref={desig}>
-                    <option value="none">Select Type</option>
-                    <option value="year1">Coach Physiotherapist</option>
-                  </Form.Select>
-                </FloatingLabel>
-              </Col>
-              <Col xs={12} md={2} className='col1'>
 
-              </Col>
-              <Col xs={12} md={2} className='col1'>
+          <Row className='fw-bold' style={{ fontSize: '16px' }}>
+            <Col xs={12} md={4} className='py-3'>
+              <Form.Floating className="mb-2">
+                <Form.Control
+                  id="coachname"
+                  type="text"
+                  placeholder="coachname"
+                  ref={name1}
+                  name="name"
+                  value={formik.values.name} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                />
+                {
+                  formik.touched.name && formik.errors.name ? <span className='span'>{formik.errors.name}</span> : null
+                }
+                <label htmlFor="name" className='text-muted'>Coach/Physiotherapist Name*</label>
+              </Form.Floating>
+            </Col>
+            <Col xs={12} md={4} className='py-3'>
+              <FloatingLabel className='mb-2 c1'
+                controlId="coach"
+                label="Designation"
+              >
+                <Form.Select aria-label="designation" ref={desig}>
+                  <option value="none">Select Type</option>
+                  <option value="year1">Coach Physiotherapist</option>
+                </Form.Select>
+              </FloatingLabel>
+            </Col>
+            <Col xs={12} md={2} className='col1'>
 
-              </Col>
-            </Row>
-            <Row>
-              <Col className='end btns'>
-                <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
-                <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e)=>handleSubmit(e)}>SAVE AND NEXT</Button>
-              </Col>
-            </Row>
-          </Form>
+            </Col>
+            <Col xs={12} md={2} className='col1'>
+
+            </Col>
+          </Row>
+          <Row>
+            <Col className='end btns'>
+              <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
+              <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
+              <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''}>SAVE AND NEXT</Button>
+            </Col>
+          </Row>
+
         </Card>
       </Form>
     </div>

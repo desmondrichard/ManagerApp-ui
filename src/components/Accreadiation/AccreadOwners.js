@@ -28,7 +28,9 @@ const validate = values => {
     return errors;
 }
 
-function AccreadOwners() {
+function AccreadOwners({ activationKey,onChildNextActivationKey }) {
+    const [childNextKey, setChildNextKey] = useState("3");
+
     const [mobValue, setMobValue] = useState(false);
     //reset:
     const name1 = useRef("");
@@ -53,12 +55,11 @@ function AccreadOwners() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.name} you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
+            onChildNextActivationKey(childNextKey)
+            
         }
     });
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
+   
     return (
         <div>
             <Card className='bg-light p-4'>
@@ -128,7 +129,7 @@ function AccreadOwners() {
                         <Col className='end btns'>
                             <Button variant="dark" className='me-1'>BACK</Button>
                             <Button variant="warning" className='me-1' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                            <Button variant="success" className='me-1' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+                            <Button variant="success" className='me-1' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''}>SAVE AND NEXT</Button>
 
                         </Col>
 

@@ -1,15 +1,18 @@
 import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import './FullCalendar.css';
 
 const eventsList = [
     { title: 'Meeting', start: new Date() },
-    { title: 'Event on Feb 1, 2024', start: new Date(2024, 1, 1) }
+    { title: 'Aus vs Nz', start: new Date(2024, 1, 25) }, //month 0-11,day 1-31
+    { title: 'Afg vs Sl', start: new Date(2024, 0, 26) },
+    { title: 'Ind vs Eng', start: new Date(2024, 0, 31) }
 ];
 function FullCalendarComp() {
     return (
         <div>
-            <FullCalendar 
+            <FullCalendar
                 plugins={[dayGridPlugin]}
                 initialView='dayGridMonth'
                 weekends={true}
@@ -28,7 +31,7 @@ function renderEventContent(eventInfo) {
     return (
         <>
             {/* <b>{eventInfo.timeText}</b> */}
-            <i style={{ fontSize: '11px'}}>{eventInfo.event.title}</i>
+            <i style={{ fontSize: '11px' }}>{eventInfo.event.title}</i>
         </>
     )
 }

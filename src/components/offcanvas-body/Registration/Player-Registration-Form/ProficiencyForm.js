@@ -34,7 +34,7 @@ const validate = values => {
 }
 
 
-function ProficiencyForm({ activationKey, onActivationKeyChild }) {
+function ProficiencyForm({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
 
     // reset form start: 
     const specs = useRef("");
@@ -76,6 +76,9 @@ function ProficiencyForm({ activationKey, onActivationKeyChild }) {
     //next btn:
     const [childNextKey, setChildNextKey] = useState("2");
 
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("0")
+    }
     return (
 
 
@@ -211,7 +214,7 @@ function ProficiencyForm({ activationKey, onActivationKeyChild }) {
                                 </FloatingLabel>
                             </Col>
                             <Col xs={12} lg={12} className='my-4 col'>
-                                <Button variant="primary" className='mb-2' style={{ width: "130px" }}>PREVIOUS</Button>
+                                <Button variant="primary" className='mb-2' style={{ width: "130px" }} onClick={() => handlePreviousButton()}>PREVIOUS</Button>
                                 <Button variant="success" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} type="submit" value="submit" className='mx-3 mb-2' style={{ width: "130px" }}>Save and Next</Button>
                                 <Button variant="warning" className='mx-1 text-white mb-2' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>

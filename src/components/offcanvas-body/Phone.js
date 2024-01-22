@@ -3,16 +3,18 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import './Phone.css';
 import Col from 'react-bootstrap/Col';
-function Phone({ isClear }) {
+function Phone({ isClear}) {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [valid, setValid] = useState(true);
     console.log("isClear", isClear)
-
+  
     const handleChange = (value) => {
         setPhoneNumber(value);
         setValid(validatePhoneNumber(value));
+    
     };
 
+   
     const validatePhoneNumber = (phoneNumber) => {
         const phoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
         return phoneNumberPattern.test(phoneNumber);

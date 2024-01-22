@@ -118,8 +118,15 @@ function SupportStaffRegistration(props) {
         setKey(k);
     }
 
+    function getPreviousKeyFromChild(k) {
+        setKey(k);
+    }
     //search:
-  const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('');
+
+    function handleModalClose() {
+        setShow(false);
+    }
     return (
         <div>
             <Header />
@@ -148,21 +155,21 @@ function SupportStaffRegistration(props) {
                                 {/* Accordion:1 */}
                                 <StaffPersonalInformation activationKey={key} onActivationKeyChild={getDataFromChild} />
                                 {/* Accordion:2 */}
-                                <StaffKittingDetails activationKey={key} onActivationKeyChild={getDataFromChild} />
+                                <StaffKittingDetails activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:3 */}
-                                <StaffIDCardDetails activationKey={key} onActivationKeyChild={getDataFromChild} />
+                                <StaffIDCardDetails activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:4 */}
-                                <StaffBankAccountDetails />
+                                <StaffBankAccountDetails activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:5 */}
-                                <StaffFoodInformation />
+                                <StaffFoodInformation activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:6 */}
-                                <StaffTravelInformation />
+                                <StaffTravelInformation activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:7 */}
-                                <StaffPreviousRepresentation />
+                                <StaffPreviousRepresentation activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:8 */}
-                                <StaffEmergencyContact />
+                                <StaffEmergencyContact activationKey={key} onActivationKeyChild={getDataFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                                 {/* Accordion:9 */}
-                                <StaffSocialMediaInfo />
+                                <StaffSocialMediaInfo onCloseModal={handleModalClose} onPreviousActivationKey={getPreviousKeyFromChild} />
                             </Accordion>
                         </Modal.Body>
 
@@ -176,33 +183,33 @@ function SupportStaffRegistration(props) {
                 </>
                 {/* modal end: */}
                 {/* Search,Select Components: */}
-                <Container fluid className='py-2 mt-3' style={{ zIndex: '-100',backgroundColor:'rgb(245, 242, 242)' }}>
+                <Container fluid className='py-2 mt-3' style={{ zIndex: '-100', backgroundColor: 'rgb(245, 242, 242)' }}>
                     <Row>
                         <Col xl={2} lg={2} md={2} sm={4} xs={4}>
                             {/* <SearchButton /> */}
                             <Box
-                component="form"
-                sx={{
-                  '& .MuiTextField-root': { maxWidth: '28ch' },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-              </Box>
-              <div>
-                <TextField style={{ zIndex: '0' }}
-                  id="filled-multiline-flexible"
-                  label="Search"
-                  multiline
-                  maxRows={5}
-                  variant="filled"
-                  placeholder='Ex:Admin'
-                  onChange={(e) => setSearch(e.target.value)}
-                  inputProps={{
-                    maxLength: 6,
-                  }}
-                />
-              </div>
+                                component="form"
+                                sx={{
+                                    '& .MuiTextField-root': { maxWidth: '28ch' },
+                                }}
+                                noValidate
+                                autoComplete="off"
+                            >
+                            </Box>
+                            <div>
+                                <TextField style={{ zIndex: '0' }}
+                                    id="filled-multiline-flexible"
+                                    label="Search"
+                                    multiline
+                                    maxRows={5}
+                                    variant="filled"
+                                    placeholder='Ex:Admin'
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    inputProps={{
+                                        maxLength: 6,
+                                    }}
+                                />
+                            </div>
                         </Col>
                         <Col xl={{ span: 2, offset: 8 }} lg={{ span: 2, offset: 7 }} md={{ span: 2, offset: 6 }} sm={{ span: 4, offset: 3 }} xs={4}>
                             <div >

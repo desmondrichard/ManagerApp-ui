@@ -86,10 +86,10 @@ function ThingsToDoTransport() {
     }
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("form submitted successfully");
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   alert("form submitted successfully");
+  // }
 
 
   return (
@@ -233,7 +233,7 @@ function ThingsToDoTransport() {
           <Col className='end btns'>
             <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-            <Button variant="success" className='mx-2' type="submit" onClick={(e) => handleSubmit(e)} disabled={Object.keys(formik.errors).length > 0 || formik.values.leavingFrom === '' || formik.values.goingTo === ''}>SAVE</Button>
+            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.leavingFrom === '' || formik.values.goingTo === ''}>SAVE</Button>
           </Col>
         </Row>
       </Form>

@@ -84,6 +84,10 @@ const validate = values => {
         errors.staffEmail = "*Invalid email address";
     }
 
+    // if (!values.mobNo) {
+    //     errors.mobNo = "*Required"
+    // }
+
     return errors;
 }
 
@@ -92,6 +96,12 @@ function StaffPersonalInformation({ activationKey, onActivationKeyChild }) {
     const [imageValue, setImageValue] = useState(false);
 
     const [childNextKey, setChildNextKey] = useState("1");
+    //
+    const [errors, setErrors] = useState({});
+
+    const validateForm = (validationErrors) => {
+        setErrors(validationErrors);
+    };
 
     // reset form start: 
     const firstName = useRef("");
@@ -368,7 +378,7 @@ function StaffPersonalInformation({ activationKey, onActivationKeyChild }) {
                                 </Form.Floating>
                             </Col>
                             <Col xs={12} lg={4} className='col'>
-                                <Phone isClear={mobileValue} />
+                                <Phone isClear={mobileValue} onValidate={validateForm} />
                             </Col>
 
                             <Col xs={12} lg={4} className='d-flex justify-content-center pt-3 col'>

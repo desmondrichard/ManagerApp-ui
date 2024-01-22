@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -8,7 +8,7 @@ import './ThingsToDoBranding.css';
 import { useFormik } from 'formik';
 
 
-function ThingsToDoBranding() {
+function ThingsToDoBranding({ activationKey, onChildNextActivationKey }) {
   //reset:
   const logoChecked = useRef(false);
   const flagChecked = useRef(false);
@@ -27,14 +27,16 @@ function ThingsToDoBranding() {
     // formik.resetForm();
   }
 
+  const [childNextKey, setChildNextKey] = useState("2");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("form is submitted")
+    onChildNextActivationKey(childNextKey)
   }
   return (
     <div>
       <Card className='bg-light p-4'>
-        <Form>
+        <Form >
           <Row className='fw-bold' style={{ fontSize: '16px' }}>
             <Col xs={12} md={4} className='py-3'>
               <Form.Check label="Team Logo" ref={logoChecked} />

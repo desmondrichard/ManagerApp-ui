@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -42,7 +42,7 @@ const validate = values => {
 
     return errors;
 }
-function ThingsToDoHotelAccomodation() {
+function ThingsToDoHotelAccomodation({ activationKey, onChildNextActivationKey }) {
     //reset:
     const name1 = useRef("");
     const cityName = useRef("");
@@ -77,7 +77,8 @@ function ThingsToDoHotelAccomodation() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.groundName} you have successfully signed up`);
-            //  navigate("/");
+            onChildNextActivationKey(childNextKey)
+
         }
     });
 
@@ -90,9 +91,8 @@ function ThingsToDoHotelAccomodation() {
         }
     }
 
-    const handleSubmit = (e) => {
-        e.preventDafault();
-    }
+    const [childNextKey, setChildNextKey] = useState("5");
+
     return (
         <div>
             <Form onSubmit={formik.handleSubmit}>
@@ -227,7 +227,7 @@ function ThingsToDoHotelAccomodation() {
                     <Col className='end btns'>
                         <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
                         <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-                        <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.hotelName === '' || formik.values.cityName === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+                        <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.hotelName === '' || formik.values.cityName === ''}>SAVE AND NEXT</Button>
                     </Col>
                 </Row>
             </Form>

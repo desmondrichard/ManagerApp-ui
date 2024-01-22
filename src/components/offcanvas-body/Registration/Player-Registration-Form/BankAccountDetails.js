@@ -43,7 +43,7 @@ const validate = values => {
     }
 
 
-    if (!/^[0-9]{1,9}$/.test(values.micr)) {
+    if (!/^[0-9]{0,9}$/.test(values.micr)) {
         errors.micr = "enter valid micr code";
     }
 
@@ -62,7 +62,7 @@ const validate = values => {
     return errors;
 }
 
-function BankAccountDetails({ activationKey, onActivationKeyChild }) {
+function BankAccountDetails({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
 
     // reset form start: 
     const beneficiaryname1 = useRef("");
@@ -128,6 +128,10 @@ function BankAccountDetails({ activationKey, onActivationKeyChild }) {
     });
     //next btn:
     const [childNextKey, setChildNextKey] = useState("5");
+
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("3")
+    }
 
     return (
 
@@ -352,7 +356,7 @@ function BankAccountDetails({ activationKey, onActivationKeyChild }) {
                                 </Form.Floating>
                             </Col>
                             <Col lg={12} className='my-4 col'>
-                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} onClick={handlePreviousButton}>PREVIOUS</Button>
                                 <Button variant="success" className='me-1 mb-2 mx-1 ' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} style={{ width: "130px" }} type='submit'>Save and Next</Button>
                                 <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>

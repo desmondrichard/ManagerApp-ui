@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -25,7 +25,7 @@ const validate = values => {
 
   return errors;
 }
-function ThingsToDoFixtures() {
+function ThingsToDoFixtures({ activationKey, onChildNextActivationKey }) {
 
 
   //reset:
@@ -51,13 +51,12 @@ function ThingsToDoFixtures() {
     validate,
     onSubmit: values => {
       alert(`Hello! ,${values.groundName} you have successfully signed up`);
-      //  navigate("/");
+      onChildNextActivationKey(childNextKey)
     }
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+  const [childNextKey, setChildNextKey] = useState("4");
+
   return (
     <div>
       <Form onSubmit={formik.handleSubmit}>
@@ -130,7 +129,7 @@ function ThingsToDoFixtures() {
           <Col className='end btns'>
             <Button variant="danger" className='mx-2' style={{ color: 'white' }}>BACK</Button>
             <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.groundName === ''} onClick={(e) => handleSubmit(e)}>SAVE AND NEXT</Button>
+            <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.groundName === ''}>SAVE AND NEXT</Button>
           </Col>
         </Row>
       </Form>

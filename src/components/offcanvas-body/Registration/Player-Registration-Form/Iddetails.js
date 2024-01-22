@@ -46,13 +46,13 @@ const validate = values => {
         errors.birth = "Enter Valid Birth Certificate Number"
     }
 
-    if (!values.address) {
-        errors.address = "*Required";
-    }
+    // if (!values.address) {
+    //     errors.address = "*Required";
+    // }
 
     return errors;
 }
-function Iddetails({ activationKey, onActivationKeyChild }) {
+function Iddetails({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
     // next btn:
     const [childNextKey, setChildNextKey] = useState("4");
 
@@ -96,10 +96,13 @@ function Iddetails({ activationKey, onActivationKeyChild }) {
         onSubmit: values => {
             alert(`Hello! ,${values.aadharno}you have successfully signed up`);
             onActivationKeyChild(childNextKey);
-            console.log("childNextKey4",childNextKey)
+            console.log("childNextKey4", childNextKey)
         }
     });
 
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("2")
+    }
     // console.log("Focus",address);
     return (
 
@@ -223,7 +226,7 @@ function Iddetails({ activationKey, onActivationKeyChild }) {
                             </Col>
 
                             <Col xs={12} lg={12} className='my-4 col'>
-                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} onClick={handlePreviousButton}>PREVIOUS</Button>
                                 <Button variant="success" type='submit' disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
                                 <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
 

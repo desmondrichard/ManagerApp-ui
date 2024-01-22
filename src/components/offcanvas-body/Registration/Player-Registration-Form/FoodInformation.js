@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useRef } from 'react';
 
-function FoodInformation({ activationKey, onActivationKeyChild }) {
+function FoodInformation({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
     //next btn:
     const [childNextKey, setChildNextKey] = useState("6");
 
@@ -58,6 +58,18 @@ function FoodInformation({ activationKey, onActivationKeyChild }) {
         // allergy1.current.value = "";
     }
     // reset form end: 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert('submitted');
+        onActivationKeyChild(childNextKey)
+    }
+
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("4")
+    }
+
+
     return (
 
         <Accordion.Item eventKey="5">
@@ -167,6 +179,7 @@ function FoodInformation({ activationKey, onActivationKeyChild }) {
                                                             </div>
                                                         ))}
                                                     </Col>
+
                                                     <Col xs={12} lg={3} className='col col2'>
                                                         <label className='text-muted' htmlFor="foodtype">Red Meat</label>
                                                         {['radio'].map((type) => (
@@ -231,8 +244,8 @@ function FoodInformation({ activationKey, onActivationKeyChild }) {
                                 ))}
                             </Col>
                             <Col lg={12} className='my-4 col'>
-                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
-                                <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} type='submit'>Save and Next</Button>
+                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} onClick={handlePreviousButton}>PREVIOUS</Button>
+                                <Button variant="success" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} type='submit' onClick={(e) => handleSubmit(e)}>Save and Next</Button>
                                 <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>
                         </Row>

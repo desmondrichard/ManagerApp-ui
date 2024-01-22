@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -21,7 +21,9 @@ const validate = values => {
   return errors;
 }
 
-function ThingsToDoRepresentatives() {
+function ThingsToDoRepresentatives({ activationKey, onChildNextActivationKey }) {
+  const [childNextKey, setChildNextKey] = useState("1");
+
   //reset:
   const name1 = useRef("");
   const uniformChecked = useRef(false);
@@ -41,13 +43,11 @@ function ThingsToDoRepresentatives() {
     validate,
     onSubmit: values => {
       alert(`Hello! ,${values.name} you have successfully signed up`);
-      //  navigate("/");
+      onChildNextActivationKey(childNextKey)
     }
   });
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-  }
+
   return (
     <div>
       <Card className='bg-light p-4'>
@@ -79,7 +79,7 @@ function ThingsToDoRepresentatives() {
           <Row>
             <Col className='end btns'>
               <Button variant="warning" className='mx-2' style={{ color: 'white' }} onClick={() => handleReset()}>CLEAR</Button>
-              <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} onClick={(e)=>handleSubmit(e)}>SAVE AND NEXT</Button>
+              <Button variant="success" className='mx-2' type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''}>SAVE AND NEXT</Button>
             </Col>
           </Row>
         </Form>

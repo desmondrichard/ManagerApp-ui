@@ -62,6 +62,10 @@ function PlayerRegistration(props) {
     console.log("getkeyfromchild", k);
   }
 
+  function getPreviousKeyFromChild(k) {
+    setParentKey(k);
+  }
+
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
@@ -121,6 +125,11 @@ function PlayerRegistration(props) {
   };
   // Filter:
   const [search, setSearch] = useState('');
+
+  function handleModalClose() {
+    setShow(false);
+    alert("going to close and form data is posted")
+  }
   return (
     <div>
       <Header />
@@ -150,23 +159,23 @@ function PlayerRegistration(props) {
                 {/* Accordion:1 */}
                 <PersonalInformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
                 {/* Accordion:2 */}
-                <ProficiencyForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <ProficiencyForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:3 */}
-                <KittingDetailsForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <KittingDetailsForm activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:4 */}
-                <Iddetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <Iddetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:5 */}
-                <BankAccountDetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <BankAccountDetails activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:6 */}
-                <FoodInformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <FoodInformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/*Accordion:7 */}
-                <Travelinformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <Travelinformation activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:8 */}
-                <RepresentationInfo activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <RepresentationInfo activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:9 */}
-                <EmergencyContact activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <EmergencyContact activationKey={parentkey} onActivationKeyChild={getKeyFromChild} onPreviousActivationKey={getPreviousKeyFromChild} />
                 {/* Accordion:10 */}
-                <SocialMediaInfo activationKey={parentkey} onActivationKeyChild={getKeyFromChild} />
+                <SocialMediaInfo activationKey={parentkey} onCloseModal={handleModalClose} onPreviousActivationKey={getPreviousKeyFromChild} />
               </Accordion>
             </Modal.Body>
             {/* Footer: */}

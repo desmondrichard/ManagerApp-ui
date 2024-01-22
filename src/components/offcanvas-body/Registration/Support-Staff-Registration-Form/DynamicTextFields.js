@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './DynamicTextFields.css';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -11,10 +11,10 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
     const [value0, setValue0] = useState();
     const [value1, setValue1] = useState();
     const [value2, setValue2] = useState();
-    
 
-     //reset country:
-    
+
+    //reset country:
+
 
     const [isFocused, setIsFocused] = useState(false); //initially other fields wont be displayed
 
@@ -32,10 +32,6 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
     const handleFocus = () => {
         setIsFocused(true);
     };
-
-    // const handleBlur = () => {
-    //     setIsFocused(true);
-    // };                          
 
     return (
         // flex used
@@ -91,7 +87,6 @@ function DynamicTextFields({ isClearAddress0, isClearAddress1, isClearAddress2, 
                                 <label htmlFor="address2" className='text-muted'>ADDRESS LINE 2</label>
                             </Form.Floating>
                         </Col>
-                       
 
                         {/* country-state-city: */}
                         <Col xs={12} lg={3} className='col'>

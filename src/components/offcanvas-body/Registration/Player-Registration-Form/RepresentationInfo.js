@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RepresentationInfo.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Row from 'react-bootstrap/Row';
@@ -34,7 +34,9 @@ const validate = values => {
     }
     return errors;
 }
-function RepresentationInfo() {
+function RepresentationInfo({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
+    const [childNextKey, setChildNextKey] = useState("8");
+
     const formik = useFormik({
         initialValues: {
             city: '',
@@ -45,7 +47,7 @@ function RepresentationInfo() {
         validate,
         onSubmit: values => {
             alert(`Hello! ,${values.fNamelNamemName}you have successfully signed up`);
-            // navigate("/playerproficiencyinformation");
+            onActivationKeyChild(childNextKey)
         }
     });
 
@@ -62,77 +64,78 @@ function RepresentationInfo() {
         division1.current.value = "";
         formik.resetForm();
     }
+
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("6")
+    }
     return (
-        <div>
-            <Accordion>
-                <Accordion.Item eventKey="7">
-                    <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>REPRESENTATION INFORMATION</span></Accordion.Header>
-                    <Accordion.Body>
-                        <Container >
-                            <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
-                                <Row>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="city"
-                                                type="text"
-                                                placeholder="city"
-                                                name="city"
-                                                ref={city1}
-                                                value={formik.values.city} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.city && formik.errors.city ? <span className='span'>{formik.errors.city}</span> : null
-                                                }
-                                            <label htmlFor="city" className='text-muted'>City/District*</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="club"
-                                                type="text"
-                                                placeholder="club"
-                                                name="club"
-                                                ref={club1}
-                                                value={formik.values.club} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.club && formik.errors.club ? <span className='span'>{formik.errors.club}</span> : null
-                                                }
-                                            <label htmlFor="club" className='text-muted'>Club*</label>
-                                        </Form.Floating>
-                                    </Col>
-                                    <Col xs={12} lg={4} className='col'>
-                                        <Form.Floating className="mb-2">
-                                            <Form.Control
-                                                id="division"
-                                                type="text"
-                                                placeholder="division"
-                                                name="division"
-                                                ref={division1}
-                                                value={formik.values.division} onBlur={formik.handleBlur} onChange={formik.handleChange}
-                                                />
-                                                {
-                                                    formik.touched.division && formik.errors.division ? <span className='span'>{formik.errors.division}</span> : null
-                                                }
-                                            <label htmlFor="division" className='text-muted'>Division*</label>
-                                        </Form.Floating>
-                                    </Col>
-                                </Row>
 
-                                <Col lg={12} className='my-4 col'>
-                                    <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>PREVIOUS</Button>
-                                    <Button variant="success" type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} className='me-1 mb-2 mx-1 ' style={{width:"130px"}}>Save and Next</Button>
-                                    <Button variant="warning" className='text-white mb-2 mx-1 ' style={{width:"130px"}} onClick={() => handleReset()}>CLEAR</Button>
-                                </Col>
-                            </Form>
-                        </Container>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+        <Accordion.Item eventKey="7">
+            <Accordion.Header><i className="bi bi-info-circle-fill me-1"></i><span style={{ fontWeight: '700' }}>REPRESENTATION INFORMATION</span></Accordion.Header>
+            <Accordion.Body>
+                <Container >
+                    <Form style={{ paddingRight: '60px' }} onSubmit={formik.handleSubmit}>
+                        <Row>
+                            <Col xs={12} lg={4} className='col'>
+                                <Form.Floating className="mb-2">
+                                    <Form.Control
+                                        id="city"
+                                        type="text"
+                                        placeholder="city"
+                                        name="city"
+                                        ref={city1}
+                                        value={formik.values.city} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                    />
+                                    {
+                                        formik.touched.city && formik.errors.city ? <span className='span'>{formik.errors.city}</span> : null
+                                    }
+                                    <label htmlFor="city" className='text-muted'>City/District*</label>
+                                </Form.Floating>
+                            </Col>
+                            <Col xs={12} lg={4} className='col'>
+                                <Form.Floating className="mb-2">
+                                    <Form.Control
+                                        id="club"
+                                        type="text"
+                                        placeholder="club"
+                                        name="club"
+                                        ref={club1}
+                                        value={formik.values.club} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                    />
+                                    {
+                                        formik.touched.club && formik.errors.club ? <span className='span'>{formik.errors.club}</span> : null
+                                    }
+                                    <label htmlFor="club" className='text-muted'>Club*</label>
+                                </Form.Floating>
+                            </Col>
+                            <Col xs={12} lg={4} className='col'>
+                                <Form.Floating className="mb-2">
+                                    <Form.Control
+                                        id="division"
+                                        type="text"
+                                        placeholder="division"
+                                        name="division"
+                                        ref={division1}
+                                        value={formik.values.division} onBlur={formik.handleBlur} onChange={formik.handleChange}
+                                    />
+                                    {
+                                        formik.touched.division && formik.errors.division ? <span className='span'>{formik.errors.division}</span> : null
+                                    }
+                                    <label htmlFor="division" className='text-muted'>Division*</label>
+                                </Form.Floating>
+                            </Col>
+                        </Row>
 
-        </div>
+                        <Col lg={12} className='my-4 col'>
+                            <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} onClick={handlePreviousButton}>PREVIOUS</Button>
+                            <Button variant="success" type="submit" disabled={Object.keys(formik.errors).length > 0 || formik.values.name === ''} className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
+                            <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
+                        </Col>
+                    </Form>
+                </Container>
+            </Accordion.Body>
+        </Accordion.Item>
+
     )
 }
 

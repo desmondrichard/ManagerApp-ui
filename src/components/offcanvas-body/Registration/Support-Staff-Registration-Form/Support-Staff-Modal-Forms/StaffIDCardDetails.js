@@ -45,24 +45,17 @@ const validate = values => {
     if (!/^4[0-9]{12}(?:[0-9]{3})?$/.test(values.staffVisaNo)) {
         errors.staffVisaNo = "Enter Valid Visa Number"
     }
-
-
-    if (!values.staffAddress) {
-        errors.staffAddress = "*Required";
-    }
     return errors;
 }
-function StaffIDCardDetails({ activationKey, onActivationKeyChild }) {
+
+function StaffIDCardDetails({ activationKey, onActivationKeyChild, onPreviousActivationKey }) {
     //reset address:
     const [clearValue, setClearValue] = useState(false);
 
     const [childNextKey, setChildNextKey] = useState("3");
 
 
-    //reset country:
-    const [selectCountry, setSelectCountry] = useState(false);
-    const [selectState, setSelectState] = useState(false);
-    const [selectCity, setSelectCity] = useState(false);
+
 
     // reset form start: 
     const aadharno1 = useRef("");
@@ -72,8 +65,8 @@ function StaffIDCardDetails({ activationKey, onActivationKeyChild }) {
     const birth1 = useRef("");
     const visaYes = useRef(false);
     const visaNo = useRef(false);
-    const visaValid = useRef("");
     const visaNumber = useRef("");
+    const visaValid = useRef("");
     // const addressRef0 = useRef("");
 
     // for npm custom component dont use useRef instead use useState i.e for phone component
@@ -89,11 +82,6 @@ function StaffIDCardDetails({ activationKey, onActivationKeyChild }) {
         visaValid.current.value = "";
         //reset address:
         setClearValue(true);
-        // addressRef0.current.value = "";
-        // reset country:
-        setSelectCountry(true);
-        setSelectState(true);
-        setSelectCity(true);
         formik.resetForm();
     }
 
@@ -115,6 +103,11 @@ function StaffIDCardDetails({ activationKey, onActivationKeyChild }) {
 
         }
     });
+
+    const handlePreviousButton = () => {
+        onPreviousActivationKey("1")
+    }
+
     return (
 
         <Accordion.Item eventKey="2">
@@ -261,11 +254,12 @@ function StaffIDCardDetails({ activationKey, onActivationKeyChild }) {
                                 </Form.Floating>
                             </Col>
                             <Col xs={12}>
-                                <DynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue} isClearAddress3={clearValue} isClearCountry={selectCountry} isClearState={selectState} isClearCity={selectCity} />
+                                <DynamicTextFields isClearAddress0={clearValue} isClearAddress1={clearValue} isClearAddress2={clearValue} isClearAddress3={clearValue} />
                             </Col>
 
+
                             <Col xs={12} lg={12} className='my-4 col'>
-                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>PREVIOUS</Button>
+                                <Button variant="primary" className='me-1 mb-2 mx-1 ' style={{ width: "130px" }} onClick={handlePreviousButton}>PREVIOUS</Button>
                                 <Button variant="success" onClick={formik.handleSubmit} className='me-1 mb-2 mx-1 ' style={{ width: "130px" }}>Save and Next</Button>
                                 <Button variant="warning" className='text-white mb-2 mx-1 ' style={{ width: "130px" }} onClick={() => handleReset()}>CLEAR</Button>
                             </Col>

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { Tab, Tabs } from 'react-bootstrap';
@@ -14,6 +14,11 @@ import ThingsToDoMatchEquipments from './ThingsTodoSubForms/ThingsToDoMatchEquip
 import ThingsToDoTransport from './ThingsTodoSubForms/ThingsToDoTransport';
 import './ThingsToDoAddList.css';
 function ThingsToDoAddList() {
+    const [key, setKey] = useState("0")
+
+    function getDataFromChild(k) {
+        setKey(k);
+    }
 
     return (
         <div>
@@ -29,40 +34,40 @@ function ThingsToDoAddList() {
             </NavLink>
             <Container fluid className='p-0 mt-2'>
                 <Row style={{ margin: '0px' }}>
-                    <Tabs justify variant='pills' defaultkey='tab-1' className='mb-1 p-0 tab'>
+                    <Tabs justify variant='pills' activeKey={key} className='mb-1 p-0 tab'>
                         {/* Tab:1 */}
-                        <Tab eventKey='tab-1' title='REPRESENTATIVES' >
+                        <Tab eventKey='0' title='REPRESENTATIVES' >
                             {/* Tab1 content */}
-                            <ThingsToDoRepresentatives />
+                            <ThingsToDoRepresentatives activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
 
                         {/* Tab:2 */}
-                        <Tab eventKey='tab-2' title='BRANDING'>
-                            <ThingsToDoBranding />
+                        <Tab eventKey='1' title='BRANDING'>
+                            <ThingsToDoBranding activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
 
                         {/* Tab:3 */}
-                        <Tab eventKey='tab-3' title='COACH PHYSIOTHERAPIST' style={{ whiteSpace: 'nowrap' }}>
-                            <ThingsToDoPhysiotherapist />
+                        <Tab eventKey='2' title='COACH PHYSIOTHERAPIST' style={{ whiteSpace: 'nowrap' }}>
+                            <ThingsToDoPhysiotherapist activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
 
                         {/* Tab:4 */}
-                        <Tab eventKey='tab-4' title='FIXTURES'>
-                            <ThingsToDoFixtures />
+                        <Tab eventKey='3' title='FIXTURES'>
+                            <ThingsToDoFixtures activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
-
 
                         {/* Tab:5 */}
-                        <Tab eventKey='tab-5' title='HOTEL ACCOMODATION'>
-                            <ThingsToDoHotelAccomodation />
+                        <Tab eventKey='4' title='HOTEL ACCOMODATION'>
+                            <ThingsToDoHotelAccomodation activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
 
-                        <Tab eventKey='tab-6' title='EQUIPMENT REQUIREMENTS'>
-                            <ThingsToDoMatchEquipments />
+                        <Tab eventKey='5' title='EQUIPMENT REQUIREMENTS'>
+                            <ThingsToDoMatchEquipments activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
-                        <Tab eventKey='tab-7' title='TRANSPORT INFORMATION'>
-                            <ThingsToDoTransport />
+                        <Tab eventKey='6' title='TRANSPORT INFORMATION'>
+                            <ThingsToDoTransport activationKey={key} onChildNextActivationKey={getDataFromChild} />
                         </Tab>
+
                     </Tabs>
                 </Row>
             </Container>
